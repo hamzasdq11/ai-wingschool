@@ -1,33 +1,36 @@
 const plans = [
   {
-    name: "Explorer",
-    price: "4,999",
-    commitment: "3-month commitment",
+    name: "Trial Pass",
+    price: "999",
+    priceUnit: "one-time",
+    commitment: "2 weeks · 1 project · no auto-renew",
     description:
-      "Start here. See your child build something real in the first month.",
+      "Try Wingschool with one real project. Love it, and your ₹999 credits in full toward Builder.",
     features: [
-      "Full self-paced curriculum",
-      "1 live workshop / week",
+      "1 guided AI project",
+      "1 live mentor workshop",
       "AI playground access",
-      "Cohort community",
-      "3 guided projects",
+      "Cohort Slack + intro call",
+      "Fee fully credited toward Builder",
     ],
-    cta: "Start with Explorer",
+    cta: "Start the Trial →",
     featured: false,
   },
   {
     name: "Builder",
     price: "7,999",
+    priceUnit: "/month",
     commitment: "6-month commitment",
     description:
       "The full experience. Portfolio, live mentorship, and Demo Day included.",
     features: [
-      "Everything in Explorer",
+      "Full self-paced curriculum + AI playground",
       "2 live sessions / week",
       "Monthly 1-on-1 mentor call",
+      "6 projects + public Demo Day",
       "Portfolio page + certificate",
-      "6 projects + Demo Day",
       "Parent progress reports / 2 weeks",
+      "Cohort community",
     ],
     cta: "Start Building",
     featured: true,
@@ -35,16 +38,18 @@ const plans = [
   },
   {
     name: "Launchpad",
-    price: "12,999",
+    price: "14,999",
+    priceUnit: "/month",
     commitment: "6-month commitment",
     description:
-      "For students serious about standing out — college prep, internships, founder access.",
+      "The serious upgrade — a dedicated IIT/IIM mentor, a self-directed capstone, and the tools to ship it publicly.",
     features: [
       "Everything in Builder",
-      "Weekly 1-on-1 mentorship",
-      "College portfolio guidance",
-      "Internship placement support",
-      "Guest sessions with AI founders",
+      "Dedicated IIT/IIM mentor — weekly 1-on-1",
+      "Self-directed capstone shipped to real users",
+      "₹15,000 in AI API + hosting credits",
+      "Custom-domain portfolio site (yourname.in)",
+      "Mentor letter of recommendation",
       "Priority cohort (≤15 students)",
     ],
     cta: "Apply for Launchpad",
@@ -69,7 +74,7 @@ export function Pricing() {
           className="ui-body-sm mb-14"
           style={{ color: "#1335b8" }}
         >
-          7-day money-back guarantee · Free trial class · No long-term lock-in
+          ₹999 paid trial · 7-day money-back · No long-term lock-in
         </p>
       </div>
 
@@ -134,7 +139,7 @@ export function Pricing() {
                     color: "#6a6a6a",
                   }}
                 >
-                  /month
+                  {plan.priceUnit === "/month" ? "/month" : " one-time"}
                 </span>
               </div>
               <p className="ui-caption mt-2">{plan.commitment}</p>
