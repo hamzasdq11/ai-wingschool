@@ -87,6 +87,14 @@ export function Hero() {
             Designed and taught by IIT &amp; IIM grads. Built for India.
           </p>
 
+          <p
+            className="ui-body-sm animate-fade-rise-delay-2 mt-1.5 max-w-xl"
+            style={{ color: "#1335b8", fontWeight: 500 }}
+          >
+            Hardware included — Arduino, sensors, robotics — shipped to your
+            door at no extra cost.
+          </p>
+
           <form
             onSubmit={handleSubmit}
             className="ui-card animate-fade-rise-delay-3 mt-9 flex flex-col gap-3 rounded-[1.5rem] p-5 sm:p-6"

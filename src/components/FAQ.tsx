@@ -10,6 +10,10 @@ const faqs = [
     a: "Not at all. We start from zero. The first month is about thinking with AI — experimentation, prompting, scoping problems. Technical confidence grows through making, not intimidation.",
   },
   {
+    q: "Do we need to buy any hardware ourselves?",
+    a: "No. Every project that needs hardware — microcontrollers, sensors, motors, robotics modules — ships free to your doorstep across India. If something breaks during the build, we replace it at no charge. After the program ends, the entire kit stays with your child.",
+  },
+  {
     q: "How is this different from YouTube or self-learning?",
     a: "Three things: a live mentor who calls them out, a real cohort that creates accountability, and a portfolio they have to ship. Free content can inform — it almost never produces follow-through. We've measured this across 11 cohorts.",
   },

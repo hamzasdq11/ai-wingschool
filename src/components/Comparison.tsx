@@ -10,6 +10,11 @@ const rows = [
     wingschool: "Six shipped projects + portfolio",
   },
   {
+    label: "Materials provided",
+    coaching: "Notes & worksheets",
+    wingschool: "Hardware kits shipped home, free",
+  },
+  {
     label: "Who teaches",
     coaching: "Mass-batched faculty",
     wingschool: "IIT &amp; IIM grads, ≤25 per cohort",

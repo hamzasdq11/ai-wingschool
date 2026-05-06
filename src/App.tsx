@@ -3,6 +3,7 @@ import { Hero } from "./components/Hero";
 import { Mentors } from "./components/Mentors";
 import { Problem } from "./components/Problem";
 import { AIEra } from "./components/AIEra";
+import { HardwareKit } from "./components/HardwareKit";
 import { ProjectShowcase } from "./components/ProjectShowcase";
 import { HowItWorks } from "./components/HowItWorks";
 import { Curriculum } from "./components/Curriculum";
@@ -35,6 +36,8 @@ function App() {
       <Problem />
       <Divider />
       <AIEra />
+      <Divider />
+      <HardwareKit />
       <Divider />
       <ProjectShowcase />
       <Divider />
