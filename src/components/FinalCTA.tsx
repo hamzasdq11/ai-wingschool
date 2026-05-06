@@ -142,7 +142,7 @@ export function FinalCTA() {
                   className="ui-input"
                 >
                   <option value="">Child&apos;s class</option>
-                  {[6, 7, 8, 9, 10].map((g) => (
+                  {[5, 6, 7, 8, 9, 10].map((g) => (
                     <option key={g} value={g}>
                       Class {g}
                     </option>

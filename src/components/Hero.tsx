@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import heroImage from "../assets/hero.png";
+import heroLoop from "../assets/hero-loop.mp4";
+import heroLoopPoster from "../assets/hero-loop-poster.jpg";
 
 const proofChips = [
   { value: "200+", label: "Indian families" },
@@ -12,6 +14,16 @@ export function Hero() {
   const [phone, setPhone] = useState("");
   const [grade, setGrade] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const mql = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setPrefersReducedMotion(mql.matches);
+    const handler = (e: MediaQueryListEvent) =>
+      setPrefersReducedMotion(e.matches);
+    mql.addEventListener("change", handler);
+    return () => mql.removeEventListener("change", handler);
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -20,7 +32,15 @@ export function Hero() {
 
   return (
     <section className="relative z-10 overflow-hidden border-b border-black/8">
-      <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_72%_18%,rgba(19,53,184,0.10),transparent_30%),radial-gradient(circle_at_18%_82%,rgba(19,53,184,0.05),transparent_28%),linear-gradient(180deg,#fbfaf6_0%,#f4f3ee_100%)]" />
+      <div className="absolute inset-0 -z-30 bg-[radial-gradient(circle_at_72%_18%,rgba(19,53,184,0.10),transparent_30%),radial-gradient(circle_at_18%_82%,rgba(19,53,184,0.05),transparent_28%),linear-gradient(180deg,#fbfaf6_0%,#f4f3ee_100%)]" />
+      <img
+        src={heroImage}
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-20 h-full w-full object-cover object-center"
+        style={{ opacity: 0.3 }}
+      />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-white/40 via-transparent to-white/60" />
 
       <div className="mx-auto grid max-w-7xl gap-12 px-6 pt-12 pb-20 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-16 lg:px-8 lg:pt-16 lg:pb-24">
         <div className="flex max-w-2xl flex-col">
@@ -47,10 +67,10 @@ export function Hero() {
               color: "#0a0a0a",
             }}
           >
-            Your child won&apos;t just{" "}
+            Every kid will{" "}
             <span style={{ color: "#1335b8" }}>use</span> AI.
             <br />
-            They&apos;ll{" "}
+            Yours will{" "}
             <span className="display-script" style={{ fontSize: "1.12em" }}>
               build
             </span>{" "}
@@ -58,7 +78,7 @@ export function Hero() {
           </h1>
 
           <p className="section-body animate-fade-rise-delay-2 mt-7 max-w-xl">
-            A 6-month live program for students in Classes 6–10. They ship 6
+            A 6-month live program for students in Classes 5–10. They ship 6
             real AI projects, present a public Demo Day, and walk out with a
             portfolio that future colleges and recruiters can actually see.
           </p>
@@ -133,7 +153,7 @@ export function Hero() {
                     className="ui-input flex-1"
                   >
                     <option value="">Child&apos;s class</option>
-                    {[6, 7, 8, 9, 10].map((g) => (
+                    {[5, 6, 7, 8, 9, 10].map((g) => (
                       <option key={g} value={g}>
                         Class {g}
                       </option>
@@ -168,50 +188,121 @@ export function Hero() {
         </div>
 
         <div className="animate-fade-rise-delay-2 relative flex items-center justify-center lg:justify-end">
-          <div className="relative w-full max-w-[34rem]">
-            <div className="ui-card relative overflow-hidden rounded-[2rem] p-3">
-              <img
-                src={heroImage}
-                alt="Student standing in front of colorful wings artwork"
-                className="h-[30rem] w-full rounded-[1.5rem] object-cover object-center sm:h-[34rem]"
+          <div className="relative w-full max-w-[30rem]">
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 -rotate-3 rounded-[2rem] border border-black/8 bg-white/70 backdrop-blur-sm"
+              style={{ boxShadow: "0 24px 48px -28px rgba(15,15,15,0.18)" }}
+            />
+
+            <div
+              className="ui-card relative overflow-hidden rounded-[2rem] p-5 sm:p-6"
+              style={{
+                boxShadow:
+                  "0 1px 2px rgba(15,15,15,0.04), 0 30px 60px -28px rgba(19,53,184,0.18)",
+              }}
+            >
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -top-24 -right-24 h-56 w-56 rounded-full"
+                style={{
+                  background:
+                    "radial-gradient(circle, rgba(19,53,184,0.18), transparent 70%)",
+                  filter: "blur(8px)",
+                }}
               />
-              <div className="absolute inset-x-6 bottom-6 rounded-[1.35rem] border border-white/16 bg-black/72 p-5 backdrop-blur-md">
+
+              <div className="relative flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-[#7CFF9B]" />
-                  <p
-                    className="ui-label"
-                    style={{ color: "#cdd9ff" }}
-                  >
-                    Cohort 11 · Demo Day, last month
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#1335b8] opacity-50" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-[#1335b8]" />
+                  </span>
+                  <p className="ui-label" style={{ color: "#1335b8" }}>
+                    Capstone Day
                   </p>
                 </div>
-                <p
-                  className="mt-3 max-w-sm"
-                  style={{
-                    fontFamily: "var(--font-display)",
-                    fontSize: "1.5rem",
-                    fontWeight: 400,
-                    lineHeight: 1.1,
-                    letterSpacing: "-0.03em",
-                    color: "#ffffff",
-                  }}
-                >
-                  Aarav, Class 8, built an AI tutor in Hindi for his
-                  grandfather.
-                </p>
-                <p
-                  className="mt-2 max-w-md"
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: "0.875rem",
-                    lineHeight: 1.6,
-                    color: "rgba(255,255,255,0.78)",
-                  }}
-                >
-                  Six months ago he&apos;d never written a prompt. He just
-                  demoed it to 80 parents.
-                </p>
+                <span className="ui-caption">Cohort 11</span>
               </div>
+
+              <div
+                className="relative mt-4 overflow-hidden rounded-[1.25rem]"
+                style={{ aspectRatio: "16 / 9", background: "#0a0a0a" }}
+              >
+                {prefersReducedMotion ? (
+                  <img
+                    src={heroLoopPoster}
+                    alt="Wingschool students presenting at Capstone Day"
+                    className="h-full w-full object-cover"
+                  />
+                ) : (
+                  <video
+                    src={heroLoop}
+                    poster={heroLoopPoster}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="metadata"
+                    aria-label="Wingschool Capstone Day montage"
+                    className="h-full w-full object-cover"
+                  />
+                )}
+              </div>
+
+              <div className="relative mt-5 grid grid-cols-3 gap-2 border-t border-black/8 pt-4">
+                {[
+                  { value: "12 projects", label: "Live demos" },
+                  { value: "80+", label: "Audience" },
+                  { value: "Demo Day", label: "Public stakes" },
+                ].map((s) => (
+                  <div key={s.label}>
+                    <p
+                      style={{
+                        fontFamily: "var(--font-display)",
+                        fontSize: "1.05rem",
+                        fontWeight: 500,
+                        letterSpacing: "-0.02em",
+                        color: "#0a0a0a",
+                        lineHeight: 1.1,
+                      }}
+                    >
+                      {s.value}
+                    </p>
+                    <p className="ui-caption mt-1">{s.label}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div
+              className="absolute -bottom-5 -left-5 hidden items-center gap-2 rounded-full border border-black/8 bg-white/95 px-3.5 py-2 backdrop-blur-sm sm:inline-flex"
+              style={{
+                boxShadow: "0 10px 24px -10px rgba(15,15,15,0.15)",
+              }}
+            >
+              <div className="flex gap-0.5" aria-hidden="true">
+                {[0, 1, 2, 3, 4].map((i) => (
+                  <svg
+                    key={i}
+                    width="11"
+                    height="11"
+                    viewBox="0 0 24 24"
+                    fill="#1335b8"
+                  >
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                  </svg>
+                ))}
+              </div>
+              <span
+                style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: "0.78rem",
+                  color: "#0a0a0a",
+                }}
+              >
+                4.9 from 200+ Indian families
+              </span>
             </div>
           </div>
         </div>

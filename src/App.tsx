@@ -1,7 +1,8 @@
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
-import { LogoStrip } from "./components/LogoStrip";
+import { Mentors } from "./components/Mentors";
 import { Problem } from "./components/Problem";
+import { AIEra } from "./components/AIEra";
 import { ProjectShowcase } from "./components/ProjectShowcase";
 import { HowItWorks } from "./components/HowItWorks";
 import { Curriculum } from "./components/Curriculum";
@@ -28,9 +29,12 @@ function App() {
     <div className="min-h-screen pb-24 md:pb-0">
       <Navbar />
       <Hero />
-      <LogoStrip />
+      <Divider />
+      <Mentors />
       <Divider />
       <Problem />
+      <Divider />
+      <AIEra />
       <Divider />
       <ProjectShowcase />
       <Divider />

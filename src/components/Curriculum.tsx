@@ -1,6 +1,12 @@
 export function Curriculum() {
   const classTracks = [
     {
+      grade: "Class 5",
+      stage: "Discover",
+      description:
+        "Play, not theory. Students meet AI through voice assistants, image makers, and simple chatbots — building hands-on familiarity and confidence before any code, prompt logic, or systems thinking enters the picture.",
+    },
+    {
       grade: "Class 6",
       stage: "Explore",
       description:
@@ -48,7 +54,7 @@ export function Curriculum() {
         </p>
       </div>
 
-      <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-5">
+      <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
         {classTracks.map((track) => (
           <div
             key={track.grade}
