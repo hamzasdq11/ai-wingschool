@@ -56,7 +56,7 @@ const projects = [
     grade: "Class 10 · Mumbai",
     title: "Verse — a poetry generator in 4 Indian languages",
     description:
-      "Fine-tuned a small model on classical Hindi, Urdu, Tamil, and Bengali verse. Her Showcase Night talk was picked up by the Litfest blog.",
+      "Fine-tuned a small model on classical Hindi, Urdu, Tamil, and Bengali verse. Her Flagship Expo Day talk was picked up by the Litfest blog.",
     tags: ["Fine-tuning", "Multi-language", "Creative AI"],
     accent: "from-[#dce5ff] via-[#97b2ff]/40 to-transparent",
     icon: (
@@ -79,7 +79,7 @@ export function ProjectShowcase() {
         <p className="section-body mb-14">
           Every Wingschool student ships six real AI projects in six months —
           designed, built, and demoed by them. Here&apos;s a snapshot from our
-          last Showcase Night.
+          last Flagship Expo Day.
         </p>
       </div>
 
@@ -129,7 +129,7 @@ export function ProjectShowcase() {
       <div className="ui-card mt-12 flex flex-wrap items-center justify-between gap-6 rounded-[1.5rem] px-6 py-5 sm:px-8">
         <div>
           <p className="ui-label" style={{ color: "#1335b8" }}>
-            Showcase Night
+            Flagship Expo Day
           </p>
           <p
             className="mt-2 max-w-xl"
@@ -140,7 +140,7 @@ export function ProjectShowcase() {
               lineHeight: 1.5,
             }}
           >
-            Every cohort ends with a public Showcase Night. Your child presents what
+            Every cohort ends with a public Flagship Expo Day. Your child presents what
             they built — to parents, mentors, and a guest panel of founders.
           </p>
         </div>

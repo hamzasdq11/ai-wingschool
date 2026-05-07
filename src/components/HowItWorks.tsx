@@ -26,7 +26,7 @@ export function HowItWorks() {
       title: "A body of work, not a certificate",
       details: [
         "Every project is shareable — to schools, future colleges, anyone.",
-        "Showcase Night at the end means real public stakes.",
+        "Flagship Expo Day at the end means real public stakes.",
         "The portfolio compounds: each cohort builds on the last.",
       ],
     },

@@ -7,7 +7,7 @@ export function Outcomes() {
     },
     {
       stat: "1",
-      label: "Showcase Night",
+      label: "Flagship Expo Day",
       desc: "Every cohort ends with a live presentation. Real audience. Real stakes. Confidence that doesn't come from a worksheet.",
     },
     {

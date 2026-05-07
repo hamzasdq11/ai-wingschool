@@ -79,7 +79,7 @@ export function Hero() {
 
           <p className="section-body animate-fade-rise-delay-2 mt-7 max-w-xl">
             A 6-month live program for students in Classes 5–10. They ship 6
-            real AI projects, take the stage at Showcase Night, and walk out
+            real AI projects, take the stage at Flagship Expo Day, and walk out
             with a portfolio that future colleges and recruiters can actually
             see.
           </p>
@@ -228,7 +228,7 @@ export function Hero() {
                     <span className="relative inline-flex h-2 w-2 rounded-full bg-[#1335b8]" />
                   </span>
                   <p className="ui-label" style={{ color: "#1335b8" }}>
-                    Showcase Night
+                    Flagship Expo Day
                   </p>
                 </div>
                 <span className="ui-caption">Cohort 11</span>
@@ -241,7 +241,7 @@ export function Hero() {
                 {prefersReducedMotion ? (
                   <img
                     src={heroLoopPoster}
-                    alt="Wingschool students presenting at Showcase Night"
+                    alt="Wingschool students presenting at Flagship Expo Day"
                     className="h-full w-full object-cover"
                   />
                 ) : (
@@ -253,7 +253,7 @@ export function Hero() {
                     muted
                     playsInline
                     preload="metadata"
-                    aria-label="Wingschool Showcase Night montage"
+                    aria-label="Wingschool Flagship Expo Day montage"
                     className="h-full w-full object-cover"
                   />
                 )}
@@ -263,7 +263,7 @@ export function Hero() {
                 {[
                   { value: "12 projects", label: "Live demos" },
                   { value: "80+", label: "Audience" },
-                  { value: "Showcase Night", label: "Public stakes" },
+                  { value: "Flagship Expo Day", label: "Public stakes" },
                 ].map((s) => (
                   <div key={s.label}>
                     <p
