@@ -4,8 +4,6 @@ const plans = [
     price: "999",
     priceUnit: "one-time",
     commitment: "Orientation Day + Builder week 1 · no auto-renew",
-    description:
-      "Builder's first week, paid. Orientation Day, weekend workshops, AI playground — fee credits in full if you continue.",
     features: [
       "Orientation Day at The Landmark Towers, Kanpur · 25 May",
       "Full week 1 of Builder — workshops, curriculum, AI playground",
@@ -23,8 +21,6 @@ const plans = [
     priceUnit: "/month",
     totalLine: "₹22,794 over 6 months",
     upfrontLine: "Pay upfront: ₹18,995 (save ₹3,799)",
-    description:
-      "The full cohort experience. Six projects, weekly live sessions, hardware kits to your doorstep, Flagship Expo Day.",
     features: [
       "Orientation Day at The Landmark Towers, Kanpur · 25 May",
       "Self-paced weekly curriculum + AI playground",
@@ -49,8 +45,6 @@ const plans = [
     priceUnit: "/month",
     totalLine: "₹47,994 over 6 months",
     upfrontLine: "Pay upfront: ₹39,995 (save ₹7,999)",
-    description:
-      "An apprenticeship of one. Every session 1-on-1, an IIT/IIM mentor in your child's corner, the curriculum built around your child.",
     features: [
       "Everything in Builder",
       "1-on-1 live sessions with priority focus",
@@ -206,8 +200,6 @@ export function Pricing() {
                 </p>
               )}
             </div>
-
-            <p className="ui-body-sm">{plan.description}</p>
 
             <div
               style={{
