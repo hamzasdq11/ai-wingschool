@@ -23,12 +23,13 @@ const plans = [
     totalLine: "₹47,994 over 6 months",
     upfrontLine: "Pay upfront: ₹39,995 (save ₹7,999)",
     description:
-      "The full cohort experience. Six projects, weekly live sessions, hardware kits shipped home, public Demo Day.",
+      "The full cohort experience. Six projects, weekly live sessions, hardware kits shipped home, Showcase Night.",
     features: [
+      "In-person Orientation Day · 25 May, Kanpur",
       "Full self-paced curriculum + AI playground",
       "2 live mentor sessions / week",
       "Monthly 1-on-1 with a mentor",
-      "6 projects + public Demo Day",
+      "6 projects + Showcase Night",
       "Hardware kits shipped home, free",
       "Portfolio page + certificate",
       "Parent progress reports / 2 weeks",

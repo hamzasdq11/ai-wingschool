@@ -31,7 +31,7 @@ const faqs = [
   },
   {
     q: "How will I, as a parent, see progress?",
-    a: "Three ways. (1) Project deliverables every 3 weeks — actual working artefacts, not grades. (2) A parent progress report every 2 weeks on the Builder and Launchpad plans. (3) The public Demo Day at the end — you'll watch your child present what they built.",
+    a: "Three ways. (1) Project deliverables every 3 weeks — actual working artefacts, not grades. (2) A parent progress report every 2 weeks on the Builder and Launchpad plans. (3) Showcase Night at the end — you'll watch your child present what they built.",
   },
   {
     q: "What happens if it doesn't work for us?",

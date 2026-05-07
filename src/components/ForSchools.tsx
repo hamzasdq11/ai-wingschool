@@ -10,7 +10,7 @@ export function ForSchools() {
     },
     {
       title: "Visible outcomes",
-      desc: "Student portfolios and Demo Days give schools proof of innovation that parents can actually see and value.",
+      desc: "Student portfolios and Showcase Nights give schools proof of innovation that parents can actually see and value.",
     },
   ];
 

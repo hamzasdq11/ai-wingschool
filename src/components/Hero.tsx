@@ -79,8 +79,9 @@ export function Hero() {
 
           <p className="section-body animate-fade-rise-delay-2 mt-7 max-w-xl">
             A 6-month live program for students in Classes 5–10. They ship 6
-            real AI projects, present a public Demo Day, and walk out with a
-            portfolio that future colleges and recruiters can actually see.
+            real AI projects, take the stage at Showcase Night, and walk out
+            with a portfolio that future colleges and recruiters can actually
+            see.
           </p>
 
           <p className="ui-body-sm animate-fade-rise-delay-2 mt-3 max-w-xl">
@@ -227,7 +228,7 @@ export function Hero() {
                     <span className="relative inline-flex h-2 w-2 rounded-full bg-[#1335b8]" />
                   </span>
                   <p className="ui-label" style={{ color: "#1335b8" }}>
-                    Capstone Day
+                    Showcase Night
                   </p>
                 </div>
                 <span className="ui-caption">Cohort 11</span>
@@ -240,7 +241,7 @@ export function Hero() {
                 {prefersReducedMotion ? (
                   <img
                     src={heroLoopPoster}
-                    alt="Wingschool students presenting at Capstone Day"
+                    alt="Wingschool students presenting at Showcase Night"
                     className="h-full w-full object-cover"
                   />
                 ) : (
@@ -252,7 +253,7 @@ export function Hero() {
                     muted
                     playsInline
                     preload="metadata"
-                    aria-label="Wingschool Capstone Day montage"
+                    aria-label="Wingschool Showcase Night montage"
                     className="h-full w-full object-cover"
                   />
                 )}
@@ -262,7 +263,7 @@ export function Hero() {
                 {[
                   { value: "12 projects", label: "Live demos" },
                   { value: "80+", label: "Audience" },
-                  { value: "Demo Day", label: "Public stakes" },
+                  { value: "Showcase Night", label: "Public stakes" },
                 ].map((s) => (
                   <div key={s.label}>
                     <p
