@@ -17,10 +17,10 @@ const plans = [
   },
   {
     name: "Builder",
-    price: "7,999",
+    price: "4,999",
     priceUnit: "/month",
-    totalLine: "₹47,994 over 6 months",
-    upfrontLine: "Pay upfront: ₹39,995 (save ₹7,999)",
+    totalLine: "₹29,994 over 6 months",
+    upfrontLine: "Pay upfront: ₹24,995 (save ₹4,999)",
     description:
       "The full cohort experience. Six projects, weekly live sessions, hardware kits to your doorstep, Flagship Expo Day.",
     features: [
@@ -41,10 +41,10 @@ const plans = [
   },
   {
     name: "Launchpad",
-    price: "19,999",
+    price: "9,999",
     priceUnit: "/month",
-    totalLine: "₹1,19,994 over 6 months",
-    upfrontLine: "Pay upfront: ₹99,995 (save ₹19,999)",
+    totalLine: "₹59,994 over 6 months",
+    upfrontLine: "Pay upfront: ₹49,995 (save ₹9,999)",
     description:
       "An apprenticeship of one. Every session 1-on-1, an IIT/IIM mentor in your child's corner, the curriculum built around your child.",
     features: [

@@ -32,7 +32,7 @@ const rows = [
   {
     label: "Cost / month",
     coaching: "₹8,000 – ₹25,000",
-    wingschool: "₹7,999 – ₹19,999"
+    wingschool: "₹4,999 – ₹9,999"
   },
 ];
 
