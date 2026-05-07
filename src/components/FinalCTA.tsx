@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const guarantees = [
-  { label: "₹999 paid trial · credits to Builder", icon: "✓" },
+  { label: "₹299 paid trial · credits to Builder", icon: "✓" },
   { label: "7-day money-back", icon: "✓" },
   { label: "No long lock-in", icon: "✓" },
 ];

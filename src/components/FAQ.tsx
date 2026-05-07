@@ -15,7 +15,7 @@ const faqs = [
   },
   {
     q: "Can I enrol multiple children?",
-    a: "Yes — and the second child gets 10% off, the third or more get 20% off. Discounts apply to Builder and Launchpad, are confirmed at signup, and don't require both children to be in the same cohort. The Trial Pass is already low-friction at ₹999, so we don't stack sibling discounts on top of it.",
+    a: "Yes — and the second child gets 10% off, the third or more get 20% off. Discounts apply to Builder and Launchpad, are confirmed at signup, and don't require both children to be in the same cohort. The Trial Pass is already low-friction at ₹299, so we don't stack sibling discounts on top of it.",
   },
   {
     q: "How is this different from YouTube or self-learning?",
