@@ -1,5 +1,6 @@
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
+import { OrientationDay } from "./components/OrientationDay";
 import { Mentors } from "./components/Mentors";
 import { Problem } from "./components/Problem";
 import { AIEra } from "./components/AIEra";
@@ -30,6 +31,8 @@ function App() {
     <div className="min-h-screen pb-24 md:pb-0">
       <Navbar />
       <Hero />
+      <Divider />
+      <OrientationDay />
       <Divider />
       <Mentors />
       <Divider />

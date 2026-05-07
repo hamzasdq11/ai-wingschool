@@ -53,7 +53,7 @@ export function Hero() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#1335b8] opacity-50" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-[#1335b8]" />
             </span>
-            Cohort 12 starts 2 June · 9 seats left
+            Cohort 12 · Apply by 22 May · 9 seats left
           </a>
 
           <h1
