@@ -6,10 +6,8 @@ const plans = [
     commitment: "Orientation Day + Builder week 1 · no auto-renew",
     features: [
       "Orientation Day at The Landmark Towers, Kanpur · 25 May",
-      "Saturday + Sunday workshops (week 1)",
-      "Self-paced curriculum + AI playground",
-      "IIT/IIM mentor intro call",
-      "Cohort community access",
+      "Full week 1 of Builder — workshops, curriculum, AI playground",
+      "Cohort community + intro call",
       "₹999 credited toward Builder if you continue",
     ],
     cta: "Start the Trial →",
