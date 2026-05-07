@@ -1,7 +1,7 @@
 const plans = [
   {
     name: "Trial Pass",
-    price: "299",
+    price: "999",
     priceUnit: "one-time",
     commitment: "Orientation Day + Builder week 1 · no auto-renew",
     description:
@@ -10,7 +10,7 @@ const plans = [
       "Orientation Day at The Landmark Towers, Kanpur · 25 May",
       "Full week 1 of Builder — workshops, curriculum, AI playground",
       "Cohort community + intro call",
-      "₹299 credited toward Builder if you continue",
+      "₹999 credited toward Builder if you continue",
     ],
     cta: "Start the Trial →",
     featured: false,
@@ -55,12 +55,14 @@ const plans = [
       "Everything in Builder",
       "1-on-1 live sessions with priority focus",
       "IIT/IIM mentor available 24/7 — guidance at every step",
+      "Quarterly senior reviews — progress, gaps, and a roadmap forward",
       "Personalized curriculum — tuned to the child's pace and depth",
       "AI from first principles — training, fine-tuning, evals, the maths behind real models",
       "Specialization track — ML, robotics, or AI product (months 4–6)",
       "₹15,000 in API + cloud credits",
       "An embodied/robotics module of their choice",
       "Custom-domain portfolio (yourname.in)",
+      "Priority cohort — max 15 students",
     ],
     cta: "Apply for Launchpad →",
     featured: false,
@@ -84,7 +86,7 @@ export function Pricing() {
           className="ui-body-sm mb-2"
           style={{ color: "#1335b8" }}
         >
-          ₹299 paid trial · 7-day money-back · No long-term lock-in
+          ₹999 paid trial · 7-day money-back · No long-term lock-in
         </p>
         <p
           className="ui-body-sm mb-14"
