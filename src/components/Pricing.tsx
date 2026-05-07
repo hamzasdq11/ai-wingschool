@@ -17,10 +17,12 @@ const plans = [
   },
   {
     name: "Builder",
-    price: "4,999",
+    price: "3,799",
+    originalPrice: "4,999",
+    offerLabel: "Limited offer · Save ₹1,200/mo",
     priceUnit: "/month",
-    totalLine: "₹29,994 over 6 months",
-    upfrontLine: "Pay upfront: ₹24,995 (save ₹4,999)",
+    totalLine: "₹22,794 over 6 months",
+    upfrontLine: "Pay upfront: ₹18,995 (save ₹3,799)",
     description:
       "The full cohort experience. Six projects, weekly live sessions, hardware kits to your doorstep, Flagship Expo Day.",
     features: [
@@ -134,7 +136,22 @@ export function Pricing() {
             </h3>
 
             <div>
-              <div className="flex items-baseline gap-1">
+              {plan.offerLabel && (
+                <div
+                  className="mb-3 inline-flex items-center rounded-full border border-[rgba(19,53,184,0.22)] bg-[rgba(19,53,184,0.08)] px-2.5 py-1"
+                  style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: "10px",
+                    letterSpacing: "0.16em",
+                    textTransform: "uppercase",
+                    fontWeight: 600,
+                    color: "#1335b8",
+                  }}
+                >
+                  {plan.offerLabel}
+                </div>
+              )}
+              <div className="flex items-baseline gap-2">
                 <span
                   style={{
                     fontFamily: "var(--font-display)",
@@ -147,6 +164,19 @@ export function Pricing() {
                 >
                   ₹{plan.price}
                 </span>
+                {plan.originalPrice && (
+                  <span
+                    style={{
+                      fontFamily: "var(--font-display)",
+                      fontSize: "1.3rem",
+                      color: "#8a8a8a",
+                      textDecoration: "line-through",
+                      letterSpacing: "-0.02em",
+                    }}
+                  >
+                    ₹{plan.originalPrice}
+                  </span>
+                )}
                 <span
                   style={{
                     fontFamily: "var(--font-body)",
