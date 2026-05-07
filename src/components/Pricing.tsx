@@ -48,17 +48,16 @@ const plans = [
     totalLine: "₹1,19,994 over 6 months",
     upfrontLine: "Pay upfront: ₹99,995 (save ₹19,999)",
     description:
-      "An apprenticeship, not a course. A senior in your child's corner, a curriculum tuned to their pace, AI taught from first principles.",
+      "An apprenticeship of one. Every session 1-on-1, an IIT/IIM mentor in your child's corner, the curriculum built around your child.",
     features: [
-      "Everything in Builder",
-      "Dedicated IIT/IIM senior — weekly 1-on-1 + async office hours, all 6 months",
-      "Personalized curriculum — pace, depth, and difficulty tuned per child each fortnight",
+      "Everything in Builder (1-on-1 sessions instead of group)",
+      "Weekly 1-on-1 with your IIT/IIM mentor",
+      "Personalized curriculum — tuned to your child's pace and depth",
       "AI from first principles — training, fine-tuning, evals, the maths behind real models",
       "Specialization track — ML, robotics, or AI product (months 4–6)",
       "Quarterly reviews from your senior",
-      "₹15,000 in API + hosting credits + an embodied/robotics module of their choice",
-      "Custom-domain portfolio site (yourname.in)",
-      "Priority cohort (≤15 students)",
+      "₹15,000 in API + cloud credits",
+      "An embodied/robotics module of their choice",
     ],
     cta: "Apply for Launchpad →",
     featured: false,
@@ -79,10 +78,19 @@ export function Pricing() {
           to build the things that make those answers obsolete.
         </p>
         <p
-          className="ui-body-sm mb-14"
+          className="ui-body-sm mb-2"
           style={{ color: "#1335b8" }}
         >
           ₹999 paid trial · 7-day money-back · No long-term lock-in
+        </p>
+        <p
+          className="ui-body-sm mb-14"
+          style={{ color: "#3a3a3a" }}
+        >
+          For most families,{" "}
+          <strong style={{ color: "#0a0a0a", fontWeight: 600 }}>Builder</strong>
+          {" "}is the answer. Launchpad is for students already deep in AI;
+          Trial is for those testing the water.
         </p>
       </div>
 
