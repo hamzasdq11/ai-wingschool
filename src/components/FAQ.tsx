@@ -14,6 +14,10 @@ const faqs = [
     a: "No. Every project that needs hardware — microcontrollers, sensors, motors, robotics modules — ships free to your doorstep across India. If something breaks during the build, we replace it at no charge. After the program ends, the entire kit stays with your child.",
   },
   {
+    q: "Can I enrol multiple children?",
+    a: "Yes — and the second child gets 10% off, the third or more get 20% off. Discounts apply to Builder and Launchpad, are confirmed at signup, and don't require both children to be in the same cohort. The Trial Pass is already low-friction at ₹999, so we don't stack sibling discounts on top of it.",
+  },
+  {
     q: "How is this different from YouTube or self-learning?",
     a: "Three things: a live mentor who calls them out, a real cohort that creates accountability, and a portfolio they have to ship. Free content can inform — it almost never produces follow-through. We've measured this across 11 cohorts.",
   },
@@ -31,7 +35,7 @@ const faqs = [
   },
   {
     q: "What happens if it doesn't work for us?",
-    a: "Full refund within 7 days, no questions asked. After that, we let you switch plans, pause, or cancel mid-cohort if life changes. We'd rather have a happy alumni family than an unhappy paying one.",
+    a: "Full refund within 7 days, no questions asked. After that, we let you switch plans, pause, or cancel mid-cohort if life changes — and if you paid upfront, we refund pro-rata for the months you didn't use. We'd rather have a happy alumni family than an unhappy paying one.",
   },
   {
     q: "Is this only for students who want to work in tech?",

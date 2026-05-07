@@ -20,7 +20,8 @@ const plans = [
     name: "Builder",
     price: "7,999",
     priceUnit: "/month",
-    commitment: "6-month commitment",
+    totalLine: "₹47,994 over 6 months",
+    upfrontLine: "Pay upfront: ₹39,995 (save ₹7,999)",
     description:
       "The full experience. Portfolio, live mentorship, and Demo Day included.",
     features: [
@@ -39,9 +40,10 @@ const plans = [
   },
   {
     name: "Launchpad",
-    price: "14,999",
+    price: "19,999",
     priceUnit: "/month",
-    commitment: "6-month commitment",
+    totalLine: "₹1,19,994 over 6 months",
+    upfrontLine: "Pay upfront: ₹99,995 (save ₹19,999)",
     description:
       "The serious upgrade — a dedicated IIT/IIM mentor, a self-directed capstone, and the tools to ship it publicly.",
     features: [
@@ -144,7 +146,20 @@ export function Pricing() {
                   {plan.priceUnit === "/month" ? "/month" : " one-time"}
                 </span>
               </div>
-              <p className="ui-caption mt-2">{plan.commitment}</p>
+              {plan.commitment && (
+                <p className="ui-caption mt-2">{plan.commitment}</p>
+              )}
+              {plan.totalLine && (
+                <p className="ui-caption mt-2">{plan.totalLine}</p>
+              )}
+              {plan.upfrontLine && (
+                <p
+                  className="ui-caption mt-1.5"
+                  style={{ color: "#1335b8", fontWeight: 500 }}
+                >
+                  {plan.upfrontLine}
+                </p>
+              )}
             </div>
 
             <p className="ui-body-sm">{plan.description}</p>
@@ -195,10 +210,34 @@ export function Pricing() {
         ))}
       </div>
 
-      <p className="ui-caption mt-10 text-center">
-        Bursaries and scholarships available for high-need students. Ask us on
-        the demo call.
-      </p>
+      <div className="mt-12 grid gap-6 md:grid-cols-2">
+        <div className="ui-card flex flex-col gap-3 rounded-[1.75rem] p-6">
+          <span className="ui-label" style={{ color: "#1335b8" }}>
+            Family pricing
+          </span>
+          <h3 className="ui-h3" style={{ fontSize: "1.3rem" }}>
+            Built for families, not just students.
+          </h3>
+          <p className="ui-body-sm">
+            10% off your second child. 20% off your third or more. Applies to
+            Builder and Launchpad, confirmed at signup — no requirement to
+            enrol in the same cohort.
+          </p>
+        </div>
+        <div className="ui-card flex flex-col gap-3 rounded-[1.75rem] p-6">
+          <span className="ui-label" style={{ color: "#1335b8" }}>
+            Need-based seats
+          </span>
+          <h3 className="ui-h3" style={{ fontSize: "1.3rem" }}>
+            Talent first. Cost second.
+          </h3>
+          <p className="ui-body-sm">
+            Bursaries and full scholarships for students who can&apos;t pay
+            full price but should be here. Reach out — we&apos;ll work it out
+            on the demo call.
+          </p>
+        </div>
+      </div>
     </section>
   );
 }
