@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import heroImage from "../assets/hero.png";
 import heroLoop from "../assets/hero-loop.mp4";
 import heroLoopPoster from "../assets/hero-loop-poster.jpg";
+import { DemoForm } from "./DemoForm";
 
 const proofChips = [
   { value: "200+", label: "Indian families" },
@@ -10,10 +11,6 @@ const proofChips = [
 ];
 
 export function Hero() {
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [grade, setGrade] = useState("");
-  const [submitted, setSubmitted] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   useEffect(() => {
@@ -24,11 +21,6 @@ export function Hero() {
     mql.addEventListener("change", handler);
     return () => mql.removeEventListener("change", handler);
   }, []);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
 
   return (
     <section className="relative z-10 overflow-hidden border-b border-black/8">
@@ -96,85 +88,36 @@ export function Hero() {
             door at no extra cost.
           </p>
 
-          <form
-            onSubmit={handleSubmit}
+          <DemoForm
+            variant="compact"
             className="ui-card animate-fade-rise-delay-3 mt-9 flex flex-col gap-3 rounded-[1.5rem] p-5 sm:p-6"
-          >
-            <div className="flex items-center justify-between">
-              <p
-                className="ui-label"
-                style={{ color: "#0a0a0a", letterSpacing: "0.16em" }}
-              >
-                Book a Free Demo
-              </p>
-              <span className="ui-caption">20 min · 1-on-1 · No commitment</span>
-            </div>
-
-            {submitted ? (
-              <div className="rounded-[1rem] border border-[rgba(19,53,184,0.22)] bg-[rgba(19,53,184,0.06)] p-5">
+            header={
+              <div className="flex items-center justify-between">
                 <p
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: "1rem",
-                    color: "#0a0a0a",
-                  }}
+                  className="ui-label"
+                  style={{ color: "#0a0a0a", letterSpacing: "0.16em" }}
                 >
-                  Thanks{name ? `, ${name.split(" ")[0]}` : ""}. We&apos;ll
-                  WhatsApp you within 2 hours to confirm a slot.
+                  Book a Free Demo
                 </p>
-                <p className="ui-caption mt-2">
-                  Need it sooner?{" "}
-                  <a
-                    href="https://wa.me/"
-                    className="underline"
-                    style={{ color: "#1335b8" }}
-                  >
-                    WhatsApp us
-                  </a>
-                  .
-                </p>
+                <span className="ui-caption">
+                  20 min · 1-on-1 · No commitment
+                </span>
               </div>
-            ) : (
-              <>
-                <div className="grid gap-3 sm:grid-cols-2">
-                  <input
-                    required
-                    type="text"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    placeholder="Parent name"
-                    className="ui-input"
-                  />
-                  <input
-                    required
-                    type="tel"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    placeholder="WhatsApp number"
-                    className="ui-input"
-                  />
-                </div>
-                <div className="flex flex-col gap-3 sm:flex-row">
-                  <select
-                    required
-                    value={grade}
-                    onChange={(e) => setGrade(e.target.value)}
-                    className="ui-input flex-1"
-                  >
-                    <option value="">Child&apos;s class</option>
-                    {[5, 6, 7, 8, 9, 10].map((g) => (
-                      <option key={g} value={g}>
-                        Class {g}
-                      </option>
-                    ))}
-                  </select>
-                  <button type="submit" className="ui-button shrink-0">
-                    Book Free Demo →
-                  </button>
-                </div>
-              </>
-            )}
-          </form>
+            }
+            successFootnote={
+              <p className="ui-caption mt-2">
+                Need it sooner?{" "}
+                <a
+                  href="https://wa.me/"
+                  className="underline"
+                  style={{ color: "#1335b8" }}
+                >
+                  WhatsApp us
+                </a>
+                .
+              </p>
+            }
+          />
 
           <div className="animate-fade-rise-delay-3 mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
             {proofChips.map((c) => (

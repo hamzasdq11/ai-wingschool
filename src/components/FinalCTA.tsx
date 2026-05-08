@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { DemoForm } from "./DemoForm";
 
 const guarantees = [
   { label: "₹999 paid trial · credits to Builder", icon: "✓" },
@@ -7,16 +7,6 @@ const guarantees = [
 ];
 
 export function FinalCTA() {
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [grade, setGrade] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
-
   return (
     <section id="book" className="section-shell relative z-10">
       <div
@@ -82,81 +72,40 @@ export function FinalCTA() {
             </p>
           </div>
 
-          <form
-            onSubmit={handleSubmit}
+          <DemoForm
+            variant="stacked"
             className="ui-card flex flex-col gap-4 rounded-[1.75rem] p-6 sm:p-8"
-          >
-            <div>
-              <p
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: "1.4rem",
-                  fontWeight: 400,
-                  color: "#0a0a0a",
-                  letterSpacing: "-0.02em",
-                }}
-              >
-                Reserve a demo slot
-              </p>
-              <p className="ui-caption mt-1">
-                20 min · 1-on-1 with a Wingschool mentor
-              </p>
-            </div>
-
-            {submitted ? (
-              <div className="rounded-[1rem] border border-[rgba(19,53,184,0.22)] bg-[rgba(19,53,184,0.06)] p-5">
+            header={
+              <div>
                 <p
                   style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: "1rem",
+                    fontFamily: "var(--font-display)",
+                    fontSize: "1.4rem",
+                    fontWeight: 400,
                     color: "#0a0a0a",
+                    letterSpacing: "-0.02em",
                   }}
                 >
-                  Got it{name ? `, ${name.split(" ")[0]}` : ""}. We&apos;ll
-                  WhatsApp you within 2 hours to confirm a slot for{" "}
-                  {grade ? `Class ${grade}` : "your child"}.
+                  Reserve a demo slot
+                </p>
+                <p className="ui-caption mt-1">
+                  20 min · 1-on-1 with a Wingschool mentor
                 </p>
               </div>
-            ) : (
+            }
+            successMessage={(firstName, grade) => (
               <>
-                <input
-                  required
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="Parent name"
-                  className="ui-input"
-                />
-                <input
-                  required
-                  type="tel"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  placeholder="WhatsApp number"
-                  className="ui-input"
-                />
-                <select
-                  required
-                  value={grade}
-                  onChange={(e) => setGrade(e.target.value)}
-                  className="ui-input"
-                >
-                  <option value="">Child&apos;s class</option>
-                  {[5, 6, 7, 8, 9, 10].map((g) => (
-                    <option key={g} value={g}>
-                      Class {g}
-                    </option>
-                  ))}
-                </select>
-                <button type="submit" className="ui-button mt-2">
-                  Book Free Demo →
-                </button>
-                <p className="ui-caption text-center">
-                  No payment now · No commitment
-                </p>
+                Got it{firstName ? `, ${firstName}` : ""}. We&apos;ll WhatsApp
+                you within 2 hours to confirm a slot for{" "}
+                {grade ? `Class ${grade}` : "your child"}.
               </>
             )}
-          </form>
+            formFootnote={
+              <p className="ui-caption text-center">
+                No payment now · No commitment
+              </p>
+            }
+          />
         </div>
       </div>
     </section>
