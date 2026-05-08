@@ -34,7 +34,6 @@ function App() {
       <OrientationDay />
       <Divider />
       <Mentors />
-      <Divider />
       <Problem />
       <Divider />
       <AIEra />
@@ -44,19 +43,15 @@ function App() {
       <ProjectShowcase />
       <Divider />
       <HowItWorks />
-      <Divider />
       <Curriculum />
       <Divider />
       <Outcomes />
       <Divider />
       <Pricing />
-      <Divider />
       <Testimonials />
-      <Divider />
       <ForSchools />
       <Divider />
       <FAQ />
-      <Divider />
       <FinalCTA />
       <Footer />
       <StickyMobileCTA />
