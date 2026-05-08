@@ -2,18 +2,18 @@ export function Problem() {
   const points = [
     {
       number: "01",
-      title: "Coaching teaches answers.",
-      desc: "AI gives answers for free now. The skill that matters is knowing which questions to ask — and what to build with the answers.",
+      title: "AI is the new electricity.",
+      desc: "It will touch every job your child applies for — medicine, design, law, engineering, the arts. Fluency is no longer optional.",
     },
     {
       number: "02",
-      title: "Boards test memory.",
-      desc: "The next decade tests judgment: scoping problems, choosing tools, shipping work. None of which appears on a marksheet.",
+      title: "Building beats memorizing.",
+      desc: "In an AI world, the answer is free. The skill that compounds is knowing what to build, and being able to build it.",
     },
     {
       number: "03",
-      title: "Degrees open doors.",
-      desc: "Portfolios keep them open. Top colleges and recruiters in 2030 won't ask for ranks. They'll ask: \"What have you built?\"",
+      title: "Early starts win.",
+      desc: "The kids who began with the internet in 1995 led the next two decades. The kids who begin with AI now will lead the next. The window is open.",
     },
   ];
 
@@ -22,14 +22,13 @@ export function Problem() {
       <div className="section-copy">
         <p className="section-kicker mb-4">Why now</p>
         <h2 className="section-heading mb-6">
-          The system your child is preparing for{" "}
+          The world your child is preparing for{" "}
           <em>is being rewritten — by AI.</em>
         </h2>
         <p className="section-body mb-14">
-          The students who&apos;ll lead the next decade aren&apos;t the ones with
-          the best ranks. They&apos;re the ones who started building early —
-          while everyone else was still memorising. Wingschool is the program
-          that makes that head start possible.
+          The students who&apos;ll lead the next decade are the ones building
+          with AI early — while it&apos;s still new ground for everyone.
+          Wingschool is the program that gives your child that head start.
         </p>
       </div>
 

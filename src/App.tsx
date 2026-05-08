@@ -8,7 +8,6 @@ import { HardwareKit } from "./components/HardwareKit";
 import { ProjectShowcase } from "./components/ProjectShowcase";
 import { HowItWorks } from "./components/HowItWorks";
 import { Curriculum } from "./components/Curriculum";
-import { Comparison } from "./components/Comparison";
 import { Outcomes } from "./components/Outcomes";
 import { Pricing } from "./components/Pricing";
 import { Testimonials } from "./components/Testimonials";
@@ -47,8 +46,6 @@ function App() {
       <HowItWorks />
       <Divider />
       <Curriculum />
-      <Divider />
-      <Comparison />
       <Divider />
       <Outcomes />
       <Divider />

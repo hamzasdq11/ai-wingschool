@@ -8,7 +8,7 @@ export function Outcomes() {
     {
       stat: "1",
       label: "Flagship Expo Day",
-      desc: "Every cohort ends with a live presentation. Real audience. Real stakes. Confidence that doesn't come from a worksheet.",
+      desc: "Every cohort ends with a live presentation. Real audience. Real stakes. The kind of confidence that comes from doing real work — and being seen doing it.",
     },
     {
       stat: "≤25",

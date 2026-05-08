@@ -69,12 +69,12 @@ export function Pricing() {
       <div className="section-copy mx-auto max-w-3xl text-center">
         <p className="section-kicker mb-4">Pricing</p>
         <h2 className="section-heading mb-6">
-          Less than coaching. <em>More than a degree.</em>
+          AI fluency, in six months. <em>Priced for Indian families.</em>
         </h2>
         <p className="section-body mb-4">
-          You&apos;re likely already spending ₹8K–₹25K a month on coaching that
-          teaches answers AI gives away for free. Wingschool teaches your child
-          to build the things that make those answers obsolete.
+          AI fluency is the single most important skill your child can build
+          for the next decade. Wingschool makes that real — at a price that
+          fits Indian families.
         </p>
         <p
           className="ui-body-sm mb-2"

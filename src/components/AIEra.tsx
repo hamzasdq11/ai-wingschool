@@ -253,15 +253,15 @@ export function AIEra() {
                 color: "#0a0a0a",
               }}
             >
-              Schools haven&apos;t caught up. Coaching teaches the answers AI{" "}
-              <em>gives away for free.</em>
+              AI fluency in 2030 will be what literacy was in 2000 —{" "}
+              <em>the baseline, not the edge.</em>
             </h3>
 
             <div>
               <p className="section-body">
-                Your child doesn&apos;t need another worksheet. They need a place
-                that treats AI the way 1995 treated the internet — as the thing
-                to <em className="display-script">build with,</em> not the thing
+                Your child needs a place that treats AI the way 1995 treated
+                the internet — as the thing to{" "}
+                <em className="display-script">build with,</em> not the thing
                 to fear. That&apos;s the entire point of Wingschool.
               </p>
 

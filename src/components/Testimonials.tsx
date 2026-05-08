@@ -17,7 +17,7 @@ const stories = [
   },
   {
     quote:
-      "We were spending ₹18K a month on coaching and saw nothing. Three months into Wingschool we had two working apps on his phone. Different feeling entirely.",
+      "Three months in, my son had two working apps on his phone — and the confidence to walk us through how he built them. We were stunned.",
     parent: "Anita S.",
     role: "Mother of Vivaan, Class 7",
     location: "Delhi NCR",
