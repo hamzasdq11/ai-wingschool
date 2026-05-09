@@ -5,7 +5,7 @@ const plans = [
     priceUnit: "one-time",
     commitment: "Orientation Day + Builder week 1 · no auto-renew",
     features: [
-      "Orientation Day at The Landmark Towers, Kanpur · 25 May",
+      "Orientation Day at The Landmark Towers, Kanpur",
       "Full week 1 of Builder — workshops, curriculum, AI playground",
       "Cohort community + intro call",
       "₹999 credited toward Builder if you continue",
@@ -22,9 +22,9 @@ const plans = [
     totalLine: "₹22,794 over 6 months",
     upfrontLine: "Pay upfront: ₹18,995 (save ₹3,799)",
     features: [
-      "Orientation Day at The Landmark Towers, Kanpur · 25 May",
+      "Orientation Day at The Landmark Towers, Kanpur",
       "Self-paced weekly curriculum + AI playground",
-      "Saturday + Sunday live workshops",
+      "Hands-on Live workshops",
       "Monthly 1-on-1 with an IIT/IIM mentor",
       "6 projects in 6 months",
       "Hardware kits shipped to your doorstep at no extra cost",
