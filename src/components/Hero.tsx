@@ -30,7 +30,7 @@ export function Hero() {
         alt=""
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-20 h-full w-full object-cover"
-        style={{ opacity: 0.3, objectPosition: "center 20%" }}
+        style={{ opacity: 0.3, objectPosition: "center 40%" }}
       />
       <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-white/40 via-transparent to-white/60" />
 
