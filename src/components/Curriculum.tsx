@@ -4,6 +4,7 @@ type Module = {
   number: string;
   theme: string;
   learn: string;
+  build: string;
   skills: string[];
 };
 
@@ -27,43 +28,55 @@ const tracks: ClassTrack[] = [
         number: "01",
         theme: "Computational thinking",
         learn:
-          "Decomposition, pattern recognition, abstraction, and algorithms — the four pillars CS50 opens with. Pseudocode, flowcharts, sorting and searching by hand. Binary representation of text, images, and sound.",
+          "Decomposition, pattern recognition, abstraction, algorithms. Pseudocode, flowcharts, sorting and searching by hand. Binary representation of text and images.",
+        build:
+          "A secret-message decoder: encode and decode their name in binary, then scale up to short messages friends can send each other.",
         skills: ["Computational thinking", "Algorithms", "Binary"],
       },
       {
         number: "02",
         theme: "What AI is, where it came from",
         learn:
-          "Turing test (1950), Dartmouth Workshop (1956), the two AI winters and why they happened. Symbolic AI vs Machine Learning vs Deep Learning vs Generative AI. Reading a timeline of the field.",
+          "Turing test (1950), Dartmouth Workshop (1956), the two AI winters. Symbolic AI vs ML vs Deep Learning vs Generative AI. The shape of today's AI landscape.",
+        build:
+          "An interactive AI history timeline — try a 1960s rule-based bot, a simple ML demo, and ChatGPT side by side. Write up what changed.",
         skills: ["AI history", "AI taxonomy"],
       },
       {
         number: "03",
         theme: "Pattern recognition and rules",
         learn:
-          "Rules-based (symbolic) AI — if-then-else logic, decision trees by hand, expert systems. Why hand-coded rules don't scale, and why machines need to learn patterns from data instead.",
-        skills: ["Symbolic AI", "Decision trees", "Boolean logic"],
+          "Rules-based (symbolic) AI. If-then-else logic. Decision trees by hand. Expert systems and why hand-coded rules don't scale.",
+        build:
+          "A 'what pet should I get?' expert system — students design the decision tree and ship it as a working chatbot family can actually use.",
+        skills: ["Symbolic AI", "Decision trees"],
       },
       {
         number: "04",
         theme: "Data — the food of AI",
         learn:
-          "Structured vs unstructured data. What makes a dataset good or bad. Sampling bias illustrated with concrete examples. Data privacy, consent, and the right to be forgotten at a beginner level.",
-        skills: ["Data literacy", "Sampling bias", "Privacy"],
+          "Structured vs unstructured data. What makes a dataset good or bad. Sampling bias with concrete examples. Privacy and consent at a beginner level.",
+        build:
+          "A class-survey dataset they collect, clean, and visualize — and then deliberately re-do once they spot the biases in the first version.",
+        skills: ["Data literacy", "Sampling bias"],
       },
       {
         number: "05",
         theme: "How chatbots actually work",
         learn:
-          "Tokenization (text → numbers). Next-token prediction as the core idea behind every LLM. Why LLMs hallucinate. Hands-on prompt experimentation with measurable changes in output.",
-        skills: ["Tokenization", "Next-token prediction", "Hallucinations"],
+          "Tokenization (text → numbers). Next-token prediction as the core idea behind every LLM. Why models hallucinate. Hands-on prompt experimentation.",
+        build:
+          "A custom chatbot persona — a Hindi-speaking historical figure (Akbar, Kalpana Chawla, anyone) — built with carefully designed system prompts.",
+        skills: ["Tokenization", "Prompt design"],
       },
       {
         number: "06",
-        theme: "AI ethics and the future",
+        theme: "Ethics + first showcase",
         learn:
-          "Algorithmic bias and fairness. Job displacement framed against historical parallels (the loom, the ATM). Identifying deepfakes. Reading and discussing a real AI ethics case study.",
-        skills: ["AI ethics", "Bias and fairness", "Deepfake literacy"],
+          "Algorithmic bias and fairness. Deepfake literacy. Job displacement framed against historical parallels. Reading and discussing a real ethics case.",
+        build:
+          "A short documentary explaining what they learned this year — written, voiced, and edited with AI assistance. Premieres at Flagship Expo Day.",
+        skills: ["AI ethics", "Storytelling"],
       },
     ],
   },
@@ -72,49 +85,61 @@ const tracks: ClassTrack[] = [
     stage: "Classical AI",
     tagline: "The algorithms behind every AI engineer.",
     description:
-      "The classical AI of MIT 6.034 (Patrick Winston) and Harvard CS50 AI — search, logic, probability, optimization. Foundations every modern AI engineer still needs.",
+      "The classical AI of MIT 6.034 and Harvard CS50 AI — search, logic, probability, optimization. Foundations every modern AI engineer still uses.",
     modules: [
       {
         number: "01",
         theme: "Search algorithms",
         learn:
-          "State spaces, nodes, edges. Depth-first and breadth-first search by hand on mazes. Heuristics (Manhattan, Euclidean). A* search. The trade-off between optimality and speed.",
+          "State spaces, nodes, edges. Breadth-first and depth-first search by hand on mazes. Heuristics (Manhattan, Euclidean). A* search. Optimality vs speed.",
+        build:
+          "A maze-solving visualizer where students implement BFS and A* themselves and watch the algorithms 'think' as they explore the grid.",
         skills: ["BFS / DFS", "Heuristics", "A* search"],
       },
       {
         number: "02",
         theme: "Adversarial search and games",
         learn:
-          "Game trees on tic-tac-toe (drawn by hand, every node). Minimax algorithm. Alpha-beta pruning. Why Stockfish beats humans, and how AlphaZero is fundamentally different.",
-        skills: ["Game trees", "Minimax", "Alpha-beta pruning"],
+          "Game trees on tic-tac-toe drawn out by hand. Minimax algorithm. Alpha-beta pruning. Why Stockfish beats humans, and how AlphaZero is fundamentally different.",
+        build:
+          "A tic-tac-toe AI that plays optimally — students code the minimax algorithm themselves and discover their bot can never lose.",
+        skills: ["Minimax", "Alpha-beta pruning"],
       },
       {
         number: "03",
         theme: "Logic and knowledge",
         learn:
-          "Propositional logic (AND, OR, NOT, IMPLIES). Truth tables. Modus ponens and inference rules. Knowledge bases. Solving the Wumpus World — the classic CS50 AI exercise — by formal inference.",
-        skills: ["Propositional logic", "Inference", "Knowledge bases"],
+          "Propositional logic (AND, OR, NOT, IMPLIES). Truth tables. Modus ponens. Knowledge bases and the Wumpus World — the classic CS50 AI exercise.",
+        build:
+          "A 'who stole the cookie' mystery solver — students model suspects and clues as logic statements and have the AI deduce the culprit.",
+        skills: ["Propositional logic", "Inference"],
       },
       {
         number: "04",
         theme: "Probability and uncertainty",
         learn:
-          "Sample spaces, events, conditional probability. Bayes' theorem with concrete medical-test and spam-filter examples. Bayesian networks with three- and four-node graphs. Why uncertainty is unavoidable.",
-        skills: ["Probability", "Bayes' theorem", "Bayesian networks"],
+          "Sample spaces, conditional probability. Bayes' theorem on medical-test and spam-filter examples. Bayesian networks. Why uncertainty is unavoidable.",
+        build:
+          "A Naive Bayes spam classifier students train on their own message data — they watch precision and recall change as they add training examples.",
+        skills: ["Bayes' theorem", "Naive Bayes"],
       },
       {
         number: "05",
         theme: "Optimization",
         learn:
-          "Hill climbing and why local search gets stuck in local maxima. Simulated annealing. Genetic algorithms — population, fitness, crossover, mutation. Constraint satisfaction problems (CSPs).",
-        skills: ["Local search", "Simulated annealing", "Genetic algorithms"],
+          "Hill climbing and the local-maxima problem. Simulated annealing. Genetic algorithms — population, fitness, crossover, mutation. Constraint satisfaction.",
+        build:
+          "A genetic algorithm that evolves a Mario-style character to clear a level — students watch hundreds of generations get smarter on screen.",
+        skills: ["Local search", "Genetic algorithms"],
       },
       {
         number: "06",
-        theme: "First taste of machine learning",
+        theme: "First ML + showcase",
         learn:
-          "Supervised vs unsupervised vs reinforcement learning. Train/validation/test split. Overfitting visualized. The bias-variance trade-off. Reading a confusion matrix; precision vs recall.",
-        skills: ["Train/test split", "Overfitting", "Confusion matrix"],
+          "Supervised vs unsupervised vs reinforcement learning. Train/validation/test split. Overfitting visualized. Bias-variance trade-off. Confusion matrices.",
+        build:
+          "A polished version of one project from the year — presented on stage at Flagship Expo Day to parents, mentors, and a founder panel.",
+        skills: ["Train/test split", "Public demo"],
       },
     ],
   },
@@ -129,43 +154,55 @@ const tracks: ClassTrack[] = [
         number: "01",
         theme: "Linear regression",
         learn:
-          "Functions, slopes, intercepts. Fitting a line to data. Mean squared error as a loss function. Why we minimize loss. Multivariable linear regression. Reading R² and residuals.",
-        skills: ["Linear regression", "Loss functions", "MSE"],
+          "Functions, slopes, intercepts. Fitting a line to data. Mean squared error as a loss function. Multivariable linear regression. Reading R² and residuals.",
+        build:
+          "A house-price predictor for their own city — using real listings scraped from MagicBricks. Visualize the line of best fit live.",
+        skills: ["Regression", "MSE", "Visualization"],
       },
       {
         number: "02",
         theme: "Classification — the perceptron",
         learn:
-          "Binary classification. The perceptron (Rosenblatt, 1958) — the first artificial neuron. Decision boundaries. Logistic regression and the sigmoid. Why a single neuron can't solve XOR.",
-        skills: ["Perceptron", "Logistic regression", "Decision boundaries"],
+          "Binary classification. The perceptron (Rosenblatt, 1958). Decision boundaries. Logistic regression and the sigmoid. Why a single neuron can't solve XOR.",
+        build:
+          "A handwritten-digit recognizer — students scan their own notebook digits, label them, and train a perceptron from scratch in NumPy.",
+        skills: ["Perceptron", "Logistic regression"],
       },
       {
         number: "03",
         theme: "Decision trees and ensembles",
         learn:
-          "Decision tree learning, entropy, and information gain. Pruning to fight overfitting. Random forests as an ensemble. Gradient-boosted trees (XGBoost) at intuition level. Feature importance.",
-        skills: ["Decision trees", "Information gain", "Random forests"],
+          "Decision tree learning. Entropy and information gain. Pruning. Random forests as ensembles. Gradient-boosted trees (XGBoost) at intuition level.",
+        build:
+          "A 'will my favorite IPL team win?' predictor — trained on years of match data — that explains exactly why it made each prediction.",
+        skills: ["Decision trees", "Random forests"],
       },
       {
         number: "04",
         theme: "Unsupervised learning",
         learn:
-          "K-means clustering visualized. Choosing k via the elbow method. Hierarchical clustering. Dimensionality reduction with PCA at intuition level. Anomaly detection.",
-        skills: ["K-means", "PCA", "Anomaly detection"],
+          "K-means clustering visualized. Choosing k via the elbow method. Hierarchical clustering. PCA at intuition level. Anomaly detection.",
+        build:
+          "A music-mood clusterer that takes their own Spotify history and groups songs into 'study', 'workout', 'sad', and 'party' — automatically.",
+        skills: ["K-means", "PCA", "Clustering"],
       },
       {
         number: "05",
         theme: "Working with data in Python",
         learn:
-          "NumPy arrays, Pandas DataFrames, Matplotlib for visualization. The scikit-learn fit/predict/score workflow. Cross-validation. Building a complete ML project end-to-end on a real dataset.",
-        skills: ["NumPy", "Pandas", "scikit-learn"],
+          "NumPy arrays. Pandas DataFrames. Matplotlib for visualization. The scikit-learn fit/predict/score workflow. Cross-validation. Building real ML projects end-to-end.",
+        build:
+          "A complete ML project shipped as a Streamlit web app — topic of their choice — from CSV to deployed URL anyone can visit.",
+        skills: ["Pandas", "scikit-learn", "Streamlit"],
       },
       {
         number: "06",
-        theme: "Reinforcement learning intro",
+        theme: "Reinforcement learning + showcase",
         learn:
-          "Agents, environments, states, actions, rewards. Markov decision processes. Q-learning on a grid world. Why reinforcement learning is fundamentally different from supervised learning.",
-        skills: ["MDPs", "Q-learning", "Reward design"],
+          "Agents, environments, states, actions, rewards. Markov decision processes. Q-learning on grid worlds. Why RL is fundamentally different from supervised learning.",
+        build:
+          "An RL agent that learns to play Snake — students watch it die a thousand times before getting good. Pitched at Flagship Expo Day.",
+        skills: ["Q-learning", "MDPs", "RL demo"],
       },
     ],
   },
@@ -174,151 +211,187 @@ const tracks: ClassTrack[] = [
     stage: "Deep Learning",
     tagline: "Karpathy's 'Zero to Hero'.",
     description:
-      "MIT 6.S191 and Andrej Karpathy's 'Neural Networks: Zero to Hero' — neural nets, backpropagation, embeddings, attention, transformers. The building blocks of modern AI.",
+      "MIT 6.S191 and Andrej Karpathy's 'Neural Networks: Zero to Hero' — neural nets, backprop, embeddings, attention, transformers. The building blocks of modern AI.",
     modules: [
       {
         number: "01",
         theme: "Neural network anatomy",
         learn:
-          "The biological neuron analogy and where it breaks. Multi-layer perceptrons. Activation functions (ReLU, sigmoid, tanh, softmax). Forward propagation. The universal approximation theorem.",
+          "The biological neuron analogy and where it breaks. Multi-layer perceptrons. ReLU, sigmoid, tanh, softmax. Forward propagation. The universal approximation theorem.",
+        build:
+          "A neural network from scratch in NumPy that classifies students' own pencil drawings of fruit — apple, banana, mango, none of the above.",
         skills: ["MLPs", "Activations", "Forward pass"],
       },
       {
         number: "02",
         theme: "Training neural networks",
         learn:
-          "Loss functions (cross-entropy, MSE). Gradient descent visualized as a ball on a surface. Backpropagation derived step-by-step (3Blue1Brown's approach). Learning rate, batch size, epochs. SGD vs Adam.",
-        skills: ["Backpropagation", "Gradient descent", "Optimizers"],
+          "Cross-entropy and MSE. Gradient descent visualized. Backpropagation derived step by step. Learning rate, batch size, epochs. SGD vs Adam.",
+        build:
+          "Train a digit recognizer on MNIST — the canonical 'hello world' of deep learning. Watch accuracy climb live across epochs.",
+        skills: ["Backpropagation", "Gradient descent"],
       },
       {
         number: "03",
         theme: "Convolutional Neural Networks",
         learn:
-          "The convolution operation. Pooling layers. Translation invariance. The historical arc — LeNet → AlexNet (2012, the ImageNet moment) → ResNet. Image classification end-to-end on CIFAR-10.",
-        skills: ["CNNs", "Convolutions", "ImageNet"],
+          "The convolution operation. Pooling layers. Translation invariance. The historical arc — LeNet → AlexNet (2012, the ImageNet moment) → ResNet.",
+        build:
+          "A CNN that recognizes Indian street food from photos — students collect their own dataset around their neighborhood and train it from scratch.",
+        skills: ["CNNs", "Convolutions"],
       },
       {
         number: "04",
         theme: "Sequence models",
         learn:
-          "Recurrent Neural Networks and the loop concept. The vanishing gradient problem. LSTMs and GRUs as gated memory. Sequence-to-sequence problems (translation). Why RNNs were replaced.",
-        skills: ["RNNs", "LSTMs", "Seq2seq"],
+          "Recurrent Neural Networks and the loop concept. The vanishing gradient problem. LSTMs and GRUs as gated memory. Sequence-to-sequence problems.",
+        build:
+          "A poetry generator trained on classical Hindi or Urdu verse — they hear the model dream up its own ghazals after every training run.",
+        skills: ["RNNs", "LSTMs"],
       },
       {
         number: "05",
         theme: "Embeddings and word vectors",
         learn:
-          "Word2Vec — CBOW and Skip-gram. Words as vectors in high-dimensional space. Vector arithmetic (king − man + woman ≈ queen). Cosine similarity. Modern sentence embeddings.",
-        skills: ["Word2Vec", "Embeddings", "Cosine similarity"],
+          "Word2Vec — CBOW and Skip-gram. Words as vectors in high-dimensional space. Vector arithmetic (king − man + woman ≈ queen). Cosine similarity.",
+        build:
+          "A semantic search engine over their own school notes — 'find me everything about photosynthesis' works even when those exact words aren't there.",
+        skills: ["Word2Vec", "Semantic search"],
       },
       {
         number: "06",
-        theme: "The Transformer architecture",
+        theme: "Transformers + showcase",
         learn:
-          "Reading 'Attention Is All You Need' (Vaswani 2017). Self-attention with Query, Key, Value. Multi-head attention. Positional encoding. Encoder vs decoder (BERT vs GPT). Building a tiny GPT from scratch.",
-        skills: ["Transformers", "Self-attention", "GPT architecture"],
+          "Reading 'Attention Is All You Need' (Vaswani 2017). Self-attention with Query, Key, Value. Multi-head attention. Positional encoding. Encoder vs decoder (BERT vs GPT).",
+        build:
+          "Their own miniature GPT that writes in their style, trained on three years of their own essays. Pitched at Flagship Expo Day.",
+        skills: ["Transformers", "GPT", "Self-attention"],
       },
     ],
   },
   {
     grade: "Class 9",
     stage: "Applied Modern AI",
-    tagline: "Stanford CS224N + CS231N.",
+    tagline: "Real systems, shipped to real users.",
     description:
-      "What Stanford's CS224N (NLP), CS231N (computer vision), and CS285 (deep RL) teach — RAG, fine-tuning, agents, vision pipelines, RLHF. Production-grade material.",
+      "What Stanford's CS224N and CS231N teach in practice — RAG, fine-tuning, agents, vision pipelines, RLHF. Built and shipped to actual users, not just on a notebook.",
     modules: [
       {
         number: "01",
         theme: "Foundation models",
         learn:
-          "Pretraining vs fine-tuning vs prompting. LoRA and parameter-efficient fine-tuning. Open-weight (Llama, Mistral, DeepSeek) vs closed (GPT, Claude, Gemini). Cost economics. The Hugging Face ecosystem.",
-        skills: ["Foundation models", "LoRA", "Hugging Face"],
+          "Pretraining vs fine-tuning vs prompting. LoRA and parameter-efficient fine-tuning. Open-weight (Llama, Mistral, DeepSeek) vs closed (GPT, Claude, Gemini). Cost economics.",
+        build:
+          "A fine-tuned model that writes in their teacher's marking style — so they can pre-grade essays before submission. Shipped via Hugging Face.",
+        skills: ["Fine-tuning", "LoRA", "Hugging Face"],
       },
       {
         number: "02",
         theme: "Retrieval-Augmented Generation",
         learn:
-          "Why pretraining is frozen knowledge. Embedding stores and vector databases (Chroma, Pinecone, pgvector). Chunking strategies. Hybrid search (semantic + BM25). Reranking. Building a real RAG pipeline.",
-        skills: ["RAG", "Vector DBs", "Hybrid search"],
+          "Why pretraining is frozen knowledge. Embedding stores and vector databases (Chroma, Pinecone, pgvector). Chunking strategies. Hybrid search. Reranking.",
+        build:
+          "A WhatsApp chatbot for their school that answers 'when is the next exam?' using every circular and notice the school has ever sent.",
+        skills: ["RAG", "Vector DBs"],
       },
       {
         number: "03",
         theme: "Agents and tool use",
         learn:
-          "Function calling and structured output. The ReAct pattern (Reasoning + Acting). Tool ecosystems (search, code execution, browsers). Multi-agent orchestration. The limits of today's agents.",
-        skills: ["Agents", "ReAct", "Tool use"],
+          "Function calling and structured output. The ReAct pattern (Reasoning + Acting). Tool ecosystems — search, code execution, browser. Multi-agent orchestration.",
+        build:
+          "An agent that books a movie ticket end-to-end — checks showtimes, picks seats by your preference, and holds a reservation under your name.",
+        skills: ["Agents", "ReAct", "Function calling"],
       },
       {
         number: "04",
         theme: "Computer vision pipelines",
         learn:
-          "Object detection (YOLO, DETR). Segmentation (Segment Anything). Vision-language models (CLIP, GPT-4V). Diffusion models for image generation at intuition level. Vision pipelines in robotics.",
-        skills: ["Object detection", "SAM", "Diffusion models"],
+          "Object detection (YOLO, DETR). Segmentation (Segment Anything). Vision-language models (CLIP, GPT-4V). Diffusion models for image generation.",
+        build:
+          "A wildlife counter for their colony — uploads from a phone-cam set on the balcony, identifies and counts every bird that visits the feeder.",
+        skills: ["YOLO", "CLIP", "Vision pipelines"],
       },
       {
         number: "05",
-        theme: "Reinforcement learning at scale",
+        theme: "Learning from feedback",
         learn:
-          "Policy gradients (REINFORCE intuitively). Actor-critic methods (A2C, PPO). Reward shaping. RLHF (Reinforcement Learning from Human Feedback). AlphaGo, AlphaZero, and OpenAI Five as case studies.",
-        skills: ["Policy gradients", "PPO", "RLHF"],
+          "Policy gradients (REINFORCE). Actor-critic methods (PPO). Reward shaping. RLHF (Reinforcement Learning from Human Feedback). AlphaGo as a case study.",
+        build:
+          "A small chatbot that students train with thumbs-up / thumbs-down feedback over a week — and visibly watch get better at their preferences.",
+        skills: ["PPO", "RLHF"],
       },
       {
         number: "06",
-        theme: "Embodied AI and robotics",
+        theme: "Embodied AI + showcase",
         learn:
-          "ROS (Robot Operating System) basics. SLAM (Simultaneous Localization and Mapping). Imitation learning and behavior cloning. The reality gap and sim-to-real. Modern humanoids (Tesla Optimus, Boston Dynamics).",
-        skills: ["ROS", "SLAM", "Imitation learning"],
+          "ROS (Robot Operating System) basics. SLAM (Simultaneous Localization and Mapping). Imitation learning. The reality gap and sim-to-real. Modern humanoids.",
+        build:
+          "A self-driving cardboard car — Raspberry Pi, vision-guided, navigates a hand-drawn track on stage at Flagship Expo Day.",
+        skills: ["ROS", "SLAM", "Robotics"],
       },
     ],
   },
   {
     grade: "Class 10",
-    stage: "Research-Grade",
-    tagline: "Where the papers live.",
+    stage: "Capstone & Launch",
+    tagline: "Build something real. Ship it to real users.",
     description:
-      "Where Anthropic, OpenAI, and DeepMind research live — scaling laws, alignment, mechanistic interpretability, eval harnesses. Read the papers, replicate the results, ship a thesis project.",
+      "A year-long thesis project, built like a real product team would — designed, engineered, deployed, optimized, launched, and handed off as a portfolio recruiters and college admissions can see.",
     modules: [
       {
         number: "01",
-        theme: "Scaling laws and evaluation",
+        theme: "Choose a thesis",
         learn:
-          "Kaplan and Chinchilla scaling laws. Compute-optimal training. Benchmark suites (HELM, MMLU, GPQA, SWE-bench, ARC-AGI). Test contamination and the leaderboard problem. Writing an honest eval report.",
-        skills: ["Scaling laws", "Benchmarks", "Eval harnesses"],
+          "Scoping a real product. Defining success criteria. Identifying real users. Risk assessment. Working with a senior mentor to size the project realistically.",
+        build:
+          "A written project brief — what they'll build, who it's for, what 'done' looks like — reviewed and signed off by an IIT/IIM mentor.",
+        skills: ["Scoping", "Product brief"],
       },
       {
         number: "02",
-        theme: "Alignment and safety",
+        theme: "Build the v1",
         learn:
-          "The alignment problem from first principles. RLHF in depth. Constitutional AI (Anthropic). Reward hacking and specification gaming. Reading a model card and a published safety policy.",
-        skills: ["Alignment", "Constitutional AI", "Reward hacking"],
+          "System design. Choosing the right model for the task. Cost-aware engineering. Deploying via Vercel, Railway, or Hugging Face Spaces. Domains and HTTPS.",
+        build:
+          "First fully working version of their thesis project, deployed live at a public URL their family and friends can actually visit and use.",
+        skills: ["System design", "Deployment"],
       },
       {
         number: "03",
-        theme: "Mechanistic interpretability",
+        theme: "Production engineering",
         learn:
-          "What is a circuit? Probing and activation patching. Sparse autoencoders and feature discovery (Anthropic's recent work). Reading interpretability papers from Distill.pub and the Transformer Circuits thread.",
-        skills: ["Interpretability", "Probing", "SAEs"],
+          "Latency, throughput, batching. Quantization and distillation. Deployment with vLLM and llama.cpp. Observability for AI systems. Cost optimization.",
+        build:
+          "Optimize their v1 — cut token costs by 50%, halve P95 latency, add proper monitoring. Real measurements before and after.",
+        skills: ["Production AI", "Optimization"],
       },
       {
         number: "04",
-        theme: "Research methodology",
+        theme: "Real users, real iteration",
         learn:
-          "Reading a paper using the three-pass method (Keshav). Replicating a published result. Designing experimental protocols. Statistical significance and reporting. Maintaining a real research notebook.",
-        skills: ["Paper reading", "Replication", "Methodology"],
+          "Recruiting first users without a budget. Setting up analytics. Reading dashboards. Running structured interviews. Iterating on signal, not opinion.",
+        build:
+          "Get 50 real users on their thesis project. Run interviews. Ship three measurable iterations based on what they hear.",
+        skills: ["User research", "Analytics"],
       },
       {
         number: "05",
-        theme: "Production AI engineering",
+        theme: "Public launch",
         learn:
-          "Latency, throughput, batching. Quantization and distillation. Deployment with vLLM, llama.cpp, ONNX. Observability for AI systems. Cost optimization. A/B testing and feature-flagging AI features.",
-        skills: ["Deployment", "Quantization", "Observability"],
+          "Writing a launch post that lands. Story structure. Choosing channels (Twitter, LinkedIn, Product Hunt). Anticipating questions. Handling momentum.",
+        build:
+          "Public launch — a written launch post and a coordinated push across LinkedIn, X, and Product Hunt. Track real engagement and traffic.",
+        skills: ["Launch craft", "Writing"],
       },
       {
         number: "06",
-        theme: "Frontier and portfolio",
+        theme: "Portfolio + Flagship Expo",
         learn:
-          "Frontier agentic systems (Devin, OpenAI Operator, Claude Code). Multi-modal frontier (Sora, Veo, Suno). The open-source frontier (Llama, DeepSeek, Mistral). Final pitch and portfolio handover for college applications.",
-        skills: ["Frontier awareness", "Portfolio", "Pitching"],
+          "Building a custom-domain portfolio. Selecting which projects to feature. Crafting a self-introduction. Pitching to a guest panel of founders.",
+        build:
+          "A custom-domain portfolio (yourname.in) and a final five-minute pitch on stage — ready to attach to college and internship applications.",
+        skills: ["Portfolio", "Pitching"],
       },
     ],
   },
@@ -333,13 +406,13 @@ export function Curriculum() {
       <div className="section-copy">
         <p className="section-kicker mb-4">Curriculum</p>
         <h2 className="section-heading mb-6">
-          University-grade AI, <em>age-adjusted for every class.</em>
+          Real CS theory. <em>Real things they ship.</em>
         </h2>
         <p className="section-body mb-4">
-          Drawn from open courseware at MIT, Harvard, and Stanford, and from
-          the people who built modern AI — Karpathy, 3Blue1Brown, the Anthropic
-          and OpenAI research blogs. Adapted to how students at each grade can
-          actually absorb it.
+          Each month: a foundational concept drawn from the best of MIT,
+          Harvard, and Stanford open courseware — paired with a concrete
+          project your child actually builds, deploys, and can show you that
+          weekend.
         </p>
         <p className="ui-body-sm mb-14" style={{ color: "#1335b8" }}>
           Designed and taught by IIT and IIM grads.
@@ -453,7 +526,7 @@ export function Curriculum() {
           {active.modules.map((m, i) => (
             <article
               key={m.number}
-              className="ui-card animate-fade-rise relative flex flex-col gap-4 overflow-hidden rounded-[1.5rem] p-6"
+              className="ui-card animate-fade-rise relative flex flex-col gap-5 overflow-hidden rounded-[1.5rem] p-6"
               style={{ animationDelay: `${i * 60}ms` }}
             >
               <div className="flex items-baseline justify-between">
@@ -477,23 +550,53 @@ export function Curriculum() {
                 </span>
               </div>
 
-              <div>
-                <h4
+              <h4
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: "1.25rem",
+                  fontWeight: 400,
+                  lineHeight: 1.2,
+                  letterSpacing: "-0.02em",
+                  color: "#0a0a0a",
+                }}
+              >
+                {m.theme}
+              </h4>
+
+              <div className="flex flex-col gap-4">
+                <div>
+                  <p
+                    className="ui-label mb-1.5"
+                    style={{ color: "rgba(15,15,15,0.45)" }}
+                  >
+                    Concepts
+                  </p>
+                  <p className="ui-body-sm">{m.learn}</p>
+                </div>
+
+                <div
+                  className="rounded-[1rem] p-4"
                   style={{
-                    fontFamily: "var(--font-display)",
-                    fontSize: "1.2rem",
-                    fontWeight: 400,
-                    lineHeight: 1.2,
-                    letterSpacing: "-0.02em",
-                    color: "#0a0a0a",
+                    background: "rgba(19,53,184,0.05)",
+                    border: "1px solid rgba(19,53,184,0.14)",
                   }}
                 >
-                  {m.theme}
-                </h4>
-                <p className="ui-body-sm mt-2.5">{m.learn}</p>
+                  <p
+                    className="ui-label mb-1.5"
+                    style={{ color: "#1335b8" }}
+                  >
+                    They build
+                  </p>
+                  <p
+                    className="ui-body-sm"
+                    style={{ color: "#0a0a0a" }}
+                  >
+                    {m.build}
+                  </p>
+                </div>
               </div>
 
-              <div className="mt-auto flex flex-wrap gap-1.5 pt-2">
+              <div className="mt-auto flex flex-wrap gap-1.5 pt-1">
                 {m.skills.map((s) => (
                   <span
                     key={s}
@@ -501,7 +604,7 @@ export function Curriculum() {
                     style={{
                       fontFamily: "var(--font-body)",
                       color: "#5a5a5a",
-                      background: "rgba(19,53,184,0.04)",
+                      background: "rgba(255,255,255,0.5)",
                     }}
                   >
                     {s}
