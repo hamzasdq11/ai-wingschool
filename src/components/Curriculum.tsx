@@ -18,307 +18,307 @@ type ClassTrack = {
 const tracks: ClassTrack[] = [
   {
     grade: "Class 5",
-    stage: "Discover",
-    tagline: "Foundations of AI literacy.",
+    stage: "Foundations",
+    tagline: "Computational thinking + AI literacy.",
     description:
-      "First conceptual contact with AI. The goal is comfort, vocabulary, and confidence — not code.",
+      "Where MIT 6.0001 and Harvard CS50 begin — the four pillars of computational thinking, the history of AI, and how today's chatbots actually generate text.",
     modules: [
       {
         number: "01",
-        theme: "What AI actually is",
+        theme: "Computational thinking",
         learn:
-          "The difference between programmed software and AI. How everyday tools (YouTube recommendations, Alexa, autocorrect) use AI. Safe-use rules and digital citizenship.",
-        skills: ["AI literacy", "Digital citizenship"],
+          "Decomposition, pattern recognition, abstraction, and algorithms — the four pillars CS50 opens with. Pseudocode, flowcharts, sorting and searching by hand. Binary representation of text, images, and sound.",
+        skills: ["Computational thinking", "Algorithms", "Binary"],
       },
       {
         number: "02",
-        theme: "Talking to AI well",
+        theme: "What AI is, where it came from",
         learn:
-          "What a prompt is and why phrasing changes the answer. Asking follow-up questions. Recognising when AI is wrong or making things up.",
-        skills: ["Prompting basics", "Critical thinking"],
+          "Turing test (1950), Dartmouth Workshop (1956), the two AI winters and why they happened. Symbolic AI vs Machine Learning vs Deep Learning vs Generative AI. Reading a timeline of the field.",
+        skills: ["AI history", "AI taxonomy"],
       },
       {
         number: "03",
-        theme: "AI that creates",
+        theme: "Pattern recognition and rules",
         learn:
-          "Generative AI for text, image, and sound. How a model 'imagines' something from a description. Difference between human and machine creativity. Age-appropriate ethics of AI-made work.",
-        skills: ["Generative AI", "Ethics"],
+          "Rules-based (symbolic) AI — if-then-else logic, decision trees by hand, expert systems. Why hand-coded rules don't scale, and why machines need to learn patterns from data instead.",
+        skills: ["Symbolic AI", "Decision trees", "Boolean logic"],
       },
       {
         number: "04",
-        theme: "AI that listens and speaks",
+        theme: "Data — the food of AI",
         learn:
-          "Speech-to-text and text-to-speech at a concept level. How multilingual models handle Hindi and regional languages. Voice AI as an accessibility tool.",
-        skills: ["Voice AI", "Multilingual AI"],
+          "Structured vs unstructured data. What makes a dataset good or bad. Sampling bias illustrated with concrete examples. Data privacy, consent, and the right to be forgotten at a beginner level.",
+        skills: ["Data literacy", "Sampling bias", "Privacy"],
       },
       {
         number: "05",
-        theme: "AI that sees",
+        theme: "How chatbots actually work",
         learn:
-          "How a model recognises a picture as a cat. Pre-trained models in plain language. Introduction to bias in image datasets. Responsible photo use.",
-        skills: ["Computer vision basics", "Bias awareness"],
+          "Tokenization (text → numbers). Next-token prediction as the core idea behind every LLM. Why LLMs hallucinate. Hands-on prompt experimentation with measurable changes in output.",
+        skills: ["Tokenization", "Next-token prediction", "Hallucinations"],
       },
       {
         number: "06",
-        theme: "Reflection and showcase",
+        theme: "AI ethics and the future",
         learn:
-          "Choosing what to present. Structuring a three-minute talk. Stage basics, audience questions, year-end reflection.",
-        skills: ["Presentation", "Communication"],
+          "Algorithmic bias and fairness. Job displacement framed against historical parallels (the loom, the ATM). Identifying deepfakes. Reading and discussing a real AI ethics case study.",
+        skills: ["AI ethics", "Bias and fairness", "Deepfake literacy"],
       },
     ],
   },
   {
     grade: "Class 6",
-    stage: "Explore",
-    tagline: "How modern AI actually works.",
+    stage: "Classical AI",
+    tagline: "The algorithms behind every AI engineer.",
     description:
-      "Students learn the moving parts of today's AI — how it learns, where it lives, and how to use it well — before jumping into building.",
+      "The classical AI of MIT 6.034 (Patrick Winston) and Harvard CS50 AI — search, logic, probability, optimization. Foundations every modern AI engineer still needs.",
     modules: [
       {
         number: "01",
-        theme: "How AI learns",
+        theme: "Search algorithms",
         learn:
-          "Training vs inference at a beginner level. What data means and why more (and better) data matters. Supervised learning explained intuitively.",
-        skills: ["ML intuition", "Data thinking"],
+          "State spaces, nodes, edges. Depth-first and breadth-first search by hand on mazes. Heuristics (Manhattan, Euclidean). A* search. The trade-off between optimality and speed.",
+        skills: ["BFS / DFS", "Heuristics", "A* search"],
       },
       {
         number: "02",
-        theme: "The prompt as a program",
+        theme: "Adversarial search and games",
         learn:
-          "System vs user messages. Few-shot prompting. Constraints, formatting, and step-by-step reasoning. Evaluating outputs against intent.",
-        skills: ["Prompt engineering", "Output evaluation"],
+          "Game trees on tic-tac-toe (drawn by hand, every node). Minimax algorithm. Alpha-beta pruning. Why Stockfish beats humans, and how AlphaZero is fundamentally different.",
+        skills: ["Game trees", "Minimax", "Alpha-beta pruning"],
       },
       {
         number: "03",
-        theme: "A tour of today's AI",
+        theme: "Logic and knowledge",
         learn:
-          "ChatGPT, Claude, Gemini, Midjourney, ElevenLabs — what each is built for. General vs specialised models. Picking the right tool for the job.",
-        skills: ["Model literacy", "Tool selection"],
+          "Propositional logic (AND, OR, NOT, IMPLIES). Truth tables. Modus ponens and inference rules. Knowledge bases. Solving the Wumpus World — the classic CS50 AI exercise — by formal inference.",
+        skills: ["Propositional logic", "Inference", "Knowledge bases"],
       },
       {
         number: "04",
-        theme: "AI for learning",
+        theme: "Probability and uncertainty",
         learn:
-          "Using AI for studying without outsourcing thinking. Summarisation, flashcards, Socratic explanation. Catching hallucinations in school content.",
-        skills: ["Study workflows", "Hallucination awareness"],
+          "Sample spaces, events, conditional probability. Bayes' theorem with concrete medical-test and spam-filter examples. Bayesian networks with three- and four-node graphs. Why uncertainty is unavoidable.",
+        skills: ["Probability", "Bayes' theorem", "Bayesian networks"],
       },
       {
         number: "05",
-        theme: "Multi-step thinking",
+        theme: "Optimization",
         learn:
-          "Breaking a problem into steps. Chaining prompts. Self-critique loops. Introduction to 'thinking' modes in modern models.",
-        skills: ["Decomposition", "Workflow design"],
+          "Hill climbing and why local search gets stuck in local maxima. Simulated annealing. Genetic algorithms — population, fitness, crossover, mutation. Constraint satisfaction problems (CSPs).",
+        skills: ["Local search", "Simulated annealing", "Genetic algorithms"],
       },
       {
         number: "06",
-        theme: "Showcase",
+        theme: "First taste of machine learning",
         learn:
-          "Picking a topic, scripting a short talk, designing a single visual aid, rehearsing, and presenting at Flagship Expo Day.",
-        skills: ["Storytelling", "Public speaking"],
+          "Supervised vs unsupervised vs reinforcement learning. Train/validation/test split. Overfitting visualized. The bias-variance trade-off. Reading a confusion matrix; precision vs recall.",
+        skills: ["Train/test split", "Overfitting", "Confusion matrix"],
       },
     ],
   },
   {
     grade: "Class 7",
-    stage: "Build",
-    tagline: "From user to maker.",
+    stage: "Machine Learning",
+    tagline: "Andrew Ng's foundations, age-adjusted.",
     description:
-      "Students cross from using AI to making with it. Hardware enters the room. Concepts of software, circuits, and APIs are introduced.",
+      "The supervised, unsupervised, and reinforcement learning of Andrew Ng's CS229 classic — written for thirteen-year-olds, without dilution.",
     modules: [
       {
         number: "01",
-        theme: "The maker mindset",
+        theme: "Linear regression",
         learn:
-          "Moving from 'AI helps me' to 'I build with AI'. The shape of a software product. Introduction to no-code AI builders and what deployment means.",
-        skills: ["No-code AI", "Product mindset"],
+          "Functions, slopes, intercepts. Fitting a line to data. Mean squared error as a loss function. Why we minimize loss. Multivariable linear regression. Reading R² and residuals.",
+        skills: ["Linear regression", "Loss functions", "MSE"],
       },
       {
         number: "02",
-        theme: "Hardware fundamentals",
+        theme: "Classification — the perceptron",
         learn:
-          "Microcontrollers (Arduino), sensors, actuators, basic circuits. How software controls physical objects. Reading a wiring diagram.",
-        skills: ["Hardware", "Microcontrollers"],
+          "Binary classification. The perceptron (Rosenblatt, 1958) — the first artificial neuron. Decision boundaries. Logistic regression and the sigmoid. Why a single neuron can't solve XOR.",
+        skills: ["Perceptron", "Logistic regression", "Decision boundaries"],
       },
       {
         number: "03",
-        theme: "Software meets hardware",
+        theme: "Decision trees and ensembles",
         learn:
-          "Reading sensor data. Event loops at a beginner level. Combining AI inference (voice, vision) with physical actuation. Introduction to IoT.",
-        skills: ["IoT basics", "Event-driven design"],
+          "Decision tree learning, entropy, and information gain. Pruning to fight overfitting. Random forests as an ensemble. Gradient-boosted trees (XGBoost) at intuition level. Feature importance.",
+        skills: ["Decision trees", "Information gain", "Random forests"],
       },
       {
         number: "04",
-        theme: "Problem framing",
+        theme: "Unsupervised learning",
         learn:
-          "Identifying real problems in your child's environment. Scoring by impact and feasibility. Defining solution boundaries. Writing a one-paragraph project brief.",
-        skills: ["Problem framing", "Scoping"],
+          "K-means clustering visualized. Choosing k via the elbow method. Hierarchical clustering. Dimensionality reduction with PCA at intuition level. Anomaly detection.",
+        skills: ["K-means", "PCA", "Anomaly detection"],
       },
       {
         number: "05",
-        theme: "APIs and automation",
+        theme: "Working with data in Python",
         learn:
-          "What an API is. How AI services are accessed programmatically. Webhooks, scheduled jobs, and automation tools at a beginner level.",
-        skills: ["APIs", "Automation"],
+          "NumPy arrays, Pandas DataFrames, Matplotlib for visualization. The scikit-learn fit/predict/score workflow. Cross-validation. Building a complete ML project end-to-end on a real dataset.",
+        skills: ["NumPy", "Pandas", "scikit-learn"],
       },
       {
         number: "06",
-        theme: "Showcase",
+        theme: "Reinforcement learning intro",
         learn:
-          "Polishing a single build. Writing a one-page summary. Demoing live and answering panel questions.",
-        skills: ["Live demo", "Q&A"],
+          "Agents, environments, states, actions, rewards. Markov decision processes. Q-learning on a grid world. Why reinforcement learning is fundamentally different from supervised learning.",
+        skills: ["MDPs", "Q-learning", "Reward design"],
       },
     ],
   },
   {
     grade: "Class 8",
-    stage: "Engineer",
-    tagline: "Inside the systems.",
+    stage: "Deep Learning",
+    tagline: "Karpathy's 'Zero to Hero'.",
     description:
-      "Students stop treating AI as a black box. They learn the levers — prompts, retrieval, agents, vision — and how to compose them into real systems.",
+      "MIT 6.S191 and Andrej Karpathy's 'Neural Networks: Zero to Hero' — neural nets, backpropagation, embeddings, attention, transformers. The building blocks of modern AI.",
     modules: [
       {
         number: "01",
-        theme: "Inside an LLM",
+        theme: "Neural network anatomy",
         learn:
-          "Tokens, context windows, temperature, top-p, stop sequences. System prompts. Cost and latency trade-offs. Reading API documentation.",
-        skills: ["LLM internals", "API literacy"],
+          "The biological neuron analogy and where it breaks. Multi-layer perceptrons. Activation functions (ReLU, sigmoid, tanh, softmax). Forward propagation. The universal approximation theorem.",
+        skills: ["MLPs", "Activations", "Forward pass"],
       },
       {
         number: "02",
-        theme: "Retrieval-augmented generation",
+        theme: "Training neural networks",
         learn:
-          "Why models forget. Embeddings as a concept. Vector databases at a beginner level. Chunking, retrieval, and generation. When RAG is the right tool.",
-        skills: ["RAG", "Embeddings"],
+          "Loss functions (cross-entropy, MSE). Gradient descent visualized as a ball on a surface. Backpropagation derived step-by-step (3Blue1Brown's approach). Learning rate, batch size, epochs. SGD vs Adam.",
+        skills: ["Backpropagation", "Gradient descent", "Optimizers"],
       },
       {
         number: "03",
-        theme: "Robotics and decisioning",
+        theme: "Convolutional Neural Networks",
         learn:
-          "From sensor reading to decision to motor command. State machines. Control logic. Real-time vs batch processing.",
-        skills: ["Robotics", "State machines"],
+          "The convolution operation. Pooling layers. Translation invariance. The historical arc — LeNet → AlexNet (2012, the ImageNet moment) → ResNet. Image classification end-to-end on CIFAR-10.",
+        skills: ["CNNs", "Convolutions", "ImageNet"],
       },
       {
         number: "04",
-        theme: "Agents and tool use",
+        theme: "Sequence models",
         learn:
-          "What an agent is vs a chatbot. Function calling. Planning, looping, and multi-agent collaboration. The limits of today's agents.",
-        skills: ["Agents", "Tool use"],
+          "Recurrent Neural Networks and the loop concept. The vanishing gradient problem. LSTMs and GRUs as gated memory. Sequence-to-sequence problems (translation). Why RNNs were replaced.",
+        skills: ["RNNs", "LSTMs", "Seq2seq"],
       },
       {
         number: "05",
-        theme: "Computer vision",
+        theme: "Embeddings and word vectors",
         learn:
-          "How vision models work conceptually. Classification vs detection vs segmentation. Working with pre-trained vision models. Privacy considerations.",
-        skills: ["Computer vision", "Privacy ethics"],
+          "Word2Vec — CBOW and Skip-gram. Words as vectors in high-dimensional space. Vector arithmetic (king − man + woman ≈ queen). Cosine similarity. Modern sentence embeddings.",
+        skills: ["Word2Vec", "Embeddings", "Cosine similarity"],
       },
       {
         number: "06",
-        theme: "Systems showcase",
+        theme: "The Transformer architecture",
         learn:
-          "Whiteboarding the system architecture. Walking through trade-offs. Presenting the build to a guest panel.",
-        skills: ["Architecture", "Technical communication"],
+          "Reading 'Attention Is All You Need' (Vaswani 2017). Self-attention with Query, Key, Value. Multi-head attention. Positional encoding. Encoder vs decoder (BERT vs GPT). Building a tiny GPT from scratch.",
+        skills: ["Transformers", "Self-attention", "GPT architecture"],
       },
     ],
   },
   {
     grade: "Class 9",
-    stage: "Innovate",
-    tagline: "Product and research thinking.",
+    stage: "Applied Modern AI",
+    tagline: "Stanford CS224N + CS231N.",
     description:
-      "Students stop building because the syllabus said so. They learn to scope real problems, ship MVPs, find users, and judge their own work like a real founder.",
+      "What Stanford's CS224N (NLP), CS231N (computer vision), and CS285 (deep RL) teach — RAG, fine-tuning, agents, vision pipelines, RLHF. Production-grade material.",
     modules: [
       {
         number: "01",
-        theme: "Problem discovery",
+        theme: "Foundation models",
         learn:
-          "User interviewing techniques. Identifying genuine pain. Telling nice-to-have from must-have. Writing problem statements that survive scrutiny.",
-        skills: ["User research", "Problem statements"],
+          "Pretraining vs fine-tuning vs prompting. LoRA and parameter-efficient fine-tuning. Open-weight (Llama, Mistral, DeepSeek) vs closed (GPT, Claude, Gemini). Cost economics. The Hugging Face ecosystem.",
+        skills: ["Foundation models", "LoRA", "Hugging Face"],
       },
       {
         number: "02",
-        theme: "MVPs and feedback loops",
+        theme: "Retrieval-Augmented Generation",
         learn:
-          "Defining minimum viability. Build-measure-learn cycles. Designing the smallest meaningful test. Reading qualitative feedback honestly.",
-        skills: ["MVP", "Feedback loops"],
+          "Why pretraining is frozen knowledge. Embedding stores and vector databases (Chroma, Pinecone, pgvector). Chunking strategies. Hybrid search (semantic + BM25). Reranking. Building a real RAG pipeline.",
+        skills: ["RAG", "Vector DBs", "Hybrid search"],
       },
       {
         number: "03",
-        theme: "Training and fine-tuning",
+        theme: "Agents and tool use",
         learn:
-          "When fine-tuning beats prompting. Datasets, labelling, train/val/test splits. Fine-tuning small open models. Evaluation as engineering, not opinion.",
-        skills: ["Fine-tuning", "Evaluation"],
+          "Function calling and structured output. The ReAct pattern (Reasoning + Acting). Tool ecosystems (search, code execution, browsers). Multi-agent orchestration. The limits of today's agents.",
+        skills: ["Agents", "ReAct", "Tool use"],
       },
       {
         number: "04",
-        theme: "Embodied AI",
+        theme: "Computer vision pipelines",
         learn:
-          "Combining vision, motion, and decisioning in one system. Latency, safety, and failure modes. Edge inference vs cloud inference.",
-        skills: ["Embodied systems", "Edge inference"],
+          "Object detection (YOLO, DETR). Segmentation (Segment Anything). Vision-language models (CLIP, GPT-4V). Diffusion models for image generation at intuition level. Vision pipelines in robotics.",
+        skills: ["Object detection", "SAM", "Diffusion models"],
       },
       {
         number: "05",
-        theme: "Distribution and analytics",
+        theme: "Reinforcement learning at scale",
         learn:
-          "Getting first users with no budget. Setting up basic analytics. Reading dashboards. Iterating on signal rather than opinion.",
-        skills: ["Distribution", "Analytics"],
+          "Policy gradients (REINFORCE intuitively). Actor-critic methods (A2C, PPO). Reward shaping. RLHF (Reinforcement Learning from Human Feedback). AlphaGo, AlphaZero, and OpenAI Five as case studies.",
+        skills: ["Policy gradients", "PPO", "RLHF"],
       },
       {
         number: "06",
-        theme: "Pitch day",
+        theme: "Embodied AI and robotics",
         learn:
-          "Crafting a five-minute pitch. Leading with the user story, not the feature list. Handling tough questions. Visualising data simply.",
-        skills: ["Pitching", "Storytelling"],
+          "ROS (Robot Operating System) basics. SLAM (Simultaneous Localization and Mapping). Imitation learning and behavior cloning. The reality gap and sim-to-real. Modern humanoids (Tesla Optimus, Boston Dynamics).",
+        skills: ["ROS", "SLAM", "Imitation learning"],
       },
     ],
   },
   {
     grade: "Class 10",
-    stage: "Launch",
-    tagline: "Rigor, public stakes, portfolio.",
+    stage: "Research-Grade",
+    tagline: "Where the papers live.",
     description:
-      "A year-long thesis project, built in public, shipped with engineering rigor and a launch post. Walks out with a portfolio that recruiters and admissions can see.",
+      "Where Anthropic, OpenAI, and DeepMind research live — scaling laws, alignment, mechanistic interpretability, eval harnesses. Read the papers, replicate the results, ship a thesis project.",
     modules: [
       {
         number: "01",
-        theme: "Thesis and scope",
+        theme: "Scaling laws and evaluation",
         learn:
-          "Picking a year-long thesis. Defining success criteria. Risk assessment. Working with a senior mentor to scope realistically.",
-        skills: ["Vision", "Scoping"],
+          "Kaplan and Chinchilla scaling laws. Compute-optimal training. Benchmark suites (HELM, MMLU, GPQA, SWE-bench, ARC-AGI). Test contamination and the leaderboard problem. Writing an honest eval report.",
+        skills: ["Scaling laws", "Benchmarks", "Eval harnesses"],
       },
       {
         number: "02",
-        theme: "Engineering rigor",
+        theme: "Alignment and safety",
         learn:
-          "Version control fundamentals. Evaluation harnesses. A/B comparisons. Reproducibility. Benchmarks vs vibes-based evaluation.",
-        skills: ["Evaluation", "Reproducibility"],
+          "The alignment problem from first principles. RLHF in depth. Constitutional AI (Anthropic). Reward hacking and specification gaming. Reading a model card and a published safety policy.",
+        skills: ["Alignment", "Constitutional AI", "Reward hacking"],
       },
       {
         number: "03",
-        theme: "Building in public",
+        theme: "Mechanistic interpretability",
         learn:
-          "Writing devlogs that compound. GitHub etiquette. Documentation and README writing. Building an audience from zero.",
-        skills: ["Public building", "Documentation"],
+          "What is a circuit? Probing and activation patching. Sparse autoencoders and feature discovery (Anthropic's recent work). Reading interpretability papers from Distill.pub and the Transformer Circuits thread.",
+        skills: ["Interpretability", "Probing", "SAEs"],
       },
       {
         number: "04",
-        theme: "User research at scale",
+        theme: "Research methodology",
         learn:
-          "Running structured interviews with fifty-plus users. Synthesising patterns. Avoiding confirmation bias. Iterating without churn.",
-        skills: ["User research", "Synthesis"],
+          "Reading a paper using the three-pass method (Keshav). Replicating a published result. Designing experimental protocols. Statistical significance and reporting. Maintaining a real research notebook.",
+        skills: ["Paper reading", "Replication", "Methodology"],
       },
       {
         number: "05",
-        theme: "Launch craft",
+        theme: "Production AI engineering",
         learn:
-          "Writing a launch post that lands. Story structure. Choosing channels. Anticipating questions. Handling launch-day momentum.",
-        skills: ["Writing", "Launch craft"],
+          "Latency, throughput, batching. Quantization and distillation. Deployment with vLLM, llama.cpp, ONNX. Observability for AI systems. Cost optimization. A/B testing and feature-flagging AI features.",
+        skills: ["Deployment", "Quantization", "Observability"],
       },
       {
         number: "06",
-        theme: "Portfolio and pitch",
+        theme: "Frontier and portfolio",
         learn:
-          "Building a portfolio site on a custom domain. Selecting which projects to feature. Crafting a self-introduction. Final pitch on stage.",
-        skills: ["Portfolio", "Self-introduction"],
+          "Frontier agentic systems (Devin, OpenAI Operator, Claude Code). Multi-modal frontier (Sora, Veo, Suno). The open-source frontier (Llama, DeepSeek, Mistral). Final pitch and portfolio handover for college applications.",
+        skills: ["Frontier awareness", "Portfolio", "Pitching"],
       },
     ],
   },
@@ -333,12 +333,13 @@ export function Curriculum() {
       <div className="section-copy">
         <p className="section-kicker mb-4">Curriculum</p>
         <h2 className="section-heading mb-6">
-          A different 6-month syllabus for <em>every class.</em>
+          University-grade AI, <em>age-adjusted for every class.</em>
         </h2>
         <p className="section-body mb-4">
-          Each grade gets its own progression of concepts, methods, and skills —
-          built around how students at that age actually learn. Pick a class to
-          see the full year.
+          Drawn from open courseware at MIT, Harvard, and Stanford, and from
+          the people who built modern AI — Karpathy, 3Blue1Brown, the Anthropic
+          and OpenAI research blogs. Adapted to how students at each grade can
+          actually absorb it.
         </p>
         <p className="ui-body-sm mb-14" style={{ color: "#1335b8" }}>
           Designed and taught by IIT and IIM grads.
@@ -400,9 +401,9 @@ export function Curriculum() {
             className="mt-6"
             style={{
               fontFamily: "var(--font-display)",
-              fontSize: "clamp(2.5rem, 4.5vw, 3.6rem)",
+              fontSize: "clamp(2.2rem, 4vw, 3.2rem)",
               fontWeight: 400,
-              lineHeight: 1.02,
+              lineHeight: 1.04,
               letterSpacing: "-0.045em",
               color: "#0a0a0a",
             }}
@@ -415,7 +416,7 @@ export function Curriculum() {
               fontFamily: "var(--font-accent)",
               fontStyle: "italic",
               fontWeight: 200,
-              fontSize: "1.5rem",
+              fontSize: "1.4rem",
               color: "#1335b8",
               lineHeight: 1.2,
             }}
