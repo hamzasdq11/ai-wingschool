@@ -15,7 +15,7 @@ const faqs = [
   },
   {
     q: "Can I enrol multiple children?",
-    a: "Yes — and the second child gets 10% off, the third or more get 20% off. Discounts apply to Builder and Launchpad, are confirmed at signup, and don't require both children to be in the same cohort. The Trial Pass is already low-friction at ₹999, so we don't stack sibling discounts on top of it.",
+    a: "Yes — and the second child gets 10% off, the third or more get 20% off. Discounts apply to Cohort and Apprenticeship, are confirmed at signup, and don't require both children to be in the same season. The Trial Pass is already low-friction at ₹999, so we don't stack sibling discounts on top of it.",
   },
   {
     q: "How is this different from YouTube or self-learning?",
@@ -31,7 +31,7 @@ const faqs = [
   },
   {
     q: "How will I, as a parent, see progress?",
-    a: "Three ways. (1) Project deliverables every 3 weeks — actual working artefacts, not grades. (2) A parent progress report every 2 weeks on the Builder and Launchpad plans. (3) Flagship Expo Day at the end — you'll watch your child present what they built.",
+    a: "Three ways. (1) Project deliverables every 3 weeks — actual working artefacts, not grades. (2) A parent progress report every 2 weeks on the Cohort and Apprenticeship plans. (3) Flagship Expo Day at the end — you'll watch your child present what they built.",
   },
   {
     q: "What happens if it doesn't work for us?",

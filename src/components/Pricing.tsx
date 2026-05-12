@@ -3,18 +3,18 @@ const plans = [
     name: "Trial Pass",
     price: "999",
     priceUnit: "one-time",
-    commitment: "Orientation Day + Builder week 1 · no auto-renew",
+    commitment: "Orientation Day + Cohort week 1 · no auto-renew",
     features: [
       "Orientation Day at The Landmark Towers, Kanpur",
-      "Full week 1 of Builder — workshops, curriculum, AI playground",
+      "Full week 1 of the Cohort — workshops, curriculum, AI playground",
       "Cohort community + intro call",
-      "₹999 credited toward Builder if you continue",
+      "₹999 credited toward Cohort if you continue",
     ],
     cta: "Start the Trial →",
     featured: false,
   },
   {
-    name: "Builder",
+    name: "Cohort",
     price: "3,799",
     originalPrice: "4,999",
     offerLabel: "Limited offer · Save ₹1,200/mo",
@@ -33,12 +33,12 @@ const plans = [
       "Cohort community",
       "Flagship Expo Day at The Landmark Towers, Kanpur",
     ],
-    cta: "Start Building →",
+    cta: "Join the Cohort →",
     featured: true,
     badge: "Most popular",
   },
   {
-    name: "Launchpad",
+    name: "Apprenticeship",
     price: "7,999",
     originalPrice: "9,999",
     offerLabel: "Limited offer · Save ₹2,000/mo",
@@ -46,7 +46,7 @@ const plans = [
     totalLine: "₹47,994 over 6 months",
     upfrontLine: "Pay upfront: ₹39,995 (save ₹7,999)",
     features: [
-      "Everything in Builder",
+      "Everything in Cohort",
       "1-on-1 live sessions with priority focus",
       "IIT/IIM mentor available 24/7 — guidance at every step",
       "Quarterly senior reviews — progress, gaps, and a roadmap forward",
@@ -58,7 +58,7 @@ const plans = [
       "Custom-domain portfolio (yourname.in)",
       "Priority cohort — max 15 students",
     ],
-    cta: "Apply for Launchpad →",
+    cta: "Apply for Apprenticeship →",
     featured: false,
   },
 ];
@@ -86,10 +86,10 @@ export function Pricing() {
           className="ui-body-sm mb-14"
           style={{ color: "#3a3a3a" }}
         >
-          For most families,{" "}
-          <strong style={{ color: "#0a0a0a", fontWeight: 600 }}>Builder</strong>
-          {" "}is the answer. Launchpad is for students already deep in AI;
-          Trial is for those testing the water.
+          For most families, the{" "}
+          <strong style={{ color: "#0a0a0a", fontWeight: 600 }}>Cohort</strong>
+          {" "}is the answer. Apprenticeship is for students already deep in
+          AI; Trial is for those testing the water.
         </p>
       </div>
 
@@ -257,8 +257,8 @@ export function Pricing() {
           </h3>
           <p className="ui-body-sm">
             10% off your second child. 20% off your third or more. Applies to
-            Builder and Launchpad, confirmed at signup — no requirement to
-            enrol in the same cohort.
+            Cohort and Apprenticeship, confirmed at signup — no requirement
+            to enrol in the same season.
           </p>
         </div>
         <div className="ui-card flex flex-col gap-3 rounded-[1.75rem] p-6">
