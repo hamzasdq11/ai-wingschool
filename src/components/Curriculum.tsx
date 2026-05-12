@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-type Month = {
+type Module = {
   number: string;
   theme: string;
-  project: string;
+  learn: string;
   skills: string[];
 };
 
@@ -12,231 +12,261 @@ type ClassTrack = {
   stage: string;
   tagline: string;
   description: string;
-  months: Month[];
+  modules: Module[];
 };
 
 const tracks: ClassTrack[] = [
   {
     grade: "Class 5",
     stage: "Discover",
-    tagline: "Play, not theory.",
+    tagline: "Foundations of AI literacy.",
     description:
-      "First contact with AI through voice, image, and conversation. The goal isn't code — it's confidence and curiosity.",
-    months: [
+      "First conceptual contact with AI. The goal is comfort, vocabulary, and confidence — not code.",
+    modules: [
       {
         number: "01",
-        theme: "First friend in the machine",
-        project: "A personal AI buddy that knows their interests and answers in their voice.",
-        skills: ["Conversational AI", "Prompts", "Voice"],
+        theme: "What AI actually is",
+        learn:
+          "The difference between programmed software and AI. How everyday tools (YouTube recommendations, Alexa, autocorrect) use AI. Safe-use rules and digital citizenship.",
+        skills: ["AI literacy", "Digital citizenship"],
       },
       {
         number: "02",
-        theme: "Stories the machine draws",
-        project: "An illustrated picture-book — text by your child, art by AI.",
-        skills: ["Image generation", "Storytelling"],
+        theme: "Talking to AI well",
+        learn:
+          "What a prompt is and why phrasing changes the answer. Asking follow-up questions. Recognising when AI is wrong or making things up.",
+        skills: ["Prompting basics", "Critical thinking"],
       },
       {
         number: "03",
-        theme: "Speaking back to the screen",
-        project: "A Hindi ↔ English voice translator they can use with grandparents.",
-        skills: ["Speech recognition", "Multilingual AI"],
+        theme: "AI that creates",
+        learn:
+          "Generative AI for text, image, and sound. How a model 'imagines' something from a description. Difference between human and machine creativity. Age-appropriate ethics of AI-made work.",
+        skills: ["Generative AI", "Ethics"],
       },
       {
         number: "04",
-        theme: "Helper for the younger sibling",
-        project: "A homework buddy that explains Class 3–4 questions patiently.",
-        skills: ["Workflows", "Conversational design"],
+        theme: "AI that listens and speaks",
+        learn:
+          "Speech-to-text and text-to-speech at a concept level. How multilingual models handle Hindi and regional languages. Voice AI as an accessibility tool.",
+        skills: ["Voice AI", "Multilingual AI"],
       },
       {
         number: "05",
-        theme: "Eyes for the machine",
-        project: "A 'guess the animal' photo identifier built from a pre-trained model.",
-        skills: ["Image classification", "Pre-trained models"],
+        theme: "AI that sees",
+        learn:
+          "How a model recognises a picture as a cat. Pre-trained models in plain language. Introduction to bias in image datasets. Responsible photo use.",
+        skills: ["Computer vision basics", "Bias awareness"],
       },
       {
         number: "06",
-        theme: "First public showing",
-        project: "Polish one project. Present it on stage at Flagship Expo Day.",
-        skills: ["Polish", "Stage presence"],
+        theme: "Reflection and showcase",
+        learn:
+          "Choosing what to present. Structuring a three-minute talk. Stage basics, audience questions, year-end reflection.",
+        skills: ["Presentation", "Communication"],
       },
     ],
   },
   {
     grade: "Class 6",
     stage: "Explore",
-    tagline: "Curiosity first.",
+    tagline: "How modern AI actually works.",
     description:
-      "Students learn what AI is, where it shows up, and how to ask better questions before they rush toward answers.",
-    months: [
+      "Students learn the moving parts of today's AI — how it learns, where it lives, and how to use it well — before jumping into building.",
+    modules: [
       {
         number: "01",
-        theme: "Prompting as a craft",
-        project: "A recipe generator that adapts to whatever's in your fridge.",
-        skills: ["Prompt design", "Iteration"],
+        theme: "How AI learns",
+        learn:
+          "Training vs inference at a beginner level. What data means and why more (and better) data matters. Supervised learning explained intuitively.",
+        skills: ["ML intuition", "Data thinking"],
       },
       {
         number: "02",
-        theme: "Three AIs walk into a room",
-        project: "A 'compare models' tool — same question, ChatGPT vs Claude vs Gemini.",
-        skills: ["Model evaluation", "Critical thinking"],
+        theme: "The prompt as a program",
+        learn:
+          "System vs user messages. Few-shot prompting. Constraints, formatting, and step-by-step reasoning. Evaluating outputs against intent.",
+        skills: ["Prompt engineering", "Output evaluation"],
       },
       {
         number: "03",
-        theme: "AI for the textbook",
-        project: "An NCERT chapter summariser with auto-generated flashcards.",
-        skills: ["Summarisation", "Study tools"],
+        theme: "A tour of today's AI",
+        learn:
+          "ChatGPT, Claude, Gemini, Midjourney, ElevenLabs — what each is built for. General vs specialised models. Picking the right tool for the job.",
+        skills: ["Model literacy", "Tool selection"],
       },
       {
         number: "04",
-        theme: "Eyes through the camera",
-        project: "A homework-page reader that takes a photo and explains the question.",
-        skills: ["OCR", "Vision models"],
+        theme: "AI for learning",
+        learn:
+          "Using AI for studying without outsourcing thinking. Summarisation, flashcards, Socratic explanation. Catching hallucinations in school content.",
+        skills: ["Study workflows", "Hallucination awareness"],
       },
       {
         number: "05",
-        theme: "Chains, not single shots",
-        project: "A story-writing assistant that drafts, critiques, and revises itself.",
-        skills: ["Multi-step prompting", "Self-critique"],
+        theme: "Multi-step thinking",
+        learn:
+          "Breaking a problem into steps. Chaining prompts. Self-critique loops. Introduction to 'thinking' modes in modern models.",
+        skills: ["Decomposition", "Workflow design"],
       },
       {
         number: "06",
-        theme: "Refine + Demo",
-        project: "Polish one project. Pitch it at Flagship Expo Day.",
-        skills: ["Refinement", "Public demo"],
+        theme: "Showcase",
+        learn:
+          "Picking a topic, scripting a short talk, designing a single visual aid, rehearsing, and presenting at Flagship Expo Day.",
+        skills: ["Storytelling", "Public speaking"],
       },
     ],
   },
   {
     grade: "Class 7",
     stage: "Build",
-    tagline: "First real things.",
+    tagline: "From user to maker.",
     description:
-      "Tools come out. Hardware ships home. Students stop using AI and start making with it — apps, gadgets, prototypes that work.",
-    months: [
+      "Students cross from using AI to making with it. Hardware enters the room. Concepts of software, circuits, and APIs are introduced.",
+    modules: [
       {
         number: "01",
-        theme: "First working web app",
-        project: "A live, shareable AI app built with no-code tools (Lovable / Bolt).",
-        skills: ["No-code AI", "Deployment"],
+        theme: "The maker mindset",
+        learn:
+          "Moving from 'AI helps me' to 'I build with AI'. The shape of a software product. Introduction to no-code AI builders and what deployment means.",
+        skills: ["No-code AI", "Product mindset"],
       },
       {
         number: "02",
-        theme: "Out of the screen",
-        project: "A smart light controller using Arduino, sensors, and a breadboard.",
+        theme: "Hardware fundamentals",
+        learn:
+          "Microcontrollers (Arduino), sensors, actuators, basic circuits. How software controls physical objects. Reading a wiring diagram.",
         skills: ["Hardware", "Microcontrollers"],
       },
       {
         number: "03",
-        theme: "Voice meets hardware",
-        project: "A voice-controlled fan or LED rig — say it, the room responds.",
-        skills: ["Speech recognition", "IoT"],
+        theme: "Software meets hardware",
+        learn:
+          "Reading sensor data. Event loops at a beginner level. Combining AI inference (voice, vision) with physical actuation. Introduction to IoT.",
+        skills: ["IoT basics", "Event-driven design"],
       },
       {
         number: "04",
-        theme: "AI for your block",
-        project: "Something useful for the school or society — your child picks the problem.",
-        skills: ["Problem framing", "MVP shipping"],
+        theme: "Problem framing",
+        learn:
+          "Identifying real problems in your child's environment. Scoring by impact and feasibility. Defining solution boundaries. Writing a one-paragraph project brief.",
+        skills: ["Problem framing", "Scoping"],
       },
       {
         number: "05",
-        theme: "First API call",
-        project: "A daily news brief from RSS feeds, summarised by AI, sent on WhatsApp.",
+        theme: "APIs and automation",
+        learn:
+          "What an API is. How AI services are accessed programmatically. Webhooks, scheduled jobs, and automation tools at a beginner level.",
         skills: ["APIs", "Automation"],
       },
       {
         number: "06",
-        theme: "Capstone + Expo",
-        project: "One build, polished and pitched at Flagship Expo Day.",
-        skills: ["Refinement", "Live demo"],
+        theme: "Showcase",
+        learn:
+          "Polishing a single build. Writing a one-page summary. Demoing live and answering panel questions.",
+        skills: ["Live demo", "Q&A"],
       },
     ],
   },
   {
     grade: "Class 8",
     stage: "Engineer",
-    tagline: "Systems thinking.",
+    tagline: "Inside the systems.",
     description:
       "Students stop treating AI as a black box. They learn the levers — prompts, retrieval, agents, vision — and how to compose them into real systems.",
-    months: [
+    modules: [
       {
         number: "01",
-        theme: "Prompts as code",
-        project: "A customer-support bot for a fictional product, with system prompts and guardrails.",
-        skills: ["System prompts", "Tokens", "Temperature"],
+        theme: "Inside an LLM",
+        learn:
+          "Tokens, context windows, temperature, top-p, stop sequences. System prompts. Cost and latency trade-offs. Reading API documentation.",
+        skills: ["LLM internals", "API literacy"],
       },
       {
         number: "02",
-        theme: "AI that knows your stuff",
-        project: "A chatbot trained on your child's own school notes (RAG from scratch).",
-        skills: ["Retrieval", "Embeddings", "Vector search"],
+        theme: "Retrieval-augmented generation",
+        learn:
+          "Why models forget. Embeddings as a concept. Vector databases at a beginner level. Chunking, retrieval, and generation. When RAG is the right tool.",
+        skills: ["RAG", "Embeddings"],
       },
       {
         number: "03",
-        theme: "Things that move",
-        project: "An obstacle-avoiding rover — sensors in, motor commands out.",
-        skills: ["Robotics", "Sensors", "Decisioning"],
+        theme: "Robotics and decisioning",
+        learn:
+          "From sensor reading to decision to motor command. State machines. Control logic. Real-time vs batch processing.",
+        skills: ["Robotics", "State machines"],
       },
       {
         number: "04",
-        theme: "Agents working together",
-        project: "A research-and-write pipeline: one agent searches, one drafts, one edits.",
-        skills: ["Agents", "Tool use", "Orchestration"],
+        theme: "Agents and tool use",
+        learn:
+          "What an agent is vs a chatbot. Function calling. Planning, looping, and multi-agent collaboration. The limits of today's agents.",
+        skills: ["Agents", "Tool use"],
       },
       {
         number: "05",
-        theme: "Eyes that recognise",
-        project: "A doorbell that knows family from strangers using face detection.",
-        skills: ["Computer vision", "Face recognition"],
+        theme: "Computer vision",
+        learn:
+          "How vision models work conceptually. Classification vs detection vs segmentation. Working with pre-trained vision models. Privacy considerations.",
+        skills: ["Computer vision", "Privacy ethics"],
       },
       {
         number: "06",
-        theme: "Capstone + Expo",
-        project: "One engineered system, end to end, presented to a guest panel.",
-        skills: ["Architecture", "Pitch"],
+        theme: "Systems showcase",
+        learn:
+          "Whiteboarding the system architecture. Walking through trade-offs. Presenting the build to a guest panel.",
+        skills: ["Architecture", "Technical communication"],
       },
     ],
   },
   {
     grade: "Class 9",
     stage: "Innovate",
-    tagline: "Product thinking.",
+    tagline: "Product and research thinking.",
     description:
-      "Students stop building because the syllabus said so. They scope real problems, ship MVPs, find users, and learn what 'good' looks like in market.",
-    months: [
+      "Students stop building because the syllabus said so. They learn to scope real problems, ship MVPs, find users, and judge their own work like a real founder.",
+    modules: [
       {
         number: "01",
-        theme: "Finding the right problem",
-        project: "User interviews, scoping, a written problem brief — like a real founder.",
-        skills: ["Interviews", "Scoping", "Prioritisation"],
+        theme: "Problem discovery",
+        learn:
+          "User interviewing techniques. Identifying genuine pain. Telling nice-to-have from must-have. Writing problem statements that survive scrutiny.",
+        skills: ["User research", "Problem statements"],
       },
       {
         number: "02",
-        theme: "First product MVP",
-        project: "Build the smallest version that proves the idea is worth building.",
+        theme: "MVPs and feedback loops",
+        learn:
+          "Defining minimum viability. Build-measure-learn cycles. Designing the smallest meaningful test. Reading qualitative feedback honestly.",
         skills: ["MVP", "Feedback loops"],
       },
       {
         number: "03",
-        theme: "Train your own model",
-        project: "Fine-tune a small model on your child's chosen domain — poetry, cricket stats, regional cuisine, anything.",
-        skills: ["Fine-tuning", "Datasets", "Evaluation"],
+        theme: "Training and fine-tuning",
+        learn:
+          "When fine-tuning beats prompting. Datasets, labelling, train/val/test splits. Fine-tuning small open models. Evaluation as engineering, not opinion.",
+        skills: ["Fine-tuning", "Evaluation"],
       },
       {
         number: "04",
         theme: "Embodied AI",
-        project: "A self-driving toy car or smart-bin sorter — vision + robotics + decisions.",
-        skills: ["Vision + robotics", "Real-time decisioning"],
+        learn:
+          "Combining vision, motion, and decisioning in one system. Latency, safety, and failure modes. Edge inference vs cloud inference.",
+        skills: ["Embodied systems", "Edge inference"],
       },
       {
         number: "05",
-        theme: "First 10 real users",
-        project: "Get the product into actual hands. Watch it break. Fix it.",
-        skills: ["Distribution", "Analytics", "Iteration"],
+        theme: "Distribution and analytics",
+        learn:
+          "Getting first users with no budget. Setting up basic analytics. Reading dashboards. Iterating on signal rather than opinion.",
+        skills: ["Distribution", "Analytics"],
       },
       {
         number: "06",
-        theme: "Final MVP + Expo pitch",
-        project: "A polished product with a real user story to tell on stage.",
+        theme: "Pitch day",
+        learn:
+          "Crafting a five-minute pitch. Leading with the user story, not the feature list. Handling tough questions. Visualising data simply.",
         skills: ["Pitching", "Storytelling"],
       },
     ],
@@ -244,45 +274,51 @@ const tracks: ClassTrack[] = [
   {
     grade: "Class 10",
     stage: "Launch",
-    tagline: "Public stakes.",
+    tagline: "Rigor, public stakes, portfolio.",
     description:
-      "A thesis project, built in public, shipped with engineering rigor and a launch post. Walks out with a portfolio recruiters and admissions can see.",
-    months: [
+      "A year-long thesis project, built in public, shipped with engineering rigor and a launch post. Walks out with a portfolio that recruiters and admissions can see.",
+    modules: [
       {
         number: "01",
-        theme: "Thesis project",
-        project: "Pick what your child wants to be known for by year-end. Scope with a senior mentor.",
-        skills: ["Vision", "Senior mentorship"],
+        theme: "Thesis and scope",
+        learn:
+          "Picking a year-long thesis. Defining success criteria. Risk assessment. Working with a senior mentor to scope realistically.",
+        skills: ["Vision", "Scoping"],
       },
       {
         number: "02",
         theme: "Engineering rigor",
-        project: "Train, fine-tune, evaluate — with benchmarks, not vibes.",
-        skills: ["Evaluation", "Benchmarks", "Reproducibility"],
+        learn:
+          "Version control fundamentals. Evaluation harnesses. A/B comparisons. Reproducibility. Benchmarks vs vibes-based evaluation.",
+        skills: ["Evaluation", "Reproducibility"],
       },
       {
         number: "03",
-        theme: "Build in public",
-        project: "An open repo, weekly devlog updates, a real audience watching.",
+        theme: "Building in public",
+        learn:
+          "Writing devlogs that compound. GitHub etiquette. Documentation and README writing. Building an audience from zero.",
         skills: ["Public building", "Documentation"],
       },
       {
         number: "04",
-        theme: "Real users, real research",
-        project: "50 users. Real interviews. Real iteration based on what you hear.",
-        skills: ["User research", "Iteration"],
+        theme: "User research at scale",
+        learn:
+          "Running structured interviews with fifty-plus users. Synthesising patterns. Avoiding confirmation bias. Iterating without churn.",
+        skills: ["User research", "Synthesis"],
       },
       {
         number: "05",
-        theme: "Launch + write-up",
-        project: "A public launch post and a polished portfolio page on a custom domain.",
-        skills: ["Writing", "Launch", "Polish"],
+        theme: "Launch craft",
+        learn:
+          "Writing a launch post that lands. Story structure. Choosing channels. Anticipating questions. Handling launch-day momentum.",
+        skills: ["Writing", "Launch craft"],
       },
       {
         number: "06",
-        theme: "Expo + portfolio handover",
-        project: "Final pitch on stage. Portfolio handover ready for college applications.",
-        skills: ["Pitching", "Portfolio"],
+        theme: "Portfolio and pitch",
+        learn:
+          "Building a portfolio site on a custom domain. Selecting which projects to feature. Crafting a self-introduction. Final pitch on stage.",
+        skills: ["Portfolio", "Self-introduction"],
       },
     ],
   },
@@ -297,12 +333,12 @@ export function Curriculum() {
       <div className="section-copy">
         <p className="section-kicker mb-4">Curriculum</p>
         <h2 className="section-heading mb-6">
-          A different 6-month build for <em>every class.</em>
+          A different 6-month syllabus for <em>every class.</em>
         </h2>
         <p className="section-body mb-4">
-          Each grade gets its own progression — six months, six themes, six
-          projects your child will actually ship. Pick a class to see what the
-          year looks like.
+          Each grade gets its own progression of concepts, methods, and skills —
+          built around how students at that age actually learn. Pick a class to
+          see the full year.
         </p>
         <p className="ui-body-sm mb-14" style={{ color: "#1335b8" }}>
           Designed and taught by IIT and IIM grads.
@@ -358,7 +394,7 @@ export function Curriculum() {
               background: "rgba(19, 53, 184, 0.08)",
             }}
           >
-            {active.grade} · 6-month track
+            {active.grade} · 6-month syllabus
           </span>
           <h3
             className="mt-6"
@@ -399,8 +435,8 @@ export function Curriculum() {
               See it for your child
             </p>
             <p className="ui-body-sm mb-5">
-              Want the full {active.grade} curriculum, walked through 1-on-1 by
-              a mentor? Book a 20-minute demo.
+              Want the full {active.grade} syllabus, walked through 1-on-1 by a
+              mentor? Book a 20-minute demo.
             </p>
             <a href="#book" className="ui-button">
               Book Free Demo →
@@ -413,7 +449,7 @@ export function Curriculum() {
           key={active.grade}
           role="tabpanel"
         >
-          {active.months.map((m, i) => (
+          {active.modules.map((m, i) => (
             <article
               key={m.number}
               className="ui-card animate-fade-rise relative flex flex-col gap-4 overflow-hidden rounded-[1.5rem] p-6"
@@ -453,7 +489,7 @@ export function Curriculum() {
                 >
                   {m.theme}
                 </h4>
-                <p className="ui-body-sm mt-2.5">{m.project}</p>
+                <p className="ui-body-sm mt-2.5">{m.learn}</p>
               </div>
 
               <div className="mt-auto flex flex-wrap gap-1.5 pt-2">
