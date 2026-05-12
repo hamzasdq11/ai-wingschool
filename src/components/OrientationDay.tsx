@@ -16,17 +16,36 @@ export function OrientationDay() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#1335b8] opacity-50" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-[#1335b8]" />
               </span>
-              Orientation Day · Cohort 12
+              Orientation Day · Now in Kanpur
             </div>
 
             <h2 className="section-heading mt-6 mb-5">
               Meet us in person. <em>25 May, Kanpur.</em>
             </h2>
 
-            <p className="section-body mb-8 max-w-xl">
+            <p className="section-body mb-6 max-w-xl">
               Walk through the curriculum, meet the IIT/IIM mentors, and see
               the embodied AI kits up close. Bring your child. We&apos;ll cover
-              everything Cohort 12 will build over the next six months.
+              everything the Kanpur cohort will build over the next six months.
+            </p>
+
+            <p
+              className="mb-8 max-w-xl"
+              style={{
+                fontFamily: "var(--font-body)",
+                fontSize: "0.92rem",
+                lineHeight: 1.55,
+                color: "#5a5a5a",
+              }}
+            >
+              Already taught in{" "}
+              <strong style={{ color: "#0a0a0a", fontWeight: 500 }}>
+                Delhi · Bengaluru · Hyderabad · Mumbai · Kolkata
+              </strong>
+              .{" "}
+              <span style={{ color: "#1335b8", fontWeight: 500 }}>
+                Kanpur joins this season — our first cohort here.
+              </span>
             </p>
 
             <div className="flex flex-wrap items-center gap-3">
@@ -101,7 +120,7 @@ export function OrientationDay() {
             </div>
 
             <p className="ui-caption mt-5 border-t border-black/8 pt-4">
-              Cohort 12 begins 2 June 2026.
+              Kanpur cohort begins 2 June 2026.
             </p>
           </div>
         </div>

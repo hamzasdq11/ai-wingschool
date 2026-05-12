@@ -1,6 +1,6 @@
 const stats = [
   { value: "200+", label: "Families enrolled" },
-  { value: "11", label: "Cohorts shipped" },
+  { value: "5", label: "Indian cities" },
   { value: "4.9/5", label: "Parent rating" },
   { value: "94%", label: "Renewal rate" },
 ];

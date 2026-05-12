@@ -55,7 +55,7 @@ export function StickyMobileCTA() {
           color: "rgba(15,15,15,0.55)",
         }}
       >
-        Cohort 12 · Apply by 22 May · 9 seats left
+        Now in Kanpur · Apply by 22 May · 9 seats left
       </div>
     </div>
   );
