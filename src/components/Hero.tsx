@@ -59,14 +59,12 @@ export function Hero() {
               color: "#0a0a0a",
             }}
           >
-            Every kid will{" "}
-            <span style={{ color: "#1335b8" }}>use</span> AI.
-            <br />
-            Yours will{" "}
+            Teenagers learning to{" "}
+            <span style={{ color: "#1335b8" }}>think</span> and{" "}
             <span className="display-script" style={{ fontSize: "1.12em" }}>
               build
             </span>{" "}
-            with it.
+            in the AI era.
           </h1>
 
           <p className="section-body animate-fade-rise-delay-2 mt-7 max-w-xl">
