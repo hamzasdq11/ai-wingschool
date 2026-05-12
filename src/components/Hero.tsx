@@ -29,8 +29,8 @@ export function Hero() {
         src={heroImage}
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-20 h-full w-full object-cover object-center"
-        style={{ opacity: 0.3 }}
+        className="pointer-events-none absolute inset-0 -z-20 h-full w-full object-cover"
+        style={{ opacity: 0.3, objectPosition: "center 20%" }}
       />
       <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-white/40 via-transparent to-white/60" />
 
