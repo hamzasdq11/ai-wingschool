@@ -1,7 +1,6 @@
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
 import { OrientationDay } from "./components/OrientationDay";
-import { Mentors } from "./components/Mentors";
 import { Problem } from "./components/Problem";
 import { AIEra } from "./components/AIEra";
 import { HardwareKit } from "./components/HardwareKit";
@@ -33,7 +32,6 @@ function App() {
       <Divider />
       <OrientationDay />
       <Divider />
-      <Mentors />
       <Problem />
       <Divider />
       <AIEra />
