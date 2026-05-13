@@ -309,10 +309,10 @@ const tracks: ClassTrack[] = [
   },
   {
     grade: "Class 9",
-    stage: "Ship",
-    tagline: "Complete production-AI program for ages 14–15.",
+    stage: "Apply",
+    tagline: "Complete applied-AI program for ages 14–15.",
     description:
-      "A standalone six-month program in real AI engineering at production scale. Compressed foundations, then deployment, frontier specialization, generative AI, and an app shipped to real users with a public launch.",
+      "A standalone six-month program in serious applied AI engineering. Compressed foundations, then production-quality engineering, frontier specialization, generative AI, and an integrated capstone defended at Flagship Expo Day.",
     modules: [
       {
         number: "01",
@@ -325,12 +325,12 @@ const tracks: ClassTrack[] = [
       },
       {
         number: "02",
-        theme: "Production engineering",
+        theme: "Production-quality engineering",
         learn:
-          "Deploying AI properly. APIs, hosting (Vercel, Railway, Hugging Face Spaces). Latency, throughput, batching, caching. Cost optimization. Observability.",
+          "Engineering AI properly — APIs, hosting (Vercel, Railway, Hugging Face Spaces). Latency, throughput, batching, caching. Cost optimization. Observability and structured logging.",
         build:
-          "A polished AI app deployed at a public URL with proper monitoring, error handling, structured logging, and documented APIs.",
-        skills: ["Deployment", "Production AI"],
+          "A polished AI app deployed at a public URL with proper monitoring, error handling, structured logging, and documented APIs — engineered to production quality.",
+        skills: ["Deployment", "Production engineering"],
       },
       {
         number: "03",
@@ -352,29 +352,29 @@ const tracks: ClassTrack[] = [
       },
       {
         number: "05",
-        theme: "Building for real users",
+        theme: "Integrated systems",
         learn:
-          "Recruiting first users without a budget. Setting up analytics. Reading dashboards. Running structured user interviews. Iterating on signal, not opinion.",
+          "How serious AI systems combine multiple modalities and models. Architecture decisions and trade-offs. Reading and writing technical specifications. Refactoring for clarity.",
         build:
-          "A polished AI app with at least 25 real users, two iteration cycles based on actual usage data, and measurable improvement between v1 and v3.",
-        skills: ["User research", "Iteration"],
+          "A capstone-prep integration combining vision, voice, RAG, and an agent into one cohesive system — engineered, not just functional.",
+        skills: ["System integration", "Architecture"],
       },
       {
         number: "06",
-        theme: "Public launch + Expo",
+        theme: "Capstone + Flagship Expo",
         learn:
-          "Public launch craft. Custom-domain portfolios. Writing a launch post that lands. Pitching to a guest founder panel. College-application essay craft.",
+          "Synthesizing the year into one defended capstone. Architecture defense. Technical writing. Pitching the work to a panel of senior mentors and a guest founder.",
         build:
-          "A coordinated public launch (LinkedIn, X, Product Hunt) + custom-domain portfolio + five-minute pitch on stage at Flagship Expo Day.",
-        skills: ["Launch craft", "Portfolio", "Pitching"],
+          "A polished Class 9 capstone deployed at a public URL, fully documented, defended on stage at Flagship Expo Day.",
+        skills: ["Capstone", "Defense", "Documentation"],
       },
     ],
     outcome: {
-      headline: "An AI engineer who ships polished apps that real people actually use.",
+      headline: "An applied AI engineer who builds polished, production-quality systems.",
       deliverables: [
         "Working command of the modern AI engineering stack — foundation models, RAG, agents, vision, voice, generative architectures, deployment",
-        "A polished app deployed at a public URL with twenty-five-plus real users, two iteration cycles, and a coordinated public launch",
-        "An internship-ready public portfolio of working systems — not screenshots, not demos, real software running at real URLs",
+        "A polished integrated capstone deployed at a public URL — monitoring, error handling, full technical documentation, defended on stage",
+        "A portfolio of working systems engineered to production quality — running software at real URLs, not screenshots",
       ],
     },
   },
@@ -383,7 +383,7 @@ const tracks: ClassTrack[] = [
     stage: "Frontier",
     tagline: "Complete frontier-AI program for ages 15–16.",
     description:
-      "A standalone six-month program at the frontier of AI in 2026 — multimodal, voice, generative — synthesized into one ambitious capstone, publicly launched and ready for college applications.",
+      "A standalone six-month program at the frontier of AI in 2026 — multimodal, voice, generative — synthesized into one ambitious capstone, defended at Flagship Expo Day and ready for college applications.",
     modules: [
       {
         number: "01",
@@ -423,29 +423,29 @@ const tracks: ClassTrack[] = [
       },
       {
         number: "05",
-        theme: "Capstone — build and iterate",
+        theme: "Capstone — design and build",
         learn:
-          "Synthesizing the year into one ambitious project. System design integrating multiple modalities. Production engineering at the right level. Iteration on real user feedback.",
+          "Synthesizing the year into one ambitious project. System design integrating multiple modalities. Engineering trade-offs at the right level. Iteration on technical quality and architectural clarity.",
         build:
-          "Their capstone deployed live at a public URL with at least 25 real users — refined across two measurable iterations based on actual usage.",
-        skills: ["System design", "Production AI", "User research"],
+          "A capstone deployed at a public URL — multimodal, technically substantial, polished across two engineering iterations.",
+        skills: ["System design", "Production engineering"],
       },
       {
         number: "06",
-        theme: "Launch + Portfolio + Flagship Expo",
+        theme: "Capstone defense + Flagship Expo",
         learn:
-          "Writing a launch post that lands. Custom-domain portfolios. Pitching to a guest founder panel. College-application essay craft.",
+          "Defending architecture and trade-off decisions to a panel. Custom-domain portfolios. Technical writing. Pitching the work. College-application essay craft.",
         build:
-          "Public launch + custom-domain portfolio (yourname.in) + five-minute pitch on stage at Flagship Expo Day — ready for college and internship applications.",
-        skills: ["Launch craft", "Portfolio", "Pitching"],
+          "A custom-domain portfolio (yourname.in) showcasing the capstone and prior work + a five-minute defense at Flagship Expo Day — ready for college and internship applications.",
+        skills: ["Defense", "Portfolio", "Pitching"],
       },
     ],
     outcome: {
       headline: "A frontier AI builder ready for college and what comes after.",
       deliverables: [
         "Mastery of the frontier AI techniques shipping in 2026 — multimodal vision-language models, real-time voice agents, diffusion-based generative models",
-        "A real shipped capstone deployed live, instrumented with real users, publicly launched, defended on stage",
-        "A custom-domain portfolio (yourname.in) and a five-minute pitch — built for college applications, internships, and every conversation that follows",
+        "A technically substantial capstone deployed at a public URL — multimodal, polished, fully documented, defended on stage at Flagship Expo Day",
+        "A custom-domain portfolio (yourname.in) and a five-minute pitch — ready for college applications, internships, and every conversation that follows",
       ],
     },
   },
