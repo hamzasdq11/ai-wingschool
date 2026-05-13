@@ -8,12 +8,18 @@ type Module = {
   skills: string[];
 };
 
+type Outcome = {
+  headline: string;
+  deliverables: string[];
+};
+
 type ClassTrack = {
   grade: string;
   stage: string;
   tagline: string;
   description: string;
   modules: Module[];
+  outcome: Outcome;
 };
 
 const tracks: ClassTrack[] = [
@@ -79,6 +85,14 @@ const tracks: ClassTrack[] = [
         skills: ["AI ethics", "Storytelling"],
       },
     ],
+    outcome: {
+      headline: "An AI-literate child — not just an AI user.",
+      deliverables: [
+        "Fluency in the vocabulary of modern AI — tokens, hallucinations, training, bias — they can hold their own in any AI conversation",
+        "Five shipped projects: a binary message decoder, an AI history walkthrough, a working expert-system chatbot, a custom AI persona, and an AI-edited documentary",
+        "The conceptual foundation every later year compounds on — they will never look at ChatGPT the same way again",
+      ],
+    },
   },
   {
     grade: "Class 6",
@@ -142,6 +156,14 @@ const tracks: ClassTrack[] = [
         skills: ["Train/test split", "Public demo"],
       },
     ],
+    outcome: {
+      headline: "A student fluent in the classical AI every engineer still uses.",
+      deliverables: [
+        "The algorithms behind every modern AI system — search (BFS, DFS, A*), game trees with minimax, propositional logic, Bayesian inference, optimization",
+        "Five shipped projects, including a tic-tac-toe AI that never loses, a Naive Bayes spam classifier trained on real data, and a genetic algorithm that evolves a Mario-style level",
+        "A computer-science foundation that compounds — every AI year after this sits on top of these algorithms",
+      ],
+    },
   },
   {
     grade: "Class 7",
@@ -205,6 +227,14 @@ const tracks: ClassTrack[] = [
         skills: ["Q-learning", "MDPs", "RL demo"],
       },
     ],
+    outcome: {
+      headline: "A working machine-learning engineer at age 13.",
+      deliverables: [
+        "The full ML toolkit from first principles — regression, classification, decision trees, clustering, PCA, and reinforcement learning",
+        "Six shipped projects deployed live, including a city-specific house-price predictor, a music-mood clusterer of their own Spotify history, an end-to-end Streamlit app, and an RL agent that plays Snake",
+        "Working fluency in the same Python ML stack used at every Indian AI startup — NumPy, Pandas, scikit-learn, Streamlit",
+      ],
+    },
   },
   {
     grade: "Class 8",
@@ -268,6 +298,14 @@ const tracks: ClassTrack[] = [
         skills: ["Transformers", "GPT", "Self-attention"],
       },
     ],
+    outcome: {
+      headline: "A deep-learning practitioner who can read papers and build from scratch.",
+      deliverables: [
+        "Real understanding of how modern AI works — neural nets, backpropagation, CNNs, RNNs, embeddings, and the transformer architecture",
+        "Six shipped deep-learning projects, including a NumPy-only neural net, an MNIST classifier, an Indian street-food CNN, and a miniature GPT trained on their own writing",
+        "The ability to open 'Attention Is All You Need' and actually understand what it says — a skill most CS undergraduates struggle with",
+      ],
+    },
   },
   {
     grade: "Class 9",
@@ -331,6 +369,14 @@ const tracks: ClassTrack[] = [
         skills: ["ROS", "SLAM", "Robotics"],
       },
     ],
+    outcome: {
+      headline: "A production AI engineer with a portfolio that competes with college students.",
+      deliverables: [
+        "The skills modern AI engineers actually ship with — fine-tuning with LoRA, RAG over vector databases, agents with tool use, vision pipelines, RLHF, and robotics",
+        "Six shipped production-grade projects, including a fine-tuned Hugging Face model, a school WhatsApp RAG bot, a movie-booking agent, and a self-driving cardboard car",
+        "An internship-ready public portfolio of working systems — not screenshots, not demos, real software running at real URLs",
+      ],
+    },
   },
   {
     grade: "Class 10",
@@ -394,6 +440,14 @@ const tracks: ClassTrack[] = [
         skills: ["Portfolio", "Pitching"],
       },
     ],
+    outcome: {
+      headline: "A founder-track student with a launched product and a college-ready portfolio.",
+      deliverables: [
+        "A real launched thesis project with fifty-plus actual users, a public launch post, and measurable engagement",
+        "The full product-engineering arc walked end-to-end — scope, v1, production optimization, user research, public launch, portfolio handover",
+        "A custom-domain portfolio (yourname.in) that admissions committees and recruiters can actually open — proof of initiative no marksheet captures",
+      ],
+    },
   },
 ];
 
@@ -406,13 +460,13 @@ export function Curriculum() {
       <div className="section-copy">
         <p className="section-kicker mb-4">Curriculum</p>
         <h2 className="section-heading mb-6">
-          Real CS theory. <em>Real things they ship.</em>
+          Each year, a complete program. <em>Six years, a head start nothing else can match.</em>
         </h2>
         <p className="section-body mb-4">
-          Each month: a foundational concept drawn from the best of MIT,
-          Harvard, and Stanford open courseware — paired with a concrete
-          project your child actually builds, deploys, and can show you that
-          weekend.
+          Every grade is a self-contained six-month program with its own
+          outcome — your child walks away with real skills and shipped projects
+          even if they only do one year. Stay six, and the years compound into
+          something rare in any country, let alone India.
         </p>
         <p className="ui-body-sm mb-14" style={{ color: "#1335b8" }}>
           Designed and taught by IIT and IIM grads.
@@ -613,6 +667,84 @@ export function Curriculum() {
               </div>
             </article>
           ))}
+        </div>
+      </div>
+
+      <div
+        key={`${active.grade}-outcome`}
+        className="animate-fade-rise relative mt-12 overflow-hidden rounded-[2rem] border border-black/8 px-6 py-10 sm:px-10 sm:py-12 lg:px-14 lg:py-14"
+        style={{
+          background:
+            "radial-gradient(circle at 88% 12%, rgba(19,53,184,0.16), transparent 42%), radial-gradient(circle at 8% 88%, rgba(19,53,184,0.08), transparent 38%), linear-gradient(180deg, #ffffff 0%, #faf9f4 100%)",
+          boxShadow: "0 30px 60px -40px rgba(19,53,184,0.22)",
+        }}
+      >
+        <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start lg:gap-14">
+          <div>
+            <p className="ui-label" style={{ color: "#1335b8" }}>
+              After 6 months in {active.grade}
+            </p>
+            <h3
+              className="mt-4"
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "clamp(1.85rem, 3.6vw, 2.65rem)",
+                fontWeight: 400,
+                lineHeight: 1.08,
+                letterSpacing: "-0.04em",
+                color: "#0a0a0a",
+              }}
+            >
+              {active.outcome.headline}
+            </h3>
+            <p
+              className="mt-4 max-w-md"
+              style={{
+                fontFamily: "var(--font-body)",
+                fontSize: "0.95rem",
+                lineHeight: 1.6,
+                color: "#5a5a5a",
+              }}
+            >
+              A complete program in itself — your child can leave fluent after
+              one year. They almost never want to.
+            </p>
+          </div>
+
+          <ul className="flex flex-col gap-4">
+            {active.outcome.deliverables.map((d) => (
+              <li
+                key={d}
+                className="flex items-start gap-3"
+                style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: "0.98rem",
+                  lineHeight: 1.55,
+                  color: "#0a0a0a",
+                }}
+              >
+                <span
+                  className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full"
+                  style={{
+                    background: "rgba(19,53,184,0.10)",
+                    border: "1px solid rgba(19,53,184,0.22)",
+                  }}
+                  aria-hidden="true"
+                >
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M5 12l4 4L19 6"
+                      stroke="#1335b8"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+                <span>{d}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
