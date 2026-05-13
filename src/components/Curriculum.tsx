@@ -380,72 +380,72 @@ const tracks: ClassTrack[] = [
   },
   {
     grade: "Class 10",
-    stage: "Capstone & Launch",
-    tagline: "Build something real. Ship it to real users.",
+    stage: "Synthesis",
+    tagline: "Everything they've learned, applied at the frontier.",
     description:
-      "A year-long thesis project, built like a real product team would — designed, engineered, deployed, optimized, launched, and handed off as a portfolio recruiters and college admissions can see.",
+      "Three months of frontier AI — multimodal models, voice agents, generative architectures — then three months synthesizing six years of compounding skill into one ambitious capstone that actually ships.",
     modules: [
       {
         number: "01",
-        theme: "Choose a thesis",
+        theme: "Multimodal AI",
         learn:
-          "Scoping a real product. Defining success criteria. Identifying real users. Risk assessment. Working with a senior mentor to size the project realistically.",
+          "Vision-language models — CLIP, GPT-4V, Gemini, Llama 3.2 Vision. How vision and language are jointly embedded. Multimodal prompting. Visual reasoning benchmarks (MMMU, MathVista).",
         build:
-          "A written project brief — what they'll build, who it's for, what 'done' looks like — reviewed and signed off by an IIT/IIM mentor.",
-        skills: ["Scoping", "Product brief"],
+          "A real-time visual assistant — point a phone at anything (a math problem, a plant, a Hindi sign) and have it explain in their preferred language.",
+        skills: ["VLMs", "CLIP", "Multimodal"],
       },
       {
         number: "02",
-        theme: "Build the v1",
+        theme: "Voice AI and real-time agents",
         learn:
-          "System design. Choosing the right model for the task. Cost-aware engineering. Deploying via Vercel, Railway, or Hugging Face Spaces. Domains and HTTPS.",
+          "Whisper architecture. Real-time STT and TTS pipelines. Voice activity detection. Latency budgets for natural conversation. OpenAI Realtime API, ElevenLabs, Cartesia.",
         build:
-          "First fully working version of their thesis project, deployed live at a public URL their family and friends can actually visit and use.",
-        skills: ["System design", "Deployment"],
+          "A voice tutor for younger siblings — hears a math or science question read aloud and walks through the solution conversationally, in Hindi or English.",
+        skills: ["Whisper", "Real-time AI", "Voice agents"],
       },
       {
         number: "03",
-        theme: "Production engineering",
+        theme: "Generative architectures",
         learn:
-          "Latency, throughput, batching. Quantization and distillation. Deployment with vLLM and llama.cpp. Observability for AI systems. Cost optimization.",
+          "Diffusion models in depth — forward and reverse process, U-Net, latent diffusion. Stable Diffusion, FLUX. Video generation (Sora, Veo). Music generation (Suno, Udio).",
         build:
-          "Optimize their v1 — cut token costs by 50%, halve P95 latency, add proper monitoring. Real measurements before and after.",
-        skills: ["Production AI", "Optimization"],
+          "A custom image generator fine-tuned on a personal domain — their school's architecture, their city's signage, their family's photo style. Theirs to keep.",
+        skills: ["Diffusion models", "Latent diffusion", "Fine-tuning"],
       },
       {
         number: "04",
-        theme: "Real users, real iteration",
+        theme: "Capstone — scope and design",
         learn:
-          "Recruiting first users without a budget. Setting up analytics. Reading dashboards. Running structured interviews. Iterating on signal, not opinion.",
+          "Choosing a thesis problem worth twelve weeks. System design synthesizing prior-year skills. Risk assessment. Defining success criteria. Working with a senior IIT/IIM mentor.",
         build:
-          "Get 50 real users on their thesis project. Run interviews. Ship three measurable iterations based on what they hear.",
-        skills: ["User research", "Analytics"],
+          "A written thesis brief — problem, users, system architecture, success metrics — signed off by a senior mentor before a single line of code is written.",
+        skills: ["System design", "Scoping"],
       },
       {
         number: "05",
-        theme: "Public launch",
+        theme: "Capstone — build and iterate",
         learn:
-          "Writing a launch post that lands. Story structure. Choosing channels (Twitter, LinkedIn, Product Hunt). Anticipating questions. Handling momentum.",
+          "Integration architecture across vision, voice, language, and prior-year ML pipelines. Production-grade engineering at the right level. Latency, cost, observability. Iteration on real user feedback.",
         build:
-          "Public launch — a written launch post and a coordinated push across LinkedIn, X, and Product Hunt. Track real engagement and traffic.",
-        skills: ["Launch craft", "Writing"],
+          "Their capstone deployed live at a public URL with at least 25 real users — refined across two measurable iterations based on actual usage.",
+        skills: ["Production AI", "Integration", "User research"],
       },
       {
         number: "06",
-        theme: "Portfolio + Flagship Expo",
+        theme: "Launch + Portfolio + Flagship Expo",
         learn:
-          "Building a custom-domain portfolio. Selecting which projects to feature. Crafting a self-introduction. Pitching to a guest panel of founders.",
+          "Writing a launch post that lands. Custom-domain portfolios. Selecting which six-year projects to feature. Pitching to a guest founder panel. College-application essay craft.",
         build:
-          "A custom-domain portfolio (yourname.in) and a final five-minute pitch on stage — ready to attach to college and internship applications.",
-        skills: ["Portfolio", "Pitching"],
+          "Public launch + custom-domain portfolio (yourname.in) + a five-minute pitch on stage at Flagship Expo Day — ready to attach to college and internship applications.",
+        skills: ["Launch craft", "Portfolio", "Pitching"],
       },
     ],
     outcome: {
-      headline: "A founder-track student with a launched product and a college-ready portfolio.",
+      headline: "A frontier AI builder ready for college and what comes after.",
       deliverables: [
-        "A real launched thesis project with fifty-plus actual users, a public launch post, and measurable engagement",
-        "The full product-engineering arc walked end-to-end — scope, v1, production optimization, user research, public launch, portfolio handover",
-        "A custom-domain portfolio (yourname.in) that admissions committees and recruiters can actually open — proof of initiative no marksheet captures",
+        "Mastery of the frontier AI techniques shipping in 2026 — multimodal vision-language models, real-time voice agents, diffusion-based generative models",
+        "A real shipped capstone that synthesizes six years of AI training — deployed live, instrumented with real users, publicly launched, defended on stage",
+        "A custom-domain portfolio (yourname.in) and a five-minute pitch — built for college applications, internships, and every conversation that follows",
       ],
     },
   },
