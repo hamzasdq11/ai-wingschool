@@ -28,7 +28,7 @@ const tracks: ClassTrack[] = [
     stage: "Discover",
     tagline: "Complete AI program for ages 10–11.",
     description:
-      "A complete self-contained AI program — six months from 'what is AI?' to a child who has prompted, generated, classified, and built their own working AI agent. No prior knowledge needed, no prior class required. Five shipped projects.",
+      "A complete first AI program — six months from 'what is AI?' to a child who has prompted, generated, classified, and built their own working AI agent. Five shipped projects.",
     modules: [
       {
         number: "01",
@@ -99,7 +99,7 @@ const tracks: ClassTrack[] = [
     stage: "Explore",
     tagline: "Complete AI program for ages 11–12.",
     description:
-      "A complete standalone six-month program covering modern AI — careful prompting, AI that sees, AI that hears and speaks, AI agents that take actions, and training your own first machine-learning models. No prior class required. Six shipped projects, ending in a defended capstone.",
+      "A complete six-month program covering modern AI — careful prompting, AI that sees, AI that hears and speaks, AI agents that take actions, and training your own first machine-learning models. Six shipped projects, ending in a defended capstone.",
     modules: [
       {
         number: "01",
@@ -170,7 +170,7 @@ const tracks: ClassTrack[] = [
     stage: "Build",
     tagline: "Complete AI engineering program for ages 12–13.",
     description:
-      "A complete standalone six-month program in real AI engineering with Python — first principles to deployed app. Covers machine learning, foundation models, RAG, agents, and computer vision. No prior class required. Six projects, all live at real URLs.",
+      "A complete six-month program in real AI engineering with Python — first principles to deployed app. Covers machine learning, foundation models, RAG, agents, and computer vision. Six projects, all live at real URLs.",
     modules: [
       {
         number: "01",
@@ -241,7 +241,7 @@ const tracks: ClassTrack[] = [
     stage: "Engineer",
     tagline: "Complete deep-learning program for ages 13–14.",
     description:
-      "A complete standalone six-month program at the technical level of MIT 6.S191 and Karpathy's 'Zero to Hero' — perceptrons to transformers, built from scratch in NumPy and used in production. Starts from the simplest possible AI. No prior class required.",
+      "A complete six-month program at the technical level of MIT 6.S191 and Karpathy's 'Zero to Hero' — perceptrons to transformers, built from scratch in NumPy and used in production.",
     modules: [
       {
         number: "01",
@@ -312,7 +312,7 @@ const tracks: ClassTrack[] = [
     stage: "Apply",
     tagline: "Complete applied-AI program for ages 14–15.",
     description:
-      "A complete standalone six-month program in serious applied AI engineering. Starts with compressed foundations from scratch — then production-quality engineering, frontier specialization, generative AI, and an integrated capstone defended at Flagship Expo Day. No prior class required.",
+      "A complete six-month program in serious applied AI engineering. Compressed foundations, then production-quality engineering, frontier specialization, generative AI, and an integrated capstone defended at Flagship Expo Day.",
     modules: [
       {
         number: "01",
@@ -383,7 +383,7 @@ const tracks: ClassTrack[] = [
     stage: "Frontier",
     tagline: "Complete frontier-AI program for ages 15–16.",
     description:
-      "A complete standalone six-month program at the frontier of AI in 2026. Starts with compressed foundations from scratch — then multimodal, voice, and generative AI, synthesized into one ambitious capstone defended at Flagship Expo Day and ready for college applications. No prior class required.",
+      "A complete six-month program at the frontier of AI in 2026 — multimodal, voice, generative — synthesized into one ambitious capstone, defended at Flagship Expo Day and ready for college applications.",
     modules: [
       {
         number: "01",
@@ -522,7 +522,7 @@ export function Curriculum() {
               background: "rgba(19, 53, 184, 0.08)",
             }}
           >
-            {active.grade} · Standalone 6-month program
+            {active.grade} · 6-month program
           </span>
           <h3
             className="mt-6"
