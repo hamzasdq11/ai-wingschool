@@ -1,75 +1,174 @@
 import { Logo } from "./Logo";
+import bannerBottom from "../assets/BannerBottom.jpg";
+
+const programLinks = [
+  { label: "Projects", href: "#projects" },
+  { label: "Pricing", href: "#pricing" },
+  { label: "FAQ", href: "#faq" },
+];
+
+const connectLinks = [
+  { label: "Instagram", href: "#" },
+  { label: "LinkedIn", href: "#" },
+  { label: "WhatsApp", href: "https://wa.me/" },
+];
+
+const legalLinks = [
+  { label: "Privacy", href: "#" },
+  { label: "Terms", href: "#" },
+];
 
 export function Footer() {
   return (
-    <footer className="relative z-10 px-6 py-14">
-      <div className="mx-auto max-w-6xl rounded-[2rem] border border-black/8 bg-white px-6 py-10 sm:px-8 lg:px-10">
-        <div className="flex flex-col items-start justify-between gap-10 md:flex-row">
+    <footer
+      className="relative z-10 mt-20 overflow-hidden"
+      style={{
+        backgroundImage: `url(${bannerBottom})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center calc(50% - 2cm)",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      <div
+        aria-hidden
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(8,12,40,0.50) 0%, rgba(8,12,40,0.88) 60%, rgba(8,12,40,0.94) 100%)",
+        }}
+      />
+
+      <div className="relative mx-auto max-w-6xl px-6 py-20 sm:px-8 lg:px-10">
+        <div className="flex flex-col gap-12 md:flex-row md:items-start md:justify-between">
           <div className="max-w-sm">
-            <Logo />
+            <Logo variant="light" />
             <p
-              className="ui-body-sm mt-4"
-              style={{ color: "#4a4a4a" }}
+              className="mt-5"
+              style={{
+                fontFamily: "var(--font-body)",
+                fontSize: "0.95rem",
+                lineHeight: 1.6,
+                color: "rgba(255,255,255,0.72)",
+              }}
             >
-              AI literacy for the next generation. Built in India, for Indian
-              students.
+              AI literacy for the next generation. Built in India, for the
+              students who&apos;ll define the AI era.
             </p>
           </div>
 
-          <div className="flex flex-col gap-10 sm:flex-row sm:gap-16">
+          <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 sm:gap-14">
+            <FooterColumn label="Program" links={programLinks} />
+            <FooterColumn label="Connect" links={connectLinks} />
             <div className="flex flex-col gap-3">
-              <span className="ui-label">Program</span>
-              {[
-                { label: "Curriculum", href: "#curriculum" },
-                { label: "Projects", href: "#projects" },
-                { label: "Pricing", href: "#pricing" },
-                { label: "For Schools", href: "#for-schools" },
-              ].map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  className="ui-body-sm"
-                  style={{ color: "#0a0a0a", textDecoration: "none" }}
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
-
-            <div className="flex flex-col gap-3">
-              <span className="ui-label">Connect</span>
-              {["Instagram", "LinkedIn", "WhatsApp", "Email"].map((link) => (
-                <a
-                  key={link}
-                  href="#"
-                  className="ui-body-sm"
-                  style={{ color: "#0a0a0a", textDecoration: "none" }}
-                >
-                  {link}
-                </a>
-              ))}
+              <FooterLabel>Reach us</FooterLabel>
+              <a
+                href="mailto:hello@aiwingschool.com"
+                className="transition-opacity hover:opacity-100"
+                style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: "0.95rem",
+                  color: "rgba(255,255,255,0.88)",
+                  textDecoration: "none",
+                  opacity: 0.85,
+                }}
+              >
+                hello@aiwingschool.com
+              </a>
+              <p
+                style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: "0.85rem",
+                  color: "rgba(255,255,255,0.6)",
+                  lineHeight: 1.5,
+                }}
+              >
+                The Landmark Towers
+                <br />
+                Civil Lines, Kanpur
+              </p>
             </div>
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-black/8 pt-6 sm:flex-row sm:items-center">
-          <span className="ui-caption">
-            &copy; 2026 AI Wingschool. All rights reserved.
+        <div
+          className="mt-16 flex flex-col gap-4 border-t pt-6 sm:flex-row sm:items-center sm:justify-between"
+          style={{ borderColor: "rgba(255,255,255,0.12)" }}
+        >
+          <span
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: "0.78rem",
+              color: "rgba(255,255,255,0.55)",
+            }}
+          >
+            © 2026 AI Wingschool. All rights reserved.
           </span>
           <div className="flex gap-6">
-            {["Privacy", "Terms"].map((link) => (
+            {legalLinks.map((link) => (
               <a
-                key={link}
-                href="#"
-                className="ui-caption"
-                style={{ textDecoration: "none" }}
+                key={link.label}
+                href={link.href}
+                style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: "0.78rem",
+                  color: "rgba(255,255,255,0.55)",
+                  textDecoration: "none",
+                }}
               >
-                {link}
+                {link.label}
               </a>
             ))}
           </div>
         </div>
       </div>
     </footer>
+  );
+}
+
+function FooterColumn({
+  label,
+  links,
+}: {
+  label: string;
+  links: { label: string; href: string }[];
+}) {
+  return (
+    <div className="flex flex-col gap-3">
+      <FooterLabel>{label}</FooterLabel>
+      {links.map((link) => (
+        <a
+          key={link.label}
+          href={link.href}
+          target={link.href.startsWith("http") ? "_blank" : undefined}
+          rel={link.href.startsWith("http") ? "noreferrer" : undefined}
+          className="transition-opacity"
+          style={{
+            fontFamily: "var(--font-body)",
+            fontSize: "0.95rem",
+            color: "rgba(255,255,255,0.85)",
+            textDecoration: "none",
+          }}
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+  );
+}
+
+function FooterLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <span
+      style={{
+        fontFamily: "var(--font-body)",
+        fontSize: "0.68rem",
+        fontWeight: 500,
+        letterSpacing: "0.2em",
+        textTransform: "uppercase",
+        color: "rgba(255,255,255,0.45)",
+      }}
+    >
+      {children}
+    </span>
   );
 }
