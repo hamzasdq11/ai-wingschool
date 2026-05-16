@@ -3,8 +3,7 @@ import { useState } from "react";
 type Module = {
   number: string;
   theme: string;
-  learn: string;
-  build: string;
+  summary: string;
   skills: string[];
 };
 
@@ -33,55 +32,43 @@ const tracks: ClassTrack[] = [
       {
         number: "01",
         theme: "First contact with AI",
-        learn:
-          "What AI is. The three things AI does — predict, generate, decide. Where AI shows up in their day. Safe-use rules. The vocabulary of modern AI: model, prompt, training, hallucination.",
-        build:
-          "A 'show me the AI in my day' presentation — they document AI in YouTube, Alexa, Google Maps, autocorrect, and photo cleanup, with screenshots and explanations.",
+        summary:
+          "What AI is, the three things it does — predict, generate, decide — and where it shows up in their day. They learn the vocabulary and safe-use habits to engage with modern AI deliberately, exploring real tools hands-on.",
         skills: ["AI literacy", "Vocabulary"],
       },
       {
         number: "02",
         theme: "Talking to AI well",
-        learn:
-          "What a prompt is. Why phrasing changes the answer. Asking follow-up questions. Spotting when AI is making things up. Designing personas with system prompts.",
-        build:
-          "A custom historical-figure chatbot — Akbar, Kalpana Chawla, or Tagore — crafted with a system prompt that makes them feel real to talk to.",
+        summary:
+          "What a prompt is, why phrasing changes the answer, and how to spot when AI is making things up. Hands-on, they design AI personas with system prompts and refine them until the conversations feel real.",
         skills: ["Prompting", "Personas"],
       },
       {
         number: "03",
         theme: "AI that creates",
-        learn:
-          "How generative AI makes images, music, and voice. Text-to-image, text-to-music, voice cloning. Ethics of AI-generated content.",
-        build:
-          "An illustrated short story — they write the words, AI illustrates each scene, and AI narrates it in their own cloned voice.",
+        summary:
+          "How generative AI makes images, music, and voice — and the ethics that come with these tools. Hands-on, they combine text-to-image, voice cloning, and narrative into a multi-modal creation only they could have made.",
         skills: ["Generative AI", "Multimodal"],
       },
       {
         number: "04",
         theme: "AI that recognizes",
-        learn:
-          "How a model 'knows' what's in a photo. Pre-trained vision models. Why some classifications fail. Bias in training data, with concrete examples.",
-        build:
-          "A bird identifier trained on photos taken in their colony — recognizes the actual birds at their feeder, not just generic species.",
+        summary:
+          "How a model 'sees' a photo, why some classifications fail, and how bias creeps into training data. Hands-on, they build and stress-test an image classifier on photos they collect themselves.",
         skills: ["Computer vision", "Datasets"],
       },
       {
         number: "05",
         theme: "AI that acts",
-        learn:
-          "What an AI agent is — and how it differs from a chatbot. Tools the AI can use to take actions. Safety boundaries for what an agent should and shouldn't do.",
-        build:
-          "A homework helper agent — reads a textbook chapter PDF, summarizes it, generates flashcards, and quizzes the student until they know it cold.",
+        summary:
+          "What an AI agent is, how it differs from a chatbot, the tools it can use, and the safety boundaries that matter. Hands-on, they wire up an agent that takes real actions end-to-end on a meaningful task.",
         skills: ["Agents", "Tool use"],
       },
       {
         number: "06",
         theme: "Capstone + Showcase",
-        learn:
-          "Choosing one project to polish. Structuring a three-minute talk. Stage skills. Answering audience questions clearly.",
-        build:
-          "A polished version of one project from the year, presented on stage at Flagship Expo Day to parents, mentors, and a guest founder panel.",
+        summary:
+          "Choosing one project worth polishing, structuring a three-minute talk, stage skills, and handling audience questions. Hands-on, they present at Flagship Expo Day to parents, mentors, and a guest founder.",
         skills: ["Polish", "Presentation"],
       },
     ],
@@ -89,7 +76,7 @@ const tracks: ClassTrack[] = [
       headline: "An AI-literate ten-year-old who's built five real AI things themselves.",
       deliverables: [
         "A complete mental model of modern AI — what it is, how it works, what it can and can't do",
-        "Five shipped projects: a custom chatbot persona, an AI-illustrated and narrated story, a bird identifier trained on local photos, a homework agent, and a polished capstone",
+        "Five shipped projects spanning prompting, generative AI, vision, agents, and a polished capstone — built and presented by the child themselves",
         "Real fluency to engage with AI seriously — not as a user, but as a builder",
       ],
     },
@@ -104,55 +91,43 @@ const tracks: ClassTrack[] = [
       {
         number: "01",
         theme: "How AI actually works",
-        learn:
-          "Training vs inference at a beginner level. Data → patterns → predictions. The three families: rules-based AI, machine learning, deep learning. Where today's AI sits.",
-        build:
-          "A side-by-side documentation — try a 1960s-style rule-based bot, a simple ML demo, and ChatGPT on the same task. Write up what changed and why.",
+        summary:
+          "Training vs inference, and the three families — rules-based AI, machine learning, deep learning — and where today's AI sits. Hands-on, they compare older and modern approaches on the same problem and articulate what changed.",
         skills: ["AI taxonomy", "Field literacy"],
       },
       {
         number: "02",
         theme: "Prompts as a programming language",
-        learn:
-          "System vs user messages. Few-shot examples. Constraints, formatting, chain-of-thought reasoning. Tool use. Iterating prompts like code.",
-        build:
-          "A multi-step research assistant — searches sources on any topic, drafts a summary, critiques itself, and revises. Used for actual school assignments.",
+        summary:
+          "System vs user messages, few-shot examples, constraints, chain-of-thought reasoning, and tool use. Hands-on, they iterate multi-step AI workflows like code and use them for real schoolwork.",
         skills: ["Prompt engineering", "Multi-step prompting"],
       },
       {
         number: "03",
         theme: "Vision AI",
-        learn:
-          "How images become numbers. Image classification with pre-trained models. Object detection. Vision-language models (CLIP, GPT-4V) at intuition level.",
-        build:
-          "A waste-sorting helper — point a phone camera at any item and it labels it as recyclable, compost, or landfill, with confidence scores.",
+        summary:
+          "How images become numbers, image classification with pre-trained models, object detection, and vision-language models at intuition level. Hands-on, they apply vision AI to a real-world problem and stress-test it.",
         skills: ["Vision", "Classification"],
       },
       {
         number: "04",
         theme: "Voice AI",
-        learn:
-          "Speech-to-text and text-to-speech. Multilingual voice models. Voice agents and real-time conversation. Latency budgets for voice.",
-        build:
-          "A voice-controlled bedroom assistant — controls smart lights, plays study music, sets timers — in Hindi or English.",
+        summary:
+          "Speech-to-text and text-to-speech, multilingual voice models, voice agents, and the latency budgets that make real-time conversation feel real. Hands-on, they design and ship a multilingual voice assistant.",
         skills: ["Voice AI", "Multilingual"],
       },
       {
         number: "05",
         theme: "Agents + first ML",
-        learn:
-          "Function calling and the ReAct pattern. Plus: supervised vs unsupervised learning. Train/test split. Overfitting visualized. Reading a confusion matrix.",
-        build:
-          "An agent that books a movie ticket end-to-end (showtimes, seats, holds reservation), plus a tiny image classifier they train themselves.",
+        summary:
+          "Function calling and the ReAct pattern, plus supervised vs unsupervised learning, train/test splits, overfitting, and reading a confusion matrix. Hands-on, they build a working agent and train their first machine-learning model end-to-end.",
         skills: ["Agents", "ML basics"],
       },
       {
         number: "06",
         theme: "Capstone + Showcase",
-        learn:
-          "Choosing a topic worth defending. Structuring a five-minute talk. Designing a single visual aid. Defending design choices to a panel.",
-        build:
-          "A Class 6 capstone — student's choice from the year — presented and defended on stage at Flagship Expo Day.",
+        summary:
+          "Choosing a topic worth defending, structuring a five-minute talk, designing a single visual aid, and defending design choices to a panel. Hands-on, they present and defend their Class 6 capstone at Flagship Expo Day.",
         skills: ["Demo", "Defense"],
       },
     ],
@@ -175,55 +150,43 @@ const tracks: ClassTrack[] = [
       {
         number: "01",
         theme: "AI from first principles",
-        learn:
-          "How neural networks work conceptually. The training loop. Why data quality matters. Reading benchmarks. Choosing models. Vocabulary at engineer level.",
-        build:
-          "A NumPy single-neuron classifier that learns AND, OR, and (failing on) XOR — they watch the weights update live and discover why one neuron isn't enough.",
+        summary:
+          "How neural networks work conceptually, the training loop, why data quality matters, reading benchmarks, and choosing models. Hands-on, they write their first neural network from scratch and watch it learn live.",
         skills: ["Neural intuition", "NumPy"],
       },
       {
         number: "02",
         theme: "Real ML with Python",
-        learn:
-          "Supervised learning. Linear and logistic regression, decision trees. Train/test/validation. Cross-validation. The full scikit-learn workflow.",
-        build:
-          "A house-price predictor for their own city using real MagicBricks listings — deployed as a Streamlit app anyone can visit and try.",
+        summary:
+          "Supervised learning — linear and logistic regression, decision trees — with proper train/test/validation across the full scikit-learn workflow. Hands-on, they take a real-world dataset and ship a deployed prediction app anyone can visit.",
         skills: ["scikit-learn", "Streamlit"],
       },
       {
         number: "03",
         theme: "Modern AI systems",
-        learn:
-          "Foundation models — GPT, Claude, Gemini, Llama. Prompting at scale. Fine-tuning intuition. Cost economics. Tokens, context, latency.",
-        build:
-          "A fine-tuned model that writes school assignment intros in their teacher's marking style — shipped publicly via Hugging Face.",
+        summary:
+          "Foundation models — GPT, Claude, Gemini, Llama — and the economics around them: prompting at scale, fine-tuning intuition, tokens, context, latency, cost. Hands-on, they customize and publicly ship a fine-tuned model of their own.",
         skills: ["Foundation models", "Hugging Face"],
       },
       {
         number: "04",
         theme: "RAG and agents",
-        learn:
-          "Why models forget. Embeddings, vector databases, chunking strategies. Function calling and the ReAct pattern. Multi-step agent workflows.",
-        build:
-          "A school RAG bot — students ask 'when's the next exam?' on WhatsApp and it answers from every circular the school has sent.",
+        summary:
+          "Why models forget, embeddings and vector databases, chunking strategies, function calling, the ReAct pattern, and multi-step agent workflows. Hands-on, they build an AI system that grounds answers in real documents and takes actions on the user's behalf.",
         skills: ["RAG", "Vector DBs", "Agents"],
       },
       {
         number: "05",
         theme: "Computer vision + multimodal",
-        learn:
-          "CNNs at intuition level. Vision-language models (CLIP, GPT-4V). Object detection (YOLO), segmentation, image generation.",
-        build:
-          "A wildlife counter for their colony — a phone-cam set on the balcony identifies and counts every bird that visits the feeder.",
+        summary:
+          "CNNs at intuition level, vision-language models, object detection, segmentation, and image generation. Hands-on, they build a working vision system on a problem from their own life.",
         skills: ["CNNs", "VLMs"],
       },
       {
         number: "06",
         theme: "Capstone + Showcase",
-        learn:
-          "System design synthesizing the year. Defending architecture choices. Pitching to a panel of mentors and a guest founder.",
-        build:
-          "An end-to-end Class 7 capstone deployed live at a public URL, defended on stage at Flagship Expo Day.",
+        summary:
+          "System design synthesizing the year, defending architecture choices, and pitching to a panel. Hands-on, they ship a Class 7 capstone live at a public URL and defend it on stage at Flagship Expo Day.",
         skills: ["System design", "Demo"],
       },
     ],
@@ -231,7 +194,7 @@ const tracks: ClassTrack[] = [
       headline: "A working AI engineer at age 13 who deploys real apps at real URLs.",
       deliverables: [
         "Working understanding of neural networks, foundation models, RAG, agents, and computer vision — written in code, not slides",
-        "Six shipped projects deployed live, including a city-specific price predictor, a fine-tuned model on Hugging Face, a school WhatsApp RAG bot, and a wildlife counter",
+        "Six shipped projects deployed live, spanning classical ML, foundation models, RAG, agents, and computer vision — each engineered end-to-end",
         "Fluency in the modern Python AI stack — NumPy, scikit-learn, Hugging Face, Streamlit — the same one used at every Indian AI startup",
       ],
     },
@@ -246,55 +209,43 @@ const tracks: ClassTrack[] = [
       {
         number: "01",
         theme: "From perceptron to neural network",
-        learn:
-          "The perceptron (Rosenblatt 1958). Multi-layer perceptrons. Activation functions (ReLU, sigmoid, tanh, softmax). Forward propagation. Universal approximation theorem.",
-        build:
-          "A multi-layer perceptron from scratch in NumPy that classifies their own handwritten digits — every line of code their own.",
+        summary:
+          "The perceptron, multi-layer perceptrons, activation functions, forward propagation, and the universal approximation theorem. Hands-on, they implement a neural network from scratch — every line of code their own.",
         skills: ["MLPs", "NumPy NN"],
       },
       {
         number: "02",
         theme: "Backprop and training",
-        learn:
-          "Loss functions (cross-entropy, MSE). Gradient descent visualized. Backpropagation derived step by step (Karpathy + 3Blue1Brown approach). SGD vs Adam.",
-        build:
-          "Training their MNIST classifier with proper backpropagation — they watch accuracy climb across epochs and tune learning rate by hand.",
+        summary:
+          "Loss functions, gradient descent visualized, backpropagation derived step by step, and the difference between SGD and Adam. Hands-on, they train their network with their own backprop and tune it by hand until it works.",
         skills: ["Backpropagation", "Optimizers"],
       },
       {
         number: "03",
         theme: "CNNs and computer vision",
-        learn:
-          "The convolution operation. Pooling layers. Translation invariance. The historical arc — LeNet → AlexNet (2012, the ImageNet moment) → ResNet. Modern VLMs.",
-        build:
-          "A CNN that recognizes Indian street food from photos — students collect their own dataset around their neighborhood and train it from scratch.",
+        summary:
+          "The convolution operation, pooling layers, translation invariance, and the historical arc from LeNet through AlexNet to ResNet and modern vision-language models. Hands-on, they collect their own dataset and train a vision model from scratch.",
         skills: ["CNNs", "Vision"],
       },
       {
         number: "04",
         theme: "Sequence models + transformers",
-        learn:
-          "RNNs, LSTMs, and the vanishing gradient problem. Self-attention with Query, Key, Value. The transformer architecture (Vaswani 2017). BERT vs GPT.",
-        build:
-          "Their own miniature GPT trained on three years of their own essays — it writes new sentences in their style.",
+        summary:
+          "RNNs, LSTMs, the vanishing gradient problem, self-attention with Query/Key/Value, and the transformer architecture from Attention Is All You Need. Hands-on, they implement and train a working transformer on data that matters to them.",
         skills: ["Transformers", "Self-attention"],
       },
       {
         number: "05",
         theme: "Building with frontier models",
-        learn:
-          "Foundation models in practice. Fine-tuning with LoRA. RAG over vector databases. Agents and tool use. Multimodal prompting (CLIP, GPT-4V).",
-        build:
-          "A study assistant combining RAG (school notes) + agent tools (web search, calculator, drawing) + voice — used by friends in real exam prep.",
+        summary:
+          "Foundation models in practice, fine-tuning with LoRA, RAG over vector databases, agents and tool use, and multimodal prompting. Hands-on, they engineer a real frontier-model system that integrates multiple modalities.",
         skills: ["LoRA", "RAG", "Agents"],
       },
       {
         number: "06",
         theme: "Capstone + Showcase",
-        learn:
-          "Architecture synthesis across the year. System design defending choices. Pitching to a panel of senior mentors and a guest founder.",
-        build:
-          "A Class 8 capstone integrating multiple modalities (vision, language, voice, or RAG), defended at Flagship Expo Day.",
+        summary:
+          "Architecture synthesis across the year, system design defending choices, and pitching to a panel of senior mentors. Hands-on, they ship and defend a multimodal Class 8 capstone at Flagship Expo Day.",
         skills: ["Architecture", "Defense"],
       },
     ],
@@ -302,7 +253,7 @@ const tracks: ClassTrack[] = [
       headline: "A deep-learning practitioner who builds neural networks from scratch and ships frontier-model systems.",
       deliverables: [
         "Real understanding of how modern AI works — perceptrons, backpropagation, CNNs, RNNs, transformers — built from scratch in NumPy",
-        "Six shipped projects, including a NumPy MLP, an MNIST classifier, an Indian street-food CNN, a miniature GPT trained on their own essays, and a multi-modal study assistant",
+        "Six shipped projects covering neural networks from scratch, computer vision, transformers, and a multi-modal frontier-model system — each built and trained themselves",
         "The ability to read 'Attention Is All You Need' and actually understand it — a skill most CS undergraduates struggle with",
       ],
     },
@@ -312,60 +263,48 @@ const tracks: ClassTrack[] = [
     stage: "Apply",
     tagline: "Complete applied-AI program for ages 14–15.",
     description:
-      "A complete six-month program in serious applied AI engineering. Compressed foundations, then production-quality engineering, frontier specialization, generative AI, and an integrated capstone defended at Flagship Expo Day.",
+      "A complete six-month program in serious applied AI engineering. Compressed foundations, then production-quality engineering, agentic systems, generative AI, and an integrated capstone defended at Flagship Expo Day.",
     modules: [
       {
         number: "01",
         theme: "AI fundamentals at speed",
-        learn:
-          "A condensed sweep of the field — neural networks, transformers, foundation models, RAG, agents, multimodal, generative. The shape of AI in 2026.",
-        build:
-          "A working transformer in 200 lines of Python — they understand every line. Plus a written field map of where AI actually is today.",
+        summary:
+          "A condensed sweep of the field — neural networks, transformers, foundation models, RAG, agents, multimodal, generative — and the shape of AI in 2026. Hands-on, they build a working transformer from scratch and articulate where the field actually is.",
         skills: ["Field literacy", "Transformers from scratch"],
       },
       {
         number: "02",
         theme: "Production-quality engineering",
-        learn:
-          "Engineering AI properly — APIs, hosting (Vercel, Railway, Hugging Face Spaces). Latency, throughput, batching, caching. Cost optimization. Observability and structured logging.",
-        build:
-          "A polished AI app deployed at a public URL with proper monitoring, error handling, structured logging, and documented APIs — engineered to production quality.",
+        summary:
+          "APIs, hosting, latency, throughput, batching, caching, cost optimization, observability, and structured logging. Hands-on, they deploy an AI app to production with the monitoring and engineering rigor that separates a school project from real software.",
         skills: ["Deployment", "Production engineering"],
       },
       {
         number: "03",
-        theme: "Frontier specialization",
-        learn:
-          "Pick one of three deep dives — multimodal AI (vision-language models in depth), voice AI (real-time agents with Whisper + OpenAI Realtime), or agentic systems (multi-agent orchestration with CrewAI / Anthropic Agents).",
-        build:
-          "A specialization-specific project — a real-time voice tutor, a vision-driven agent, or a multi-agent research-and-write team.",
-        skills: ["Specialization", "Frontier AI"],
+        theme: "Agentic systems",
+        summary:
+          "Multi-agent orchestration, agent memory and communication, ReAct and Plan-and-Execute patterns, tool design, and evaluating agentic behavior at frontier depth. Hands-on, they build a multi-agent system that researches, decides, and acts end-to-end on a real workflow.",
+        skills: ["Agents", "Multi-agent", "Frontier AI"],
       },
       {
         number: "04",
         theme: "Generative AI in depth",
-        learn:
-          "Diffusion models — forward and reverse process, U-Net, latent diffusion. Stable Diffusion, FLUX. Video generation (Sora, Veo). Music generation (Suno, Udio).",
-        build:
-          "A custom image generator fine-tuned on a personal domain — their school's architecture, their city's signage, their family's photo style. They keep the model.",
+        summary:
+          "Diffusion models — forward and reverse process, U-Net, latent diffusion — plus image, video, and music generation in 2026. Hands-on, they fine-tune a generative model on a real-world domain and keep the weights.",
         skills: ["Diffusion", "Latent diffusion"],
       },
       {
         number: "05",
         theme: "Integrated systems",
-        learn:
-          "How serious AI systems combine multiple modalities and models. Architecture decisions and trade-offs. Reading and writing technical specifications. Refactoring for clarity.",
-        build:
-          "A capstone-prep integration combining vision, voice, RAG, and an agent into one cohesive system — engineered, not just functional.",
+        summary:
+          "How serious AI systems combine multiple modalities and models, architecture decisions and trade-offs, and reading and writing technical specifications. Hands-on, they integrate vision, voice, RAG, and an agent into one engineered system.",
         skills: ["System integration", "Architecture"],
       },
       {
         number: "06",
         theme: "Capstone + Flagship Expo",
-        learn:
-          "Synthesizing the year into one defended capstone. Architecture defense. Technical writing. Pitching the work to a panel of senior mentors and a guest founder.",
-        build:
-          "A polished Class 9 capstone deployed at a public URL, fully documented, defended on stage at Flagship Expo Day.",
+        summary:
+          "Synthesizing the year into one defended capstone, defending architecture choices, technical writing, and pitching to a panel of senior mentors. Hands-on, they ship and defend a polished Class 9 capstone at a public URL.",
         skills: ["Capstone", "Defense", "Documentation"],
       },
     ],
@@ -383,69 +322,57 @@ const tracks: ClassTrack[] = [
     stage: "Frontier",
     tagline: "Complete frontier-AI program for ages 15–16.",
     description:
-      "A complete six-month program at the frontier of AI in 2026 — multimodal, voice, generative — synthesized into one ambitious capstone, defended at Flagship Expo Day and ready for college applications.",
+      "A complete six-month program at the frontier of AI in 2026 — multimodal, voice, generative — synthesized into one ambitious capstone, defended at Flagship Expo Day.",
     modules: [
       {
         number: "01",
         theme: "AI from zero to today",
-        learn:
-          "A rigorous compressed sweep — what AI is, how neural networks work, what transformers do, what foundation models are, what frontier 2026 looks like. Foundations, fast.",
-        build:
-          "A working transformer in pure Python from scratch — they understand every line. Plus a written synthesis of where AI actually is today.",
+        summary:
+          "A rigorous compressed sweep — what AI is, how neural networks work, what transformers do, what foundation models are, and what the frontier looks like in 2026. Hands-on, they build a working transformer in pure Python from scratch and synthesize where AI actually is today.",
         skills: ["Field foundations", "Transformers from scratch"],
       },
       {
         number: "02",
         theme: "Modern AI engineering",
-        learn:
-          "Building with foundation models. Fine-tuning with LoRA. RAG over vector databases. Agents and tool use. Production deployment, observability, cost optimization.",
-        build:
-          "A polished, production-grade AI app using foundation models, RAG, and at least one agent — deployed live with proper monitoring and error handling.",
+        summary:
+          "Building with foundation models, fine-tuning with LoRA, RAG over vector databases, agents and tool use, and production deployment with observability and cost optimization. Hands-on, they ship a production-grade AI app to a public URL with proper monitoring.",
         skills: ["Modern AI engineering", "Production"],
       },
       {
         number: "03",
         theme: "Multimodal + voice frontier",
-        learn:
-          "Vision-language models — CLIP, GPT-4V, Gemini, Llama 3.2 Vision. Voice agents — Whisper, OpenAI Realtime, ElevenLabs. Multimodal prompting and evaluation.",
-        build:
-          "A real-time multimodal assistant that sees and speaks — voice in, vision interpreted, voice answer out, all in their preferred language.",
+        summary:
+          "Vision-language models, voice agents, real-time multimodal prompting, and evaluation. Hands-on, they build a real-time AI that sees, hears, and speaks in their preferred language.",
         skills: ["VLMs", "Voice agents", "Multimodal"],
       },
       {
         number: "04",
         theme: "Generative architectures",
-        learn:
-          "Diffusion models in depth — latent diffusion, U-Net, classifier-free guidance. Stable Diffusion, FLUX. Video generation (Sora, Veo). Music generation (Suno, Udio).",
-        build:
-          "A custom fine-tuned image generator on a personal domain — their school, their city, their family's style. They keep the model and weights.",
+        summary:
+          "Diffusion models in depth — latent diffusion, U-Net, classifier-free guidance — and image, video, and music generation in 2026. Hands-on, they fine-tune a generative model on a personal domain and keep the weights.",
         skills: ["Diffusion", "Latent diffusion", "Fine-tuning"],
       },
       {
         number: "05",
         theme: "Capstone — design and build",
-        learn:
-          "Synthesizing the year into one ambitious project. System design integrating multiple modalities. Engineering trade-offs at the right level. Iteration on technical quality and architectural clarity.",
-        build:
-          "A capstone deployed at a public URL — multimodal, technically substantial, polished across two engineering iterations.",
+        summary:
+          "Synthesizing the year into one ambitious project, system design integrating multiple modalities, and iteration on technical and architectural clarity. Hands-on, they build a multimodal capstone deployed at a public URL across two engineering iterations.",
         skills: ["System design", "Production engineering"],
       },
       {
         number: "06",
         theme: "Capstone defense + Flagship Expo",
-        learn:
-          "Defending architecture and trade-off decisions to a panel. Custom-domain portfolios. Technical writing. Pitching the work. College-application essay craft.",
-        build:
-          "A custom-domain portfolio (yourname.in) showcasing the capstone and prior work + a five-minute defense at Flagship Expo Day — ready for college and internship applications.",
+        summary:
+          "Defending architecture and trade-off decisions to a panel, custom-domain portfolios, technical writing, and pitching the work. Hands-on, they ship a custom-domain portfolio and defend their capstone at Flagship Expo Day.",
         skills: ["Defense", "Portfolio", "Pitching"],
       },
     ],
     outcome: {
-      headline: "A frontier AI builder ready for college and what comes after.",
+      headline: "A frontier AI builder shipping the techniques that define 2026.",
       deliverables: [
         "Mastery of the frontier AI techniques shipping in 2026 — multimodal vision-language models, real-time voice agents, diffusion-based generative models",
         "A technically substantial capstone deployed at a public URL — multimodal, polished, fully documented, defended on stage at Flagship Expo Day",
-        "A custom-domain portfolio (yourname.in) and a five-minute pitch — ready for college applications, internships, and every conversation that follows",
+        "A custom-domain portfolio (yourname.in) and a defended five-minute pitch — built on real engineered work, not slides",
       ],
     },
   },
@@ -617,38 +544,7 @@ export function Curriculum() {
                 {m.theme}
               </h4>
 
-              <div className="flex flex-col gap-4">
-                <div>
-                  <p
-                    className="ui-label mb-1.5"
-                    style={{ color: "rgba(15,15,15,0.45)" }}
-                  >
-                    Concepts
-                  </p>
-                  <p className="ui-body-sm">{m.learn}</p>
-                </div>
-
-                <div
-                  className="rounded-[1rem] p-4"
-                  style={{
-                    background: "rgba(19,53,184,0.05)",
-                    border: "1px solid rgba(19,53,184,0.14)",
-                  }}
-                >
-                  <p
-                    className="ui-label mb-1.5"
-                    style={{ color: "#1335b8" }}
-                  >
-                    They build
-                  </p>
-                  <p
-                    className="ui-body-sm"
-                    style={{ color: "#0a0a0a" }}
-                  >
-                    {m.build}
-                  </p>
-                </div>
-              </div>
+              <p className="ui-body-sm">{m.summary}</p>
 
               <div className="mt-auto flex flex-wrap gap-1.5 pt-1">
                 {m.skills.map((s) => (
