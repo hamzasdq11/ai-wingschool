@@ -63,7 +63,18 @@ export function OrientationDay() {
             </div>
           </div>
 
-          <div className="ui-card rounded-[1.75rem] p-6 sm:p-7">
+          <div className="ui-card overflow-hidden rounded-[1.75rem] p-6 sm:p-7">
+            <div className="-mx-6 -mt-6 mb-6 sm:-mx-7 sm:-mt-7 sm:mb-7">
+              <img
+                src="/images/landmark-towers.jpg"
+                alt="The Landmark Towers, Civil Lines, Kanpur — orientation venue"
+                width={533}
+                height={711}
+                loading="lazy"
+                className="block h-auto w-full"
+                style={{ aspectRatio: "3 / 4", objectFit: "cover" }}
+              />
+            </div>
             <p className="ui-label" style={{ color: "#1335b8" }}>
               Venue
             </p>
