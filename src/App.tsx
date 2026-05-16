@@ -5,12 +5,12 @@ import { Problem } from "./components/Problem";
 import { AIEra } from "./components/AIEra";
 import { HardwareKit } from "./components/HardwareKit";
 import { ProjectShowcase } from "./components/ProjectShowcase";
-import { HowItWorks } from "./components/HowItWorks";
-import { Curriculum } from "./components/Curriculum";
+// import { HowItWorks } from "./components/HowItWorks"; // temporarily disabled — uncomment here and below to restore
+// import { Curriculum } from "./components/Curriculum"; // temporarily disabled — uncomment here and below to restore
 import { Outcomes } from "./components/Outcomes";
 import { Pricing } from "./components/Pricing";
 import { Testimonials } from "./components/Testimonials";
-import { ForSchools } from "./components/ForSchools";
+// import { ForSchools } from "./components/ForSchools"; // temporarily disabled — uncomment here and below to restore
 import { FAQ } from "./components/FAQ";
 import { FinalCTA } from "./components/FinalCTA";
 import { Footer } from "./components/Footer";
@@ -40,14 +40,14 @@ function App() {
       <Divider />
       <ProjectShowcase />
       <Divider />
-      <HowItWorks />
-      <Curriculum />
-      <Divider />
+      {/* <HowItWorks /> */}
+      {/* <Curriculum />
+      <Divider /> */}
       <Outcomes />
       <Divider />
       <Pricing />
       <Testimonials />
-      <ForSchools />
+      {/* <ForSchools /> */}
       <Divider />
       <FAQ />
       <FinalCTA />
