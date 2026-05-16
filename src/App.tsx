@@ -6,7 +6,7 @@ import { AIEra } from "./components/AIEra";
 import { HardwareKit } from "./components/HardwareKit";
 import { ProjectShowcase } from "./components/ProjectShowcase";
 // import { HowItWorks } from "./components/HowItWorks"; // temporarily disabled — uncomment here and below to restore
-// import { Curriculum } from "./components/Curriculum"; // temporarily disabled — uncomment here and below to restore
+import { Curriculum } from "./components/Curriculum";
 import { Outcomes } from "./components/Outcomes";
 import { Pricing } from "./components/Pricing";
 import { Testimonials } from "./components/Testimonials";
@@ -41,8 +41,8 @@ function App() {
       <ProjectShowcase />
       <Divider />
       {/* <HowItWorks /> */}
-      {/* <Curriculum />
-      <Divider /> */}
+      <Curriculum />
+      <Divider />
       <Outcomes />
       <Divider />
       <Pricing />
