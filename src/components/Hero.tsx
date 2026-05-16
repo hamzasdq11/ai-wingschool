@@ -70,8 +70,8 @@ export function Hero() {
           <p className="section-body animate-fade-rise-delay-2 mt-7 max-w-xl">
             A 6-month live program for students in Classes 5–10. They ship 6
             real AI projects, take the stage at Flagship Expo Day, and walk out
-            with a portfolio that future colleges and recruiters can actually
-            see.
+            with skills that stay irreplaceable as AI replaces everything
+            else.
           </p>
 
           <p className="ui-body-sm animate-fade-rise-delay-2 mt-3 max-w-xl">
