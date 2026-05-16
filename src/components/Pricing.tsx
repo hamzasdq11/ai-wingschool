@@ -3,18 +3,18 @@ const plans = [
     name: "Trial Pass",
     price: "999",
     priceUnit: "one-time",
-    commitment: "Orientation Day + Cohort week 1 · no auto-renew",
+    commitment: "Orientation Day + Academy week 1 · no auto-renew",
     features: [
       "Orientation Day at The Landmark Towers, Kanpur",
-      "Full week 1 of the Cohort — workshops, curriculum, AI playground",
-      "Cohort community + intro call",
-      "₹999 credited toward Cohort if you continue",
+      "Full week 1 of the Academy — workshops, curriculum, AI playground",
+      "Academy community + intro call",
+      "₹999 credited toward Academy if you continue",
     ],
     cta: "Start the Trial →",
     featured: false,
   },
   {
-    name: "Cohort",
+    name: "Academy",
     price: "3,799",
     originalPrice: "4,999",
     offerLabel: "Limited offer · Save ₹1,200/mo",
@@ -28,17 +28,17 @@ const plans = [
       "Monthly 1-on-1 with an IIT/IIM mentor",
       "6 projects in 6 months",
       "Hardware kits shipped to your doorstep at no extra cost",
+      "₹5,000 in API + cloud credits",
       "Portfolio page + certificate",
       "Parent progress reports / 2 weeks",
-      "Cohort community",
       "Flagship Expo Day at The Landmark Towers, Kanpur",
     ],
-    cta: "Join the Cohort →",
+    cta: "Join the Academy →",
     featured: true,
     badge: "Most popular",
   },
   {
-    name: "Apprenticeship",
+    name: "AI Architect",
     price: "7,999",
     originalPrice: "9,999",
     offerLabel: "Limited offer · Save ₹2,000/mo",
@@ -46,19 +46,18 @@ const plans = [
     totalLine: "₹47,994 over 6 months",
     upfrontLine: "Pay upfront: ₹39,995 (save ₹7,999)",
     features: [
-      "Everything in Cohort",
+      "Everything in Academy",
       "1-on-1 live sessions with priority focus",
+      "Personalized curriculum — tuned to the child's pace and depth",
       "IIT/IIM mentor available 24/7 — guidance at every step",
       "Quarterly senior reviews — progress, gaps, and a roadmap forward",
-      "Personalized curriculum — tuned to the child's pace and depth",
-      "AI from first principles — training, fine-tuning, evals, the maths behind real models",
       "Specialization track — ML, robotics, or AI product (months 4–6)",
       "₹15,000 in API + cloud credits",
+      "Premium AI tool stack (ChatGPT, Claude, GitHub Copilot, Vercel)",
       "An embodied/robotics module of their choice",
       "Custom-domain portfolio (yourname.in)",
-      "Priority cohort — max 15 students",
     ],
-    cta: "Apply for Apprenticeship →",
+    cta: "Apply for AI Architect →",
     featured: false,
   },
 ];
@@ -87,8 +86,8 @@ export function Pricing() {
           style={{ color: "#3a3a3a" }}
         >
           For most families, the{" "}
-          <strong style={{ color: "#0a0a0a", fontWeight: 600 }}>Cohort</strong>
-          {" "}is the answer. Apprenticeship is for students already deep in
+          <strong style={{ color: "#0a0a0a", fontWeight: 600 }}>Academy</strong>
+          {" "}is the answer. AI Architect is for students already deep in
           AI; Trial is for those testing the water.
         </p>
       </div>
@@ -257,7 +256,7 @@ export function Pricing() {
           </h3>
           <p className="ui-body-sm">
             10% off your second child. 20% off your third or more. Applies to
-            Cohort and Apprenticeship, confirmed at signup — no requirement
+            Academy and AI Architect, confirmed at signup — no requirement
             to enrol in the same season.
           </p>
         </div>
