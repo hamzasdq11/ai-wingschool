@@ -1,7 +1,7 @@
 import { DemoForm } from "./DemoForm";
 
 const guarantees = [
-  { label: "₹999 paid trial · credits to Academy", icon: "✓" },
+  { label: "₹999 paid trial · credits to AI Academy", icon: "✓" },
   { label: "7-day money-back", icon: "✓" },
   { label: "No long lock-in", icon: "✓" },
 ];
