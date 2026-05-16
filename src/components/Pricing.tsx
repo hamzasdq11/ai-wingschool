@@ -3,12 +3,15 @@ const plans = [
     name: "Trial Pass",
     price: "999",
     priceUnit: "one-time",
+    offerLabel: "Risk-free · 7-day refund",
     commitment: "Orientation Day + AI Academy week 1 · no auto-renew",
+    upfrontLine: "₹999 credited to AI Academy / AI Architect if you continue",
     features: [
       "Orientation Day at The Landmark Towers, Kanpur",
+      "Meet the IIT/IIM mentors face-to-face",
       "Full week 1 of the AI Academy — workshops, curriculum, AI playground",
+      "Take home the first project brief",
       "AI Academy community + intro call",
-      "₹999 credited toward AI Academy if you continue",
     ],
     cta: "Start the Trial →",
     featured: false,
@@ -166,7 +169,8 @@ export function Pricing() {
                     style={{
                       fontFamily: "var(--font-display)",
                       fontSize: "1.3rem",
-                      color: "#8a8a8a",
+                      fontWeight: 500,
+                      color: "#555555",
                       textDecoration: "line-through",
                       letterSpacing: "-0.02em",
                     }}
