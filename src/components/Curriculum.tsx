@@ -1,109 +1,66 @@
 type Module = {
   number: string;
-  domain: string;
   title: string;
   summary: string;
+  ships: string;
   techniques: string[];
-  depths: number[];
 };
 
-const stages = [
-  { grade: "Class 5", stage: "Discover", ages: "ages 10–11" },
-  { grade: "Class 6", stage: "Explore", ages: "ages 11–12" },
-  { grade: "Class 7", stage: "Build", ages: "ages 12–13" },
-  { grade: "Class 8", stage: "Engineer", ages: "ages 13–14" },
-  { grade: "Class 9", stage: "Apply", ages: "ages 14–15" },
-  { grade: "Class 10", stage: "Frontier", ages: "ages 15–16" },
-];
-
 const stats = [
-  { value: "9", label: "Canon modules" },
-  { value: "6", label: "Years of depth" },
-  { value: "10–16", label: "Age range" },
-  { value: "30+", label: "Shipped projects" },
+  { value: "6", label: "Months" },
+  { value: "6", label: "Projects shipped" },
+  { value: "1", label: "Capstone defended" },
+  { value: "10–16", label: "Ages welcomed" },
 ];
 
 const modules: Module[] = [
   {
     number: "01",
-    domain: "Foundations",
     title: "How modern AI actually works",
     summary:
-      "Training vs inference, the rules-based → machine learning → deep learning arc, and where the field actually sits in 2026. The mental model every later module builds on.",
-    techniques: ["Field literacy", "AI taxonomy", "Mental models"],
-    depths: [2, 3, 4, 5, 5, 6],
+      "Training vs inference, the rules-based → machine learning → deep learning arc, and where the field actually sits in 2026. Vocabulary, mental models, and safe-use habits — built hands-on with the same frontier tools real engineers ship with.",
+    ships: "A first working AI workflow, prompted and customized end-to-end.",
+    techniques: ["Field literacy", "Foundation models", "Mental models"],
   },
   {
     number: "02",
-    domain: "Prompt Engineering",
-    title: "LLMs as a programming language",
+    title: "Prompts as a programming language",
     summary:
-      "System and user messages, few-shot examples, chain-of-thought reasoning, structured outputs, and evals. Prompts iterated and versioned like code, not guessed at.",
+      "System and user messages, few-shot examples, chain-of-thought reasoning, structured outputs, and evals. Prompts iterated and versioned like code, then used on real schoolwork and personal problems.",
+    ships: "A multi-step AI assistant — iterated, evaluated, used daily.",
     techniques: ["System prompts", "Few-shot", "Chain-of-thought", "Evals"],
-    depths: [2, 4, 5, 5, 6, 6],
   },
   {
     number: "03",
-    domain: "Vision AI",
-    title: "Models that see",
+    title: "AI that sees — vision and multimodal",
     summary:
-      "From image classification with pre-trained models, to object detection and segmentation, to vision-language models — and CNNs built and trained from scratch.",
-    techniques: ["Classification", "CNNs", "VLMs", "Detection"],
-    depths: [1, 3, 4, 5, 6, 6],
+      "How images become numbers, classification with pre-trained models, object detection, and vision-language models. At higher grades, CNNs and vision systems built and trained from scratch.",
+    ships: "A working vision system on a real-world problem they chose.",
+    techniques: ["Classification", "VLMs", "CNNs", "Detection"],
   },
   {
     number: "04",
-    domain: "Voice AI",
-    title: "Models that hear and speak",
+    title: "AI that hears and speaks — voice",
     summary:
-      "Speech-to-text, text-to-speech, multilingual voice models, and the latency budgets that make real-time conversation feel real. Voice agents shipped in their preferred language.",
+      "Speech-to-text, text-to-speech, multilingual voice models, and the latency budgets that make real-time conversation feel real. A voice agent designed, shipped, and tested in their preferred language.",
+    ships: "A real-time multilingual voice agent that holds a conversation.",
     techniques: ["STT / TTS", "Voice agents", "Multilingual", "Realtime"],
-    depths: [1, 3, 3, 4, 5, 6],
   },
   {
     number: "05",
-    domain: "Machine Learning",
-    title: "Training their own models",
+    title: "AI that acts — agents, ML, and deep learning",
     summary:
-      "Supervised learning — regression, classification, decision trees — with proper train / test / validation across the full scikit-learn workflow. Real datasets, deployed apps.",
-    techniques: ["scikit-learn", "Regression", "Trees", "Evaluation"],
-    depths: [0, 2, 4, 5, 6, 6],
+      "Function calling, the ReAct pattern, embeddings, vector databases, and multi-agent orchestration. Paired with real machine learning — supervised learning at younger grades, neural networks and transformers from scratch at older ones.",
+    ships: "A trained model and an autonomous agent — both deployed live.",
+    techniques: ["Tool use", "ReAct", "Vector DBs", "scikit-learn", "NumPy NN"],
   },
   {
     number: "06",
-    domain: "Deep Learning",
-    title: "Neural networks from scratch",
+    title: "Capstone + Flagship Expo",
     summary:
-      "Perceptrons to multi-layer networks, activation functions, loss surfaces, gradient descent, and backpropagation derived line by line. Implemented in pure NumPy, every step their own.",
-    techniques: ["NumPy NN", "Backprop", "Optimizers", "Loss"],
-    depths: [0, 0, 2, 6, 6, 6],
-  },
-  {
-    number: "07",
-    domain: "Transformers",
-    title: "The architecture behind GPT and Claude",
-    summary:
-      "Sequence models, self-attention with Query / Key / Value, positional encoding, and the transformer architecture from Attention Is All You Need — implemented and trained on data that matters to them.",
-    techniques: ["Self-attention", "Q / K / V", "Decoder-only", "Training"],
-    depths: [0, 0, 2, 5, 6, 6],
-  },
-  {
-    number: "08",
-    domain: "Agents & RAG",
-    title: "AI that takes action",
-    summary:
-      "Function calling, the ReAct pattern, embeddings and vector databases, chunking strategies, and multi-agent orchestration. Systems that research, decide, and act end-to-end.",
-    techniques: ["Tool use", "ReAct", "Vector DBs", "Multi-agent"],
-    depths: [1, 2, 4, 5, 6, 6],
-  },
-  {
-    number: "09",
-    domain: "Generative AI",
-    title: "Frontier-grade creation",
-    summary:
-      "Generative architectures — diffusion, latent diffusion, U-Net, classifier-free guidance — and fine-tuning with LoRA across image, video, and music. Personal models, kept weights.",
-    techniques: ["Diffusion", "Latent diffusion", "LoRA", "Fine-tuning"],
-    depths: [1, 2, 3, 4, 6, 6],
+      "One ambitious project that synthesizes the program, system design defending architecture choices, technical writing, and pitching to a panel of senior mentors. Shipped at a public URL. Defended on stage in front of parents, mentors, and a guest founder.",
+    ships: "A defended capstone live at a public URL, presented on stage.",
+    techniques: ["System design", "Demo", "Defense", "Polish"],
   },
 ];
 
@@ -124,56 +81,20 @@ const engineeringStack = [
   "Vercel",
 ];
 
-const outcomes = [
-  "Working understanding of the modern AI canon — prompts, vision, voice, machine learning, deep learning, transformers, agents, generative — built in code, not slides.",
-  "A portfolio of shipped projects deployed at real URLs, including neural networks built from scratch and frontier-model systems engineered end-to-end.",
-  "Fluency in the same Python AI stack used at every Indian AI startup — calibrated to their year, compounded over six.",
+const stages = [
+  { grade: "Class 5", stage: "Discover", ages: "ages 10–11" },
+  { grade: "Class 6", stage: "Explore", ages: "ages 11–12" },
+  { grade: "Class 7", stage: "Build", ages: "ages 12–13" },
+  { grade: "Class 8", stage: "Engineer", ages: "ages 13–14" },
+  { grade: "Class 9", stage: "Apply", ages: "ages 14–15" },
+  { grade: "Class 10", stage: "Frontier", ages: "ages 15–16" },
 ];
 
-function DepthBar({ depths }: { depths: number[] }) {
-  const maxBar = 28;
-  return (
-    <div className="flex flex-col gap-2">
-      <div className="flex items-end gap-[6px]" style={{ height: maxBar }}>
-        {depths.map((d, i) => {
-          const height = d === 0 ? 3 : Math.max((d / 6) * maxBar, 6);
-          const filled = d > 0;
-          return (
-            <div
-              key={i}
-              className="w-[10px] rounded-[2px] transition-all"
-              style={{
-                height: `${height}px`,
-                background: filled
-                  ? `rgba(19, 53, 184, ${0.32 + d * 0.11})`
-                  : "rgba(15, 15, 15, 0.08)",
-              }}
-              aria-hidden
-            />
-          );
-        })}
-      </div>
-      <div className="flex items-center gap-[6px]">
-        {stages.map((s) => (
-          <span
-            key={s.grade}
-            className="w-[10px] text-center"
-            style={{
-              fontFamily: "var(--font-body)",
-              fontSize: "8px",
-              fontWeight: 500,
-              letterSpacing: "0.04em",
-              color: "rgba(15,15,15,0.42)",
-            }}
-            aria-hidden
-          >
-            {s.grade.replace("Class ", "C")}
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-}
+const outcomes = [
+  "Working understanding of the modern AI canon — prompts, vision, voice, agents, machine learning, and (at higher grades) neural networks and transformers, built in code.",
+  "Six shipped projects plus one defended capstone live at a real URL — engineered end-to-end, not slides.",
+  "Real fluency in the modern Python AI stack — the same one used at every Indian AI startup, calibrated to their age.",
+];
 
 export function Curriculum() {
   return (
@@ -181,13 +102,13 @@ export function Curriculum() {
       <div className="section-copy">
         <p className="section-kicker mb-4">Curriculum</p>
         <h2 className="section-heading mb-6">
-          One canon. <em>Six years of compounding depth.</em>
+          A complete six-month AI program. <em>Basics to advanced.</em>
         </h2>
         <p className="section-body mb-4">
-          Every Wingschool student touches the same modern AI canon — nine
-          technical modules covering everything from prompts to transformers
-          to diffusion. The breadth is shared. The depth is calibrated to
-          their year. The result, after six, is fluency.
+          Six monthly modules. Six shipped projects. One capstone defended
+          at Flagship Expo Day. A complete, self-contained program — your
+          child can join at any grade, with no prior year required, and
+          leave fluent in modern AI.
         </p>
         <p className="ui-body-sm mb-14" style={{ color: "#1335b8" }}>
           Designed and taught by IIT and IIM grads.
@@ -195,7 +116,7 @@ export function Curriculum() {
       </div>
 
       <div
-        className="mb-16 grid grid-cols-2 gap-px overflow-hidden rounded-[1.25rem] border border-black/8 sm:grid-cols-4"
+        className="mb-20 grid grid-cols-2 gap-px overflow-hidden rounded-[1.25rem] border border-black/8 sm:grid-cols-4"
         style={{ background: "rgba(15,15,15,0.06)" }}
       >
         {stats.map((s) => (
@@ -233,67 +154,6 @@ export function Curriculum() {
         ))}
       </div>
 
-      <div className="mb-20">
-        <p
-          className="mb-5"
-          style={{
-            fontFamily: "var(--font-body)",
-            fontSize: "0.7rem",
-            fontWeight: 500,
-            letterSpacing: "0.22em",
-            textTransform: "uppercase",
-            color: "#8a8a8a",
-          }}
-        >
-          The six stages
-        </p>
-        <div className="grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-3 lg:grid-cols-6">
-          {stages.map((s, i) => (
-            <div
-              key={s.grade}
-              className="flex flex-col gap-2 border-t pt-4"
-              style={{ borderColor: "rgba(15,15,15,0.12)" }}
-            >
-              <span
-                style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: "0.65rem",
-                  fontWeight: 500,
-                  letterSpacing: "0.2em",
-                  textTransform: "uppercase",
-                  color: "#1335b8",
-                }}
-              >
-                {String(i + 1).padStart(2, "0")} · {s.grade}
-              </span>
-              <span
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: "1.35rem",
-                  fontWeight: 400,
-                  letterSpacing: "-0.025em",
-                  color: "#0a0a0a",
-                  lineHeight: 1.1,
-                }}
-              >
-                {s.stage}
-              </span>
-              <span
-                style={{
-                  fontFamily: "var(--font-accent)",
-                  fontStyle: "italic",
-                  fontWeight: 200,
-                  fontSize: "0.95rem",
-                  color: "#6a6a6a",
-                }}
-              >
-                {s.ages}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-
       <div className="mb-10 flex items-end justify-between gap-4">
         <p
           style={{
@@ -305,7 +165,7 @@ export function Curriculum() {
             color: "#8a8a8a",
           }}
         >
-          The canon · 9 modules
+          The program · month by month
         </p>
         <p
           className="hidden sm:block"
@@ -316,7 +176,7 @@ export function Curriculum() {
             letterSpacing: "0.02em",
           }}
         >
-          Bars show depth by grade — Class 5 to Class 10
+          One module a month · six months end-to-end
         </p>
       </div>
 
@@ -324,23 +184,11 @@ export function Curriculum() {
         {modules.map((m, idx) => (
           <article
             key={m.number}
-            className={`grid items-start gap-y-6 py-10 md:grid-cols-[120px_1fr_minmax(0,1.1fr)] md:gap-x-12 md:py-12 lg:gap-x-16 ${
+            className={`grid items-start gap-y-6 py-10 md:grid-cols-[140px_1fr_minmax(0,1.1fr)] md:gap-x-12 md:py-12 lg:gap-x-16 ${
               idx === 0 ? "border-t border-black/8" : "border-t border-black/8"
             } ${idx === modules.length - 1 ? "border-b border-black/8" : ""}`}
           >
             <div className="flex flex-col gap-2">
-              <span
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: "clamp(2.6rem, 5vw, 4rem)",
-                  fontWeight: 300,
-                  color: "#1335b8",
-                  lineHeight: 0.95,
-                  letterSpacing: "-0.05em",
-                }}
-              >
-                {m.number}
-              </span>
               <span
                 style={{
                   fontFamily: "var(--font-body)",
@@ -351,7 +199,19 @@ export function Curriculum() {
                   color: "#8a8a8a",
                 }}
               >
-                {m.domain}
+                Month
+              </span>
+              <span
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: "clamp(2.8rem, 5.4vw, 4.25rem)",
+                  fontWeight: 300,
+                  color: "#1335b8",
+                  lineHeight: 0.95,
+                  letterSpacing: "-0.05em",
+                }}
+              >
+                {m.number}
               </span>
             </div>
 
@@ -380,8 +240,40 @@ export function Curriculum() {
               </p>
             </div>
 
-            <div className="flex flex-col gap-6">
-              <DepthBar depths={m.depths} />
+            <div className="flex flex-col gap-5">
+              <div
+                className="rounded-[1rem] border px-4 py-4"
+                style={{
+                  borderColor: "rgba(19, 53, 184, 0.18)",
+                  background: "rgba(19, 53, 184, 0.04)",
+                }}
+              >
+                <p
+                  style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: "0.62rem",
+                    fontWeight: 500,
+                    letterSpacing: "0.22em",
+                    textTransform: "uppercase",
+                    color: "#1335b8",
+                  }}
+                >
+                  Ships this month
+                </p>
+                <p
+                  className="mt-2"
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    fontSize: "1rem",
+                    fontWeight: 400,
+                    letterSpacing: "-0.01em",
+                    color: "#0a0a0a",
+                    lineHeight: 1.4,
+                  }}
+                >
+                  {m.ships}
+                </p>
+              </div>
               <div className="flex flex-wrap gap-1.5">
                 {m.techniques.map((t) => (
                   <span
@@ -472,7 +364,7 @@ export function Curriculum() {
         <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start lg:gap-14">
           <div>
             <p className="ui-label" style={{ color: "#1335b8" }}>
-              What every student leaves with
+              After six months
             </p>
             <h3
               className="mt-4"
@@ -485,7 +377,7 @@ export function Curriculum() {
                 color: "#0a0a0a",
               }}
             >
-              Real fluency in the modern AI stack — built, not memorized.
+              A child who builds with AI — fluent in the modern stack, not memorizing it.
             </h3>
             <p
               className="mt-4 max-w-md"
@@ -496,8 +388,8 @@ export function Curriculum() {
                 color: "#5a5a5a",
               }}
             >
-              Each grade is its own complete six-month program — no prior year
-              required. Stay six years, and the depth compounds.
+              A complete program in itself. Most students stay longer — but
+              even one six-month program leaves them fluent.
             </p>
             <a href="#book" className="ui-button mt-8">
               Book a 20-min Demo →
@@ -538,6 +430,55 @@ export function Curriculum() {
               </li>
             ))}
           </ul>
+        </div>
+      </div>
+
+      <div className="mt-12">
+        <p
+          className="mb-4"
+          style={{
+            fontFamily: "var(--font-body)",
+            fontSize: "0.7rem",
+            fontWeight: 500,
+            letterSpacing: "0.22em",
+            textTransform: "uppercase",
+            color: "#8a8a8a",
+          }}
+        >
+          Calibrated to your child's grade
+        </p>
+        <p
+          className="mb-6 max-w-2xl"
+          style={{
+            fontFamily: "var(--font-body)",
+            fontSize: "0.95rem",
+            lineHeight: 1.6,
+            color: "#5a5a5a",
+          }}
+        >
+          Same six-month shape across Class 5 to Class 10 — the depth of each
+          module is tuned to your child's age. A Class 5 program is real and
+          complete on its own; a Class 10 program is frontier engineering.
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {stages.map((s) => (
+            <span
+              key={s.grade}
+              className="inline-flex items-baseline gap-2 rounded-full border px-3.5 py-1.5"
+              style={{
+                fontFamily: "var(--font-body)",
+                fontSize: "0.78rem",
+                fontWeight: 500,
+                color: "#0a0a0a",
+                borderColor: "rgba(15,15,15,0.14)",
+                background: "#ffffff",
+              }}
+            >
+              <span style={{ color: "#1335b8" }}>{s.grade}</span>
+              <span style={{ color: "rgba(15,15,15,0.55)" }}>·</span>
+              <span>{s.stage}</span>
+            </span>
+          ))}
         </div>
       </div>
     </section>
