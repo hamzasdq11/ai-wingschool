@@ -16,70 +16,68 @@ const stats = [
 const modules: Module[] = [
   {
     number: "01",
-    title: "How AI actually works",
+    title: "How modern AI actually works",
     summary:
-      "What today's AI really is — ChatGPT, Claude, Gemini — and how it works under the hood. The vocabulary, the mental models, and the safe-use habits that turn a passive user into a deliberate builder. Hands-on with the same frontier tools real engineers use, from day one.",
-    ships: "A first working AI app they prompted and customized end-to-end.",
-    techniques: ["Foundation models", "Tokens", "Context window", "RLHF"],
+      "Training vs inference, the rules-based → machine learning → deep learning arc, and where the field actually sits in 2026. Vocabulary, mental models, and safe-use habits — built hands-on with the same frontier tools real engineers ship with.",
+    ships: "A first working AI workflow, prompted and customized end-to-end.",
+    techniques: ["Field literacy", "Foundation models", "Mental models"],
   },
   {
     number: "02",
-    title: "Talking to AI like a programmer",
+    title: "Prompts as a programming language",
     summary:
-      "Going beyond ChatGPT — how to write prompts that work like code, with instructions, examples, and reasoning. Prompts iterated and improved with real measurements, not guessed at, and used on real schoolwork and personal problems.",
-    ships: "A multi-step AI assistant they iterated, measured, and use daily.",
-    techniques: ["System prompts", "Few-shot", "Function calling", "MCP", "Evals"],
+      "System and user messages, few-shot examples, chain-of-thought reasoning, structured outputs, and evals. Prompts iterated and versioned like code, then used on real schoolwork and personal problems.",
+    ships: "A multi-step AI assistant — iterated, evaluated, used daily.",
+    techniques: ["System prompts", "Few-shot", "Chain-of-thought", "Evals"],
   },
   {
     number: "03",
-    title: "AI that sees",
+    title: "AI that sees — vision and multimodal",
     summary:
-      "How AI looks at images and video — telling what's in a photo, finding objects, and the new multimodal models that combine vision with language. They ship their own working vision system on a real-world problem they care about.",
-    ships: "A working vision system on a real-world problem they chose themselves.",
-    techniques: ["VLMs", "ViT", "CLIP", "Detection", "Segmentation"],
+      "How images become numbers, classification with pre-trained models, object detection, and vision-language models. At higher grades, CNNs and vision systems built and trained from scratch.",
+    ships: "A working vision system on a real-world problem they chose.",
+    techniques: ["Classification", "VLMs", "CNNs", "Detection"],
   },
   {
     number: "04",
-    title: "AI that talks back",
+    title: "AI that hears and speaks — voice",
     summary:
-      "Voice AI — how it listens, speaks, and holds a real-time conversation in any language. They design and ship a voice assistant that actually converses, in their preferred language, with the right timing to feel natural.",
-    ships: "A real-time multilingual voice assistant that holds a conversation.",
-    techniques: ["Realtime API", "Speech-to-text", "Whisper", "Voice agents"],
+      "Speech-to-text, text-to-speech, multilingual voice models, and the latency budgets that make real-time conversation feel real. A voice agent designed, shipped, and tested in their preferred language.",
+    ships: "A real-time multilingual voice agent that holds a conversation.",
+    techniques: ["STT / TTS", "Voice agents", "Multilingual", "Realtime"],
   },
   {
     number: "05",
-    title: "AI that takes action — and AI they train themselves",
+    title: "AI that acts — agents, ML, and deep learning",
     summary:
-      "AI that doesn't just talk — it does things. Systems that look up information, make plans, and take real actions on their behalf. Paired with the basics of training their own AI models on data they choose.",
-    ships: "An autonomous AI agent grounded in real knowledge, deployed live.",
-    techniques: ["Agents", "ReAct", "RAG", "Vector stores", "Fine-tuning"],
+      "Function calling, the ReAct pattern, embeddings, vector databases, and multi-agent orchestration. Paired with real machine learning — supervised learning at younger grades, neural networks and transformers from scratch at older ones.",
+    ships: "A trained model and an autonomous agent — both deployed live.",
+    techniques: ["Tool use", "ReAct", "Vector DBs", "scikit-learn", "NumPy NN"],
   },
   {
     number: "06",
     title: "Capstone + Flagship Expo",
     summary:
-      "One ambitious project that pulls the program together — designed, built, and deployed at a real URL. They defend their work on stage to parents, mentors, and a guest founder — answering the same kinds of questions a real engineer would.",
-    ships: "A finished AI app live at a public URL — presented and defended on stage.",
-    techniques: ["System design", "Evals", "Observability", "Guardrails"],
+      "One ambitious project that synthesizes the program, system design defending architecture choices, technical writing, and pitching to a panel of senior mentors. Shipped at a public URL. Defended on stage in front of parents, mentors, and a guest founder.",
+    ships: "A defended capstone live at a public URL, presented on stage.",
+    techniques: ["System design", "Demo", "Defense", "Polish"],
   },
 ];
 
 const engineeringStack = [
   "Python",
-  "PyTorch",
   "NumPy",
+  "Pandas",
+  "scikit-learn",
+  "PyTorch",
   "Hugging Face",
   "Transformers",
-  "Anthropic SDK",
-  "OpenAI SDK",
-  "MCP",
   "LangChain",
-  "LlamaIndex",
-  "pgvector",
-  "Weights & Biases",
+  "Vector DBs",
+  "Streamlit",
+  "FastAPI",
   "Cursor",
-  "v0",
-  "Replit Agent",
+  "Replit",
   "Vercel",
 ];
 
@@ -93,9 +91,9 @@ const stages = [
 ];
 
 const outcomes = [
-  "Real fluency in modern AI — what it is, how it works, and what to use it for. Built by hand, not memorized.",
-  "Six real AI systems your child can show you, live at real URLs — engineered properly, not screenshots.",
-  "Working command of the same Python AI stack used at every Indian AI startup — calibrated to your child's age.",
+  "Working understanding of the modern AI canon — prompts, vision, voice, agents, machine learning, and (at higher grades) neural networks and transformers, built in code.",
+  "Six shipped projects plus one defended capstone live at a real URL — engineered end-to-end, not slides.",
+  "Real fluency in the modern Python AI stack — the same one used at every Indian AI startup, calibrated to their age.",
 ];
 
 export function Curriculum() {
@@ -107,10 +105,10 @@ export function Curriculum() {
           A complete six-month AI program. <em>Basics to advanced.</em>
         </h2>
         <p className="section-body mb-4">
-          Six monthly modules. Six real AI projects shipped. One capstone
-          defended at Flagship Expo Day. A complete, self-contained program
-          — your child can join at any grade, with no prior year required,
-          and leave fluent in modern AI.
+          Six monthly modules. Six shipped projects. One capstone defended
+          at Flagship Expo Day. A complete, self-contained program — your
+          child can join at any grade, with no prior year required, and
+          leave fluent in modern AI.
         </p>
         <p className="ui-body-sm mb-14" style={{ color: "#1335b8" }}>
           Designed and taught by IIT and IIM grads.
@@ -276,39 +274,25 @@ export function Curriculum() {
                   {m.ships}
                 </p>
               </div>
-              <div className="flex flex-col gap-2">
-                <span
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    fontSize: "0.6rem",
-                    fontWeight: 500,
-                    letterSpacing: "0.2em",
-                    textTransform: "uppercase",
-                    color: "#a0a0a0",
-                  }}
-                >
-                  Techniques covered
-                </span>
-                <div className="flex flex-wrap gap-1.5">
-                  {m.techniques.map((t) => (
-                    <span
-                      key={t}
-                      className="rounded-full border px-2.5 py-1"
-                      style={{
-                        fontFamily: "var(--font-body)",
-                        fontSize: "10px",
-                        fontWeight: 500,
-                        letterSpacing: "0.12em",
-                        textTransform: "uppercase",
-                        color: "#1335b8",
-                        borderColor: "rgba(19, 53, 184, 0.22)",
-                        background: "rgba(19, 53, 184, 0.05)",
-                      }}
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
+              <div className="flex flex-wrap gap-1.5">
+                {m.techniques.map((t) => (
+                  <span
+                    key={t}
+                    className="rounded-full border px-2.5 py-1"
+                    style={{
+                      fontFamily: "var(--font-body)",
+                      fontSize: "10px",
+                      fontWeight: 500,
+                      letterSpacing: "0.12em",
+                      textTransform: "uppercase",
+                      color: "#1335b8",
+                      borderColor: "rgba(19, 53, 184, 0.22)",
+                      background: "rgba(19, 53, 184, 0.05)",
+                    }}
+                  >
+                    {t}
+                  </span>
+                ))}
               </div>
             </div>
           </article>
@@ -320,7 +304,7 @@ export function Curriculum() {
         style={{ background: "#0a0a0a" }}
       >
         <div className="flex flex-col gap-6 px-6 py-8 sm:px-10 sm:py-10 lg:flex-row lg:items-center lg:gap-12 lg:px-12 lg:py-11">
-          <div className="lg:max-w-[220px] lg:shrink-0">
+          <div className="lg:max-w-[200px] lg:shrink-0">
             <p
               style={{
                 fontFamily: "var(--font-body)",
@@ -344,7 +328,7 @@ export function Curriculum() {
                 lineHeight: 1.15,
               }}
             >
-              The same tools real AI engineers use today.
+              The tools they actually use.
             </p>
           </div>
           <div className="flex flex-wrap gap-x-3 gap-y-3">
@@ -393,7 +377,7 @@ export function Curriculum() {
                 color: "#0a0a0a",
               }}
             >
-              A child who builds with AI — and can show you exactly how it works.
+              A child who builds with AI — fluent in the modern stack, not memorizing it.
             </h3>
             <p
               className="mt-4 max-w-md"
@@ -405,7 +389,7 @@ export function Curriculum() {
               }}
             >
               A complete program in itself. Most students stay longer — but
-              even one six-month program leaves them building real AI things.
+              even one six-month program leaves them fluent.
             </p>
             <a href="#book" className="ui-button mt-8">
               Book a 20-min Demo →
@@ -473,10 +457,8 @@ export function Curriculum() {
           }}
         >
           Same six-month shape across Class 5 to Class 10 — the depth of each
-          module is tuned to your child's age. A Class 5 program builds real
-          AI apps and voice assistants. A Class 10 program goes deep —
-          building neural networks from scratch, fine-tuning models, and
-          shipping production systems.
+          module is tuned to your child's age. A Class 5 program is real and
+          complete on its own; a Class 10 program is frontier engineering.
         </p>
         <div className="flex flex-wrap gap-2">
           {stages.map((s) => (
