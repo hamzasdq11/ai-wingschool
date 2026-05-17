@@ -2,6 +2,7 @@ import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
 import { OrientationDay } from "./components/OrientationDay";
 import { Problem } from "./components/Problem";
+import { WangQuote } from "./components/WangQuote";
 import { AIEra } from "./components/AIEra";
 import { HardwareKit } from "./components/HardwareKit";
 import { ProjectShowcase } from "./components/ProjectShowcase";
@@ -33,6 +34,7 @@ function App() {
       <OrientationDay />
       <Divider />
       <Problem />
+      <WangQuote />
       <Divider />
       <AIEra />
       <Divider />
