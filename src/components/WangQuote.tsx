@@ -25,7 +25,11 @@ export function WangQuote() {
 
       <div className="relative px-6 py-28 sm:px-10 sm:py-32 lg:px-16 lg:py-36">
         <div className="max-w-3xl">
-          <p
+          <a
+            href="https://economictimes.indiatimes.com/magazines/panache/young-ai-billionaire-alexandr-wang-urges-teenagers-to-dedicate-all-their-time-to-one-skill-to-seize-todays-tech-opportunities-calling-it-gen-zs-bill-gates-moment/articleshow/124154622.cms"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1.5 transition-opacity hover:opacity-100"
             style={{
               fontFamily: "var(--font-body)",
               fontSize: "10px",
@@ -33,10 +37,11 @@ export function WangQuote() {
               letterSpacing: "0.24em",
               textTransform: "uppercase",
               color: "rgba(255,255,255,0.55)",
+              textDecoration: "none",
             }}
           >
-            From the people building it
-          </p>
+            Source: Economic Times
+          </a>
 
           <blockquote className="mt-7">
             <p
@@ -93,24 +98,27 @@ export function WangQuote() {
               <p
                 style={{
                   fontFamily: "var(--font-display)",
-                  fontSize: "1.05rem",
+                  fontSize: "1.35rem",
                   fontWeight: 500,
-                  letterSpacing: "-0.01em",
+                  letterSpacing: "-0.015em",
+                  lineHeight: 1.1,
                   color: "#ffffff",
                 }}
               >
                 Alexandr Wang
               </p>
               <p
-                className="mt-1"
                 style={{
                   fontFamily: "var(--font-body)",
-                  fontSize: "0.82rem",
-                  lineHeight: 1.5,
-                  color: "rgba(255,255,255,0.68)",
+                  fontSize: "10px",
+                  fontWeight: 500,
+                  letterSpacing: "0.18em",
+                  textTransform: "uppercase",
+                  color: "rgba(255,255,255,0.55)",
+                  marginTop: "0.5rem",
                 }}
               >
-                Chief AI Officer, Meta · 28 · Youngest self-made billionaire
+                Chief AI Officer · Meta
               </p>
             </div>
           </div>
