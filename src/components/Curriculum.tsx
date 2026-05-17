@@ -8,7 +8,7 @@ type Module = {
 
 const stats = [
   { value: "6", label: "Months" },
-  { value: "6", label: "Projects shipped" },
+  { value: "6", label: "Systems shipped" },
   { value: "1", label: "Capstone defended" },
   { value: "10–16", label: "Ages welcomed" },
 ];
@@ -16,68 +16,70 @@ const stats = [
 const modules: Module[] = [
   {
     number: "01",
-    title: "How modern AI actually works",
+    title: "Foundations — tokens, training, inference",
     summary:
-      "Training vs inference, the rules-based → machine learning → deep learning arc, and where the field actually sits in 2026. Vocabulary, mental models, and safe-use habits — built hands-on with the same frontier tools real engineers ship with.",
-    ships: "A first working AI workflow, prompted and customized end-to-end.",
-    techniques: ["Field literacy", "Foundation models", "Mental models"],
+      "How frontier models — GPT, Claude, Gemini — actually work. Pretraining vs post-training, SFT and RLHF, tokens, context windows, inference, and scaling laws. Hands-on with the real SDKs from day one — not toy interfaces.",
+    ships: "A first working LLM workflow built directly against the Anthropic and OpenAI SDKs.",
+    techniques: ["Frontier models", "Tokens", "Context window", "RLHF", "SDKs"],
   },
   {
     number: "02",
-    title: "Prompts as a programming language",
+    title: "Context engineering",
     summary:
-      "System and user messages, few-shot examples, chain-of-thought reasoning, structured outputs, and evals. Prompts iterated and versioned like code, then used on real schoolwork and personal problems.",
-    ships: "A multi-step AI assistant — iterated, evaluated, used daily.",
-    techniques: ["System prompts", "Few-shot", "Chain-of-thought", "Evals"],
+      "System prompts, few-shot exemplars, chain-of-thought, extended thinking, structured outputs with JSON schemas, function calling, and the MCP protocol. Prompts versioned and evaluated like code — with real LLM evals, not vibes.",
+    ships: "A multi-step agentic workflow with structured outputs, function calls, and proper evals.",
+    techniques: ["System prompts", "Few-shot", "Function calling", "MCP", "Evals"],
   },
   {
     number: "03",
-    title: "AI that sees — vision and multimodal",
+    title: "Multimodal — vision-language models",
     summary:
-      "How images become numbers, classification with pre-trained models, object detection, and vision-language models. At higher grades, CNNs and vision systems built and trained from scratch.",
-    ships: "A working vision system on a real-world problem they chose.",
-    techniques: ["Classification", "VLMs", "CNNs", "Detection"],
+      "How VLMs actually see — image embeddings, vision transformers, multimodal prompting — and the canonical tasks: classification, detection, segmentation, OCR-free document understanding. At higher grades, CNNs and ViTs trained from scratch.",
+    ships: "A multimodal vision system grounded in a real-world problem they chose.",
+    techniques: ["VLMs", "ViT", "CLIP", "Detection", "Segmentation"],
   },
   {
     number: "04",
-    title: "AI that hears and speaks — voice",
+    title: "Voice agents and realtime",
     summary:
-      "Speech-to-text, text-to-speech, multilingual voice models, and the latency budgets that make real-time conversation feel real. A voice agent designed, shipped, and tested in their preferred language.",
-    ships: "A real-time multilingual voice agent that holds a conversation.",
-    techniques: ["STT / TTS", "Voice agents", "Multilingual", "Realtime"],
+      "Streaming speech-to-text, low-latency TTS, multilingual speech models, and the realtime audio APIs that make duplex conversation feel real. Voice agents with proper interrupt handling, shipped in their preferred language.",
+    ships: "A realtime multilingual voice agent with sub-second time-to-first-byte.",
+    techniques: ["Realtime API", "STT / TTS", "Whisper", "Duplex audio", "Voice agents"],
   },
   {
     number: "05",
-    title: "AI that acts — agents, ML, and deep learning",
+    title: "Agentic systems, RAG, and deep learning",
     summary:
-      "Function calling, the ReAct pattern, embeddings, vector databases, and multi-agent orchestration. Paired with real machine learning — supervised learning at younger grades, neural networks and transformers from scratch at older ones.",
-    ships: "A trained model and an autonomous agent — both deployed live.",
-    techniques: ["Tool use", "ReAct", "Vector DBs", "scikit-learn", "NumPy NN"],
+      "Agentic loops — ReAct, Plan-and-Execute, multi-agent orchestration — plus retrieval-augmented generation with embeddings, vector stores, and hybrid search. At older grades, paired with backpropagation, transformer internals, and fine-tuning with LoRA.",
+    ships: "An autonomous agent grounded in a RAG pipeline, deployed live with tracing.",
+    techniques: ["ReAct", "RAG", "Embeddings", "Vector stores", "LoRA", "Backprop"],
   },
   {
     number: "06",
     title: "Capstone + Flagship Expo",
     summary:
-      "One ambitious project that synthesizes the program, system design defending architecture choices, technical writing, and pitching to a panel of senior mentors. Shipped at a public URL. Defended on stage in front of parents, mentors, and a guest founder.",
-    ships: "A defended capstone live at a public URL, presented on stage.",
-    techniques: ["System design", "Demo", "Defense", "Polish"],
+      "One ambitious AI system that synthesizes the program — system design defending architecture choices, eval suites, observability, and guardrails. Shipped at a public URL with monitoring and tracing. Defended on stage to parents, mentors, and a guest founder.",
+    ships: "A production-grade AI system live at a public URL — evaluated, traced, defended.",
+    techniques: ["System design", "Eval suites", "Observability", "Guardrails", "Tracing"],
   },
 ];
 
 const engineeringStack = [
   "Python",
-  "NumPy",
-  "Pandas",
-  "scikit-learn",
   "PyTorch",
+  "NumPy",
   "Hugging Face",
   "Transformers",
+  "Anthropic SDK",
+  "OpenAI SDK",
+  "MCP",
   "LangChain",
-  "Vector DBs",
-  "Streamlit",
-  "FastAPI",
+  "LlamaIndex",
+  "pgvector",
+  "Weights & Biases",
   "Cursor",
-  "Replit",
+  "v0",
+  "Replit Agent",
   "Vercel",
 ];
 
@@ -91,9 +93,9 @@ const stages = [
 ];
 
 const outcomes = [
-  "Working understanding of the modern AI canon — prompts, vision, voice, agents, machine learning, and (at higher grades) neural networks and transformers, built in code.",
-  "Six shipped projects plus one defended capstone live at a real URL — engineered end-to-end, not slides.",
-  "Real fluency in the modern Python AI stack — the same one used at every Indian AI startup, calibrated to their age.",
+  "Working fluency with the modern AI engineering stack — frontier model APIs, context engineering, agentic workflows, RAG pipelines, and (at higher grades) transformer internals built from scratch.",
+  "Six production-grade systems shipped at real URLs — engineered with eval suites, observability, and proper guardrails. Not slides, not screenshots.",
+  "Real command of the stack every Indian AI startup is hiring on — calibrated to their grade, used live, defended on stage.",
 ];
 
 export function Curriculum() {
@@ -102,13 +104,14 @@ export function Curriculum() {
       <div className="section-copy">
         <p className="section-kicker mb-4">Curriculum</p>
         <h2 className="section-heading mb-6">
-          A complete six-month AI program. <em>Basics to advanced.</em>
+          A complete six-month AI engineering program. <em>Prompts to production.</em>
         </h2>
         <p className="section-body mb-4">
-          Six monthly modules. Six shipped projects. One capstone defended
-          at Flagship Expo Day. A complete, self-contained program — your
-          child can join at any grade, with no prior year required, and
-          leave fluent in modern AI.
+          Six monthly modules covering frontier models, context engineering,
+          multimodal AI, voice agents, agentic systems, RAG pipelines, and
+          production deployment. One capstone, defended at Flagship Expo
+          Day. A complete, self-contained program — join at any grade,
+          leave fluent in modern AI engineering.
         </p>
         <p className="ui-body-sm mb-14" style={{ color: "#1335b8" }}>
           Designed and taught by IIT and IIM grads.
@@ -304,7 +307,7 @@ export function Curriculum() {
         style={{ background: "#0a0a0a" }}
       >
         <div className="flex flex-col gap-6 px-6 py-8 sm:px-10 sm:py-10 lg:flex-row lg:items-center lg:gap-12 lg:px-12 lg:py-11">
-          <div className="lg:max-w-[200px] lg:shrink-0">
+          <div className="lg:max-w-[220px] lg:shrink-0">
             <p
               style={{
                 fontFamily: "var(--font-body)",
@@ -328,7 +331,7 @@ export function Curriculum() {
                 lineHeight: 1.15,
               }}
             >
-              The tools they actually use.
+              The same tools shipping in production today.
             </p>
           </div>
           <div className="flex flex-wrap gap-x-3 gap-y-3">
@@ -377,7 +380,7 @@ export function Curriculum() {
                 color: "#0a0a0a",
               }}
             >
-              A child who builds with AI — fluent in the modern stack, not memorizing it.
+              An AI engineer in miniature — building, evaluating, shipping.
             </h3>
             <p
               className="mt-4 max-w-md"
@@ -389,7 +392,7 @@ export function Curriculum() {
               }}
             >
               A complete program in itself. Most students stay longer — but
-              even one six-month program leaves them fluent.
+              even one six-month program leaves them shipping real AI systems.
             </p>
             <a href="#book" className="ui-button mt-8">
               Book a 20-min Demo →
@@ -457,8 +460,10 @@ export function Curriculum() {
           }}
         >
           Same six-month shape across Class 5 to Class 10 — the depth of each
-          module is tuned to your child's age. A Class 5 program is real and
-          complete on its own; a Class 10 program is frontier engineering.
+          module is tuned to your child's age. A Class 5 program ships real
+          LLM agents and RAG-grounded systems. A Class 10 program is frontier
+          engineering — transformers from scratch, LoRA fine-tunes,
+          production observability.
         </p>
         <div className="flex flex-wrap gap-2">
           {stages.map((s) => (
