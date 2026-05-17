@@ -8,7 +8,7 @@ import { AIEra } from "./components/AIEra";
 import { ProjectShowcase } from "./components/ProjectShowcase";
 // import { HowItWorks } from "./components/HowItWorks"; // temporarily disabled — uncomment here and below to restore
 import { Curriculum } from "./components/Curriculum";
-import { Outcomes } from "./components/Outcomes";
+// import { Outcomes } from "./components/Outcomes"; // temporarily disabled — uncomment here and below to restore
 import { Pricing } from "./components/Pricing";
 // import { Testimonials } from "./components/Testimonials"; // temporarily disabled — uncomment here and below to restore
 // import { ForSchools } from "./components/ForSchools"; // temporarily disabled — uncomment here and below to restore
@@ -43,8 +43,8 @@ function App() {
       {/* <HowItWorks /> */}
       <Curriculum />
       <Divider />
-      <Outcomes />
-      <Divider />
+      {/* <Outcomes />
+      <Divider /> */}
       <Pricing />
       {/* <Testimonials /> */}
       {/* <ForSchools /> */}
