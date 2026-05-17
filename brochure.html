@@ -1,0 +1,1692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>AI Wingschool — Brochure</title>
+<style>
+  @font-face {
+    font-family: "Hanken Grotesk";
+    src: url("./public/fonts/HankenGrotesk-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Editors Note";
+    src: url("./public/fonts/EditorsNote-ExtralightItalic.otf") format("opentype");
+    font-weight: 200;
+    font-style: italic;
+  }
+
+  :root {
+    --ink: #0a0a0a;
+    --ink-2: #3a3a3a;
+    --ink-3: #5a5a5a;
+    --muted: #8a8a8a;
+    --line: rgba(15,15,15,0.10);
+    --primary: #1335b8;
+    --primary-soft: rgba(19,53,184,0.08);
+    --primary-border: rgba(19,53,184,0.22);
+    --cream: #fbfaf6;
+    --cream-2: #f4f3ee;
+    --serif: "Editors Note", "Georgia", serif;
+    --sans: "Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  }
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--sans);
+    color: var(--ink);
+    background: #ffffff;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  em, .script {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 200;
+    color: #1f1f1f;
+  }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    padding: 18mm 16mm;
+    position: relative;
+    break-after: page;
+    page-break-after: always;
+    overflow: hidden;
+    background: var(--cream);
+  }
+  .page:last-child { page-break-after: auto; break-after: auto; }
+
+  .page.white { background: #ffffff; }
+
+  .page.dark {
+    background: #05081C;
+    color: #ffffff;
+  }
+
+  .page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 9pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10mm;
+  }
+  .page-header .brand {
+    color: var(--primary);
+    font-weight: 600;
+  }
+  .page.dark .page-header { color: rgba(255,255,255,0.55); }
+  .page.dark .page-header .brand { color: #ffffff; }
+
+  .kicker {
+    font-size: 9pt;
+    font-weight: 500;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8mm;
+  }
+  .kicker.primary { color: var(--primary); }
+
+  h1.title {
+    font-size: 44pt;
+    line-height: 1.02;
+    font-weight: 400;
+    letter-spacing: -0.045em;
+    margin: 0 0 8mm;
+    color: var(--ink);
+  }
+  h2.title {
+    font-size: 32pt;
+    line-height: 1.04;
+    font-weight: 400;
+    letter-spacing: -0.04em;
+    margin: 0 0 6mm;
+    color: var(--ink);
+  }
+  h3.section {
+    font-size: 18pt;
+    line-height: 1.1;
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    margin: 0 0 3mm;
+    color: var(--ink);
+  }
+  h4.row-title {
+    font-size: 13pt;
+    line-height: 1.15;
+    font-weight: 400;
+    letter-spacing: -0.025em;
+    margin: 0 0 2mm;
+    color: var(--ink);
+  }
+  p.lead {
+    font-size: 11.5pt;
+    line-height: 1.65;
+    color: var(--ink-2);
+    margin: 0 0 6mm;
+    max-width: 165mm;
+  }
+  p.body {
+    font-size: 10pt;
+    line-height: 1.55;
+    color: var(--ink-3);
+    margin: 0;
+  }
+  p.tiny {
+    font-size: 8.5pt;
+    line-height: 1.5;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 10mm;
+    left: 16mm;
+    right: 16mm;
+    display: flex;
+    justify-content: space-between;
+    font-size: 8pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .page.dark .footer { color: rgba(255,255,255,0.45); }
+
+  /* COVER */
+  .cover {
+    background:
+      radial-gradient(circle at 72% 18%, rgba(19,53,184,0.12), transparent 30%),
+      radial-gradient(circle at 18% 82%, rgba(19,53,184,0.06), transparent 28%),
+      linear-gradient(180deg, #fbfaf6 0%, #f4f3ee 100%);
+    padding: 22mm 16mm;
+  }
+  .cover-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30mm;
+  }
+  .brand-mark {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 4mm;
+    font-size: 12pt;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .brand-mark .dot {
+    width: 8px; height: 8px; border-radius: 999px; background: var(--primary);
+    display: inline-block; transform: translateY(-1px);
+  }
+  .brand-mark strong { font-weight: 500; }
+  .cover-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 11px;
+    border-radius: 999px;
+    border: 1px solid var(--primary-border);
+    background: var(--primary-soft);
+    color: var(--primary);
+    font-size: 8.5pt;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .cover-chip .dot {
+    width: 6px; height: 6px; border-radius: 999px; background: var(--primary);
+  }
+  .cover h1 {
+    font-size: 58pt;
+    line-height: 1.0;
+    letter-spacing: -0.045em;
+    font-weight: 400;
+    margin: 0 0 10mm;
+    color: var(--ink);
+    max-width: 175mm;
+  }
+  .cover .sub {
+    font-size: 13pt;
+    line-height: 1.55;
+    color: var(--ink-2);
+    margin: 0 0 4mm;
+    max-width: 160mm;
+  }
+  .cover .sub-mini {
+    font-size: 10pt;
+    color: var(--primary);
+    font-weight: 500;
+    margin: 2mm 0 12mm;
+  }
+  .cover-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4mm;
+    margin-top: 18mm;
+    border-top: 1px solid var(--line);
+    padding-top: 8mm;
+  }
+  .cover-stats .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2mm;
+  }
+  .cover-stats .stat .val {
+    font-size: 22pt;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+  }
+  .cover-stats .stat .lbl {
+    font-size: 8.5pt;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .cover .meta {
+    position: absolute;
+    bottom: 14mm;
+    left: 16mm;
+    right: 16mm;
+    display: flex;
+    justify-content: space-between;
+    font-size: 8.5pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .cover .meta .right { color: var(--primary); }
+
+  /* Layout helpers */
+  .row {
+    display: grid;
+    grid-template-columns: 28mm 1fr 1fr;
+    gap: 8mm;
+    border-top: 1px solid var(--line);
+    padding: 9mm 0;
+  }
+  .row:last-child { border-bottom: 1px solid var(--line); }
+  .row .num {
+    font-size: 34pt;
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+    color: var(--primary);
+    font-weight: 300;
+  }
+
+  /* Cards */
+  .card {
+    background: #ffffff;
+    border: 1px solid #ece9df;
+    border-radius: 8mm;
+    padding: 7mm;
+    box-shadow: 0 1px 2px rgba(15,15,15,0.02), 0 8px 20px rgba(15,15,15,0.04);
+  }
+  .card .lbl-tag {
+    font-size: 8.5pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--primary);
+    font-weight: 500;
+    margin-bottom: 3mm;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5mm;
+  }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5mm;
+  }
+
+  /* Era timeline */
+  .eras {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6mm 6mm;
+    margin-top: 6mm;
+  }
+  .era {
+    border-top: 2px solid var(--primary);
+    padding-top: 4mm;
+  }
+  .era.dim { border-top-color: rgba(19,53,184,0.18); }
+  .era .y {
+    font-size: 12pt;
+    color: var(--primary);
+    font-weight: 500;
+    margin-bottom: 1mm;
+  }
+  .era .n {
+    font-size: 11pt;
+    color: var(--ink);
+    margin: 0 0 2mm;
+    letter-spacing: -0.02em;
+  }
+  .era .d {
+    font-size: 8.5pt;
+    color: var(--ink-3);
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  /* Impact */
+  .impact {
+    margin-top: 8mm;
+    padding: 7mm 8mm;
+    border-radius: 6mm;
+    border: 1px solid var(--line);
+    background: linear-gradient(180deg,#ffffff,#faf9f4);
+  }
+  .impact .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5mm;
+  }
+  .impact .v {
+    font-size: 16pt;
+    color: var(--primary);
+    margin-bottom: 2mm;
+    letter-spacing: -0.02em;
+  }
+  .impact .l {
+    font-size: 9pt;
+    color: var(--ink-3);
+    line-height: 1.45;
+  }
+
+  /* Projects */
+  .project-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6mm;
+  }
+  .project {
+    background: #fff;
+    border: 1px solid #ece9df;
+    border-radius: 6mm;
+    padding: 6mm;
+    display: flex;
+    flex-direction: column;
+    gap: 3mm;
+  }
+  .project .tag-row {
+    font-size: 8pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--primary);
+    font-weight: 500;
+  }
+  .project .t {
+    font-size: 12pt;
+    line-height: 1.2;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+  .project .d {
+    font-size: 9pt;
+    line-height: 1.5;
+    color: var(--ink-3);
+  }
+  .project .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5mm;
+    margin-top: auto;
+  }
+  .pill {
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 1mm 3mm;
+    font-size: 7.5pt;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    background: rgba(19,53,184,0.03);
+  }
+
+  /* Curriculum module rows */
+  .module {
+    border-top: 1px solid var(--line);
+    padding: 7mm 0;
+    display: grid;
+    grid-template-columns: 22mm 1fr 70mm;
+    gap: 6mm;
+  }
+  .module:last-child { border-bottom: 1px solid var(--line); }
+  .module .month-lbl {
+    font-size: 7.5pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2mm;
+  }
+  .module .month {
+    font-size: 30pt;
+    line-height: 0.95;
+    color: var(--primary);
+    font-weight: 300;
+    letter-spacing: -0.05em;
+  }
+  .module h4 {
+    font-size: 13pt;
+    margin: 0 0 2mm;
+    line-height: 1.15;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+  .module .desc {
+    font-size: 9.5pt;
+    line-height: 1.5;
+    color: var(--ink-3);
+  }
+  .ships-card {
+    border: 1px solid var(--primary-border);
+    background: var(--primary-soft);
+    border-radius: 4mm;
+    padding: 4mm 5mm;
+  }
+  .ships-card .l {
+    font-size: 7.5pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 1.5mm;
+  }
+  .ships-card .v {
+    font-size: 10pt;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+  .tech-pills {
+    margin-top: 3mm;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5mm;
+  }
+  .tech {
+    border: 1px solid var(--primary-border);
+    background: rgba(19,53,184,0.05);
+    color: var(--primary);
+    border-radius: 999px;
+    padding: 0.8mm 2.5mm;
+    font-size: 7.5pt;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* Stack */
+  .stack {
+    margin-top: 8mm;
+    background: #0a0a0a;
+    color: #fff;
+    border-radius: 6mm;
+    padding: 7mm 8mm;
+  }
+  .stack .lbl-tag {
+    color: rgba(255,255,255,0.55);
+    font-size: 7.5pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 2mm;
+  }
+  .stack .heading {
+    font-size: 14pt;
+    color: #fff;
+    letter-spacing: -0.025em;
+    margin-bottom: 4mm;
+  }
+  .stack .pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2mm 2mm;
+  }
+  .stack .pill {
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.04);
+    color: rgba(255,255,255,0.92);
+    padding: 1.2mm 3mm;
+    font-size: 8.5pt;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  /* Outcomes block */
+  .outcomes {
+    margin-top: 7mm;
+    padding: 8mm;
+    border-radius: 8mm;
+    border: 1px solid var(--line);
+    background:
+      radial-gradient(circle at 88% 12%, rgba(19,53,184,0.10), transparent 42%),
+      linear-gradient(180deg, #ffffff 0%, #faf9f4 100%);
+  }
+  .outcomes ul {
+    list-style: none;
+    padding: 0;
+    margin: 4mm 0 0;
+    display: grid;
+    gap: 3mm;
+  }
+  .outcomes li {
+    display: grid;
+    grid-template-columns: 5mm 1fr;
+    gap: 3mm;
+    font-size: 10pt;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  .outcomes li::before {
+    content: "✓";
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 12pt;
+    line-height: 1;
+  }
+  .stages {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2mm;
+    margin-top: 5mm;
+  }
+  .stage-pill {
+    border: 1px solid rgba(15,15,15,0.14);
+    border-radius: 999px;
+    background: #fff;
+    padding: 1.2mm 4mm;
+    font-size: 8.5pt;
+    color: var(--ink);
+  }
+  .stage-pill b {
+    color: var(--primary);
+    font-weight: 500;
+    margin-right: 2mm;
+  }
+
+  /* Pricing */
+  .plans {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4mm;
+  }
+  .plan {
+    border: 1px solid #ece9df;
+    background: #fff;
+    border-radius: 5mm;
+    padding: 5mm;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5mm;
+    position: relative;
+  }
+  .plan.featured {
+    border: 1.5px solid var(--primary);
+    background:
+      radial-gradient(circle at top right, rgba(19,53,184,0.10), #ffffff 70%);
+    box-shadow: 0 12px 30px -10px rgba(19,53,184,0.22);
+  }
+  .plan .badge {
+    position: absolute;
+    top: -3mm;
+    left: 6mm;
+    background: var(--primary);
+    color: #fff;
+    border-radius: 999px;
+    padding: 1mm 3mm;
+    font-size: 7pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .plan .name {
+    font-size: 12pt;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    margin-bottom: 1mm;
+  }
+  .plan .offer {
+    display: inline-block;
+    border: 1px solid var(--primary-border);
+    background: var(--primary-soft);
+    border-radius: 999px;
+    padding: 1mm 3mm;
+    font-size: 7pt;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--primary);
+    font-weight: 600;
+    margin-bottom: 2mm;
+    width: fit-content;
+  }
+  .plan .price {
+    display: flex;
+    align-items: baseline;
+    gap: 2mm;
+  }
+  .plan .price .amt {
+    font-size: 22pt;
+    color: var(--ink);
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+  .plan .price .old {
+    font-size: 12pt;
+    color: #888;
+    text-decoration: line-through;
+  }
+  .plan .price .unit {
+    font-size: 8.5pt;
+    color: var(--muted);
+  }
+  .plan .meta-lines {
+    font-size: 8.5pt;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .plan .meta-lines .up {
+    color: var(--primary);
+    font-weight: 500;
+    margin-top: 1mm;
+  }
+  .plan .divider {
+    border-bottom: 1px solid var(--line);
+    margin: 2mm 0;
+  }
+  .plan ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 1.5mm;
+  }
+  .plan ul li {
+    font-size: 7.5pt;
+    line-height: 1.4;
+    color: var(--ink-2);
+    display: grid;
+    grid-template-columns: 3mm 1fr;
+    gap: 1.5mm;
+  }
+  .plan ul li::before {
+    content: "✓";
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 8pt;
+    line-height: 1.1;
+  }
+
+  /* FAQ */
+  .faq {
+    border-top: 1px solid var(--line);
+    padding: 6mm 0;
+  }
+  .faq:last-of-type { border-bottom: 1px solid var(--line); }
+  .faq .q {
+    font-size: 11pt;
+    color: var(--ink);
+    line-height: 1.4;
+    margin: 0 0 2.5mm;
+  }
+  .faq .a {
+    font-size: 9.5pt;
+    color: var(--ink-3);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* Wang quote */
+  .quote-block {
+    padding: 0;
+  }
+  .quote-kicker {
+    font-size: 8pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 8mm;
+  }
+  .quote-text {
+    font-size: 40pt;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    color: #ffffff;
+    margin: 0;
+    max-width: 160mm;
+  }
+  .quote-text .open, .quote-text .close {
+    font-family: var(--serif);
+    font-style: italic;
+    color: rgba(255,255,255,0.45);
+  }
+  .quote-author {
+    margin-top: 14mm;
+    display: flex;
+    align-items: center;
+    gap: 6mm;
+  }
+  .quote-author .bar {
+    width: 18mm; height: 1px; background: rgba(255,255,255,0.45);
+  }
+  .quote-author .name {
+    font-size: 14pt;
+    color: #fff;
+    letter-spacing: -0.015em;
+  }
+  .quote-author .role {
+    font-size: 8.5pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    margin-top: 1.5mm;
+  }
+
+  /* Last page CTA */
+  .cta {
+    border: 1px solid var(--line);
+    border-radius: 8mm;
+    padding: 12mm;
+    background:
+      radial-gradient(circle at top right, rgba(19,53,184,0.12), transparent 42%),
+      linear-gradient(180deg, #ffffff 0%, #faf9f4 100%);
+  }
+  .cta h2 {
+    font-size: 28pt;
+    line-height: 1.1;
+    margin: 4mm 0 6mm;
+    letter-spacing: -0.035em;
+    color: var(--ink);
+  }
+  .cta .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4mm 6mm;
+    font-size: 10pt;
+    color: var(--ink-2);
+    margin-top: 4mm;
+  }
+  .cta .meta-row b { color: var(--ink); font-weight: 600; }
+  .cities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2mm;
+    margin-top: 6mm;
+  }
+  .city {
+    border: 1.5px dashed rgba(15,15,15,0.22);
+    border-radius: 3mm;
+    padding: 2mm 3mm;
+    min-width: 22mm;
+    text-align: center;
+    font-size: 9pt;
+    color: var(--ink-2);
+  }
+  .city b {
+    display: block;
+    font-size: 7pt;
+    letter-spacing: 0.22em;
+    color: #888;
+    font-weight: 600;
+    margin-bottom: 0.5mm;
+  }
+  .city.active {
+    border: 1.5px solid var(--primary);
+    background: var(--primary-soft);
+    color: var(--primary);
+  }
+  .city.active b { color: var(--primary); }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    gap: 2mm;
+    background: var(--primary);
+    color: #fff;
+    border-radius: 999px;
+    padding: 3mm 6mm;
+    font-size: 10pt;
+    font-weight: 500;
+    text-decoration: none;
+    margin-top: 8mm;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 6mm;
+    margin-top: 14mm;
+    padding-top: 8mm;
+    border-top: 1px solid var(--line);
+  }
+  .contact-grid .lbl {
+    font-size: 7.5pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2mm;
+  }
+  .contact-grid .v {
+    font-size: 10pt;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+
+  /* Why-now section page */
+  .why-rows .row {
+    grid-template-columns: 22mm 1fr 1.4fr;
+  }
+  .why-rows .row .num { font-size: 38pt; }
+
+  /* Kinds */
+  .kinds {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4mm;
+    margin-top: 4mm;
+  }
+  .kind {
+    border: 1px solid #ece9df;
+    background: #fff;
+    border-radius: 6mm;
+    padding: 6mm;
+  }
+  .kind .tag {
+    color: var(--primary);
+    font-size: 8pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 2mm;
+  }
+  .kind .name {
+    font-size: 13pt;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    margin: 0 0 2mm;
+  }
+  .kind .desc {
+    font-size: 9pt;
+    color: var(--ink-3);
+    line-height: 1.5;
+  }
+
+  /* Family/Need band */
+  .pricing-band {
+    margin-top: 5mm;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4mm;
+  }
+  .pricing-band .card {
+    padding: 4mm 5mm;
+    border-radius: 4mm;
+  }
+  .pricing-band .card .lbl {
+    color: var(--primary);
+    font-size: 7.5pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 1.5mm;
+  }
+  .pricing-band .card h5 {
+    font-size: 11pt;
+    margin: 0 0 1.5mm;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .pricing-band .card p {
+    font-size: 8.5pt;
+    color: var(--ink-3);
+    line-height: 1.45;
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============== COVER ============== -->
+<section class="page cover">
+  <div class="cover-top">
+    <div class="brand-mark"><span class="dot"></span><strong>AI Wingschool</strong></div>
+    <div class="cover-chip"><span class="dot"></span>Now in Kanpur · Apply by 22 May</div>
+  </div>
+
+  <p class="kicker primary">A 6-month live AI program · Classes 5–10</p>
+
+  <h1>
+    Teenagers learning to <em>think</em> and <span class="script">build</span> in the AI&nbsp;era.
+  </h1>
+
+  <p class="sub">
+    A 6-month live program for students in Classes 5–10. They ship 6 real
+    AI projects, take the stage at Flagship Expo Day, and walk out with
+    skills that stay irreplaceable as AI replaces everything else.
+  </p>
+
+  <p class="sub-mini">Designed and taught by IIT &amp; IIM grads. Built for India.<br/>
+    Hardware included — Arduino, sensors, robotics — shipped to your door at no extra cost.</p>
+
+  <div class="cover-stats">
+    <div class="stat"><span class="val">200+</span><span class="lbl">Indian families</span></div>
+    <div class="stat"><span class="val">4.9</span><span class="lbl">Parent rating</span></div>
+    <div class="stat"><span class="val">IIT / IIM</span><span class="lbl">Mentors</span></div>
+  </div>
+
+  <div class="cover-stats">
+    <div class="stat"><span class="val">6</span><span class="lbl">Months</span></div>
+    <div class="stat"><span class="val">6</span><span class="lbl">Projects shipped</span></div>
+    <div class="stat"><span class="val">1</span><span class="lbl">Capstone defended</span></div>
+  </div>
+
+  <div class="meta">
+    <span>Brochure · 2026 edition</span>
+    <span class="right">hello@aiwingschool.com</span>
+  </div>
+</section>
+
+<!-- ============== WHY NOW ============== -->
+<section class="page">
+  <div class="page-header">
+    <span class="brand">AI Wingschool</span>
+    <span>01 · Why now</span>
+  </div>
+
+  <p class="kicker">Why now</p>
+  <h2 class="title">The world your child is preparing for <em>is being rewritten — by AI.</em></h2>
+  <p class="lead">
+    The students who'll lead the next decade are the ones building with AI
+    early — while it's still new ground for everyone. Wingschool is the
+    program that gives your child that head start.
+  </p>
+
+  <div class="why-rows">
+    <div class="row">
+      <div class="num">01</div>
+      <h4 class="row-title">AI is the new <em>electricity.</em></h4>
+      <p class="body">It will touch every job your child applies for — medicine, design, law, engineering, the arts. Fluency is no longer optional.</p>
+    </div>
+    <div class="row">
+      <div class="num">02</div>
+      <h4 class="row-title">Building beats <em>memorizing.</em></h4>
+      <p class="body">In an AI world, the answer is free. The skill that compounds is knowing what to build, and being able to build it.</p>
+    </div>
+    <div class="row">
+      <div class="num">03</div>
+      <h4 class="row-title">Early starts <em>win.</em></h4>
+      <p class="body">The kids who began with the internet in 1995 led the next two decades. The kids who begin with AI now will lead the next. The window is open.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>aiwingschool.com</span>
+    <span>p. 02</span>
+  </div>
+</section>
+
+<!-- ============== WANG QUOTE ============== -->
+<section class="page dark">
+  <div class="page-header">
+    <span class="brand">AI Wingschool</span>
+    <span style="color: rgba(255,255,255,0.55)">Voices · The AI Era</span>
+  </div>
+
+  <div class="quote-block" style="margin-top: 14mm">
+    <p class="quote-kicker">Source: Economic Times</p>
+    <p class="quote-text">
+      <span class="open">“</span>The next Bill Gates is a <span class="script" style="color:#fff">13-year-old vibe-coding</span> today.<span class="close">”</span>
+    </p>
+    <div class="quote-author">
+      <span class="bar"></span>
+      <div>
+        <div class="name">Alexandr Wang</div>
+        <div class="role">Chief AI Officer · Meta</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>aiwingschool.com</span>
+    <span>p. 03</span>
+  </div>
+</section>
+
+<!-- ============== THE AI ERA ============== -->
+<section class="page">
+  <div class="page-header">
+    <span class="brand">AI Wingschool</span>
+    <span>02 · The AI Era</span>
+  </div>
+
+  <p class="kicker" style="margin-bottom: 5mm">The AI era</p>
+  <h2 class="title" style="font-size: 26pt; margin-bottom: 4mm">AI didn't arrive now. It's been arriving for <em>seventy years.</em></h2>
+  <p class="lead" style="font-size: 10.5pt; margin-bottom: 6mm">
+    What changed is the speed. The last three years moved AI from research
+    labs into your child's homework, your inbox, and every job they'll apply for.
+  </p>
+
+  <p class="kicker primary" style="margin-bottom: 3mm">The evolution</p>
+  <div class="eras" style="gap: 4mm 5mm">
+    <div class="era dim">
+      <div class="y">1956</div>
+      <div class="n">Rule-based</div>
+      <p class="d">Computers told exactly what to do — if-this-then-that. No learning, no judgment.</p>
+    </div>
+    <div class="era dim">
+      <div class="y">1990s</div>
+      <div class="n">Machine Learning</div>
+      <p class="d">Machines start learning patterns from data instead of being hand-coded.</p>
+    </div>
+    <div class="era dim">
+      <div class="y">2012</div>
+      <div class="n">Deep Learning</div>
+      <p class="d">Neural networks unlock vision, speech, and translation at human levels.</p>
+    </div>
+    <div class="era">
+      <div class="y">2022</div>
+      <div class="n">Generative AI</div>
+      <p class="d">ChatGPT arrives. Machines write, design, and reason in language.</p>
+    </div>
+    <div class="era">
+      <div class="y">2024+</div>
+      <div class="n">Agentic AI</div>
+      <p class="d">AI doesn't just answer — it acts. Plans, decides, ships work across tools.</p>
+    </div>
+    <div class="era">
+      <div class="y">2026</div>
+      <div class="n">Embodied AI</div>
+      <p class="d">AI moves into the physical world — humanoid robots, smart homes, machines that see and act around your child.</p>
+    </div>
+  </div>
+
+  <p class="kicker primary" style="margin-top: 7mm; margin-bottom: 2mm">What's here now</p>
+  <h3 class="section" style="font-size: 15pt; margin-bottom: 4mm">Three kinds of AI your child <em>will use this year.</em></h3>
+  <div class="kinds">
+    <div class="kind" style="padding: 5mm">
+      <div class="tag">Creates</div>
+      <div class="name" style="font-size: 12pt">Generative AI</div>
+      <p class="desc" style="font-size: 8.5pt">Writes essays, designs images, generates code from a sentence. The kind your child meets in ChatGPT, Gemini, Midjourney.</p>
+    </div>
+    <div class="kind" style="padding: 5mm">
+      <div class="tag">Acts</div>
+      <div class="name" style="font-size: 12pt">Agentic AI</div>
+      <p class="desc" style="font-size: 8.5pt">Doesn't just answer — it does. Plans a trip, books the flights, drafts the code, ships the result. The shift defining 2025 onward.</p>
+    </div>
+    <div class="kind" style="padding: 5mm">
+      <div class="tag">Senses</div>
+      <div class="name" style="font-size: 12pt">Multimodal AI</div>
+      <p class="desc" style="font-size: 8.5pt">Sees, hears, speaks. Reads a maths problem from a photo and explains it aloud in Hindi. Tutors that finally feel human.</p>
+    </div>
+  </div>
+
+  <div class="impact" style="margin-top: 6mm; padding: 5mm 6mm">
+    <p class="kicker primary" style="margin-bottom: 3mm">The impact</p>
+    <div class="grid">
+      <div>
+        <div class="v" style="font-size: 14pt">60 days</div>
+        <div class="l" style="font-size: 8.5pt">ChatGPT to 100M users — the fastest-adopted product in history.</div>
+      </div>
+      <div>
+        <div class="v" style="font-size: 14pt">Every</div>
+        <div class="l" style="font-size: 8.5pt">major industry — finance, design, medicine, law — is rebuilding around AI.</div>
+      </div>
+      <div>
+        <div class="v" style="font-size: 14pt">2030</div>
+        <div class="l" style="font-size: 8.5pt">AI fluency will be what Excel was in 2010 — the baseline, not the edge.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>aiwingschool.com</span>
+    <span>p. 04</span>
+  </div>
+</section>
+
+<!-- ============== PROJECTS ============== -->
+<section class="page">
+  <div class="page-header">
+    <span class="brand">AI Wingschool</span>
+    <span>03 · Real student work</span>
+  </div>
+
+  <p class="kicker">Real student work</p>
+  <h2 class="title">Don't take our word for it. <em>Look at what they built.</em></h2>
+  <p class="lead">
+    Every Wingschool student ships six real AI projects in six months —
+    designed, built, and demoed by them. Here's a snapshot from our last
+    Flagship Expo Day.
+  </p>
+
+  <div class="project-list">
+    <div class="project">
+      <div class="tag-row">Aarav S. · Class 8 · Pune</div>
+      <div class="t">Dadu — a Hindi-speaking AI tutor</div>
+      <div class="d">Aarav built a voice tutor that explains math problems to his grandfather in Marathi. Used Whisper, GPT, and a custom prompt scaffold.</div>
+      <div class="tags">
+        <span class="pill">Voice AI</span><span class="pill">Prompt design</span><span class="pill">Hindi</span>
+      </div>
+    </div>
+    <div class="project">
+      <div class="tag-row">Saanvi K. · Class 9 · Bengaluru</div>
+      <div class="t">StudyBuddy — chapter summariser for boards</div>
+      <div class="d">An AI app that turns NCERT chapters into flashcards, mind-maps, and quizzes. She shipped it to her whole class and tracked retention.</div>
+      <div class="tags">
+        <span class="pill">Education</span><span class="pill">RAG</span><span class="pill">Web app</span>
+      </div>
+    </div>
+    <div class="project">
+      <div class="tag-row">Vivaan R. · Class 7 · Delhi</div>
+      <div class="t">PetPal — diagnose your dog from photos</div>
+      <div class="d">Trained a vision model on his own dataset to flag common skin conditions in stray dogs. Local NGO is now piloting it.</div>
+      <div class="tags">
+        <span class="pill">Computer vision</span><span class="pill">Dataset</span><span class="pill">NGO pilot</span>
+      </div>
+    </div>
+    <div class="project">
+      <div class="tag-row">Ira M. · Class 10 · Mumbai</div>
+      <div class="t">Verse — a poetry generator in 4 Indian languages</div>
+      <div class="d">Fine-tuned a small model on classical Hindi, Urdu, Tamil, and Bengali verse. Her Flagship Expo Day talk was picked up by the Litfest blog.</div>
+      <div class="tags">
+        <span class="pill">Fine-tuning</span><span class="pill">Multi-language</span><span class="pill">Creative AI</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 8mm; display:flex; justify-content: space-between; gap: 6mm; align-items: center;">
+    <div>
+      <div class="lbl-tag">Flagship Expo Day</div>
+      <p class="body" style="color: var(--ink); font-size: 10pt">Every cohort ends with a public Flagship Expo Day. Your child presents what they built — to parents, mentors, and a guest panel of founders.</p>
+    </div>
+    <div style="text-align:right; flex-shrink:0;">
+      <div class="lbl-tag">Last cohort</div>
+      <div style="font-size: 10pt; color: var(--ink)">12 projects · 80+ audience</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>aiwingschool.com</span>
+    <span>p. 05</span>
+  </div>
+</section>
+
+<!-- ============== CURRICULUM PART 1 ============== -->
+<section class="page">
+  <div class="page-header">
+    <span class="brand">AI Wingschool</span>
+    <span>04 · Curriculum · Month by month</span>
+  </div>
+
+  <p class="kicker">Curriculum</p>
+  <h2 class="title">A complete six-month AI program. <em>Basics to advanced.</em></h2>
+  <p class="lead">
+    Six monthly modules. Six shipped projects. One capstone defended at
+    Flagship Expo Day. A complete, self-contained program — your child can
+    join at any grade, with no prior year required, and leave fluent in modern AI.
+  </p>
+  <p class="kicker primary" style="margin-bottom: 6mm">Designed and taught by IIT and IIM grads.</p>
+
+  <div>
+    <article class="module">
+      <div>
+        <div class="month-lbl">Month</div>
+        <div class="month">01</div>
+      </div>
+      <div>
+        <h4>How modern AI actually works</h4>
+        <p class="desc">Training vs inference, the rules-based → machine learning → deep learning arc, and where the field actually sits in 2026. Vocabulary, mental models, and safe-use habits — built hands-on with the same frontier tools real engineers ship with.</p>
+      </div>
+      <div>
+        <div class="ships-card">
+          <div class="l">Ships this month</div>
+          <div class="v">A first working AI workflow, prompted and customized end-to-end.</div>
+        </div>
+        <div class="tech-pills">
+          <span class="tech">Field literacy</span>
+          <span class="tech">Foundation models</span>
+          <span class="tech">Mental models</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="module">
+      <div>
+        <div class="month-lbl">Month</div>
+        <div class="month">02</div>
+      </div>
+      <div>
+        <h4>Prompts as a programming language</h4>
+        <p class="desc">System and user messages, few-shot examples, chain-of-thought reasoning, structured outputs, and evals. Prompts iterated and versioned like code, then used on real schoolwork and personal problems.</p>
+      </div>
+      <div>
+        <div class="ships-card">
+          <div class="l">Ships this month</div>
+          <div class="v">A multi-step AI assistant — iterated, evaluated, used daily.</div>
+        </div>
+        <div class="tech-pills">
+          <span class="tech">System prompts</span>
+          <span class="tech">Few-shot</span>
+          <span class="tech">Chain-of-thought</span>
+          <span class="tech">Evals</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="module">
+      <div>
+        <div class="month-lbl">Month</div>
+        <div class="month">03</div>
+      </div>
+      <div>
+        <h4>AI that sees — vision and multimodal</h4>
+        <p class="desc">How images become numbers, classification with pre-trained models, object detection, and vision-language models. At higher grades, CNNs and vision systems built and trained from scratch.</p>
+      </div>
+      <div>
+        <div class="ships-card">
+          <div class="l">Ships this month</div>
+          <div class="v">A working vision system on a real-world problem they chose.</div>
+        </div>
+        <div class="tech-pills">
+          <span class="tech">Classification</span>
+          <span class="tech">VLMs</span>
+          <span class="tech">CNNs</span>
+          <span class="tech">Detection</span>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <div class="footer">
+    <span>aiwingschool.com</span>
+    <span>p. 06</span>
+  </div>
+</section>
+
+<!-- ============== CURRICULUM PART 2 ============== -->
+<section class="page">
+  <div class="page-header">
+    <span class="brand">AI Wingschool</span>
+    <span>04 · Curriculum · Month by month</span>
+  </div>
+
+  <p class="kicker">Curriculum (continued)</p>
+  <h2 class="title">Voice, agents, ML — and a defended <em>capstone.</em></h2>
+
+  <div>
+    <article class="module">
+      <div>
+        <div class="month-lbl">Month</div>
+        <div class="month">04</div>
+      </div>
+      <div>
+        <h4>AI that hears and speaks — voice</h4>
+        <p class="desc">Speech-to-text, text-to-speech, multilingual voice models, and the latency budgets that make real-time conversation feel real. A voice agent designed, shipped, and tested in their preferred language.</p>
+      </div>
+      <div>
+        <div class="ships-card">
+          <div class="l">Ships this month</div>
+          <div class="v">A real-time multilingual voice agent that holds a conversation.</div>
+        </div>
+        <div class="tech-pills">
+          <span class="tech">STT / TTS</span>
+          <span class="tech">Voice agents</span>
+          <span class="tech">Multilingual</span>
+          <span class="tech">Realtime</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="module">
+      <div>
+        <div class="month-lbl">Month</div>
+        <div class="month">05</div>
+      </div>
+      <div>
+        <h4>AI that acts — agents, ML, and deep learning</h4>
+        <p class="desc">Function calling, the ReAct pattern, embeddings, vector databases, and multi-agent orchestration. Paired with real machine learning — supervised learning at younger grades, neural networks and transformers from scratch at older ones.</p>
+      </div>
+      <div>
+        <div class="ships-card">
+          <div class="l">Ships this month</div>
+          <div class="v">A trained model and an autonomous agent — both deployed live.</div>
+        </div>
+        <div class="tech-pills">
+          <span class="tech">Tool use</span>
+          <span class="tech">ReAct</span>
+          <span class="tech">Vector DBs</span>
+          <span class="tech">scikit-learn</span>
+          <span class="tech">NumPy NN</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="module">
+      <div>
+        <div class="month-lbl">Month</div>
+        <div class="month">06</div>
+      </div>
+      <div>
+        <h4>Capstone + Flagship Expo</h4>
+        <p class="desc">One ambitious project that synthesizes the program, system design defending architecture choices, technical writing, and pitching to a panel of senior mentors. Shipped at a public URL. Defended on stage in front of parents, mentors, and a guest founder.</p>
+      </div>
+      <div>
+        <div class="ships-card">
+          <div class="l">Ships this month</div>
+          <div class="v">A defended capstone live at a public URL, presented on stage.</div>
+        </div>
+        <div class="tech-pills">
+          <span class="tech">System design</span>
+          <span class="tech">Demo</span>
+          <span class="tech">Defense</span>
+          <span class="tech">Polish</span>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <div class="stack">
+    <div class="lbl-tag">The stack — the tools they actually use</div>
+    <div class="pills">
+      <span class="pill">Python</span>
+      <span class="pill">NumPy</span>
+      <span class="pill">Pandas</span>
+      <span class="pill">scikit-learn</span>
+      <span class="pill">PyTorch</span>
+      <span class="pill">Hugging Face</span>
+      <span class="pill">Transformers</span>
+      <span class="pill">LangChain</span>
+      <span class="pill">Vector DBs</span>
+      <span class="pill">Streamlit</span>
+      <span class="pill">FastAPI</span>
+      <span class="pill">Cursor</span>
+      <span class="pill">Replit</span>
+      <span class="pill">Vercel</span>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>aiwingschool.com</span>
+    <span>p. 07</span>
+  </div>
+</section>
+
+<!-- ============== OUTCOMES + STAGES ============== -->
+<section class="page">
+  <div class="page-header">
+    <span class="brand">AI Wingschool</span>
+    <span>05 · Outcomes</span>
+  </div>
+
+  <p class="kicker">After six months</p>
+  <h2 class="title">A child who builds with AI — fluent in the modern stack, <em>not memorizing it.</em></h2>
+  <p class="lead" style="max-width: 160mm">
+    A complete program in itself. Most students stay longer — but even one
+    six-month program leaves them fluent.
+  </p>
+
+  <div class="outcomes">
+    <p class="kicker primary" style="margin: 0 0 2mm">What they walk out with</p>
+    <ul>
+      <li>Working understanding of the modern AI canon — prompts, vision, voice, agents, machine learning, and (at higher grades) neural networks and transformers, built in code.</li>
+      <li>Six shipped projects plus one defended capstone live at a real URL — engineered end-to-end, not slides.</li>
+      <li>Real fluency in the modern Python AI stack — the same one used at every Indian AI startup, calibrated to their age.</li>
+    </ul>
+  </div>
+
+  <div style="margin-top: 10mm">
+    <p class="kicker">Calibrated to your child's grade</p>
+    <p class="body" style="margin-bottom: 4mm; max-width: 165mm">
+      Same six-month shape across Class 5 to Class 10 — the depth of each
+      module is tuned to your child's age. A Class 5 program is real and
+      complete on its own; a Class 10 program is frontier engineering.
+    </p>
+    <div class="stages">
+      <span class="stage-pill"><b>Class 5</b> Discover · ages 10–11</span>
+      <span class="stage-pill"><b>Class 6</b> Explore · ages 11–12</span>
+      <span class="stage-pill"><b>Class 7</b> Build · ages 12–13</span>
+      <span class="stage-pill"><b>Class 8</b> Engineer · ages 13–14</span>
+      <span class="stage-pill"><b>Class 9</b> Apply · ages 14–15</span>
+      <span class="stage-pill"><b>Class 10</b> Frontier · ages 15–16</span>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 12mm">
+    <p class="kicker primary" style="margin-bottom: 3mm">Mentors</p>
+    <p class="body" style="color: var(--ink); font-size: 10.5pt">
+      Mentors are graduates of <b>IIT Madras</b>, <b>IIT Ropar</b>,
+      <b>IIM Bangalore</b>, and <b>IIM Ranchi</b> — most with industry
+      experience at AI-first startups. Cohorts are capped at 25 so every
+      student gets seen and challenged personally.
+    </p>
+  </div>
+
+  <div class="footer">
+    <span>aiwingschool.com</span>
+    <span>p. 08</span>
+  </div>
+</section>
+
+<!-- ============== PRICING ============== -->
+<section class="page">
+  <div class="page-header">
+    <span class="brand">AI Wingschool</span>
+    <span>06 · Pricing</span>
+  </div>
+
+  <p class="kicker" style="margin-bottom: 4mm">Pricing</p>
+  <h2 class="title" style="font-size: 24pt; margin-bottom: 3mm">AI fluency, in six months. <em>Priced for Indian families.</em></h2>
+  <p class="lead" style="font-size: 10pt; margin-bottom: 3mm; line-height: 1.5">
+    For most families, the <b style="color: var(--ink)">AI Academy</b> is the
+    answer. AI Architect is for students already deep in AI; Trial is for
+    those testing the water.
+  </p>
+  <p style="font-size: 9.5pt; color: var(--primary); font-weight: 500; margin: 0 0 6mm;">₹999 paid trial · 7-day money-back · No long-term lock-in</p>
+
+  <div class="plans">
+    <div class="plan">
+      <div class="name">Trial Pass</div>
+      <div class="offer">Risk-free · 7-day refund</div>
+      <div class="price">
+        <span class="amt">₹999</span>
+        <span class="unit">one-time</span>
+      </div>
+      <div class="meta-lines">
+        Orientation Day + AI Academy week 1 · no auto-renew
+        <div class="up">₹999 credited to AI Academy / AI Architect if you continue</div>
+      </div>
+      <div class="divider"></div>
+      <ul>
+        <li>Orientation Day at The Landmark Towers, Kanpur</li>
+        <li>Meet the IIT/IIM mentors face-to-face</li>
+        <li>Full week 1 of AI Academy — workshops, curriculum, AI playground</li>
+        <li>Take home the first project brief</li>
+        <li>AI Academy community + intro call</li>
+      </ul>
+    </div>
+
+    <div class="plan featured">
+      <span class="badge">Most popular</span>
+      <div class="name">AI Academy</div>
+      <div class="offer">Limited offer · Save ₹1,200/mo</div>
+      <div class="price">
+        <span class="amt">₹3,799</span>
+        <span class="old">₹4,999</span>
+        <span class="unit">/month</span>
+      </div>
+      <div class="meta-lines">
+        ₹22,794 over 6 months
+        <div class="up">Pay upfront: ₹18,995 (save ₹3,799)</div>
+      </div>
+      <div class="divider"></div>
+      <ul>
+        <li>Orientation Day at The Landmark Towers, Kanpur</li>
+        <li>Self-paced weekly curriculum + AI playground</li>
+        <li>Hands-on live workshops</li>
+        <li>Monthly 1-on-1 with an IIT/IIM mentor</li>
+        <li>6 projects in 6 months</li>
+        <li>Hardware kits shipped to your door at no extra cost</li>
+        <li>₹5,000 in API + cloud credits</li>
+        <li>Portfolio page + certificate</li>
+        <li>Parent progress reports / 2 weeks</li>
+        <li>Flagship Expo Day at The Landmark Towers</li>
+      </ul>
+    </div>
+
+    <div class="plan">
+      <div class="name">AI Architect</div>
+      <div class="offer">Limited offer · Save ₹2,000/mo</div>
+      <div class="price">
+        <span class="amt">₹7,999</span>
+        <span class="old">₹9,999</span>
+        <span class="unit">/month</span>
+      </div>
+      <div class="meta-lines">
+        ₹47,994 over 6 months
+        <div class="up">Pay upfront: ₹39,995 (save ₹7,999)</div>
+      </div>
+      <div class="divider"></div>
+      <ul>
+        <li>Everything in AI Academy</li>
+        <li>1-on-1 live sessions with priority focus</li>
+        <li>Personalized curriculum — tuned to the child's pace and depth</li>
+        <li>IIT/IIM mentor available 24/7 — guidance at every step</li>
+        <li>Quarterly senior reviews — progress, gaps, and a roadmap forward</li>
+        <li>Specialization track — ML, robotics, or AI product (months 4–6)</li>
+        <li>₹15,000 in API + cloud credits</li>
+        <li>Premium AI tool stack (ChatGPT, Claude, Copilot, Vercel)</li>
+        <li>An embodied/robotics module of their choice</li>
+        <li>Custom-domain portfolio (yourname.in)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pricing-band">
+    <div class="card">
+      <div class="lbl">Family pricing</div>
+      <h5>Built for families, not just students.</h5>
+      <p>10% off your second child. 20% off your third or more. Applies to AI Academy and AI Architect, confirmed at signup — no requirement to enrol in the same season.</p>
+    </div>
+    <div class="card">
+      <div class="lbl">Need-based seats</div>
+      <h5>Talent first. Cost second.</h5>
+      <p>Bursaries and full scholarships for students who can't pay full price but should be here. Reach out — we'll work it out on the demo call.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>aiwingschool.com</span>
+    <span>p. 09</span>
+  </div>
+</section>
+
+<!-- ============== FAQ PART 1 ============== -->
+<section class="page">
+  <div class="page-header">
+    <span class="brand">AI Wingschool</span>
+    <span>07 · Questions parents ask</span>
+  </div>
+
+  <p class="kicker">Questions parents ask</p>
+  <h2 class="title">Honest answers, <em>not sales pitches.</em></h2>
+
+  <div style="margin-top: 6mm">
+    <div class="faq">
+      <p class="q">Will this interfere with school or board exams?</p>
+      <p class="a">No. We designed the cadence around Indian school life — about 30 minutes of self-paced work a day, plus a 2-hour weekend workshop. Most students fit it around tuitions. During exam weeks, the self-paced layer pauses without penalty.</p>
+    </div>
+    <div class="faq">
+      <p class="q">Does my child need to know coding?</p>
+      <p class="a">Not at all. We start from zero. The first month is about thinking with AI — experimentation, prompting, scoping problems. Technical confidence grows through making, not intimidation.</p>
+    </div>
+    <div class="faq">
+      <p class="q">Do we need to buy any hardware ourselves?</p>
+      <p class="a">No. Every project that needs hardware — microcontrollers, sensors, motors, robotics modules — ships free to your doorstep across India. If something breaks during the build, we replace it at no charge. After the program ends, the entire kit stays with your child.</p>
+    </div>
+    <div class="faq">
+      <p class="q">Can I enrol multiple children?</p>
+      <p class="a">Yes — and the second child gets 10% off, the third or more get 20% off. Discounts apply to AI Academy and AI Architect, are confirmed at signup, and don't require both children to be in the same season. The Trial Pass is already low-friction at ₹999, so we don't stack sibling discounts on top of it.</p>
+    </div>
+    <div class="faq">
+      <p class="q">How is this different from YouTube or self-learning?</p>
+      <p class="a">Three things: a live mentor who calls them out, a real cohort that creates accountability, and a portfolio they have to ship. Free content can inform — it almost never produces follow-through. We've measured this across 11 cohorts.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>aiwingschool.com</span>
+    <span>p. 10</span>
+  </div>
+</section>
+
+<!-- ============== FAQ PART 2 ============== -->
+<section class="page">
+  <div class="page-header">
+    <span class="brand">AI Wingschool</span>
+    <span>07 · Questions parents ask</span>
+  </div>
+
+  <p class="kicker">Questions parents ask (continued)</p>
+  <h2 class="title">More from the demo call — <em>asked verbatim.</em></h2>
+
+  <div style="margin-top: 6mm">
+    <div class="faq">
+      <p class="q">Who actually teaches my child?</p>
+      <p class="a">Mentors are graduates of IIT Madras, IIT Ropar, IIM Bangalore, and IIM Ranchi — most with industry experience at AI-first startups. Cohorts are capped at 25 so every student gets seen and challenged personally.</p>
+    </div>
+    <div class="faq">
+      <p class="q">What if my child has already used ChatGPT?</p>
+      <p class="a">That's a great starting point — but not the finish line. Wingschool moves them from casually using AI to directing it, critiquing it, and building real products with it. Most students who arrive 'already familiar' learn the most from the engineering layer.</p>
+    </div>
+    <div class="faq">
+      <p class="q">How will I, as a parent, see progress?</p>
+      <p class="a">Three ways. (1) Project deliverables every 3 weeks — actual working artefacts, not grades. (2) A parent progress report every 2 weeks on the AI Academy and AI Architect plans. (3) Flagship Expo Day at the end — you'll watch your child present what they built.</p>
+    </div>
+    <div class="faq">
+      <p class="q">What happens if it doesn't work for us?</p>
+      <p class="a">Full refund within 7 days, no questions asked. After that, we let you switch plans, pause, or cancel mid-cohort if life changes — and if you paid upfront, we refund pro-rata for the months you didn't use. We'd rather have a happy alumni family than an unhappy paying one.</p>
+    </div>
+    <div class="faq">
+      <p class="q">Is this only for students who want to work in tech?</p>
+      <p class="a">No — it's for any student who wants agency in the next decade. We've had students go on to bio, design, journalism, and policy. The skill we teach (using AI to build) compounds in every field.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>aiwingschool.com</span>
+    <span>p. 11</span>
+  </div>
+</section>
+
+<!-- ============== ORIENTATION + CTA ============== -->
+<section class="page">
+  <div class="page-header">
+    <span class="brand">AI Wingschool</span>
+    <span>08 · Meet us in person</span>
+  </div>
+
+  <div class="cta">
+    <span class="cover-chip" style="margin-bottom: 6mm;"><span class="dot"></span>Orientation Day · Now in Kanpur</span>
+    <h2>Meet us in person. <em>25 May, Kanpur.</em></h2>
+    <p class="body" style="font-size: 11pt; color: var(--ink-2); max-width: 150mm">
+      One-day walkthrough — curriculum, mentors, hardware kits. Bring your child.
+    </p>
+
+    <div class="meta-row">
+      <span><b>25 May 2026</b></span>
+      <span style="color: rgba(15,15,15,0.25)">·</span>
+      <span>The Landmark Towers, Civil Lines</span>
+      <span style="color: rgba(15,15,15,0.25)">·</span>
+      <span style="color: var(--primary); font-weight: 500">9 seats left</span>
+    </div>
+
+    <p class="kicker" style="margin-top: 10mm">Now in</p>
+    <div class="cities">
+      <div class="city"><b>DEL</b>Delhi</div>
+      <div class="city"><b>BLR</b>Bengaluru</div>
+      <div class="city"><b>HYD</b>Hyderabad</div>
+      <div class="city"><b>BOM</b>Mumbai</div>
+      <div class="city"><b>CCU</b>Kolkata</div>
+      <div class="city active"><b>KNU</b>Kanpur</div>
+    </div>
+
+    <a class="button" href="mailto:hello@aiwingschool.com">Apply by 22 May →</a>
+  </div>
+
+  <div class="contact-grid">
+    <div>
+      <div class="lbl">Reach us</div>
+      <div class="v">hello@aiwingschool.com</div>
+    </div>
+    <div>
+      <div class="lbl">Address</div>
+      <div class="v">The Landmark Towers<br/>Civil Lines, Kanpur</div>
+    </div>
+    <div>
+      <div class="lbl">Next step</div>
+      <div class="v">Book a free 20-minute demo or apply for the May cohort.</div>
+    </div>
+  </div>
+
+  <div style="position:absolute; bottom: 18mm; left: 16mm; right: 16mm;">
+    <div style="height: 1px; background: var(--line); margin-bottom: 5mm;"></div>
+    <div style="display:flex; justify-content:space-between; font-size: 8pt; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted)">
+      <span>© 2026 AI Wingschool. All rights reserved.</span>
+      <span>aiwingschool.com</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
