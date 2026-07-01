@@ -52,7 +52,7 @@ export function FAQ() {
         <div className="mb-14 text-center">
           <p className="section-kicker mb-4">Questions parents ask</p>
           <h2 className="section-heading">
-            Honest answers, <em>not sales pitches.</em>
+            Frequently Asked Questions. 
           </h2>
         </div>
 

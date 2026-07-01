@@ -1,6 +1,6 @@
 const plans = [
   {
-    name: "Trial Pass",
+    name: "Explorer Pass",
     price: "999",
     priceUnit: "one-time",
     offerLabel: "Risk-free · 7-day refund",
@@ -13,7 +13,7 @@ const plans = [
       "Take home the first project brief",
       "AI Academy community + intro call",
     ],
-    cta: "Start the Trial →",
+    cta: "Start the Journey →",
     featured: false,
   },
   {

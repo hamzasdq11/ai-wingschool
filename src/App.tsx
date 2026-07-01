@@ -5,7 +5,7 @@ import { Problem } from "./components/Problem";
 import { WangQuote } from "./components/WangQuote";
 import { AIEra } from "./components/AIEra";
 // import { HardwareKit } from "./components/HardwareKit"; // temporarily disabled — uncomment here and below to restore
-import { ProjectShowcase } from "./components/ProjectShowcase";
+// import { ProjectShowcase } from "./components/ProjectShowcase"; // temporarily disabled — uncomment here and below to restore
 // import { HowItWorks } from "./components/HowItWorks"; // temporarily disabled — uncomment here and below to restore
 import { Curriculum } from "./components/Curriculum";
 // import { Outcomes } from "./components/Outcomes"; // temporarily disabled — uncomment here and below to restore
@@ -38,8 +38,8 @@ function App() {
       <Divider />
       {/* <HardwareKit />
       <Divider /> */}
-      <ProjectShowcase />
-      <Divider />
+      {/* <ProjectShowcase />
+      <Divider /> */}
       {/* <HowItWorks /> */}
       <Curriculum />
       <Divider />
