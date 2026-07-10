@@ -4,7 +4,7 @@ import { Logo } from "./Logo";
 const navLinks = [
   { label: "Curriculum", href: "#curriculum" },
   { label: "Projects", href: "#projects" },
-  { label: "Pricing", href: "#pricing" },
+  // { label: "Pricing", href: "#pricing" }, // temporarily hidden — uncomment to restore
   { label: "Schools", href: "#for-schools" },
   { label: "FAQ", href: "#faq" },
 ];

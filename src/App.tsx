@@ -1,6 +1,6 @@
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
-import { OrientationDay } from "./components/OrientationDay";
+// import { OrientationDay } from "./components/OrientationDay"; // temporarily hidden — uncomment here and below to restore
 import { Problem } from "./components/Problem";
 import { WangQuote } from "./components/WangQuote";
 import { AIEra } from "./components/AIEra";
@@ -9,7 +9,7 @@ import { AIEra } from "./components/AIEra";
 // import { HowItWorks } from "./components/HowItWorks"; // temporarily disabled — uncomment here and below to restore
 import { Curriculum } from "./components/Curriculum";
 // import { Outcomes } from "./components/Outcomes"; // temporarily disabled — uncomment here and below to restore
-import { Pricing } from "./components/Pricing";
+// import { Pricing } from "./components/Pricing"; // temporarily hidden — uncomment here and below to restore
 // import { Testimonials } from "./components/Testimonials"; // temporarily disabled — uncomment here and below to restore
 // import { ForSchools } from "./components/ForSchools"; // temporarily disabled — uncomment here and below to restore
 import { FAQ } from "./components/FAQ";
@@ -45,12 +45,12 @@ function App() {
       <Divider />
       {/* <Outcomes />
       <Divider /> */}
-      <Pricing />
+      {/* <Pricing /> */}
       {/* <Testimonials /> */}
       {/* <ForSchools /> */}
       <Divider />
       <FAQ />
-      <OrientationDay />
+      {/* <OrientationDay /> */}
       <Footer />
       <StickyMobileCTA />
     </div>
