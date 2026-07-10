@@ -28,43 +28,125 @@ const statements: Statement[] = [
   },
 ];
 
+const orbitChips = [
+  { label: "Medicine", className: "left-1/2 top-0 -translate-x-1/2" },
+  { label: "Design", className: "right-[-16px] top-[34%]" },
+  { label: "Law", className: "left-[-20px] top-[42%]" },
+  { label: "Engineering", className: "bottom-[44px] right-[10px]" },
+  { label: "The arts", className: "bottom-[-2px] left-[22%]" },
+];
+
+function OutlinedNumeral({ children }: { children: React.ReactNode }) {
+  return (
+    <span
+      aria-hidden
+      className="select-none"
+      style={{
+        fontFamily: "var(--font-display)",
+        fontSize: "clamp(5rem, 10vw, 8.5rem)",
+        fontWeight: 300,
+        lineHeight: 0.9,
+        letterSpacing: "-0.05em",
+        color: "transparent",
+        WebkitTextStroke: "1.5px rgba(19, 53, 184, 0.4)",
+      }}
+    >
+      {children}
+    </span>
+  );
+}
+
 export function Problem() {
   return (
     <section id="about" className="section-shell relative z-10">
-      <div className="section-copy">
-        <p className="section-kicker mb-4">Why now</p>
-        <h2 className="section-heading mb-6">
-          The world your child is preparing for{" "}
-          <em>is being rewritten by AI.</em>
-        </h2>
-        <p className="section-body mb-4">
-          The students who&apos;ll lead the next decade are the ones building
-          with AI early, while it&apos;s still new ground for everyone.
-          Wingschool is the program that gives your child that head start.
-        </p>
+      <div className="grid gap-14 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-20">
+        <div className="section-copy">
+          <p className="section-kicker mb-4">Why now</p>
+          <h2 className="section-heading mb-6">
+            The world your child is preparing for{" "}
+            <em>is being rewritten by AI.</em>
+          </h2>
+          <p className="section-body">
+            The students who&apos;ll lead the next decade are the ones
+            building with AI early, while it&apos;s still new ground for
+            everyone. Wingschool is the program that gives your child that
+            head start.
+          </p>
+        </div>
+
+        <div
+          aria-hidden
+          className="relative hidden h-[340px] w-[340px] lg:block"
+        >
+          <span
+            className="absolute inset-0 rounded-full"
+            style={{ border: "1px solid rgba(19, 53, 184, 0.12)" }}
+          />
+          <span
+            className="absolute inset-[56px] rounded-full"
+            style={{ border: "1px solid rgba(19, 53, 184, 0.2)" }}
+          />
+          <span
+            className="absolute inset-[112px] rounded-full"
+            style={{ border: "1px solid rgba(19, 53, 184, 0.3)" }}
+          />
+
+          <span
+            className="absolute h-2 w-2 rounded-full"
+            style={{
+              background: "#1335b8",
+              top: "23%",
+              right: "13%",
+            }}
+          />
+          <span
+            className="absolute h-1.5 w-1.5 rounded-full"
+            style={{
+              background: "rgba(19, 53, 184, 0.45)",
+              bottom: "20%",
+              left: "13.5%",
+            }}
+          />
+
+          <span
+            className="hero-orb absolute inset-[138px] flex items-center justify-center"
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "1.15rem",
+              letterSpacing: "-0.02em",
+            }}
+          >
+            AI
+          </span>
+
+          {orbitChips.map((chip) => (
+            <span
+              key={chip.label}
+              className={`absolute rounded-full px-3.5 py-1.5 ${chip.className}`}
+              style={{
+                background: "#ffffff",
+                border: "1px solid #e6e3da",
+                boxShadow: "0 6px 16px rgba(15, 15, 15, 0.06)",
+                fontFamily: "var(--font-body)",
+                fontSize: "0.72rem",
+                fontWeight: 500,
+                color: "#4a4a4a",
+                whiteSpace: "nowrap",
+              }}
+            >
+              {chip.label}
+            </span>
+          ))}
+        </div>
       </div>
 
-      <div className="mt-10 flex flex-col">
+      <div className="mt-12 flex flex-col">
         {statements.map((s) => (
           <div
             key={s.number}
-            className="grid items-center gap-x-10 gap-y-2 border-t border-black/8 py-12 md:grid-cols-[180px_1fr] md:py-14 lg:gap-x-16"
+            className="grid items-center gap-x-10 gap-y-4 border-t border-black/8 py-12 md:grid-cols-[170px_1fr] md:py-14 lg:grid-cols-[170px_1.05fr_1fr] lg:gap-x-14"
           >
-            <span
-              aria-hidden
-              className="select-none"
-              style={{
-                fontFamily: "var(--font-display)",
-                fontSize: "clamp(5rem, 10vw, 8.5rem)",
-                fontWeight: 300,
-                lineHeight: 0.9,
-                letterSpacing: "-0.05em",
-                color: "transparent",
-                WebkitTextStroke: "1.5px rgba(19, 53, 184, 0.4)",
-              }}
-            >
-              {s.number}
-            </span>
+            <OutlinedNumeral>{s.number}</OutlinedNumeral>
 
             <div>
               <p className="ui-label mb-3" style={{ color: "#1335b8" }}>
@@ -82,27 +164,16 @@ export function Problem() {
               >
                 {s.title}
               </h3>
-              <p className="ui-body mt-4 max-w-2xl">{s.desc}</p>
             </div>
+
+            <p className="ui-body lg:border-l lg:border-black/8 lg:pl-12">
+              {s.desc}
+            </p>
           </div>
         ))}
 
-        <div className="grid items-center gap-x-10 gap-y-2 border-t border-black/8 py-12 md:grid-cols-[180px_1fr] md:py-14 lg:gap-x-16">
-          <span
-            aria-hidden
-            className="select-none"
-            style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "clamp(5rem, 10vw, 8.5rem)",
-              fontWeight: 300,
-              lineHeight: 0.9,
-              letterSpacing: "-0.05em",
-              color: "transparent",
-              WebkitTextStroke: "1.5px rgba(19, 53, 184, 0.4)",
-            }}
-          >
-            03
-          </span>
+        <div className="grid items-center gap-x-10 gap-y-4 border-t border-black/8 py-12 md:grid-cols-[170px_1fr] md:py-14 lg:gap-x-14">
+          <OutlinedNumeral>03</OutlinedNumeral>
 
           <div>
             <p className="ui-label mb-3" style={{ color: "#1335b8" }}>
