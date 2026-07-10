@@ -1,15 +1,71 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Logo } from "./Logo";
 
-const navLinks = [
+type NavItem = { label: string; href: string };
+
+const defaultLinks: NavItem[] = [
   // { label: "Curriculum", href: "#curriculum" }, // temporarily hidden — uncomment to restore
   { label: "Projects", href: "#projects" },
   // { label: "Pricing", href: "#pricing" }, // temporarily hidden — uncomment to restore
-  { label: "Schools", href: "#for-schools" },
+  { label: "For Schools", href: "/schools" },
   { label: "FAQ", href: "#faq" },
 ];
 
-export function Navbar() {
+const defaultCta: NavItem = { label: "Book Free Demo", href: "#book" };
+
+function NavAnchor({
+  href,
+  className,
+  style,
+  onClick,
+  onMouseEnter,
+  onMouseLeave,
+  children,
+}: {
+  href: string;
+  className?: string;
+  style?: React.CSSProperties;
+  onClick?: () => void;
+  onMouseEnter?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
+  onMouseLeave?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
+  children: React.ReactNode;
+}) {
+  if (href.startsWith("/")) {
+    return (
+      <Link
+        to={href}
+        className={className}
+        style={style}
+        onClick={onClick}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+      >
+        {children}
+      </Link>
+    );
+  }
+  return (
+    <a
+      href={href}
+      className={className}
+      style={style}
+      onClick={onClick}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
+      {children}
+    </a>
+  );
+}
+
+export function Navbar({
+  links = defaultLinks,
+  cta = defaultCta,
+}: {
+  links?: NavItem[];
+  cta?: NavItem;
+}) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -22,13 +78,13 @@ export function Navbar() {
   return (
     <nav className="sticky top-0 z-30 border-b border-black/8 bg-white/85 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl flex-row items-center justify-between gap-6 px-6 py-4 lg:px-8">
-        <a href="#" className="no-underline">
+        <Link to="/" className="no-underline">
           <Logo />
-        </a>
+        </Link>
 
         <div className="hidden items-center gap-7 md:flex">
-          {navLinks.map((link) => (
-            <a
+          {links.map((link) => (
+            <NavAnchor
               key={link.label}
               href={link.href}
               className="text-[12px] uppercase tracking-[0.16em] transition-colors"
@@ -44,7 +100,7 @@ export function Navbar() {
               }
             >
               {link.label}
-            </a>
+            </NavAnchor>
           ))}
         </div>
 
@@ -70,13 +126,13 @@ export function Navbar() {
             </svg>
             WhatsApp
           </a>
-          <a
-            href="#book"
+          <NavAnchor
+            href={cta.href}
             className="ui-button hidden md:inline-flex"
             style={{ padding: "0.7rem 1.2rem" }}
           >
-            Book Free Demo
-          </a>
+            {cta.label}
+          </NavAnchor>
           <button
             aria-label="Toggle menu"
             onClick={() => setOpen((v) => !v)}
@@ -116,8 +172,8 @@ export function Navbar() {
       {open && (
         <div className="border-t border-black/8 bg-white/98 px-6 py-6 md:hidden">
           <div className="flex flex-col gap-4">
-            {navLinks.map((link) => (
-              <a
+            {links.map((link) => (
+              <NavAnchor
                 key={link.label}
                 href={link.href}
                 onClick={() => setOpen(false)}
@@ -128,15 +184,15 @@ export function Navbar() {
                 }}
               >
                 {link.label}
-              </a>
+              </NavAnchor>
             ))}
-            <a
-              href="#book"
+            <NavAnchor
+              href={cta.href}
               onClick={() => setOpen(false)}
               className="ui-button mt-3"
             >
-              Book Free Demo
-            </a>
+              {cta.label}
+            </NavAnchor>
             <a
               href="https://wa.me/"
               target="_blank"

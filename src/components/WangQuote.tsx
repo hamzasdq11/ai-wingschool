@@ -1,6 +1,6 @@
 import alexWang from "../assets/alexwang.webp";
 
-export function WangQuote() {
+export function WangQuote({ coda }: { coda?: React.ReactNode }) {
   return (
     <section
       className="relative overflow-hidden"
@@ -122,6 +122,20 @@ export function WangQuote() {
               </p>
             </div>
           </div>
+
+          {coda && (
+            <p
+              className="mt-14 max-w-lg"
+              style={{
+                fontFamily: "var(--font-body)",
+                fontSize: "1rem",
+                lineHeight: 1.7,
+                color: "rgba(255,255,255,0.6)",
+              }}
+            >
+              {coda}
+            </p>
+          )}
         </div>
       </div>
     </section>

@@ -1,16 +1,18 @@
+import { Link } from "react-router-dom";
+
 export function ForSchools() {
   const items = [
     {
-      title: "Turnkey curriculum",
-      desc: "A ready-to-run AI literacy program with projects, assessments, and mentor support built for Indian school contexts.",
+      title: "A free aptitude challenge",
+      desc: "WingsQuest 2026 — a one-hour AI aptitude test hosted at your school, run entirely by our team. Every participant is certified; your school gets a full performance report.",
     },
     {
-      title: "Teacher enablement",
-      desc: "We can train your teachers or provide ours, while keeping delivery quality, structure, and student outcomes consistent.",
+      title: "Scholarships for top performers",
+      desc: "Students who clear the cutoff qualify for the AI Builder Program — and the top 10–20% earn scholarships and recognition at your school assembly.",
     },
     {
-      title: "Visible outcomes",
-      desc: "Student portfolios and Flagship Expo Days give schools proof of innovation that parents can actually see and value.",
+      title: "A stage at Flagship Expo Day",
+      desc: "Qualifiers spend four weeks building real AI projects, then present them to a panel of industry experts and IIT/IIM alumni — with your school credited as talent partner.",
     },
   ];
 
@@ -20,14 +22,17 @@ export function ForSchools() {
         <div className="section-copy">
           <p className="section-kicker mb-4">For schools</p>
           <h2 className="section-heading mb-6">
-            Bring AI literacy <em>into your classrooms.</em>
+            Bring WingsQuest 2026 <em>to your school.</em>
           </h2>
           <p className="section-body mb-10">
-            We partner with schools that want more than symbolic innovation.
-            Your students get a serious program. Your institution gets a visible
-            signature learning experience.
+            A free, school-hosted AI aptitude challenge that finds your
+            standout students — followed by a scholarship-backed builder
+            program and a public Flagship Expo Day. Zero cost, zero effort for
+            your school.
           </p>
-          <button className="ui-button">Partner With Us</button>
+          <Link to="/schools" className="ui-button">
+            Partner With Us →
+          </Link>
         </div>
 
         <div className="grid gap-5">

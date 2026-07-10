@@ -11,7 +11,7 @@ import { AIEra } from "../components/AIEra";
 // import { Outcomes } from "../components/Outcomes"; // temporarily disabled — uncomment here and below to restore
 // import { Pricing } from "../components/Pricing"; // temporarily hidden — uncomment here and below to restore
 // import { Testimonials } from "../components/Testimonials"; // temporarily disabled — uncomment here and below to restore
-// import { ForSchools } from "../components/ForSchools"; // temporarily disabled — uncomment here and below to restore
+import { ForSchools } from "../components/ForSchools";
 import { FAQ } from "../components/FAQ";
 // import { FinalCTA } from "../components/FinalCTA"; // replaced by OrientationDay as the end CTA — uncomment here and below to restore
 import { Footer } from "../components/Footer";
@@ -40,7 +40,7 @@ export function Home() {
       <Divider /> */}
       {/* <Pricing /> */}
       {/* <Testimonials /> */}
-      {/* <ForSchools /> */}
+      <ForSchools />
       <Divider />
       <FAQ />
       {/* <OrientationDay /> */}
