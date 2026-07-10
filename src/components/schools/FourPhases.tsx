@@ -2,6 +2,7 @@ type Phase = {
   number: string;
   title: React.ReactNode;
   desc: string;
+  highlight: string;
 };
 
 const phases: Phase[] = [
@@ -13,6 +14,7 @@ const phases: Phase[] = [
       </>
     ),
     desc: "WingsQuest 2026: a free AI aptitude test at your school — one hour, no prep, no coding needed. Every participant walks away with a WingsQuest certificate.",
+    highlight: "Free · Hosted at your school",
   },
   {
     number: "02",
@@ -22,6 +24,7 @@ const phases: Phase[] = [
       </>
     ),
     desc: "Clear the cutoff and you qualify for the AI Builder Program. Score in the top 10–20% and you earn a scholarship — announced at your school assembly.",
+    highlight: "Scholarships up to 50%",
   },
   {
     number: "03",
@@ -30,7 +33,8 @@ const phases: Phase[] = [
         The AI Builder <em className="display-script">Program.</em>
       </>
     ),
-    desc: "Four weeks, live and online. You learn how modern AI actually works and build a real project of your own — taught by IIT/IIM graduates.",
+    desc: "Four weeks, live and online. You learn how modern AI actually works and build a real project of your own.",
+    highlight: "Taught by IIT/IIM grads",
   },
   {
     number: "04",
@@ -40,17 +44,15 @@ const phases: Phase[] = [
       </>
     ),
     desc: "You present your project to a panel of industry experts and IIT/IIM alumni. Finish, and you collect your project-completion certificate on stage.",
+    highlight: "Industry + IIT/IIM panel",
   },
 ];
 
 const impact = [
-  { value: "1 hour", label: "To take the Challenge, start to finish." },
-  { value: "₹0", label: "To participate — the Challenge is completely free." },
-  {
-    value: "2 certificates",
-    label:
-      "Participation for every test-taker; project completion for every finisher.",
-  },
+  { value: "1 hour", label: "Of your time, start to finish." },
+  { value: "100% free", label: "The Challenge costs nothing to enter." },
+  { value: "2 certificates", label: "Participation + project completion." },
+  { value: "IIT / IIM", label: "The mentor bench behind it all." },
 ];
 
 export function FourPhases() {
@@ -67,55 +69,68 @@ export function FourPhases() {
         </p>
       </div>
 
-      <div className="flex flex-col">
-        {phases.map((p, idx) => (
+      <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        {phases.map((p) => (
           <div
             key={p.number}
-            className={`grid items-start gap-y-5 border-t border-black/8 py-8 md:grid-cols-[140px_1fr_minmax(0,1.4fr)] md:items-baseline md:gap-x-12 md:py-10 lg:gap-x-16 ${
-              idx === phases.length - 1 ? "border-b border-black/8" : ""
-            }`}
+            className="ui-card relative flex flex-col overflow-hidden rounded-[1.75rem] p-6"
           >
             <span
+              aria-hidden
+              className="pointer-events-none absolute -top-7 right-1 select-none"
               style={{
                 fontFamily: "var(--font-display)",
-                fontSize: "clamp(3rem, 6vw, 5rem)",
+                fontSize: "7.5rem",
                 fontWeight: 300,
-                color: "#1335b8",
-                lineHeight: 0.95,
-                letterSpacing: "-0.05em",
+                letterSpacing: "-0.06em",
+                lineHeight: 1,
+                color: "rgba(19, 53, 184, 0.07)",
               }}
             >
               {p.number}
             </span>
 
-            <h3
-              style={{
-                fontFamily: "var(--font-display)",
-                fontSize: "clamp(1.5rem, 2.6vw, 2.05rem)",
-                fontWeight: 400,
-                lineHeight: 1.1,
-                letterSpacing: "-0.03em",
-                color: "#0a0a0a",
-              }}
-            >
-              {p.title}
-            </h3>
-
-            <p
+            <span
+              className="blue-chip relative self-start px-3 py-1"
               style={{
                 fontFamily: "var(--font-body)",
-                fontSize: "1rem",
-                lineHeight: 1.65,
-                color: "#4a4a4a",
+                fontSize: "0.64rem",
+                fontWeight: 500,
+                letterSpacing: "0.16em",
+                textTransform: "uppercase",
               }}
             >
-              {p.desc}
+              Phase {p.number}
+            </span>
+
+            <h3 className="ui-h3 relative mt-5">{p.title}</h3>
+            <p className="ui-body-sm relative mt-3">{p.desc}</p>
+
+            <p
+              className="relative mt-auto flex items-center gap-2 border-t border-black/8 pt-4"
+              style={{
+                marginTop: "auto",
+                fontFamily: "var(--font-body)",
+                fontSize: "0.8rem",
+                fontWeight: 600,
+                color: "#1335b8",
+              }}
+            >
+              <span
+                aria-hidden
+                className="h-1.5 w-1.5 shrink-0 rounded-full"
+                style={{ background: "#1335b8" }}
+              />
+              {p.highlight}
             </p>
           </div>
         ))}
       </div>
 
-      <div className="ui-card mt-10 grid gap-8 rounded-[1.75rem] px-8 py-7 md:grid-cols-3">
+      <div
+        className="mt-8 grid gap-8 rounded-[1.75rem] px-8 py-8 sm:grid-cols-2 lg:grid-cols-4"
+        style={{ background: "#05081C" }}
+      >
         {impact.map((item) => (
           <div key={item.value}>
             <p
@@ -124,13 +139,23 @@ export function FourPhases() {
                 fontSize: "1.7rem",
                 fontWeight: 400,
                 letterSpacing: "-0.03em",
-                color: "#1335b8",
+                color: "#ffffff",
                 lineHeight: 1.1,
               }}
             >
               {item.value}
             </p>
-            <p className="ui-body-sm mt-2">{item.label}</p>
+            <p
+              className="mt-2"
+              style={{
+                fontFamily: "var(--font-body)",
+                fontSize: "0.85rem",
+                lineHeight: 1.55,
+                color: "rgba(255,255,255,0.6)",
+              }}
+            >
+              {item.label}
+            </p>
           </div>
         ))}
       </div>
