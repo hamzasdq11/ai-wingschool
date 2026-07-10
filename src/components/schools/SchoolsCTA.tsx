@@ -1,8 +1,4 @@
-const mailtoHref = `mailto:hello@aiwingschool.com?subject=${encodeURIComponent(
-  "WingsQuest 2026 — Challenge date for [School name]",
-)}&body=${encodeURIComponent(
-  "School:\nContact person:\nTwo possible dates:\n",
-)}`;
+import { challengeDateMailto } from "./contact";
 
 const contacts = [
   { label: "Reach us", value: "hello@aiwingschool.com" },
@@ -38,7 +34,7 @@ export function SchoolsCTA() {
         </p>
 
         <div className="mt-9">
-          <a href={mailtoHref} className="ui-button">
+          <a href={challengeDateMailto} className="ui-button">
             Confirm a Challenge Date →
           </a>
         </div>

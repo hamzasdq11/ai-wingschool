@@ -1,3 +1,5 @@
+import { challengeDateMailto } from "./contact";
+
 const stats = [
   { value: "₹0", label: "Cost to your school" },
   { value: "1 hour", label: "Of school time" },
@@ -27,7 +29,7 @@ export function SchoolsHero() {
           schools.
         </p>
         <div className="mt-9 flex flex-wrap gap-3">
-          <a href="#partner" className="ui-button">
+          <a href={challengeDateMailto} className="ui-button">
             Confirm a Challenge Date →
           </a>
           <a
