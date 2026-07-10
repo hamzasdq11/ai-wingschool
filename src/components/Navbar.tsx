@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Logo } from "./Logo";
 
 const navLinks = [
-  { label: "Curriculum", href: "#curriculum" },
+  // { label: "Curriculum", href: "#curriculum" }, // temporarily hidden — uncomment to restore
   { label: "Projects", href: "#projects" },
   // { label: "Pricing", href: "#pricing" }, // temporarily hidden — uncomment to restore
   { label: "Schools", href: "#for-schools" },
