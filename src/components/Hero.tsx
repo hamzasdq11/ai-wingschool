@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import heroImage from "../assets/hero.png";
+import heroImage from "../assets/Hero2.jpg";
 import heroLoop from "../assets/hero-loop.mp4";
 import heroLoopPoster from "../assets/hero-loop-poster.jpg";
 import { DemoForm } from "./DemoForm";
