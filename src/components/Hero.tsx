@@ -36,20 +36,8 @@ export function Hero() {
 
       <div className="mx-auto grid max-w-7xl gap-12 px-6 pt-12 pb-20 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-16 lg:px-8 lg:pt-16 lg:pb-24">
         <div className="flex max-w-2xl flex-col">
-          <a
-            href="#pricing"
-            className="animate-fade-rise inline-flex w-fit items-center gap-2 rounded-full border border-[rgba(19,53,184,0.22)] bg-[rgba(19,53,184,0.08)] px-3.5 py-1.5 text-[11px] font-medium uppercase tracking-[0.18em] text-[#1335b8] no-underline transition-colors hover:bg-[rgba(19,53,184,0.14)]"
-            style={{ fontFamily: "var(--font-body)" }}
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#1335b8] opacity-50" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-[#1335b8]" />
-            </span>
-            Now in Kanpur · Apply by 22 May · 9 seats left
-          </a>
-
           <h1
-            className="animate-fade-rise-delay mt-7"
+            className="animate-fade-rise mt-7"
             style={{
               fontFamily: "var(--font-display)",
               fontSize: "clamp(2.65rem, 5.6vw, 4.85rem)",
@@ -68,10 +56,9 @@ export function Hero() {
           </h1>
 
           <p className="section-body animate-fade-rise-delay-2 mt-7 max-w-xl">
-            A 6-month live program for students in Classes 5–10. They ship 6
-            real AI projects, take the stage at Flagship Expo Day, and walk out
-            with skills that stay irreplaceable as AI replaces everything
-            else.
+            A live program for teenagers where they build real AI projects,
+            take the stage at Flagship Expo Day, and walk out with skills that
+            stay irreplaceable as AI replaces everything else.
           </p>
 
           <p className="ui-body-sm animate-fade-rise-delay-2 mt-3 max-w-xl">
