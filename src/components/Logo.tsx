@@ -19,7 +19,7 @@ export function Logo({ variant = "dark", height = 44 }: LogoProps) {
       viewBox="0 0 141 40"
       xmlns="http://www.w3.org/2000/svg"
       role="img"
-      aria-label="ai wingschool — ad meliora"
+      aria-label="ai wingschool · ad meliora"
       style={{ display: "block", height: `${height}px`, width: "auto" }}
     >
       <path d={WORDMARK_PATH} fill={wordmarkFill} />

@@ -12,7 +12,7 @@ const points: Point[] = [
         AI is the new <em className="display-script">electricity.</em>
       </>
     ),
-    desc: "It will touch every job your child applies for — medicine, design, law, engineering, the arts. Fluency is no longer optional.",
+    desc: "It will touch every job your child applies for: medicine, design, law, engineering, the arts. Fluency is no longer optional.",
   },
   {
     number: "02",
@@ -41,11 +41,11 @@ export function Problem() {
         <p className="section-kicker mb-4">Why now</p>
         <h2 className="section-heading mb-6">
           The world your child is preparing for{" "}
-          <em>is being rewritten — by AI.</em>
+          <em>is being rewritten by AI.</em>
         </h2>
         <p className="section-body mb-14">
           The students who&apos;ll lead the next decade are the ones building
-          with AI early — while it&apos;s still new ground for everyone.
+          with AI early, while it&apos;s still new ground for everyone.
           Wingschool is the program that gives your child that head start.
         </p>
       </div>

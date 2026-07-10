@@ -42,9 +42,8 @@ export function OperatingPlan() {
           From the notice board to <em>Expo Day.</em>
         </h2>
         <p className="section-body mb-16">
-          One hour of your time in week two. Everything else — papers,
-          proctors, marking, certificates, the program, the stage — is
-          carried by us.
+          One hour of your time in week two. We carry everything else:
+          papers, proctors, marking, certificates, the program, the stage.
         </p>
       </div>
 
@@ -111,7 +110,7 @@ export function OperatingPlan() {
       </div>
 
       <p className="ui-caption mt-14">
-        School not signed up yet? Tell your principal about WingsQuest — or
+        School not signed up yet? Tell your principal about WingsQuest, or
         point them to hello@aiwingschool.com. One email is all it takes.
       </p>
     </section>

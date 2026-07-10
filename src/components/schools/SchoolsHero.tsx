@@ -7,7 +7,7 @@ const journey = [
   {
     number: "02",
     title: "The AI Builder Program",
-    desc: "Clear the cutoff and build a real AI project over four weeks — mentored live by IIT/IIM graduates.",
+    desc: "Clear the cutoff and build a real AI project over four weeks, mentored live by IIT/IIM graduates.",
   },
   {
     number: "03",
@@ -81,8 +81,8 @@ export function SchoolsHero() {
             >
               You&apos;ve been using AI for years. Let&apos;s find out if
               you&apos;re ready to <b style={{ color: "#ffffff" }}>build</b>{" "}
-              with it — starting with one free hour at your school, ending on
-              a public stage with a real AI project of your own.
+              with it. It starts with one free hour at your school and ends
+              on a public stage with a real AI project of your own.
             </p>
 
             <div className="mt-9 flex flex-wrap items-center gap-4">

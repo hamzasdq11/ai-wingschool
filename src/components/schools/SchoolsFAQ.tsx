@@ -3,15 +3,15 @@ import { useState } from "react";
 const faqs = [
   {
     q: "Do I need to know coding?",
-    a: "No. The Challenge tests reasoning and curiosity, not programming — there's no code on the paper. And the Builder Program starts from zero; technical confidence grows by making things, not by intimidation.",
+    a: "No. The Challenge tests reasoning and curiosity, not programming; there's no code on the paper. And the Builder Program starts from zero; technical confidence grows by making things, not by intimidation.",
   },
   {
     q: "How much does it cost?",
-    a: "The Challenge is completely free — the test, the proctors, the certificate, all of it. The Builder Program is paid, with 25–50% scholarships for top scorers; the fee is shared directly with your parents and never collected at school.",
+    a: "The Challenge is completely free: the test, the proctors, the certificate, all of it. The Builder Program is paid, with 25–50% scholarships for top scorers; the fee is shared directly with your parents and never collected at school.",
   },
   {
     q: "What if I don't clear the cutoff?",
-    a: "You still keep your participation certificate and your private score band — and you'll know exactly where you stand. The skills WingsQuest tests are buildable, and the Challenge will run again.",
+    a: "You still keep your participation certificate and your private score band, and you'll know exactly where you stand. The skills WingsQuest tests are buildable, and the Challenge will run again.",
   },
   {
     q: "Will this clash with school and tuitions?",
@@ -19,7 +19,7 @@ const faqs = [
   },
   {
     q: "Who actually teaches?",
-    a: "Mentors are graduates of IIT Madras, IIT Ropar, IIM Bangalore, and IIM Ranchi — most with industry experience at AI-first startups. AI Wingschool runs a 6-month AI Academy for Classes 5–10 out of The Landmark Towers, Civil Lines, Kanpur.",
+    a: "Mentors are graduates of IIT Madras, IIT Ropar, IIM Bangalore, and IIM Ranchi, most with industry experience at AI-first startups. AI Wingschool runs a 6-month AI Academy for Classes 5–10 out of The Landmark Towers, Civil Lines, Kanpur.",
   },
 ];
 

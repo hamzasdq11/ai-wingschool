@@ -13,7 +13,7 @@ const phases: Phase[] = [
         The <em className="display-script">Challenge.</em>
       </>
     ),
-    desc: "WingsQuest 2026: a free AI aptitude test at your school — one hour, no prep, no coding needed. Every participant walks away with a WingsQuest certificate.",
+    desc: "WingsQuest 2026: a free AI aptitude test at your school. One hour, no prep, no coding needed. Every participant walks away with a WingsQuest certificate.",
     highlight: "Free · Hosted at your school",
   },
   {
@@ -23,7 +23,7 @@ const phases: Phase[] = [
         The <em className="display-script">Selection.</em>
       </>
     ),
-    desc: "Clear the cutoff and you qualify for the AI Builder Program. Score in the top 10–20% and you earn a scholarship — announced at your school assembly.",
+    desc: "Clear the cutoff and you qualify for the AI Builder Program. Score in the top 10–20% and you earn a scholarship, announced at your school assembly.",
     highlight: "Scholarships up to 50%",
   },
   {
@@ -65,7 +65,7 @@ export function FourPhases() {
         </h2>
         <p className="section-body mb-14">
           From a one-hour challenge in your school hall to your project on a
-          public stage — here is the whole arc.
+          public stage, this is the whole arc.
         </p>
       </div>
 

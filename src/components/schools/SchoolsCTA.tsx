@@ -31,7 +31,7 @@ export function SchoolsCTA() {
         </h2>
         <p className="section-body mx-auto mt-5 max-w-xl">
           WingsQuest 2026 is coming to schools across Kanpur. Want it at
-          yours? Tell your principal — or have your school write to us.
+          yours? Tell your principal, or have your school write to us.
         </p>
 
         <div className="mt-9">

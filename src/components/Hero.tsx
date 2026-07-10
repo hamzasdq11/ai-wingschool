@@ -69,7 +69,7 @@ export function Hero() {
             className="ui-body-sm animate-fade-rise-delay-2 mt-1.5 max-w-xl"
             style={{ color: "#1335b8", fontWeight: 500 }}
           >
-            Hardware included — Arduino, sensors, robotics — shipped to your
+            Hardware included: Arduino, sensors, robotics, shipped to your
             door at no extra cost.
           </p>
 
