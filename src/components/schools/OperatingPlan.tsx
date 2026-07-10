@@ -1,3 +1,4 @@
+/* temporarily hidden — uncomment to restore
 const youDo = [
   { step: "01", text: "Watch for the WingsQuest notice at your school.", when: "Week 1" },
   { step: "02", text: "Get your consent form signed and show up on Challenge day.", when: "Week 2" },
@@ -15,6 +16,7 @@ const weDo = [
   "The entire AI Builder Program",
   "Flagship Expo Day",
 ];
+*/
 
 const timeline = [
   { when: "Week 0", name: "Your school signs up", desc: "One email from your principal. Done." },
@@ -29,6 +31,7 @@ export function OperatingPlan() {
     <section className="section-shell relative z-10">
       <div className="section-copy">
         <p className="section-kicker mb-4">How to take part</p>
+        {/* temporarily hidden — uncomment to restore
         <h2 className="section-heading mb-6">
           Your part takes one <em>hour.</em>
         </h2>
@@ -36,8 +39,10 @@ export function OperatingPlan() {
           No registration fee, no forms to chase, no prep. Show up and think —
           we carry everything else.
         </p>
+        */}
       </div>
 
+      {/* temporarily hidden — uncomment to restore
       <div className="grid gap-5 lg:grid-cols-2">
         <div className="ui-card rounded-[1.75rem] p-7">
           <p className="ui-label mb-5" style={{ color: "#1335b8" }}>
@@ -93,8 +98,9 @@ export function OperatingPlan() {
           </ul>
         </div>
       </div>
+      */}
 
-      <p className="ui-label mt-14 mb-6" style={{ color: "#1335b8" }}>
+      <p className="ui-label mt-4 mb-6" style={{ color: "#1335b8" }}>
         The timeline
       </p>
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
