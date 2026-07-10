@@ -50,20 +50,22 @@ export function AIEra() {
     },
   ];
 
-  const impact = [
-    {
-      value: "60 days",
-      label: "ChatGPT to 100M users — the fastest-adopted product in history.",
-    },
-    {
-      value: "Every",
-      label: "major industry — finance, design, medicine, law — is rebuilding around AI.",
-    },
-    {
-      value: "2030",
-      label: "AI fluency will be what Excel was in 2010 — the baseline, not the edge.",
-    },
-  ];
+  // The Impact card is temporarily hidden — uncomment this array and the
+  // matching block in the JSX below to restore.
+  // const impact = [
+  //   {
+  //     value: "60 days",
+  //     label: "ChatGPT to 100M users — the fastest-adopted product in history.",
+  //   },
+  //   {
+  //     value: "Every",
+  //     label: "major industry — finance, design, medicine, law — is rebuilding around AI.",
+  //   },
+  //   {
+  //     value: "2030",
+  //     label: "AI fluency will be what Excel was in 2010 — the baseline, not the edge.",
+  //   },
+  // ];
 
   return (
     <section id="ai-era" className="section-shell relative z-10">
@@ -200,6 +202,7 @@ export function AIEra() {
         </div>
       </div>
 
+      {/* The Impact card temporarily hidden — uncomment to restore (also re-enable the `impact` array above)
       <div
         className="ui-card relative overflow-hidden rounded-[2rem] p-8 sm:p-12"
         style={{
@@ -277,6 +280,7 @@ export function AIEra() {
           </div>
         </div>
       </div>
+      */}
     </section>
   );
 }
