@@ -12,7 +12,7 @@ const phases: Phase[] = [
         The <em className="display-script">Challenge.</em>
       </>
     ),
-    desc: "WingsQuest 2026: a free AI aptitude test, hosted at your school, run entirely by our team. Free for the school. Free for every student. Every participant receives a certificate; your school receives a full performance report.",
+    desc: "WingsQuest 2026: a free AI aptitude test at your school — one hour, no prep, no coding needed. Every participant walks away with a WingsQuest certificate.",
   },
   {
     number: "02",
@@ -21,7 +21,7 @@ const phases: Phase[] = [
         The <em className="display-script">Selection.</em>
       </>
     ),
-    desc: "Students who clear the cutoff qualify for the AI Builder Program. The top 10–20% earn scholarships and school-assembly recognition. Every qualifier is eligible to enrol.",
+    desc: "Clear the cutoff and you qualify for the AI Builder Program. Score in the top 10–20% and you earn a scholarship — announced at your school assembly.",
   },
   {
     number: "03",
@@ -30,7 +30,7 @@ const phases: Phase[] = [
         The AI Builder <em className="display-script">Program.</em>
       </>
     ),
-    desc: "A 4-week live online program. Students learn how modern AI works and build a real project of their own — taught by IIT/IIM graduates.",
+    desc: "Four weeks, live and online. You learn how modern AI actually works and build a real project of your own — taught by IIT/IIM graduates.",
   },
   {
     number: "04",
@@ -39,13 +39,13 @@ const phases: Phase[] = [
         Flagship <em className="display-script">Expo Day.</em>
       </>
     ),
-    desc: "Students present their projects to a panel of industry experts and IIT/IIM alumni. Finishers receive project-completion certificates, presented at Expo Day.",
+    desc: "You present your project to a panel of industry experts and IIT/IIM alumni. Finish, and you collect your project-completion certificate on stage.",
   },
 ];
 
 const impact = [
-  { value: "1 hour", label: "Total school time required, start to finish." },
-  { value: "0", label: "Rupees your school spends, at any phase." },
+  { value: "1 hour", label: "To take the Challenge, start to finish." },
+  { value: "₹0", label: "To participate — the Challenge is completely free." },
   {
     value: "2 certificates",
     label:
@@ -59,10 +59,10 @@ export function FourPhases() {
       <div className="section-copy">
         <p className="section-kicker mb-4">WingsQuest 2026 · How it works</p>
         <h2 className="section-heading mb-6">
-          One initiative. Four phases. <em>Zero</em> cost to your school.
+          One challenge. Four phases. <em>Zero</em> cost to enter.
         </h2>
         <p className="section-body mb-14">
-          From a one-hour challenge in your school hall to your students on a
+          From a one-hour challenge in your school hall to your project on a
           public stage — here is the whole arc.
         </p>
       </div>

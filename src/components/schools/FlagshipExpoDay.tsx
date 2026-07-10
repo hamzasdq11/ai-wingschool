@@ -1,15 +1,15 @@
 const pillars = [
   {
     label: "The panel",
-    desc: "Industry experts and IIT/IIM alumni — people who evaluate real products for a living, judging your students' work seriously.",
+    desc: "Industry experts and IIT/IIM alumni — people who evaluate real products for a living, taking your work seriously.",
   },
   {
     label: "The certificate",
-    desc: "Project-completion certificates for every finisher — presented at Flagship Expo Day, in front of the panel and the parents.",
+    desc: "A project-completion certificate with your name on it — presented to you at Flagship Expo Day, in front of the panel and the parents.",
   },
   {
-    label: "The credit",
-    desc: "Your school is named as talent partner in all Expo Day materials — the stage, the certificates, the coverage.",
+    label: "The story",
+    desc: "You, on stage, demoing something you built from scratch. The kind of moment that ends up in speeches, applications, and family group chats.",
   },
 ];
 
@@ -44,9 +44,9 @@ export function FlagshipExpoDay() {
               color: "rgba(255,255,255,0.75)",
             }}
           >
-            Every Builder Program student presents their project — live — to a
-            panel of industry experts and IIT/IIM alumni. Parents watch. The
-            school is credited from the stage.
+            You present your project — live — to a panel of industry experts
+            and IIT/IIM alumni. Your parents watch from the audience. Your
+            name is on the certificate.
           </p>
         </div>
 
@@ -103,8 +103,8 @@ export function FlagshipExpoDay() {
               color: "rgba(255,255,255,0.55)",
             }}
           >
-            Venue under confirmation; details shared with partner schools in
-            writing before Phase 1.
+            Venue under confirmation; details shared in writing before the
+            Challenge.
           </p>
         </div>
       </div>

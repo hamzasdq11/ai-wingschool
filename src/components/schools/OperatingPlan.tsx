@@ -1,50 +1,50 @@
-const schoolDoes = [
-  { step: "01", text: "Reply confirming a date and a hall or classrooms.", when: "Week 0" },
-  { step: "02", text: "Circulate our ready-made notice to students — we draft it, you forward it.", when: "Week 1" },
-  { step: "03", text: "Optionally: host a 10-minute results assembly where we hand out certificates.", when: "Week 3" },
+const youDo = [
+  { step: "01", text: "Watch for the WingsQuest notice at your school.", when: "Week 1" },
+  { step: "02", text: "Get your consent form signed and show up on Challenge day.", when: "Week 2" },
+  { step: "03", text: "Collect your certificate at the results assembly — scholarships announced there too.", when: "Week 3" },
 ];
 
 const weDo = [
-  "Consent forms and the full comms kit",
-  "Question papers / tablets, per grade",
+  "Consent forms and all the paperwork",
+  "Question papers / tablets, for your grade",
   "Trained proctors on Challenge day",
   "Marking and moderation",
   "Certificates, printed and delivered",
-  "The school analytics report",
+  "Results and score bands",
   "Scholarship announcements",
   "The entire AI Builder Program",
   "Flagship Expo Day",
 ];
 
 const timeline = [
-  { when: "Week 0", name: "Handshake", desc: "You pick a date. One email, done." },
-  { when: "Week 1", name: "Announcement", desc: "We handle comms — notices, consent, FAQs." },
+  { when: "Week 0", name: "Your school signs up", desc: "One email from your principal. Done." },
+  { when: "Week 1", name: "The notice goes out", desc: "You get the details and a consent form." },
   { when: "Week 2", name: "Challenge day", desc: "1 hour at your school. Our team runs it." },
-  { when: "Week 3", name: "Report + results", desc: "Analytics report delivered; certificates handed out." },
-  { when: "Weeks 4–8", name: "Build → Expo Day", desc: "Builder Program runs online, ends at Flagship Expo Day." },
+  { when: "Week 3", name: "Results + certificates", desc: "Score bands shared; certificates handed out at assembly." },
+  { when: "Weeks 4–8", name: "Build → Expo Day", desc: "Qualifiers build online, then present at Flagship Expo Day." },
 ];
 
 export function OperatingPlan() {
   return (
     <section className="section-shell relative z-10">
       <div className="section-copy">
-        <p className="section-kicker mb-4">The operating plan</p>
+        <p className="section-kicker mb-4">How to take part</p>
         <h2 className="section-heading mb-6">
-          Your part takes one email and one <em>hall.</em>
+          Your part takes one <em>hour.</em>
         </h2>
         <p className="section-body mb-14">
-          The division of labour is simple: you open the door, we carry
-          everything through it.
+          No registration fee, no forms to chase, no prep. Show up and think —
+          we carry everything else.
         </p>
       </div>
 
       <div className="grid gap-5 lg:grid-cols-2">
         <div className="ui-card rounded-[1.75rem] p-7">
           <p className="ui-label mb-5" style={{ color: "#1335b8" }}>
-            What your school does
+            What you do
           </p>
           <ul className="flex flex-col gap-4">
-            {schoolDoes.map((item) => (
+            {youDo.map((item) => (
               <li
                 key={item.step}
                 className="grid grid-cols-[2rem_1fr] gap-3"
@@ -99,10 +99,7 @@ export function OperatingPlan() {
       </p>
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
         {timeline.map((era) => (
-          <div
-            key={era.when}
-            className="border-t-2 border-black/70 pt-4"
-          >
+          <div key={era.when} className="border-t-2 border-black/70 pt-4">
             <p className="ui-label mb-2">{era.when}</p>
             <h3
               style={{
@@ -121,8 +118,8 @@ export function OperatingPlan() {
       </div>
 
       <p className="ui-caption mt-8">
-        No payment is ever collected on school premises. All enrolment happens
-        directly between parents and AI Wingschool.
+        School not signed up yet? Tell your principal about WingsQuest — or
+        point them to hello@aiwingschool.com. One email is all it takes.
       </p>
     </section>
   );

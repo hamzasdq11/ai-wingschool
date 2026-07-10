@@ -1,10 +1,8 @@
-import { challengeDateMailto } from "./contact";
-
 const stats = [
-  { value: "₹0", label: "Cost to your school" },
-  { value: "1 hour", label: "Of school time" },
-  { value: "100%", label: "Students certified" },
-  { value: "IIT / IIM", label: "Mentor bench" },
+  { value: "₹0", label: "To take the Challenge" },
+  { value: "1 hour", label: "Is all it takes" },
+  { value: "100%", label: "Participants certified" },
+  { value: "IIT / IIM", label: "Your mentors" },
 ];
 
 export function SchoolsHero() {
@@ -15,22 +13,21 @@ export function SchoolsHero() {
           WingsQuest 2026 · The School AI Aptitude Challenge · Classes 5–10
         </p>
         <h2 className="section-heading">
-          Your students are ready for the AI era. Let&apos;s find out which
-          ones are ready to <em>lead</em> it.
+          You&apos;ve been using AI for years. Let&apos;s find out if
+          you&apos;re ready to <em>build</em> with it.
         </h2>
         <p className="section-body mt-7 max-w-2xl">
-          A free, school-hosted AI aptitude challenge — followed by a
-          scholarship-backed builder program and a public Flagship Expo Day.
-          Zero cost to your school. Zero effort. Every student walks away with
-          something.
+          A free, one-hour AI aptitude challenge at your school. Clear the
+          cutoff and you qualify for the AI Builder Program — four weeks of
+          building a real AI project, ending on stage at Flagship Expo Day.
         </p>
         <p className="ui-caption mt-4">
-          Designed and run by IIT &amp; IIM graduates. Built for Indian
-          schools.
+          Designed and run by IIT &amp; IIM graduates. Every participant gets
+          a certificate.
         </p>
         <div className="mt-9 flex flex-wrap gap-3">
-          <a href={challengeDateMailto} className="ui-button">
-            Confirm a Challenge Date →
+          <a href="#challenge" className="ui-button">
+            See how it works →
           </a>
           <a
             href="/school-proposal.html"
@@ -38,7 +35,7 @@ export function SchoolsHero() {
             rel="noreferrer"
             className="ui-button-secondary"
           >
-            Read the full proposal
+            For schools: the proposal
           </a>
         </div>
       </div>

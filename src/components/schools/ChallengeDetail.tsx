@@ -2,23 +2,23 @@ const measures = [
   {
     tag: "Logic & patterns",
     name: "Reasoning",
-    desc: "Structured thinking under time — sequences, deduction, and the pattern-spotting that predicts how fast a student learns new tools.",
+    desc: "Structured thinking under time — sequences, deduction, and pattern-spotting. The stuff that predicts how fast you learn new tools.",
   },
   {
     tag: "Problem framing",
     name: "Curiosity",
-    desc: "How a student frames an unfamiliar problem — the single best early signal of builder potential.",
+    desc: "How you attack a problem you've never seen before — the single best early signal of builder potential.",
   },
   {
     tag: "The unknown",
     name: "Builder instinct",
-    desc: "Given something they've never seen, do they freeze or start taking it apart? We test for the second kind.",
+    desc: "Given something unfamiliar, do you freeze or start taking it apart? We're looking for the second kind.",
   },
 ];
 
 const participantGets = [
-  "A WingsQuest 2026 participation certificate — no child goes home empty-handed.",
-  "Their individual score band, shared privately.",
+  "A WingsQuest 2026 participation certificate — nobody goes home empty-handed.",
+  "Your individual score band, shared privately with you.",
   "An invitation to the results assembly at your school.",
 ];
 
@@ -31,9 +31,9 @@ export function ChallengeDetail() {
           A free AI aptitude challenge, hosted <em>at your school.</em>
         </h2>
         <p className="section-body mb-14">
-          One hour. Our proctors, our materials, our marking. A
-          paper-or-tablet challenge testing logical reasoning, pattern
-          recognition, and AI-readiness — calibrated by grade, Classes 5–10.
+          One hour. No prep, no coding, no textbooks. A paper-or-tablet
+          challenge testing logical reasoning, pattern recognition, and
+          AI-readiness — calibrated for your grade, Classes 5–10.
         </p>
       </div>
 
@@ -79,14 +79,13 @@ export function ChallengeDetail() {
           style={{ borderColor: "rgba(19, 53, 184, 0.35)" }}
         >
           <p className="ui-label mb-4" style={{ color: "#1335b8" }}>
-            Your school gets — the report
+            You can&apos;t cram for it
           </p>
           <p className="ui-body">
-            Within 10 days of the Challenge: a school-level analytics report —
-            participation, grade-wise performance distribution, strongest
-            cohorts, and your school&apos;s standout students. The kind of
-            data that goes straight into your annual report and your next
-            parent-teacher meeting.
+            This isn&apos;t a syllabus test. There&apos;s nothing to revise
+            and no way to prepare — and you don&apos;t need to. It measures
+            how you think, not what you&apos;ve memorized. Just show up
+            curious.
           </p>
         </div>
       </div>

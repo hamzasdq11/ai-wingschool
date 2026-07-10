@@ -3,25 +3,25 @@ const weeks = [
     number: "01",
     title: "How AI actually works + prompts as a language",
     desc: "Mental models, safe-use habits, and prompting like an engineer — system prompts, examples, iteration.",
-    ships: "A multi-step AI assistant they use daily.",
+    ships: "A multi-step AI assistant you'll use daily.",
   },
   {
     number: "02",
     title: "AI that sees and speaks",
-    desc: "Vision and voice — image understanding, and a talking, listening agent in their preferred language.",
+    desc: "Vision and voice — image understanding, and a talking, listening agent in your preferred language.",
     ships: "A working vision or voice demo.",
   },
   {
     number: "03",
     title: "AI that acts + project build",
-    desc: "Agents that use tools and take action — then each student scopes and starts their own real project.",
-    ships: "Project v1, live.",
+    desc: "Agents that use tools and take action — then you scope and start your own real project.",
+    ships: "Your project v1, live.",
   },
   {
     number: "04",
     title: "Polish + Expo prep",
     desc: "Engineering polish, storytelling, and demo rehearsal for Flagship Expo Day.",
-    ships: "A finished project, presented on stage.",
+    ships: "Your finished project, presented on stage.",
   },
 ];
 
@@ -31,12 +31,12 @@ export function BuilderProgram() {
       <div className="section-copy">
         <p className="section-kicker mb-4">Phase 3 · The AI Builder Program</p>
         <h2 className="section-heading mb-6">
-          Four weeks. One real AI project. Taught by <em>IIT/IIM</em> grads.
+          Four weeks. One real AI project. <em>Yours.</em>
         </h2>
         <p className="section-body mb-14">
-          Qualifiers join a 4-week live online program — a compressed,
-          project-first version of our flagship academy. They don&apos;t study
-          AI. They build with it.
+          Qualifiers join a 4-week live online program taught by IIT/IIM
+          graduates — a compressed, project-first version of our flagship
+          academy. You won&apos;t study AI. You&apos;ll build with it.
         </p>
       </div>
 

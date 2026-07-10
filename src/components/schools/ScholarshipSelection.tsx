@@ -5,7 +5,7 @@ const tiers = [
     offer: "50% scholarship",
     features: [
       "50% scholarship on the Builder Program",
-      "Medal + recognition at the school assembly",
+      "A medal + recognition at your school assembly",
     ],
     featured: true,
   },
@@ -15,7 +15,7 @@ const tiers = [
     offer: "25% scholarship",
     features: [
       "25% scholarship on the Builder Program",
-      "Merit certificate",
+      "A merit certificate",
     ],
     featured: false,
   },
@@ -24,8 +24,8 @@ const tiers = [
     name: "Builder Seat",
     offer: "Standard fee",
     features: [
-      "Every student who clears the cutoff may enrol at the standard program fee, shared directly with qualifying families",
-      "Qualifying is the achievement; the door stays open to all of them",
+      "Clear the cutoff and you can enrol at the standard program fee, shared directly with your parents",
+      "Qualifying is the achievement; the door stays open for you",
     ],
     featured: false,
   },
@@ -37,12 +37,11 @@ export function ScholarshipSelection() {
       <div className="section-copy">
         <p className="section-kicker mb-4">Phase 2 · The Selection</p>
         <h2 className="section-heading mb-6">
-          Top performers earn scholarships. Every qualifier earns a{" "}
-          <em>seat.</em>
+          Top scores earn scholarships. Every qualifier earns a <em>seat.</em>
         </h2>
         <p className="section-body mb-14">
-          Students who clear the WingsQuest cutoff qualify for the AI Builder
-          Program. Scholarships are decided purely by WingsQuest rank —
+          Clear the WingsQuest cutoff and you qualify for the AI Builder
+          Program. Scholarships are decided purely by your WingsQuest rank —
           announced at your school assembly.
         </p>
       </div>
@@ -105,10 +104,9 @@ export function ScholarshipSelection() {
       </div>
 
       <p className="ui-caption mt-6 max-w-2xl">
-        Fees payable by parents directly to AI Wingschool — never routed
-        through the school. No payment is ever collected on school premises.
-        The Builder Program is distinct from our 6-month AI Academy; finishers
-        receive preferential admission to the Academy.
+        The Builder Program fee is shared directly with your parents — no
+        payment ever happens at school. Finishers receive preferential
+        admission to our 6-month AI Academy.
       </p>
     </section>
   );

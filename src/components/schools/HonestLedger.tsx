@@ -1,33 +1,33 @@
 const ledger = [
   {
-    tag: "01 · Money",
-    title: "Zero cost",
-    desc: "No fee, no revenue share, no purchase required. The Challenge is funded by us, end to end.",
+    tag: "01 · Cost",
+    title: "Zero cost to enter",
+    desc: "The Challenge is completely free — no fee, no purchase, nothing to buy. It's funded by us, end to end.",
   },
   {
-    tag: "02 · Effort",
-    title: "Zero logistics",
-    desc: "We bring proctors, question papers, certificates, and marking. You provide a hall and a date.",
+    tag: "02 · Prep",
+    title: "Zero prep",
+    desc: "No syllabus, no cramming, no tuition required. It tests how you think, not what you memorized.",
   },
   {
-    tag: "03 · Data",
-    title: "The performance report",
-    desc: "Grade-wise analytics on how your students performed — data for your management, your board, and your admissions brochure.",
+    tag: "03 · Certificate",
+    title: "A certificate, guaranteed",
+    desc: "Every participant gets a WingsQuest 2026 certificate — nobody goes home empty-handed.",
   },
   {
-    tag: "04 · Students",
-    title: "Certificates for every student",
-    desc: "No child goes home empty-handed. Every participant is certified; every finisher of the Builder Program is certified again.",
+    tag: "04 · Score",
+    title: "Your private score band",
+    desc: "See where you actually stand — shared privately with you, never posted on a noticeboard.",
   },
   {
-    tag: "05 · Visibility",
-    title: "Newsletter-worthy outcomes",
-    desc: "Scholarship winners, a public Flagship Expo Day, projects judged by IIT/IIM alumni — ready-made content for your newsletter, prize day, and socials.",
+    tag: "05 · Scholarship",
+    title: "A shot at a scholarship",
+    desc: "Score in the top 10–20% and you earn a 25–50% scholarship to the AI Builder Program, announced at your school assembly.",
   },
   {
-    tag: "06 · Positioning",
-    title: "Innovation-forward standing",
-    desc: "Be the school in Kanpur that ran an AI talent search in 2026 — before it was standard.",
+    tag: "06 · Stage",
+    title: "A shot at the stage",
+    desc: "Finish the Builder Program and you demo your project to an industry and IIT/IIM panel at Flagship Expo Day.",
   },
 ];
 
@@ -37,12 +37,12 @@ export function HonestLedger() {
       <div className="section-copy">
         <p className="section-kicker mb-4">The honest ledger</p>
         <h2 className="section-heading mb-6">
-          Your school gives one hour. It gets a <em>year</em> of stories.
+          You give one hour. You could walk away with a <em>year</em> of
+          momentum.
         </h2>
         <p className="section-body mb-14">
           We&apos;ve made the trade deliberately lopsided — in your favour.
-          Here is exactly what your school receives, and exactly what it
-          costs.
+          Here is exactly what you get, and exactly what it costs.
         </p>
       </div>
 
@@ -60,9 +60,9 @@ export function HonestLedger() {
 
       <div className="ui-card-soft mt-8 rounded-[1.5rem] px-7 py-6">
         <p className="ui-body" style={{ color: "#0a0a0a" }}>
-          <b>No obligation, at any point.</b> The Challenge does not commit
-          your school to anything. If you stop after Phase 1, you still keep
-          the report, and your students keep their certificates.
+          <b>No pressure, at any point.</b> The Challenge is complete in
+          itself. If you stop after Phase 1, the certificate and your score
+          are yours to keep.
         </p>
       </div>
     </section>

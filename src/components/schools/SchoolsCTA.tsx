@@ -5,7 +5,7 @@ const contacts = [
   { label: "Address", value: "The Landmark Towers, Civil Lines, Kanpur" },
   {
     label: "Next step",
-    value: "One email with two possible dates for the Challenge.",
+    value: "One email from your school with two possible dates.",
   },
 ];
 
@@ -27,15 +27,16 @@ export function SchoolsCTA() {
         </span>
 
         <h2 className="section-heading mx-auto mt-7 max-w-2xl">
-          One reply. One hall. <em>One hour.</em>
+          One hour. One project. <em>One stage.</em>
         </h2>
         <p className="section-body mx-auto mt-5 max-w-xl">
-          Reply with two possible dates. We handle everything from there.
+          WingsQuest 2026 is coming to schools across Kanpur. Want it at
+          yours? Tell your principal — or have your school write to us.
         </p>
 
         <div className="mt-9">
           <a href={challengeDateMailto} className="ui-button">
-            Confirm a Challenge Date →
+            Bring WingsQuest to your school →
           </a>
         </div>
 

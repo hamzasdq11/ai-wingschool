@@ -2,19 +2,23 @@ import { useState } from "react";
 
 const faqs = [
   {
-    q: "Is this a sales event in disguise?",
-    a: "No student is pitched anything on your campus. The Challenge is free and complete in itself. The Builder Program is offered only to qualifiers, only to their parents, only off-campus.",
+    q: "Do I need to know coding?",
+    a: "No. The Challenge tests reasoning and curiosity, not programming — there's no code on the paper. And the Builder Program starts from zero; technical confidence grows by making things, not by intimidation.",
   },
   {
-    q: "What does the school pay?",
-    a: "Nothing — not for the test, the proctors, the certificates, or the report. There is no catch to find.",
+    q: "How much does it cost?",
+    a: "The Challenge is completely free — the test, the proctors, the certificate, all of it. The Builder Program is paid, with 25–50% scholarships for top scorers; the fee is shared directly with your parents and never collected at school.",
   },
   {
-    q: "What if we just want the Challenge and nothing else?",
-    a: "Then that's what happens. The report and certificates are yours regardless. No obligation carries forward.",
+    q: "What if I don't clear the cutoff?",
+    a: "You still keep your participation certificate and your private score band — and you'll know exactly where you stand. The skills WingsQuest tests are buildable, and the Challenge will run again.",
   },
   {
-    q: "Who actually runs this?",
+    q: "Will this clash with school and tuitions?",
+    a: "The Challenge is one hour, at your school, during a school day. The Builder Program is four weeks of live online sessions designed to fit around school life.",
+  },
+  {
+    q: "Who actually teaches?",
     a: "Mentors are graduates of IIT Madras, IIT Ropar, IIM Bangalore, and IIM Ranchi — most with industry experience at AI-first startups. AI Wingschool runs a 6-month AI Academy for Classes 5–10 out of The Landmark Towers, Civil Lines, Kanpur.",
   },
 ];
@@ -26,7 +30,7 @@ export function SchoolsFAQ() {
     <section id="school-faq" className="section-shell relative z-10">
       <div className="mx-auto max-w-4xl">
         <div className="mb-14 text-center">
-          <p className="section-kicker mb-4">Questions principals ask</p>
+          <p className="section-kicker mb-4">Questions students ask</p>
           <h2 className="section-heading">Frequently Asked Questions.</h2>
         </div>
 
