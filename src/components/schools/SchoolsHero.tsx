@@ -138,16 +138,18 @@ export function SchoolsHero() {
             </p>
 
             <div className="relative flex flex-col gap-7">
-              <span
-                aria-hidden
-                className="absolute bottom-5 left-[21px] top-5 w-px"
-                style={{ background: "rgba(255,255,255,0.22)" }}
-              />
-              {journey.map((step) => (
+              {journey.map((step, idx) => (
                 <div
                   key={step.number}
                   className="relative grid grid-cols-[44px_1fr] items-start gap-4"
                 >
+                  {idx < journey.length - 1 && (
+                    <span
+                      aria-hidden
+                      className="absolute -bottom-7 left-[21px] top-11 w-px"
+                      style={{ background: "rgba(255,255,255,0.22)" }}
+                    />
+                  )}
                   <span
                     className="flex h-11 w-11 items-center justify-center rounded-full"
                     style={{
