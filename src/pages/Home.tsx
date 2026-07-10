@@ -25,7 +25,7 @@ import { FourPhases } from "../components/schools/FourPhases";
 // import { FlagshipExpoDay } from "../components/schools/FlagshipExpoDay"; // temporarily hidden — uncomment here and below to restore
 // import { HonestLedger } from "../components/schools/HonestLedger"; // temporarily hidden — uncomment here and below to restore
 import { OperatingPlan } from "../components/schools/OperatingPlan";
-import { SchoolsFAQ } from "../components/schools/SchoolsFAQ";
+// import { SchoolsFAQ } from "../components/schools/SchoolsFAQ"; // merged into the combined FAQ — uncomment here and below to restore
 import { SchoolsCTA } from "../components/schools/SchoolsCTA";
 
 export function Home() {
@@ -65,10 +65,9 @@ export function Home() {
       <Divider /> */}
       <OperatingPlan />
       <Divider />
-      <SchoolsFAQ />
-      <SchoolsCTA />
-      <Divider />
+      {/* <SchoolsFAQ /> */}
       <FAQ />
+      <SchoolsCTA />
       {/* <OrientationDay /> */}
       <Footer />
       <StickyMobileCTA />
