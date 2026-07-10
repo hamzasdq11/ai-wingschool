@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>AI Wingschool — School Partnership Proposal</title>
+<style>
+  @font-face {
+    font-family: "Hanken Grotesk";
+    src: url("./public/fonts/HankenGrotesk-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Editors Note";
+    src: url("./public/fonts/EditorsNote-ExtralightItalic.otf") format("opentype");
+    font-weight: 200;
+    font-style: italic;
+  }
+
+  :root {
+    --ink: #0a0a0a;
+    --ink-2: #3a3a3a;
+    --ink-3: #5a5a5a;
+    --muted: #8a8a8a;
+    --line: rgba(15,15,15,0.10);
+    --primary: #1335b8;
+    --primary-soft: rgba(19,53,184,0.08);
+    --primary-border: rgba(19,53,184,0.22);
+    --cream: #fbfaf6;
+    --cream-2: #f4f3ee;
+    --serif: "Editors Note", "Georgia", serif;
+    --sans: "Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  }
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--sans);
+    color: var(--ink);
+    background: #ffffff;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  em, .script {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 200;
+    color: #1f1f1f;
+  }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    padding: 18mm 16mm;
+    position: relative;
+    break-after: page;
+    page-break-after: always;
+    overflow: hidden;
+    background: var(--cream);
+  }
+  .page:last-child { page-break-after: auto; break-after: auto; }
+
+  .page.dark {
+    background: #05081C;
+    color: #ffffff;
+  }
+
+  .page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 9pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10mm;
+  }
+  .page-header .brand {
+    color: var(--primary);
+    font-weight: 600;
+  }
+  .page.dark .page-header { color: rgba(255,255,255,0.55); }
+  .page.dark .page-header .brand { color: #ffffff; }
+
+  .kicker {
+    font-size: 9pt;
+    font-weight: 500;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8mm;
+  }
+  .kicker.primary { color: var(--primary); }
+
+  h2.title {
+    font-size: 32pt;
+    line-height: 1.04;
+    font-weight: 400;
+    letter-spacing: -0.04em;
+    margin: 0 0 6mm;
+    color: var(--ink);
+  }
+  h3.section {
+    font-size: 18pt;
+    line-height: 1.1;
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    margin: 0 0 3mm;
+    color: var(--ink);
+  }
+  h4.row-title {
+    font-size: 13pt;
+    line-height: 1.15;
+    font-weight: 400;
+    letter-spacing: -0.025em;
+    margin: 0 0 2mm;
+    color: var(--ink);
+  }
+  p.lead {
+    font-size: 11.5pt;
+    line-height: 1.65;
+    color: var(--ink-2);
+    margin: 0 0 6mm;
+    max-width: 165mm;
+  }
+  p.body {
+    font-size: 10pt;
+    line-height: 1.55;
+    color: var(--ink-3);
+    margin: 0;
+  }
+  p.tiny {
+    font-size: 8.5pt;
+    line-height: 1.5;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 10mm;
+    left: 16mm;
+    right: 16mm;
+    display: flex;
+    justify-content: space-between;
+    font-size: 8pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .page.dark .footer { color: rgba(255,255,255,0.45); }
+
+  /* COVER */
+  .cover {
+    background:
+      radial-gradient(circle at 72% 18%, rgba(19,53,184,0.12), transparent 30%),
+      radial-gradient(circle at 18% 82%, rgba(19,53,184,0.06), transparent 28%),
+      linear-gradient(180deg, #fbfaf6 0%, #f4f3ee 100%);
+    padding: 22mm 16mm;
+  }
+  .cover-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24mm;
+  }
+  .brand-mark {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 4mm;
+    font-size: 12pt;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .brand-mark .dot {
+    width: 8px; height: 8px; border-radius: 999px; background: var(--primary);
+    display: inline-block; transform: translateY(-1px);
+  }
+  .brand-mark strong { font-weight: 500; }
+  .cover-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 11px;
+    border-radius: 999px;
+    border: 1px solid var(--primary-border);
+    background: var(--primary-soft);
+    color: var(--primary);
+    font-size: 8.5pt;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .cover-chip .dot {
+    width: 6px; height: 6px; border-radius: 999px; background: var(--primary);
+  }
+  .cover h1 {
+    font-size: 42pt;
+    line-height: 1.04;
+    letter-spacing: -0.045em;
+    font-weight: 400;
+    margin: 0 0 10mm;
+    color: var(--ink);
+    max-width: 175mm;
+  }
+  .cover .sub {
+    font-size: 13pt;
+    line-height: 1.55;
+    color: var(--ink-2);
+    margin: 0 0 4mm;
+    max-width: 160mm;
+  }
+  .cover .sub-mini {
+    font-size: 10pt;
+    color: var(--primary);
+    font-weight: 500;
+    margin: 2mm 0 10mm;
+  }
+  .cover-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4mm;
+    margin-top: 10mm;
+    border-top: 1px solid var(--line);
+    padding-top: 8mm;
+  }
+  .cover-stats .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2mm;
+  }
+  .cover-stats .stat .val {
+    font-size: 22pt;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+  }
+  .cover-stats .stat .lbl {
+    font-size: 8.5pt;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .prepared-for {
+    margin-top: 14mm;
+    border: 1.5px dashed rgba(15,15,15,0.22);
+    border-radius: 4mm;
+    padding: 5mm 6mm;
+    display: flex;
+    align-items: baseline;
+    gap: 5mm;
+  }
+  .prepared-for .lbl {
+    font-size: 7.5pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .prepared-for .line {
+    flex: 1;
+    border-bottom: 1px solid rgba(15,15,15,0.30);
+    height: 6mm;
+  }
+  .cover .meta {
+    position: absolute;
+    bottom: 14mm;
+    left: 16mm;
+    right: 16mm;
+    display: flex;
+    justify-content: space-between;
+    font-size: 8.5pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .cover .meta .right { color: var(--primary); }
+
+  /* Layout helpers */
+  .row {
+    display: grid;
+    grid-template-columns: 28mm 1fr 1fr;
+    gap: 8mm;
+    border-top: 1px solid var(--line);
+    padding: 9mm 0;
+  }
+  .row:last-child { border-bottom: 1px solid var(--line); }
+  .row .num {
+    font-size: 34pt;
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+    color: var(--primary);
+    font-weight: 300;
+  }
+  .why-rows .row {
+    grid-template-columns: 22mm 1fr 1.4fr;
+  }
+  .why-rows .row .num { font-size: 38pt; }
+
+  /* Cards */
+  .card {
+    background: #ffffff;
+    border: 1px solid #ece9df;
+    border-radius: 8mm;
+    padding: 7mm;
+    box-shadow: 0 1px 2px rgba(15,15,15,0.02), 0 8px 20px rgba(15,15,15,0.04);
+  }
+  .card .lbl-tag {
+    font-size: 8.5pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--primary);
+    font-weight: 500;
+    margin-bottom: 3mm;
+  }
+  .card.featured {
+    border: 1.5px solid var(--primary);
+    background:
+      radial-gradient(circle at top right, rgba(19,53,184,0.10), #ffffff 70%);
+    box-shadow: 0 12px 30px -10px rgba(19,53,184,0.22);
+  }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5mm;
+  }
+
+  /* Timeline (repurposed eras) */
+  .eras {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4mm;
+    margin-top: 6mm;
+  }
+  .era {
+    border-top: 2px solid var(--primary);
+    padding-top: 4mm;
+  }
+  .era.dim { border-top-color: rgba(19,53,184,0.18); }
+  .era .y {
+    font-size: 11pt;
+    color: var(--primary);
+    font-weight: 500;
+    margin-bottom: 1mm;
+  }
+  .era .n {
+    font-size: 10.5pt;
+    color: var(--ink);
+    margin: 0 0 2mm;
+    letter-spacing: -0.02em;
+  }
+  .era .d {
+    font-size: 8.5pt;
+    color: var(--ink-3);
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  /* Impact stat band */
+  .impact {
+    margin-top: 8mm;
+    padding: 7mm 8mm;
+    border-radius: 6mm;
+    border: 1px solid var(--line);
+    background: linear-gradient(180deg,#ffffff,#faf9f4);
+  }
+  .impact .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5mm;
+  }
+  .impact .v {
+    font-size: 16pt;
+    color: var(--primary);
+    margin-bottom: 2mm;
+    letter-spacing: -0.02em;
+  }
+  .impact .l {
+    font-size: 9pt;
+    color: var(--ink-3);
+    line-height: 1.45;
+  }
+
+  /* Benefit cards (repurposed projects) */
+  .project-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5mm;
+  }
+  .project {
+    background: #fff;
+    border: 1px solid #ece9df;
+    border-radius: 6mm;
+    padding: 6mm;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5mm;
+  }
+  .project .tag-row {
+    font-size: 8pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--primary);
+    font-weight: 500;
+  }
+  .project .t {
+    font-size: 12pt;
+    line-height: 1.2;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+  .project .d {
+    font-size: 9pt;
+    line-height: 1.5;
+    color: var(--ink-3);
+  }
+
+  /* Week module rows */
+  .module {
+    border-top: 1px solid var(--line);
+    padding: 4mm 0;
+    display: grid;
+    grid-template-columns: 22mm 1fr 62mm;
+    gap: 5mm;
+  }
+  .module:last-child { border-bottom: 1px solid var(--line); }
+  .module .month-lbl {
+    font-size: 7.5pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2mm;
+  }
+  .module .month {
+    font-size: 26pt;
+    line-height: 0.95;
+    color: var(--primary);
+    font-weight: 300;
+    letter-spacing: -0.05em;
+  }
+  .module h4 {
+    font-size: 12pt;
+    margin: 0 0 1.5mm;
+    line-height: 1.15;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+  .module .desc {
+    font-size: 9pt;
+    line-height: 1.45;
+    color: var(--ink-3);
+  }
+  .ships-card {
+    border: 1px solid var(--primary-border);
+    background: var(--primary-soft);
+    border-radius: 4mm;
+    padding: 3mm 4mm;
+  }
+  .ships-card .l {
+    font-size: 7.5pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 1.5mm;
+  }
+  .ships-card .v {
+    font-size: 9pt;
+    color: var(--ink);
+    line-height: 1.35;
+  }
+
+  /* Checklist */
+  .outcomes {
+    margin-top: 5mm;
+    padding: 6mm 7mm;
+    border-radius: 6mm;
+    border: 1px solid var(--line);
+    background:
+      radial-gradient(circle at 88% 12%, rgba(19,53,184,0.10), transparent 42%),
+      linear-gradient(180deg, #ffffff 0%, #faf9f4 100%);
+  }
+  .outcomes ul {
+    list-style: none;
+    padding: 0;
+    margin: 3mm 0 0;
+    display: grid;
+    gap: 2.5mm;
+  }
+  .outcomes li {
+    display: grid;
+    grid-template-columns: 5mm 1fr;
+    gap: 3mm;
+    font-size: 9.5pt;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  .outcomes li::before {
+    content: "✓";
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 11pt;
+    line-height: 1;
+  }
+
+  /* Scholarship tiers (repurposed plans) */
+  .plans {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4mm;
+  }
+  .plan {
+    border: 1px solid #ece9df;
+    background: #fff;
+    border-radius: 5mm;
+    padding: 5mm;
+    display: flex;
+    flex-direction: column;
+    gap: 2mm;
+    position: relative;
+  }
+  .plan.featured {
+    border: 1.5px solid var(--primary);
+    background:
+      radial-gradient(circle at top right, rgba(19,53,184,0.10), #ffffff 70%);
+    box-shadow: 0 12px 30px -10px rgba(19,53,184,0.22);
+  }
+  .plan .badge {
+    position: absolute;
+    top: -3mm;
+    left: 6mm;
+    background: var(--primary);
+    color: #fff;
+    border-radius: 999px;
+    padding: 1mm 3mm;
+    font-size: 7pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .plan .name {
+    font-size: 12pt;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    margin-bottom: 1mm;
+  }
+  .plan .offer {
+    display: inline-block;
+    border: 1px solid var(--primary-border);
+    background: var(--primary-soft);
+    border-radius: 999px;
+    padding: 1mm 3mm;
+    font-size: 7pt;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--primary);
+    font-weight: 600;
+    margin-bottom: 1mm;
+    width: fit-content;
+  }
+  .plan ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 1.5mm;
+  }
+  .plan ul li {
+    font-size: 8pt;
+    line-height: 1.4;
+    color: var(--ink-2);
+    display: grid;
+    grid-template-columns: 3mm 1fr;
+    gap: 1.5mm;
+  }
+  .plan ul li::before {
+    content: "✓";
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 8pt;
+    line-height: 1.1;
+  }
+
+  /* FAQ */
+  .faq {
+    border-top: 1px solid var(--line);
+    padding: 4.5mm 0;
+  }
+  .faq:last-of-type { border-bottom: 1px solid var(--line); }
+  .faq .q {
+    font-size: 11pt;
+    color: var(--ink);
+    line-height: 1.4;
+    margin: 0 0 2mm;
+  }
+  .faq .a {
+    font-size: 9.5pt;
+    color: var(--ink-3);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* Dark quote */
+  .quote-kicker {
+    font-size: 8pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 8mm;
+  }
+  .quote-text {
+    font-size: 40pt;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    color: #ffffff;
+    margin: 0;
+    max-width: 160mm;
+  }
+  .quote-text .open, .quote-text .close {
+    font-family: var(--serif);
+    font-style: italic;
+    color: rgba(255,255,255,0.45);
+  }
+  .quote-author {
+    margin-top: 14mm;
+    display: flex;
+    align-items: center;
+    gap: 6mm;
+  }
+  .quote-author .bar {
+    width: 18mm; height: 1px; background: rgba(255,255,255,0.45);
+  }
+  .quote-author .name {
+    font-size: 14pt;
+    color: #fff;
+    letter-spacing: -0.015em;
+  }
+  .quote-author .role {
+    font-size: 8.5pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    margin-top: 1.5mm;
+  }
+
+  /* CTA */
+  .cta {
+    border: 1px solid var(--line);
+    border-radius: 8mm;
+    padding: 10mm;
+    background:
+      radial-gradient(circle at top right, rgba(19,53,184,0.12), transparent 42%),
+      linear-gradient(180deg, #ffffff 0%, #faf9f4 100%);
+  }
+  .cta h2 {
+    font-size: 26pt;
+    line-height: 1.1;
+    margin: 4mm 0 4mm;
+    letter-spacing: -0.035em;
+    color: var(--ink);
+  }
+  .button {
+    display: inline-flex;
+    align-items: center;
+    gap: 2mm;
+    background: var(--primary);
+    color: #fff;
+    border-radius: 999px;
+    padding: 3mm 6mm;
+    font-size: 10pt;
+    font-weight: 500;
+    text-decoration: none;
+    margin-top: 5mm;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 6mm;
+    margin-top: 8mm;
+    padding-top: 6mm;
+    border-top: 1px solid var(--line);
+  }
+  .contact-grid .lbl {
+    font-size: 7.5pt;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2mm;
+  }
+  .contact-grid .v {
+    font-size: 10pt;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+
+  /* What-it-measures cards */
+  .kinds {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4mm;
+    margin-top: 4mm;
+  }
+  .kind {
+    border: 1px solid #ece9df;
+    background: #fff;
+    border-radius: 6mm;
+    padding: 5mm;
+  }
+  .kind .tag {
+    color: var(--primary);
+    font-size: 8pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 2mm;
+  }
+  .kind .name {
+    font-size: 12pt;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    margin: 0 0 2mm;
+  }
+  .kind .desc {
+    font-size: 8.5pt;
+    color: var(--ink-3);
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============== 01 · COVER ============== -->
+<section class="page cover">
+  <div class="cover-top">
+    <div class="brand-mark"><span class="dot"></span><strong>AI Wingschool</strong></div>
+    <div class="cover-chip"><span class="dot"></span>Partnership Proposal · Kanpur · 2026</div>
+  </div>
+
+  <p class="kicker primary">WingsQuest 2026 · The School AI Aptitude Challenge · Classes 5–10</p>
+
+  <h1>
+    Your students are ready for the AI era. Let's find out which ones are ready to <span class="script">lead</span>&nbsp;it.
+  </h1>
+
+  <p class="sub">
+    A free, school-hosted AI aptitude challenge — followed by a
+    scholarship-backed builder program and a public Innovation Showcase.
+    Zero cost to your school. Zero effort. Every student walks away with something.
+  </p>
+
+  <p class="sub-mini">Designed and run by IIT &amp; IIM graduates. Built for Indian schools.</p>
+
+  <div class="cover-stats">
+    <div class="stat"><span class="val">₹0</span><span class="lbl">Cost to your school</span></div>
+    <div class="stat"><span class="val">100%</span><span class="lbl">Students certified</span></div>
+    <div class="stat"><span class="val">IIT / IIM</span><span class="lbl">Mentor bench</span></div>
+  </div>
+
+  <div class="cover-stats" style="margin-top: 6mm;">
+    <div class="stat"><span class="val">1 hour</span><span class="lbl">Of school time</span></div>
+    <div class="stat"><span class="val">4 phases</span><span class="lbl">One initiative</span></div>
+    <div class="stat"><span class="val">1 stage</span><span class="lbl">Innovation Showcase</span></div>
+  </div>
+
+  <div class="prepared-for">
+    <span class="lbl">Prepared for</span>
+    <span class="line"></span>
+  </div>
+
+  <div class="meta">
+    <span>School Proposal · 2026 edition</span>
+    <span class="right">hello@aiwingschool.com</span>
+  </div>
+</section>
+
+<!-- ============== 02 · THE OPPORTUNITY ============== -->
+<section class="page">
+  <div class="page-header">
+    <span class="brand">AI Wingschool</span>
+    <span>01 · The opportunity</span>
+  </div>
+
+  <p class="kicker">Why we're writing to you</p>
+  <h2 class="title">Every school will teach AI eventually. Yours can be <em>first</em> — for free.</h2>
+  <p class="lead">
+    This is not a vendor pitch. It's an invitation to run a talent-development
+    initiative at your school — funded and operated entirely by us. Your
+    students get discovered. Your school gets the credit.
+  </p>
+
+  <div class="why-rows">
+    <div class="row">
+      <div class="num">01</div>
+      <h4 class="row-title">AI is the new <em>electricity.</em></h4>
+      <p class="body">It will touch every career your students choose — medicine, design, law, engineering, the arts. The schools that moved early on computers in the 2000s are the ones parents still talk about. This is that moment, again.</p>
+    </div>
+    <div class="row">
+      <div class="num">02</div>
+      <h4 class="row-title">Talent shows up when it's <em>tested.</em></h4>
+      <p class="body">Somewhere in your classrooms is a student who will build something remarkable with AI this year. A one-hour aptitude challenge is how we find them — and how you get the data.</p>
+    </div>
+    <div class="row">
+      <div class="num">03</div>
+      <h4 class="row-title">Schools win on <em>stories.</em></h4>
+      <p class="body">"Our students presented AI projects to a panel of IIT/IIM alumni" is a newsletter line, an admissions line, and a school-assembly moment. We manufacture those stories. You publish them.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>aiwingschool.com</span>
+    <span>p. 02</span>
+  </div>
+</section>
+
+<!-- ============== 03 · WANG QUOTE ============== -->
+<section class="page dark">
+  <div class="page-header">
+    <span class="brand">AI Wingschool</span>
+    <span style="color: rgba(255,255,255,0.55)">Voices · The AI Era</span>
+  </div>
+
+  <div style="margin-top: 14mm">
+    <p class="quote-kicker">Source: Economic Times</p>
+    <p class="quote-text">
+      <span class="open">“</span>The next Bill Gates is a <span class="script" style="color:#fff">13-year-old vibe-coding</span> today.<span class="close">”</span>
+    </p>
+    <div class="quote-author">
+      <span class="bar"></span>
+      <div>
+        <div class="name">Alexandr Wang</div>
+        <div class="role">Chief AI Officer · Meta</div>
+      </div>
+    </div>
+
+    <p class="tiny" style="color: rgba(255,255,255,0.55); margin-top: 22mm; font-size: 10pt; line-height: 1.6; max-width: 130mm;">
+      The question for every principal: is that 13-year-old sitting in one of
+      your classrooms — undiscovered?
+    </p>
+  </div>
+
+  <div class="footer">
+    <span>aiwingschool.com</span>
+    <span>p. 03</span>
+  </div>
+</section>
+
+<!-- ============== 04 · THE INITIATIVE AT A GLANCE ============== -->
+<section class="page">
+  <div class="page-header">
+    <span class="brand">AI Wingschool</span>
+    <span>02 · The initiative</span>
+  </div>
+
+  <p class="kicker" style="margin-bottom: 5mm;">WingsQuest 2026 · How it works</p>
+  <h2 class="title">One initiative. Four phases. <em>Zero</em> cost to your school.</h2>
+  <p class="lead" style="margin-bottom: 3mm;">
+    From a one-hour challenge in your school hall to your students on a
+    public stage — here is the whole arc.
+  </p>
+
+  <div>
+    <div class="row" style="padding: 5mm 0;">
+      <div class="num">01</div>
+      <h4 class="row-title">The <em>Challenge.</em></h4>
+      <p class="body">WingsQuest 2026: a free AI aptitude test, hosted at your school, run entirely by our team. Free for the school. Free for every student. Every participant receives a certificate; your school receives a full performance report.</p>
+    </div>
+    <div class="row" style="padding: 5mm 0;">
+      <div class="num">02</div>
+      <h4 class="row-title">The <em>Selection.</em></h4>
+      <p class="body">Students who clear the cutoff qualify for the AI Builder Program. The top 10–20% earn scholarships and school-assembly recognition. Every qualifier is eligible to enrol.</p>
+    </div>
+    <div class="row" style="padding: 5mm 0;">
+      <div class="num">03</div>
+      <h4 class="row-title">The AI Builder <em>Program.</em></h4>
+      <p class="body">A 4-week live online program. Students learn how modern AI works and build a real project of their own — taught by IIT/IIM graduates.</p>
+    </div>
+    <div class="row" style="padding: 5mm 0;">
+      <div class="num">04</div>
+      <h4 class="row-title">The Innovation <em>Showcase.</em></h4>
+      <p class="body">Students present their projects to a panel of industry experts and IIT/IIM alumni. Finishers receive project-completion certificates, presented at the Showcase.</p>
+    </div>
+  </div>
+
+  <div class="impact" style="margin-top: 5mm; padding: 5mm 7mm;">
+    <div class="grid">
+      <div>
+        <div class="v">1 hour</div>
+        <div class="l">Total school time required, start to finish.</div>
+      </div>
+      <div>
+        <div class="v">0</div>
+        <div class="l">Rupees your school spends, at any phase.</div>
+      </div>
+      <div>
+        <div class="v">2 certificates</div>
+        <div class="l">Participation for every test-taker; project completion for every finisher.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>aiwingschool.com</span>
+    <span>p. 04</span>
+  </div>
+</section>
+
+<!-- ============== 05 · PHASE 1 · THE CHALLENGE ============== -->
+<section class="page">
+  <div class="page-header">
+    <span class="brand">AI Wingschool</span>
+    <span>03 · Phase 1 · The Challenge</span>
+  </div>
+
+  <p class="kicker">Phase 1 · Free for everyone</p>
+  <h2 class="title" style="font-size: 28pt;">A free AI aptitude challenge, hosted <em>at your school.</em></h2>
+  <p class="lead" style="font-size: 10.5pt;">
+    One hour. Our proctors, our materials, our marking. A paper-or-tablet
+    challenge testing logical reasoning, pattern recognition, and
+    AI-readiness — calibrated by grade, Classes 5–10.
+  </p>
+
+  <p class="kicker primary" style="margin-bottom: 2mm;">What it measures</p>
+  <div class="kinds">
+    <div class="kind">
+      <div class="tag">Logic &amp; patterns</div>
+      <div class="name">Reasoning</div>
+      <p class="desc">Structured thinking under time — sequences, deduction, and the pattern-spotting that predicts how fast a student learns new tools.</p>
+    </div>
+    <div class="kind">
+      <div class="tag">Problem framing</div>
+      <div class="name">Curiosity</div>
+      <p class="desc">How a student frames an unfamiliar problem — the single best early signal of builder potential.</p>
+    </div>
+    <div class="kind">
+      <div class="tag">The unknown</div>
+      <div class="name">Builder instinct</div>
+      <p class="desc">Given something they've never seen, do they freeze or start taking it apart? We test for the second kind.</p>
+    </div>
+  </div>
+
+  <div class="outcomes">
+    <p class="kicker primary" style="margin: 0 0 1mm">Every participant gets</p>
+    <ul>
+      <li>A WingsQuest 2026 participation certificate — no child goes home empty-handed.</li>
+      <li>Their individual score band, shared privately.</li>
+      <li>An invitation to the results assembly at your school.</li>
+    </ul>
+  </div>
+
+  <div class="card featured" style="margin-top: 5mm;">
+    <div class="lbl-tag">Your school gets — the report</div>
+    <p class="body" style="color: var(--ink); font-size: 10.5pt;">
+      Within 10 days of the Challenge: a school-level analytics report —
+      participation, grade-wise performance distribution, strongest cohorts,
+      and your school's standout students. The kind of data that goes
+      straight into your annual report and your next parent-teacher meeting.
+    </p>
+  </div>
+
+  <div class="footer">
+    <span>aiwingschool.com</span>
+    <span>p. 05</span>
+  </div>
+</section>
+
+<!-- ============== 06 · WHAT'S IN IT FOR YOUR SCHOOL ============== -->
+<section class="page">
+  <div class="page-header">
+    <span class="brand">AI Wingschool</span>
+    <span>04 · For your school</span>
+  </div>
+
+  <p class="kicker">The honest ledger</p>
+  <h2 class="title" style="font-size: 28pt;">Your school gives one hour. It gets a <em>year</em> of stories.</h2>
+  <p class="lead" style="font-size: 10.5pt; margin-bottom: 5mm;">
+    We've made the trade deliberately lopsided — in your favour. Here is
+    exactly what your school receives, and exactly what it costs.
+  </p>
+
+  <div class="project-list">
+    <div class="project">
+      <div class="tag-row">01 · Money</div>
+      <div class="t">Zero cost</div>
+      <div class="d">No fee, no revenue share, no purchase required. The Challenge is funded by us, end to end.</div>
+    </div>
+    <div class="project">
+      <div class="tag-row">02 · Effort</div>
+      <div class="t">Zero logistics</div>
+      <div class="d">We bring proctors, question papers, certificates, and marking. You provide a hall and a date.</div>
+    </div>
+    <div class="project">
+      <div class="tag-row">03 · Data</div>
+      <div class="t">The performance report</div>
+      <div class="d">Grade-wise analytics on how your students performed — data for your management, your board, and your admissions brochure.</div>
+    </div>
+    <div class="project">
+      <div class="tag-row">04 · Students</div>
+      <div class="t">Certificates for every student</div>
+      <div class="d">No child goes home empty-handed. Every participant is certified; every finisher of the Builder Program is certified again.</div>
+    </div>
+    <div class="project">
+      <div class="tag-row">05 · Visibility</div>
+      <div class="t">Newsletter-worthy outcomes</div>
+      <div class="d">Scholarship winners, a public Innovation Showcase, projects judged by IIT/IIM alumni — ready-made content for your newsletter, prize day, and socials.</div>
+    </div>
+    <div class="project">
+      <div class="tag-row">06 · Positioning</div>
+      <div class="t">Innovation-forward standing</div>
+      <div class="d">Be the school in Kanpur that ran an AI talent search in 2026 — before it was standard.</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 5mm;">
+    <p class="body" style="color: var(--ink); font-size: 10.5pt;">
+      <b>No obligation, at any point.</b> The Challenge does not commit your
+      school to anything. If you stop after Phase 1, you still keep the
+      report, and your students keep their certificates.
+    </p>
+  </div>
+
+  <div class="footer">
+    <span>aiwingschool.com</span>
+    <span>p. 06</span>
+  </div>
+</section>
+
+<!-- ============== 07 · THE AI BUILDER PROGRAM + SCHOLARSHIPS ============== -->
+<section class="page">
+  <div class="page-header">
+    <span class="brand">AI Wingschool</span>
+    <span>05 · The AI Builder Program</span>
+  </div>
+
+  <p class="kicker" style="margin-bottom: 4mm;">Phase 2 + 3 · For students who clear the cutoff</p>
+  <h2 class="title" style="font-size: 24pt; margin-bottom: 3mm;">Four weeks. One real AI project. Taught by <em>IIT/IIM</em> grads.</h2>
+  <p class="lead" style="font-size: 10pt; margin-bottom: 4mm;">
+    Qualifiers join a 4-week live online program — a compressed,
+    project-first version of our flagship academy. They don't study AI.
+    They build with it.
+  </p>
+
+  <div>
+    <article class="module">
+      <div>
+        <div class="month-lbl">Week</div>
+        <div class="month">01</div>
+      </div>
+      <div>
+        <h4>How AI actually works + prompts as a language</h4>
+        <p class="desc">Mental models, safe-use habits, and prompting like an engineer — system prompts, examples, iteration.</p>
+      </div>
+      <div>
+        <div class="ships-card">
+          <div class="l">Ships this week</div>
+          <div class="v">A multi-step AI assistant they use daily.</div>
+        </div>
+      </div>
+    </article>
+    <article class="module">
+      <div>
+        <div class="month-lbl">Week</div>
+        <div class="month">02</div>
+      </div>
+      <div>
+        <h4>AI that sees and speaks</h4>
+        <p class="desc">Vision and voice — image understanding, and a talking, listening agent in their preferred language.</p>
+      </div>
+      <div>
+        <div class="ships-card">
+          <div class="l">Ships this week</div>
+          <div class="v">A working vision or voice demo.</div>
+        </div>
+      </div>
+    </article>
+    <article class="module">
+      <div>
+        <div class="month-lbl">Week</div>
+        <div class="month">03</div>
+      </div>
+      <div>
+        <h4>AI that acts + project build</h4>
+        <p class="desc">Agents that use tools and take action — then each student scopes and starts their own real project.</p>
+      </div>
+      <div>
+        <div class="ships-card">
+          <div class="l">Ships this week</div>
+          <div class="v">Project v1, live.</div>
+        </div>
+      </div>
+    </article>
+    <article class="module">
+      <div>
+        <div class="month-lbl">Week</div>
+        <div class="month">04</div>
+      </div>
+      <div>
+        <h4>Polish + Showcase prep</h4>
+        <p class="desc">Engineering polish, storytelling, and demo rehearsal for the Innovation Showcase.</p>
+      </div>
+      <div>
+        <div class="ships-card">
+          <div class="l">Ships this week</div>
+          <div class="v">A finished project, presented on stage.</div>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <p class="kicker primary" style="margin: 4mm 0 4mm;">Scholarships · decided by WingsQuest rank</p>
+  <div class="plans">
+    <div class="plan featured">
+      <span class="badge">Top 10%</span>
+      <div class="name">WingsQuest Scholar</div>
+      <div class="offer">50% scholarship</div>
+      <ul>
+        <li>50% scholarship on the Builder Program</li>
+        <li>Medal + recognition at the school assembly</li>
+      </ul>
+    </div>
+    <div class="plan">
+      <span class="badge" style="background: var(--ink);">Top 20%</span>
+      <div class="name">Merit Qualifier</div>
+      <div class="offer">25% scholarship</div>
+      <ul>
+        <li>25% scholarship on the Builder Program</li>
+        <li>Merit certificate</li>
+      </ul>
+    </div>
+    <div class="plan">
+      <div class="name">Builder Seat</div>
+      <div class="offer">All qualifiers</div>
+      <!-- PLACEHOLDER: final Builder Program fee TBD -->
+      <div style="display: flex; align-items: baseline; gap: 2mm;">
+        <span style="font-size: 15pt; letter-spacing: -0.03em; color: var(--ink);">₹X,XXX</span>
+        <span style="font-size: 7.5pt; color: var(--muted);">one-time · 4 weeks</span>
+      </div>
+      <ul>
+        <li>Every student who clears the cutoff may enrol at the standard program fee</li>
+        <li>Qualifying is the achievement; the door stays open to all of them</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="tiny" style="margin-top: 3mm;">
+    Fees payable by parents directly to AI Wingschool — never routed through
+    the school. The Builder Program is distinct from our 6-month AI Academy;
+    finishers receive preferential admission to the Academy.
+  </p>
+
+  <div class="footer">
+    <span>aiwingschool.com</span>
+    <span>p. 07</span>
+  </div>
+</section>
+
+<!-- ============== 08 · THE INNOVATION SHOWCASE ============== -->
+<section class="page dark">
+  <div class="page-header">
+    <span class="brand">AI Wingschool</span>
+    <span style="color: rgba(255,255,255,0.55)">06 · The Innovation Showcase</span>
+  </div>
+
+  <p class="kicker" style="color: rgba(255,255,255,0.55); margin-top: 10mm;">Phase 4 · Where it all lands</p>
+  <h2 class="title" style="color: #fff; font-size: 34pt;">It ends on a <span class="script" style="color:#fff">stage,</span> not a scoresheet.</h2>
+  <p class="lead" style="color: rgba(255,255,255,0.75); font-size: 11pt;">
+    Every Builder Program student presents their project — live — to a panel
+    of industry experts and IIT/IIM alumni. Parents watch. The school is
+    credited from the stage.
+  </p>
+
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 5mm; margin-top: 12mm;">
+    <div style="border-top: 2px solid rgba(255,255,255,0.35); padding-top: 4mm;">
+      <div style="font-size: 8pt; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 2mm;">The panel</div>
+      <p style="font-size: 10pt; line-height: 1.55; color: rgba(255,255,255,0.85); margin: 0;">Industry experts and IIT/IIM alumni — people who evaluate real products for a living, judging your students' work seriously.</p>
+    </div>
+    <div style="border-top: 2px solid rgba(255,255,255,0.35); padding-top: 4mm;">
+      <div style="font-size: 8pt; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 2mm;">The certificate</div>
+      <p style="font-size: 10pt; line-height: 1.55; color: rgba(255,255,255,0.85); margin: 0;">Project-completion certificates for every finisher — presented at the Innovation Showcase, in front of the panel and the parents.</p>
+    </div>
+    <div style="border-top: 2px solid rgba(255,255,255,0.35); padding-top: 4mm;">
+      <div style="font-size: 8pt; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 2mm;">The credit</div>
+      <p style="font-size: 10pt; line-height: 1.55; color: rgba(255,255,255,0.85); margin: 0;">Your school is named as talent partner in all Showcase materials — the stage, the certificates, the coverage.</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 16mm; border: 1px solid rgba(255,255,255,0.18); border-radius: 6mm; padding: 6mm 7mm; background: rgba(255,255,255,0.04);">
+    <p style="font-size: 11.5pt; color: #fff; line-height: 1.55; margin: 0 0 2mm;">
+      The Innovation Showcase is planned to be hosted at <b>IIM Ranchi</b>.
+    </p>
+    <p class="tiny" style="color: rgba(255,255,255,0.55);">
+      Venue under confirmation; details shared with partner schools in
+      writing before Phase 1.
+    </p>
+  </div>
+
+  <div class="footer">
+    <span>aiwingschool.com</span>
+    <span>p. 08</span>
+  </div>
+</section>
+
+<!-- ============== 09 · LOGISTICS ============== -->
+<section class="page">
+  <div class="page-header">
+    <span class="brand">AI Wingschool</span>
+    <span>07 · Logistics</span>
+  </div>
+
+  <p class="kicker">The operating plan</p>
+  <h2 class="title" style="font-size: 28pt;">Your part takes one email and one <em>hall.</em></h2>
+  <p class="lead" style="font-size: 10.5pt; margin-bottom: 5mm;">
+    The division of labour is simple: you open the door, we carry
+    everything through it.
+  </p>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="lbl-tag">What your school does</div>
+      <ul style="list-style: none; padding: 0; margin: 2mm 0 0; display: grid; gap: 3mm;">
+        <li style="display: grid; grid-template-columns: 8mm 1fr; gap: 2mm; font-size: 9.5pt; line-height: 1.5; color: var(--ink);">
+          <span style="color: var(--primary); font-weight: 600;">01</span>
+          <span>Reply confirming a date and a hall or classrooms. <i style="color: var(--muted);">(Week 0)</i></span>
+        </li>
+        <li style="display: grid; grid-template-columns: 8mm 1fr; gap: 2mm; font-size: 9.5pt; line-height: 1.5; color: var(--ink);">
+          <span style="color: var(--primary); font-weight: 600;">02</span>
+          <span>Circulate our ready-made notice to students — we draft it, you forward it. <i style="color: var(--muted);">(Week 1)</i></span>
+        </li>
+        <li style="display: grid; grid-template-columns: 8mm 1fr; gap: 2mm; font-size: 9.5pt; line-height: 1.5; color: var(--ink);">
+          <span style="color: var(--primary); font-weight: 600;">03</span>
+          <span>Optionally: host a 10-minute results assembly where we hand out certificates. <i style="color: var(--muted);">(Week 3)</i></span>
+        </li>
+      </ul>
+      <p class="body" style="margin-top: 4mm; color: var(--ink);"><b>That's the complete list.</b></p>
+    </div>
+    <div class="card">
+      <div class="lbl-tag">What we do — everything else</div>
+      <ul style="list-style: none; padding: 0; margin: 2mm 0 0; display: grid; gap: 1.8mm;">
+        <li style="display: grid; grid-template-columns: 4mm 1fr; gap: 2mm; font-size: 9pt; line-height: 1.45; color: var(--ink-2);"><span style="color: var(--primary); font-weight: 700;">✓</span>Consent forms and the full comms kit</li>
+        <li style="display: grid; grid-template-columns: 4mm 1fr; gap: 2mm; font-size: 9pt; line-height: 1.45; color: var(--ink-2);"><span style="color: var(--primary); font-weight: 700;">✓</span>Question papers / tablets, per grade</li>
+        <li style="display: grid; grid-template-columns: 4mm 1fr; gap: 2mm; font-size: 9pt; line-height: 1.45; color: var(--ink-2);"><span style="color: var(--primary); font-weight: 700;">✓</span>Trained proctors on Challenge day</li>
+        <li style="display: grid; grid-template-columns: 4mm 1fr; gap: 2mm; font-size: 9pt; line-height: 1.45; color: var(--ink-2);"><span style="color: var(--primary); font-weight: 700;">✓</span>Marking and moderation</li>
+        <li style="display: grid; grid-template-columns: 4mm 1fr; gap: 2mm; font-size: 9pt; line-height: 1.45; color: var(--ink-2);"><span style="color: var(--primary); font-weight: 700;">✓</span>Certificates, printed and delivered</li>
+        <li style="display: grid; grid-template-columns: 4mm 1fr; gap: 2mm; font-size: 9pt; line-height: 1.45; color: var(--ink-2);"><span style="color: var(--primary); font-weight: 700;">✓</span>The school analytics report</li>
+        <li style="display: grid; grid-template-columns: 4mm 1fr; gap: 2mm; font-size: 9pt; line-height: 1.45; color: var(--ink-2);"><span style="color: var(--primary); font-weight: 700;">✓</span>Scholarship announcements</li>
+        <li style="display: grid; grid-template-columns: 4mm 1fr; gap: 2mm; font-size: 9pt; line-height: 1.45; color: var(--ink-2);"><span style="color: var(--primary); font-weight: 700;">✓</span>The entire AI Builder Program</li>
+        <li style="display: grid; grid-template-columns: 4mm 1fr; gap: 2mm; font-size: 9pt; line-height: 1.45; color: var(--ink-2);"><span style="color: var(--primary); font-weight: 700;">✓</span>The Innovation Showcase</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="kicker primary" style="margin: 8mm 0 0;">The timeline</p>
+  <div class="eras">
+    <div class="era">
+      <div class="y">Week 0</div>
+      <div class="n">Handshake</div>
+      <p class="d">You pick a date. One email, done.</p>
+    </div>
+    <div class="era">
+      <div class="y">Week 1</div>
+      <div class="n">Announcement</div>
+      <p class="d">We handle comms — notices, consent, FAQs.</p>
+    </div>
+    <div class="era">
+      <div class="y">Week 2</div>
+      <div class="n">Challenge day</div>
+      <p class="d">1 hour at your school. Our team runs it.</p>
+    </div>
+    <div class="era">
+      <div class="y">Week 3</div>
+      <div class="n">Report + results</div>
+      <p class="d">Analytics report delivered; certificates handed out.</p>
+    </div>
+    <div class="era">
+      <div class="y">Weeks 4–8</div>
+      <div class="n">Build → Showcase</div>
+      <p class="d">Builder Program runs online, ends at the Innovation Showcase.</p>
+    </div>
+  </div>
+
+  <p class="tiny" style="margin-top: 6mm;">
+    No payment is ever collected on school premises. All enrolment happens
+    directly between parents and AI Wingschool.
+  </p>
+
+  <div class="footer">
+    <span>aiwingschool.com</span>
+    <span>p. 09</span>
+  </div>
+</section>
+
+<!-- ============== 10 · ABOUT + FAQ + CTA ============== -->
+<section class="page">
+  <div class="page-header">
+    <span class="brand">AI Wingschool</span>
+    <span>08 · About us · Next step</span>
+  </div>
+
+  <p class="kicker" style="margin-bottom: 4mm;">Who's behind this</p>
+  <div class="card" style="padding: 5mm 6mm;">
+    <div class="lbl-tag">Mentors</div>
+    <p class="body" style="color: var(--ink); font-size: 10pt;">
+      Mentors are graduates of <b>IIT Madras</b>, <b>IIT Ropar</b>,
+      <b>IIM Bangalore</b>, and <b>IIM Ranchi</b> — most with industry
+      experience at AI-first startups. AI Wingschool runs a 6-month AI
+      Academy for Classes 5–10 out of The Landmark Towers, Civil Lines, Kanpur.
+    </p>
+  </div>
+
+  <p class="kicker" style="margin: 7mm 0 2mm;">Questions principals ask</p>
+  <div>
+    <div class="faq">
+      <p class="q">Is this a sales event in disguise?</p>
+      <p class="a">No student is pitched anything on your campus. The Challenge is free and complete in itself. The Builder Program is offered only to qualifiers, only to their parents, only off-campus.</p>
+    </div>
+    <div class="faq">
+      <p class="q">What does the school pay?</p>
+      <p class="a">Nothing — not for the test, the proctors, the certificates, or the report. There is no catch to find.</p>
+    </div>
+    <div class="faq">
+      <p class="q">What if we just want the Challenge and nothing else?</p>
+      <p class="a">Then that's what happens. The report and certificates are yours regardless. No obligation carries forward.</p>
+    </div>
+  </div>
+
+  <div class="cta" style="margin-top: 7mm;">
+    <span class="cover-chip"><span class="dot"></span>WingsQuest 2026 · Slots for the season are limited</span>
+    <h2>One reply. One hall. <em>One hour.</em></h2>
+    <p class="body" style="font-size: 10.5pt; color: var(--ink-2); max-width: 150mm;">
+      Reply with two possible dates. We handle everything from there.
+    </p>
+    <a class="button" href="mailto:hello@aiwingschool.com">Confirm a Challenge date →</a>
+  </div>
+
+  <div class="contact-grid">
+    <div>
+      <div class="lbl">Reach us</div>
+      <div class="v">hello@aiwingschool.com</div>
+    </div>
+    <div>
+      <div class="lbl">Address</div>
+      <div class="v">The Landmark Towers<br/>Civil Lines, Kanpur</div>
+    </div>
+    <div>
+      <div class="lbl">Next step</div>
+      <div class="v">One email with two possible dates for the Challenge.</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>© 2026 AI Wingschool · aiwingschool.com</span>
+    <span>p. 10</span>
+  </div>
+</section>
+
+</body>
+</html>
