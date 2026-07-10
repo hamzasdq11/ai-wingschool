@@ -55,7 +55,7 @@ const impact = [
 
 export function FourPhases() {
   return (
-    <section className="section-shell relative z-10">
+    <section id="how-it-works" className="section-shell relative z-10">
       <div className="section-copy">
         <p className="section-kicker mb-4">WingsQuest 2026 · How it works</p>
         <h2 className="section-heading mb-6">

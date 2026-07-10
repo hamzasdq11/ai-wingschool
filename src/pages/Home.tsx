@@ -19,10 +19,10 @@ import { StickyMobileCTA } from "../components/StickyMobileCTA";
 import { Divider } from "../components/Divider";
 import { SchoolsHero } from "../components/schools/SchoolsHero";
 import { FourPhases } from "../components/schools/FourPhases";
-import { ChallengeDetail } from "../components/schools/ChallengeDetail";
-import { ScholarshipSelection } from "../components/schools/ScholarshipSelection";
-import { BuilderProgram } from "../components/schools/BuilderProgram";
-import { FlagshipExpoDay } from "../components/schools/FlagshipExpoDay";
+// import { ChallengeDetail } from "../components/schools/ChallengeDetail"; // temporarily hidden — uncomment here and below to restore
+// import { ScholarshipSelection } from "../components/schools/ScholarshipSelection"; // temporarily hidden — uncomment here and below to restore
+// import { BuilderProgram } from "../components/schools/BuilderProgram"; // temporarily hidden — uncomment here and below to restore
+// import { FlagshipExpoDay } from "../components/schools/FlagshipExpoDay"; // temporarily hidden — uncomment here and below to restore
 import { HonestLedger } from "../components/schools/HonestLedger";
 import { OperatingPlan } from "../components/schools/OperatingPlan";
 import { SchoolsFAQ } from "../components/schools/SchoolsFAQ";
@@ -54,13 +54,13 @@ export function Home() {
       <Divider />
       <FourPhases />
       <Divider />
-      <ChallengeDetail />
-      <Divider />
-      <ScholarshipSelection />
-      <Divider />
-      <BuilderProgram />
+      {/* <ChallengeDetail />
+      <Divider /> */}
+      {/* <ScholarshipSelection />
+      <Divider /> */}
+      {/* <BuilderProgram />
       <FlagshipExpoDay />
-      <Divider />
+      <Divider /> */}
       <HonestLedger />
       <Divider />
       <OperatingPlan />

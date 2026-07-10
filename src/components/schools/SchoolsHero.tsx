@@ -26,7 +26,7 @@ export function SchoolsHero() {
           a certificate.
         </p>
         <div className="mt-9 flex flex-wrap gap-3">
-          <a href="#challenge" className="ui-button">
+          <a href="#how-it-works" className="ui-button">
             See how it works →
           </a>
           <a
