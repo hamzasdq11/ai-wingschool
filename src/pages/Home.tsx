@@ -17,6 +17,16 @@ import { FAQ } from "../components/FAQ";
 import { Footer } from "../components/Footer";
 import { StickyMobileCTA } from "../components/StickyMobileCTA";
 import { Divider } from "../components/Divider";
+import { SchoolsHero } from "../components/schools/SchoolsHero";
+import { FourPhases } from "../components/schools/FourPhases";
+import { ChallengeDetail } from "../components/schools/ChallengeDetail";
+import { ScholarshipSelection } from "../components/schools/ScholarshipSelection";
+import { BuilderProgram } from "../components/schools/BuilderProgram";
+import { FlagshipExpoDay } from "../components/schools/FlagshipExpoDay";
+import { HonestLedger } from "../components/schools/HonestLedger";
+import { OperatingPlan } from "../components/schools/OperatingPlan";
+import { SchoolsFAQ } from "../components/schools/SchoolsFAQ";
+import { SchoolsCTA } from "../components/schools/SchoolsCTA";
 
 export function Home() {
   return (
@@ -40,6 +50,24 @@ export function Home() {
       {/* <Pricing /> */}
       {/* <Testimonials /> */}
       {/* <ForSchools /> */}
+      <SchoolsHero />
+      <Divider />
+      <FourPhases />
+      <Divider />
+      <ChallengeDetail />
+      <Divider />
+      <ScholarshipSelection />
+      <Divider />
+      <BuilderProgram />
+      <FlagshipExpoDay />
+      <Divider />
+      <HonestLedger />
+      <Divider />
+      <OperatingPlan />
+      <Divider />
+      <SchoolsFAQ />
+      <SchoolsCTA />
+      <Divider />
       <FAQ />
       {/* <OrientationDay /> */}
       <Footer />

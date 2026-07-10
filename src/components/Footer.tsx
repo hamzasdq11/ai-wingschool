@@ -4,7 +4,7 @@ import bannerBottom from "../assets/BannerBottom.jpg";
 const programLinks = [
   { label: "Projects", href: "#projects" },
   { label: "Pricing", href: "#pricing" },
-  { label: "For Schools", href: "/schools" },
+  { label: "WingsQuest 2026", href: "#wingsquest" },
   { label: "FAQ", href: "#faq" },
 ];
 

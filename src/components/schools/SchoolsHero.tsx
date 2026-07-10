@@ -9,15 +9,15 @@ const stats = [
 
 export function SchoolsHero() {
   return (
-    <section className="section-shell relative z-10">
+    <section id="wingsquest" className="section-shell relative z-10">
       <div className="max-w-3xl animate-fade-rise">
         <p className="section-kicker mb-5">
           WingsQuest 2026 · The School AI Aptitude Challenge · Classes 5–10
         </p>
-        <h1 className="section-heading">
+        <h2 className="section-heading">
           Your students are ready for the AI era. Let&apos;s find out which
           ones are ready to <em>lead</em> it.
-        </h1>
+        </h2>
         <p className="section-body mt-7 max-w-2xl">
           A free, school-hosted AI aptitude challenge — followed by a
           scholarship-backed builder program and a public Flagship Expo Day.

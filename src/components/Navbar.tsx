@@ -8,7 +8,7 @@ const defaultLinks: NavItem[] = [
   // { label: "Curriculum", href: "#curriculum" }, // temporarily hidden — uncomment to restore
   { label: "Projects", href: "#projects" },
   // { label: "Pricing", href: "#pricing" }, // temporarily hidden — uncomment to restore
-  { label: "For Schools", href: "/schools" },
+  { label: "WingsQuest 2026", href: "#wingsquest" },
   { label: "FAQ", href: "#faq" },
 ];
 
