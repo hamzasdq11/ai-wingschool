@@ -1,4 +1,4 @@
-import whyNowImage from "../assets/why-now.jpg";
+import whyNowImage from "../assets/img1.webp";
 
 type Statement = {
   number: string;
@@ -68,39 +68,26 @@ export function Problem() {
           </p>
         </div>
 
-        <div className="relative hidden h-[440px] w-[360px] overflow-hidden rounded-[1.75rem] lg:block">
+        <div
+          aria-hidden
+          className="relative hidden h-[520px] w-[470px] lg:block"
+        >
           <img
             src={whyNowImage}
-            alt="A child-like robot sitting on a bench, reading a book"
+            alt=""
             className="h-full w-full object-cover"
-            style={{ filter: "saturate(0.72) contrast(1.03)" }}
-          />
-
-          <span
-            aria-hidden
-            className="pointer-events-none absolute inset-0 rounded-[1.75rem]"
             style={{
-              background:
-                "linear-gradient(180deg, rgba(236, 234, 226, 0.18) 0%, transparent 30%, transparent 62%, rgba(12, 36, 137, 0.38) 100%)",
-              boxShadow: "inset 0 0 0 1px rgba(255, 255, 255, 0.22)",
+              mixBlendMode: "multiply",
+              opacity: 0.85,
+              filter: "grayscale(0.15) contrast(1.02)",
+              maskImage:
+                "linear-gradient(90deg, transparent 0%, black 22%, black 78%, transparent 100%), linear-gradient(180deg, transparent 0%, black 22%, black 78%, transparent 100%)",
+              WebkitMaskImage:
+                "linear-gradient(90deg, transparent 0%, black 22%, black 78%, transparent 100%), linear-gradient(180deg, transparent 0%, black 22%, black 78%, transparent 100%)",
+              maskComposite: "intersect",
+              WebkitMaskComposite: "source-in",
             }}
           />
-
-          <span
-            className="absolute bottom-4 left-4 rounded-full px-3.5 py-1.5"
-            style={{
-              background: "rgba(255, 255, 255, 0.92)",
-              border: "1px solid #e6e3da",
-              boxShadow: "0 6px 16px rgba(15, 15, 15, 0.1)",
-              fontFamily: "var(--font-body)",
-              fontSize: "0.72rem",
-              fontWeight: 500,
-              color: "#4a4a4a",
-              whiteSpace: "nowrap",
-            }}
-          >
-            Medicine · Design · Law · Engineering · The arts
-          </span>
         </div>
       </div>
 
