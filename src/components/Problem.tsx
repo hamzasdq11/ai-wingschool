@@ -1,4 +1,4 @@
-import whyNowImage from "../assets/img1.webp";
+import whyNowImage from "../assets/img1.png";
 
 type Statement = {
   number: string;
@@ -71,16 +71,14 @@ export function Problem() {
           <img
             src={whyNowImage}
             alt=""
-            className="absolute right-0 top-0 h-full w-auto max-w-none object-cover"
+            className="absolute inset-0 h-full w-full object-cover"
             style={{
-              opacity: 0.32,
-              filter: "grayscale(0.1)",
+              opacity: 0.2,
+              objectPosition: "center 30%",
               maskImage:
-                "linear-gradient(90deg, transparent 0%, black 48%), linear-gradient(180deg, transparent 0%, black 14%, black 48%, transparent 97%)",
+                "linear-gradient(180deg, black 0%, black 45%, transparent 97%)",
               WebkitMaskImage:
-                "linear-gradient(90deg, transparent 0%, black 48%), linear-gradient(180deg, transparent 0%, black 14%, black 48%, transparent 97%)",
-              maskComposite: "intersect",
-              WebkitMaskComposite: "source-in",
+                "linear-gradient(180deg, black 0%, black 45%, transparent 97%)",
             }}
           />
         </div>
