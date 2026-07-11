@@ -74,7 +74,7 @@ export function Problem() {
             className="absolute inset-0 h-full w-full object-cover"
             style={{
               opacity: 0.2,
-              objectPosition: "center 30%",
+              objectPosition: "center 50%",
               maskImage:
                 "linear-gradient(180deg, black 0%, black 45%, transparent 97%)",
               WebkitMaskImage:

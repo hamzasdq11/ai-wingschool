@@ -83,9 +83,9 @@ export function Footer() {
                   lineHeight: 1.5,
                 }}
               >
-                The Landmark Towers
+                +91 7355080850
                 <br />
-                Civil Lines, Kanpur
+                
               </p>
             </div>
           </div>
