@@ -23,7 +23,7 @@ const phases: Phase[] = [
         The <em className="display-script">Selection.</em>
       </>
     ),
-    desc: "Seats in the AI Builder Program aren't bought — they're earned. Top performers qualify, and the top 10–20% win a merit scholarship on top.",
+    desc: "Admission to the AI Builder Program is based purely on your Challenge score. Top performers qualify, and the top 10–20% also earn a merit scholarship.",
     highlight: "Scholarships up to 50%",
   },
   {
