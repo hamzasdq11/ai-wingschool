@@ -13,8 +13,8 @@ const phases: Phase[] = [
         The <em className="display-script">Challenge.</em>
       </>
     ),
-    desc: "WingsQuest 2026: a free online AI aptitude challenge, open to all students of Class 6–10. One hour, no prep, no coding needed. Every participant walks away with a WingsQuest certificate.",
-    highlight: "Free · Online · Open to all",
+    desc: "A free online AI aptitude challenge, open to all students of Class 6–10. One hour, no prep, no coding needed. Everyone walks away with a WingsQuest certificate and scorecard.",
+    highlight: "Free · Online · Register Now",
   },
   {
     number: "02",
@@ -23,7 +23,7 @@ const phases: Phase[] = [
         The <em className="display-script">Selection.</em>
       </>
     ),
-    desc: "Top performers qualify for the AI Builder Program, our paid course. Score in the top 10–20% and you earn a scholarship.",
+    desc: "Seats in the AI Builder Program aren't bought — they're earned. Top performers qualify, and the top 10–20% win a merit scholarship on top.",
     highlight: "Scholarships up to 50%",
   },
   {
@@ -33,7 +33,7 @@ const phases: Phase[] = [
         The AI Builder <em className="display-script">Program.</em>
       </>
     ),
-    desc: "Four weeks, live and online. You learn how modern AI actually works and build a real project of your own.",
+    desc: "Four weeks of live, hands-on classes. You learn how modern AI actually works — then prove it by building a real AI project of your own.",
     highlight: "Taught by IIT/IIM grads",
   },
   {
