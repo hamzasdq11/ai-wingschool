@@ -1,3 +1,5 @@
+import whyNowImage from "../assets/why-now.jpg";
+
 type Statement = {
   number: string;
   label: string;
@@ -26,14 +28,6 @@ const statements: Statement[] = [
     ),
     desc: "In an AI world, the answer is free. The skill that compounds is knowing what to build, and being able to build it.",
   },
-];
-
-const orbitChips = [
-  { label: "Medicine", className: "left-1/2 top-0 -translate-x-1/2" },
-  { label: "Design", className: "right-[-16px] top-[34%]" },
-  { label: "Law", className: "left-[-20px] top-[42%]" },
-  { label: "Engineering", className: "bottom-[44px] right-[10px]" },
-  { label: "The arts", className: "bottom-[-2px] left-[22%]" },
 ];
 
 function OutlinedNumeral({ children }: { children: React.ReactNode }) {
@@ -74,69 +68,39 @@ export function Problem() {
           </p>
         </div>
 
-        <div
-          aria-hidden
-          className="relative hidden h-[340px] w-[340px] lg:block"
-        >
-          <span
-            className="absolute inset-0 rounded-full"
-            style={{ border: "1px solid rgba(19, 53, 184, 0.12)" }}
-          />
-          <span
-            className="absolute inset-[56px] rounded-full"
-            style={{ border: "1px solid rgba(19, 53, 184, 0.2)" }}
-          />
-          <span
-            className="absolute inset-[112px] rounded-full"
-            style={{ border: "1px solid rgba(19, 53, 184, 0.3)" }}
+        <div className="relative hidden h-[440px] w-[360px] overflow-hidden rounded-[1.75rem] lg:block">
+          <img
+            src={whyNowImage}
+            alt="A child-like robot sitting on a bench, reading a book"
+            className="h-full w-full object-cover"
+            style={{ filter: "saturate(0.72) contrast(1.03)" }}
           />
 
           <span
-            className="absolute h-2 w-2 rounded-full"
+            aria-hidden
+            className="pointer-events-none absolute inset-0 rounded-[1.75rem]"
             style={{
-              background: "#1335b8",
-              top: "23%",
-              right: "13%",
-            }}
-          />
-          <span
-            className="absolute h-1.5 w-1.5 rounded-full"
-            style={{
-              background: "rgba(19, 53, 184, 0.45)",
-              bottom: "20%",
-              left: "13.5%",
+              background:
+                "linear-gradient(180deg, rgba(236, 234, 226, 0.18) 0%, transparent 30%, transparent 62%, rgba(12, 36, 137, 0.38) 100%)",
+              boxShadow: "inset 0 0 0 1px rgba(255, 255, 255, 0.22)",
             }}
           />
 
           <span
-            className="hero-orb absolute inset-[138px] flex items-center justify-center"
+            className="absolute bottom-4 left-4 rounded-full px-3.5 py-1.5"
             style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "1.15rem",
-              letterSpacing: "-0.02em",
+              background: "rgba(255, 255, 255, 0.92)",
+              border: "1px solid #e6e3da",
+              boxShadow: "0 6px 16px rgba(15, 15, 15, 0.1)",
+              fontFamily: "var(--font-body)",
+              fontSize: "0.72rem",
+              fontWeight: 500,
+              color: "#4a4a4a",
+              whiteSpace: "nowrap",
             }}
           >
-            AI
+            Medicine · Design · Law · Engineering · The arts
           </span>
-
-          {orbitChips.map((chip) => (
-            <span
-              key={chip.label}
-              className={`absolute rounded-full px-3.5 py-1.5 ${chip.className}`}
-              style={{
-                background: "#ffffff",
-                border: "1px solid #e6e3da",
-                boxShadow: "0 6px 16px rgba(15, 15, 15, 0.06)",
-                fontFamily: "var(--font-body)",
-                fontSize: "0.72rem",
-                fontWeight: 500,
-                color: "#4a4a4a",
-                whiteSpace: "nowrap",
-              }}
-            >
-              {chip.label}
-            </span>
-          ))}
         </div>
       </div>
 
