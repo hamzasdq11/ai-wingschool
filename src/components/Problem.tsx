@@ -66,17 +66,24 @@ export function Problem() {
       <div className="relative">
         <div
           aria-hidden
-          className="pointer-events-none absolute -top-28 bottom-[-3.5rem] left-1/2 -z-10 w-screen -translate-x-1/2"
-          style={{
-            backgroundImage: `linear-gradient(rgba(247, 247, 245, 0.88), rgba(247, 247, 245, 0.88)), url(${whyNowImage})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center 30%",
-            maskImage:
-              "linear-gradient(180deg, black 0%, black 45%, transparent 96%)",
-            WebkitMaskImage:
-              "linear-gradient(180deg, black 0%, black 45%, transparent 96%)",
-          }}
-        />
+          className="pointer-events-none absolute -top-28 bottom-[-3.5rem] left-1/2 -z-10 w-screen -translate-x-1/2 overflow-hidden"
+        >
+          <img
+            src={whyNowImage}
+            alt=""
+            className="absolute right-0 top-0 h-full w-auto max-w-none object-cover"
+            style={{
+              opacity: 0.32,
+              filter: "grayscale(0.1)",
+              maskImage:
+                "linear-gradient(90deg, transparent 0%, black 48%), linear-gradient(180deg, transparent 0%, black 14%, black 48%, transparent 97%)",
+              WebkitMaskImage:
+                "linear-gradient(90deg, transparent 0%, black 48%), linear-gradient(180deg, transparent 0%, black 14%, black 48%, transparent 97%)",
+              maskComposite: "intersect",
+              WebkitMaskComposite: "source-in",
+            }}
+          />
+        </div>
 
         <div className="section-copy">
           <p className="section-kicker mb-4">Why now</p>
