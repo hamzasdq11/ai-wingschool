@@ -13,8 +13,8 @@ const phases: Phase[] = [
         The <em className="display-script">Challenge.</em>
       </>
     ),
-    desc: "WingsQuest 2026: a free AI aptitude test at your school. One hour, no prep, no coding needed. Every participant walks away with a WingsQuest certificate.",
-    highlight: "Free · Hosted at your school",
+    desc: "WingsQuest 2026: a free online AI aptitude challenge, open to all students of Class 6–10. One hour, no prep, no coding needed. Every participant walks away with a WingsQuest certificate.",
+    highlight: "Free · Online · Open to all",
   },
   {
     number: "02",
@@ -23,7 +23,7 @@ const phases: Phase[] = [
         The <em className="display-script">Selection.</em>
       </>
     ),
-    desc: "Clear the cutoff and you qualify for the AI Builder Program. Score in the top 10–20% and you earn a scholarship, announced at your school assembly.",
+    desc: "Top performers qualify for the AI Builder Program, our paid course. Score in the top 10–20% and you earn a scholarship.",
     highlight: "Scholarships up to 50%",
   },
   {
@@ -51,7 +51,7 @@ const phases: Phase[] = [
 const impact = [
   { value: "1 hour", label: "Of your time, start to finish." },
   { value: "100% free", label: "The Challenge costs nothing to enter." },
-  { value: "2 certificates", label: "Participation + project completion." },
+  { value: "Certificate", label: "Certification + Flagship AI project." },
   { value: "IIT / IIM", label: "The mentor bench behind it all." },
 ];
 
@@ -64,8 +64,8 @@ export function FourPhases() {
           One challenge. Four phases. <em>Zero</em> cost to enter.
         </h2>
         <p className="section-body mb-14">
-          From a one-hour challenge in your school hall to your project on a
-          public stage, this is the whole arc.
+          From a one-hour online challenge to your project on a public stage,
+          this is the whole arc.
         </p>
       </div>
 
