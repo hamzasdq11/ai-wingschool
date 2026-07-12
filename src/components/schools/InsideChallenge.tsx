@@ -18,8 +18,8 @@ const measures = [
   },
 ];
 
-const options = [26, 31, 33, 34];
-const correctAnswer = 33;
+const options = [46, 48, 50, 54];
+const correctAnswer = 50;
 
 export function InsideChallenge() {
   const [picked, setPicked] = useState<number | null>(null);
@@ -70,7 +70,7 @@ export function InsideChallenge() {
                 color: "rgba(255,255,255,0.55)",
               }}
             >
-              Sample question · Pattern instinct
+              Sample question · Think like a machine
             </p>
             <h3
               style={{
@@ -95,7 +95,7 @@ export function InsideChallenge() {
               }}
             >
               This is the kind of question the Challenge asks. No formulas,
-              no syllabus — just you and a pattern.
+              no syllabus — just you and a hidden rule.
             </p>
           </div>
 
@@ -115,17 +115,19 @@ export function InsideChallenge() {
                 color: "#ffffff",
               }}
             >
-              2, 3, 5, 9, 17, &hellip;
+              4 → 18&ensp;·&ensp;7 → 30&ensp;·&ensp;10 → 42
             </p>
             <p
               className="mt-1.5"
               style={{
                 fontFamily: "var(--font-body)",
                 fontSize: "0.85rem",
+                lineHeight: 1.6,
                 color: "rgba(255,255,255,0.65)",
               }}
             >
-              What comes next?
+              A machine learned one rule from these examples. What does it
+              output for 12?
             </p>
 
             <div className="mt-5 flex flex-wrap gap-3">
@@ -182,8 +184,8 @@ export function InsideChallenge() {
                   }}
                 >
                   {gotIt
-                    ? "Correct — the gaps double: +1, +2, +4, +8, so next is 17 + 16 = 33."
-                    : "Not quite — look at the gaps: +1, +2, +4, +8. They double, so next is 17 + 16 = 33."}
+                    ? "Correct — the rule is (input × 4) + 2, so 12 → 50."
+                    : "Not quite — the rule is (input × 4) + 2. Check: 4 → 18, 7 → 30, 10 → 42. So 12 → 50."}
                 </p>
                 <p
                   className="mt-2"
@@ -195,8 +197,8 @@ export function InsideChallenge() {
                   }}
                 >
                   {gotIt
-                    ? "That instinct is exactly what the Challenge scores."
-                    : "Now you know what to look for — that instinct is exactly what the Challenge scores."}
+                    ? "Learning a rule from examples is exactly what an AI model does. Spotting it yourself is the instinct the Challenge scores."
+                    : "Learning a rule from examples is exactly what an AI model does — and now you know what to look for. That instinct is what the Challenge scores."}
                 </p>
                 <a
                   href="https://wa.me/"
