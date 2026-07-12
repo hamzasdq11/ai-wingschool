@@ -161,6 +161,7 @@ const captions = [
 
 export function NeuralZoom() {
   const wrapRef = useRef<HTMLDivElement>(null);
+  const countersRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [runId, setRunId] = useState(0);
   const [reduced] = useState(
@@ -181,6 +182,15 @@ export function NeuralZoom() {
       });
     }
   }, [runId, reduced]);
+
+  useEffect(() => {
+    if (phase === "done" && !reduced) {
+      countersRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+      });
+    }
+  }, [phase, reduced]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -663,56 +673,57 @@ export function NeuralZoom() {
   };
 
   return (
-    <div
-      ref={wrapRef}
-      className="relative -mx-7 -mb-8 mt-8 h-[420px] sm:-mx-10 sm:-mb-10 sm:h-[500px]"
-    >
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 block h-full w-full"
-        style={{ touchAction: "pan-y" }}
-      />
+    <div ref={wrapRef} className="-mx-7 -mb-8 mt-8 sm:-mx-10 sm:-mb-10">
+      <div className="relative h-[420px] sm:h-[500px]">
+        <canvas
+          ref={canvasRef}
+          className="absolute inset-0 block h-full w-full"
+          style={{ touchAction: "pan-y" }}
+        />
 
-      {capIdx >= 0 && (
-        <p
-          key={capIdx}
-          className="animate-fade-rise pointer-events-none absolute bottom-6 left-0 right-0 px-6 text-center"
-          style={{
-            fontFamily: "var(--font-body)",
-            fontSize: "0.9rem",
-            fontWeight: 500,
-            letterSpacing: "0.02em",
-            color: "rgba(255,255,255,0.8)",
-            textShadow: "0 2px 12px rgba(5,8,28,0.9)",
-          }}
-        >
-          {captions[capIdx]}
-        </p>
-      )}
-
-      {phase === "done" && (
-        <p
-          className="pointer-events-none absolute bottom-3 left-0 right-0 px-6 text-center"
-          style={{
-            fontFamily: MONO,
-            fontSize: "0.68rem",
-            letterSpacing: "0.06em",
-            color: "rgba(255,255,255,0.55)",
-            textShadow: "0 2px 10px rgba(5,8,28,0.9)",
-          }}
-        >
-          touch any neuron to trace its wiring
-        </p>
-      )}
-
-      {phase === "done" && (
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center p-5">
-          <div
-            className="animate-fade-rise pointer-events-auto max-w-md rounded-[1.5rem] px-7 py-7 text-center sm:px-9"
+        {capIdx >= 0 && (
+          <p
+            key={capIdx}
+            className="animate-fade-rise pointer-events-none absolute bottom-6 left-0 right-0 px-6 text-center"
             style={{
-              background: "rgba(5, 8, 28, 0.78)",
+              fontFamily: "var(--font-body)",
+              fontSize: "0.9rem",
+              fontWeight: 500,
+              letterSpacing: "0.02em",
+              color: "rgba(255,255,255,0.8)",
+              textShadow: "0 2px 12px rgba(5,8,28,0.9)",
+            }}
+          >
+            {captions[capIdx]}
+          </p>
+        )}
+
+        {phase === "done" && (
+          <p
+            className="pointer-events-none absolute bottom-3 left-0 right-0 px-6 text-center"
+            style={{
+              fontFamily: MONO,
+              fontSize: "0.68rem",
+              letterSpacing: "0.06em",
+              color: "rgba(255,255,255,0.55)",
+              textShadow: "0 2px 10px rgba(5,8,28,0.9)",
+            }}
+          >
+            touch any neuron to trace its wiring
+          </p>
+        )}
+      </div>
+
+      {phase === "done" && (
+        <div
+          ref={countersRef}
+          className="flex justify-center px-7 pb-8 pt-2 sm:px-10 sm:pb-10"
+        >
+          <div
+            className="animate-fade-rise max-w-md rounded-[1.5rem] px-7 py-7 text-center sm:px-9"
+            style={{
+              background: "rgba(255,255,255,0.04)",
               border: "1px solid rgba(255,255,255,0.14)",
-              backdropFilter: "blur(6px)",
             }}
           >
             <p
