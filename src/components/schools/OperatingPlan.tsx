@@ -1,32 +1,26 @@
 const timeline = [
   {
-    when: "Week 0",
-    name: "Your school signs up",
-    desc: "One email from your principal. Done.",
-    highlighted: false,
-  },
-  {
-    when: "Week 1",
-    name: "The notice goes out",
-    desc: "You get the details and a consent form.",
-    highlighted: false,
-  },
-  {
-    when: "Week 2",
-    name: "Challenge day",
-    desc: "1 hour at your school. Our team runs it.",
+    when: "Phase 1",
+    name: "The Challenge",
+    desc: "WingsQuest 2026 — a free online AI aptitude challenge, open to all students of Class 6–10. One hour, no prep, no coding.",
     highlighted: true,
   },
   {
-    when: "Week 3",
-    name: "Results + certificates",
-    desc: "Score bands shared; certificates handed out at assembly.",
+    when: "Phase 2",
+    name: "The Selection",
+    desc: "Everyone gets a scorecard and certificate. Top performers qualify for the AI Builder Program.",
     highlighted: false,
   },
   {
-    when: "Weeks 4–8",
-    name: "Build → Expo Day",
-    desc: "Qualifiers build a real AI project with IIT/IIM mentors, then present at Flagship Expo Day.",
+    when: "Phase 3",
+    name: "AI Builder Program",
+    desc: "Four weeks of live, hands-on classes with IIT/IIM mentors — you build a real AI project of your own.",
+    highlighted: false,
+  },
+  {
+    when: "Phase 4",
+    name: "Flagship Expo Day",
+    desc: "You present your project to a panel of industry experts and IIT/IIM alumni, and collect your certificate on stage.",
     highlighted: true,
   },
 ];
@@ -36,14 +30,14 @@ export function OperatingPlan() {
     <section className="section-shell relative z-10">
       <div className="section-copy">
         <p className="section-kicker mb-4">
-          The timeline · Eight weeks, start to stage
+          The timeline · Four phases, start to stage
         </p>
         <h2 className="section-heading mb-6">
-          From the notice board to <em>Expo Day.</em>
+          From sign-up to <em>Expo Day.</em>
         </h2>
         <p className="section-body mb-16">
-          One hour of your time in week two. We carry everything else:
-          papers, proctors, marking, certificates, the program, the stage.
+          One free hour to enter. We carry everything else: the challenge,
+          results, certificates, the program, the stage.
         </p>
       </div>
 
@@ -57,7 +51,7 @@ export function OperatingPlan() {
           }}
         />
 
-        <div className="grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
           {timeline.map((era) => (
             <div key={era.when} className="relative">
               <span
@@ -110,8 +104,8 @@ export function OperatingPlan() {
       </div>
 
       <p className="ui-caption mt-14">
-        School not signed up yet? Tell your principal about WingsQuest, or
-        point them to hello@aiwingschool.com. One email is all it takes.
+        No school tie-up needed — WingsQuest is open to every student in
+        Class 6–10. Questions? Write to hello@aiwingschool.com.
       </p>
     </section>
   );
