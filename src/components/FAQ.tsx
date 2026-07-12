@@ -3,15 +3,15 @@ import { useState } from "react";
 const faqs = [
   {
     q: "Do I need to know coding?",
-    a: "No. The WingsQuest Challenge tests reasoning and curiosity, not programming; there's no code on the paper. And the AI Builder Program starts from zero. Technical confidence grows by making things, not by intimidation.",
+    a: "No. The WingsQuest Challenge tests reasoning and curiosity, not programming; there's no code in it. And the AI Builder Program starts from zero. Technical confidence grows by making things, not by intimidation.",
   },
   {
     q: "How much does it cost?",
-    a: "The Challenge is completely free: the test, the proctors, the certificate, all of it. The AI Builder Program is paid, with 25–50% scholarships for the top 10–20% of scorers; the fee is shared directly with parents and never collected at school.",
+    a: "The Challenge is completely free: the test, the certificate, all of it. The AI Builder Program is paid, with 25–50% scholarships for the top 10–20% of scorers; the fee is shared directly with parents before anything is due.",
   },
   {
     q: "Will this clash with school and tuitions?",
-    a: "The Challenge is one hour, at your school, during a school day. The Builder Program is four weeks of live online sessions designed to fit around school life.",
+    a: "The Challenge is one hour, online, from home — Challenge Day is 28 August. The Builder Program is four weeks of live online sessions designed to fit around school life.",
   },
   {
     q: "What if I don't clear the cutoff?",

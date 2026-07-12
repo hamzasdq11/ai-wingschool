@@ -48,11 +48,17 @@ const phases: Phase[] = [
   },
 ];
 
-const impact = [
-  { value: "1 hour", label: "Of your time, start to finish." },
-  { value: "100% free", label: "The Challenge costs nothing to enter." },
-  { value: "Certificate", label: "Certification + Flagship AI project." },
-  { value: "IIT / IIM", label: "The mentor bench behind it all." },
+const rewards = [
+  {
+    value: "Everyone",
+    label: "A WingsQuest 2026 certificate + your private scorecard.",
+  },
+  { value: "Top 20%", label: "25% scholarship on the Builder Program." },
+  { value: "Top 10%", label: "50% scholarship on the Builder Program." },
+  {
+    value: "Qualifiers",
+    label: "A Builder seat, a real AI project, and the Expo Day stage.",
+  },
 ];
 
 export function FourPhases() {
@@ -128,36 +134,51 @@ export function FourPhases() {
       </div>
 
       <div
-        className="mt-8 grid gap-8 rounded-[1.75rem] px-8 py-8 sm:grid-cols-2 lg:grid-cols-4"
+        className="mt-8 rounded-[1.75rem] px-8 py-8"
         style={{ background: "#05081C" }}
       >
-        {impact.map((item) => (
-          <div key={item.value}>
-            <p
-              style={{
-                fontFamily: "var(--font-display)",
-                fontSize: "1.7rem",
-                fontWeight: 400,
-                letterSpacing: "-0.03em",
-                color: "#ffffff",
-                lineHeight: 1.1,
-              }}
-            >
-              {item.value}
-            </p>
-            <p
-              className="mt-2"
-              style={{
-                fontFamily: "var(--font-body)",
-                fontSize: "0.85rem",
-                lineHeight: 1.55,
-                color: "rgba(255,255,255,0.6)",
-              }}
-            >
-              {item.label}
-            </p>
-          </div>
-        ))}
+        <p
+          className="mb-7"
+          style={{
+            fontFamily: "var(--font-body)",
+            fontSize: "0.66rem",
+            fontWeight: 500,
+            letterSpacing: "0.2em",
+            textTransform: "uppercase",
+            color: "rgba(255,255,255,0.55)",
+          }}
+        >
+          What you walk away with · Nobody leaves empty-handed
+        </p>
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {rewards.map((item) => (
+            <div key={item.value}>
+              <p
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: "1.7rem",
+                  fontWeight: 400,
+                  letterSpacing: "-0.03em",
+                  color: "#ffffff",
+                  lineHeight: 1.1,
+                }}
+              >
+                {item.value}
+              </p>
+              <p
+                className="mt-2"
+                style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: "0.85rem",
+                  lineHeight: 1.55,
+                  color: "rgba(255,255,255,0.6)",
+                }}
+              >
+                {item.label}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

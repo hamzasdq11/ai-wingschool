@@ -211,7 +211,7 @@ export function InsideChallenge() {
                     fontWeight: 600,
                   }}
                 >
-                  The real one has 30 more. Register free →
+                  The real one has 30 more. Register free before 15 Aug →
                 </a>
               </div>
             )}
@@ -221,7 +221,8 @@ export function InsideChallenge() {
 
       <p className="ui-caption mt-14">
         No prep. No coding. Online, from home — and completely free for every
-        student in Class 6–10.
+        student in Class 6–10. Registration closes 15 August; Challenge Day
+        is 28 August.
       </p>
     </section>
   );

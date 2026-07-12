@@ -108,9 +108,9 @@ export function SchoolsHero() {
                   color: "rgba(255,255,255,0.65)",
                 }}
               >
-                Designed and run by IIT &amp; IIM graduates.
+                Registration closes 15 August · Challenge Day 28 August.
                 <br />
-                Every participant gets a certificate.
+                Free entry · Every participant gets a certificate.
               </p>
             </div>
           </div>
