@@ -18,8 +18,8 @@ const measures = [
   },
 ];
 
-const options = [46, 48, 50, 54];
-const correctAnswer = 50;
+const options = [-2, 0, 2, 10];
+const correctAnswer = 2;
 
 export function InsideChallenge() {
   const [picked, setPicked] = useState<number | null>(null);
@@ -70,7 +70,7 @@ export function InsideChallenge() {
                 color: "rgba(255,255,255,0.55)",
               }}
             >
-              Sample question · Think like a machine
+              Sample question · Run a real neuron
             </p>
             <h3
               style={{
@@ -94,8 +94,9 @@ export function InsideChallenge() {
                 color: "rgba(255,255,255,0.65)",
               }}
             >
-              This is the kind of question the Challenge asks. No formulas,
-              no syllabus — just you and a hidden rule.
+              This is an actual building block of ChatGPT — a single neuron.
+              Researchers stack billions of them. You&apos;re about to run
+              one.
             </p>
           </div>
 
@@ -115,7 +116,7 @@ export function InsideChallenge() {
                 color: "#ffffff",
               }}
             >
-              4 → 18&ensp;·&ensp;7 → 30&ensp;·&ensp;10 → 42
+              inputs [2, −1]&ensp;·&ensp;weights [3, 4]
             </p>
             <p
               className="mt-1.5"
@@ -126,8 +127,9 @@ export function InsideChallenge() {
                 color: "rgba(255,255,255,0.65)",
               }}
             >
-              A machine learned one rule from these examples. What does it
-              output for 12?
+              A neuron multiplies each input by its weight and adds the
+              results. If the total is negative, it outputs 0 — the ReLU
+              rule. What does this neuron output?
             </p>
 
             <div className="mt-5 flex flex-wrap gap-3">
@@ -166,7 +168,7 @@ export function InsideChallenge() {
                       opacity: answered && !isPicked && !isCorrect ? 0.4 : 1,
                     }}
                   >
-                    {opt}
+                    {opt < 0 ? `−${Math.abs(opt)}` : opt}
                   </button>
                 );
               })}
@@ -184,8 +186,8 @@ export function InsideChallenge() {
                   }}
                 >
                   {gotIt
-                    ? "Correct — the rule is (input × 4) + 2, so 12 → 50."
-                    : "Not quite — the rule is (input × 4) + 2. Check: 4 → 18, 7 → 30, 10 → 42. So 12 → 50."}
+                    ? "Correct — (2 × 3) + (−1 × 4) = 2. Positive, so ReLU passes it through: the neuron fires 2."
+                    : "Not quite — (2 × 3) + (−1 × 4) = 6 − 4 = 2. Positive, so ReLU lets it through: the output is 2."}
                 </p>
                 <p
                   className="mt-2"
@@ -197,8 +199,8 @@ export function InsideChallenge() {
                   }}
                 >
                   {gotIt
-                    ? "Learning a rule from examples is exactly what an AI model does. Spotting it yourself is the instinct the Challenge scores."
-                    : "Learning a rule from examples is exactly what an AI model does — and now you know what to look for. That instinct is what the Challenge scores."}
+                    ? "You just ran a forward pass through a real neuron — weights, ReLU activation, the works. ChatGPT does exactly this, trillions of times per answer. And notice: it was just multiply and add."
+                    : "Scary words, simple math — a forward pass, weights, ReLU — and underneath, just multiply and add. Seeing through the jargon is the instinct the Challenge scores."}
                 </p>
                 <a
                   href="https://wa.me/"
