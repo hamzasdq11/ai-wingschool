@@ -24,7 +24,8 @@ import { FourPhases } from "../components/schools/FourPhases";
 // import { BuilderProgram } from "../components/schools/BuilderProgram"; // temporarily hidden — uncomment here and below to restore
 // import { FlagshipExpoDay } from "../components/schools/FlagshipExpoDay"; // temporarily hidden — uncomment here and below to restore
 // import { HonestLedger } from "../components/schools/HonestLedger"; // temporarily hidden — uncomment here and below to restore
-import { OperatingPlan } from "../components/schools/OperatingPlan";
+// import { OperatingPlan } from "../components/schools/OperatingPlan"; // replaced by InsideChallenge — uncomment here and below to restore
+import { InsideChallenge } from "../components/schools/InsideChallenge";
 // import { SchoolsFAQ } from "../components/schools/SchoolsFAQ"; // merged into the combined FAQ — uncomment here and below to restore
 // import { SchoolsCTA } from "../components/schools/SchoolsCTA"; // temporarily hidden — uncomment here and below to restore
 
@@ -63,7 +64,9 @@ export function Home() {
       <Divider /> */}
       {/* <HonestLedger />
       <Divider /> */}
-      <OperatingPlan />
+      {/* <OperatingPlan />
+      <Divider /> */}
+      <InsideChallenge />
       <Divider />
       {/* <SchoolsFAQ /> */}
       <FAQ />

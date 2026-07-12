@@ -2,7 +2,7 @@ const journey = [
   {
     number: "01",
     title: "The Challenge",
-    desc: "A free, one-hour AI aptitude test at your school. No prep, no coding needed.",
+    desc: "A free, one-hour online AI aptitude test. No prep, no coding needed.",
   },
   {
     number: "02",
@@ -47,7 +47,7 @@ export function SchoolsHero() {
                 className="h-1.5 w-1.5 rounded-full"
                 style={{ background: "#ffffff" }}
               />
-              The School AI Aptitude Challenge · Classes 5–10
+              The AI Aptitude Challenge · Open to all · Class 6–10
             </span>
 
             <h2
@@ -81,8 +81,8 @@ export function SchoolsHero() {
             >
               You&apos;ve been using AI for years. Let&apos;s find out if
               you&apos;re ready to <b style={{ color: "#ffffff" }}>build</b>{" "}
-              with it. It starts with one free hour at your school and ends
-              on a public stage with a real AI project of your own.
+              with it. It starts with one free hour online and ends on a
+              public stage with a real AI project of your own.
             </p>
 
             <div className="mt-9 flex flex-wrap items-center gap-4">
