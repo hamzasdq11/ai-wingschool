@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import { NeuralZoom } from "./NeuralZoom";
+
 const measures = [
   {
     tag: "Logic & patterns",
@@ -199,28 +201,15 @@ export function InsideChallenge() {
                   }}
                 >
                   {gotIt
-                    ? "You just ran a forward pass through a real neuron — weights, ReLU activation, the works. ChatGPT does exactly this, trillions of times per answer. And notice: it was just multiply and add."
-                    : "Scary words, simple math — a forward pass, weights, ReLU — and underneath, just multiply and add. Seeing through the jargon is the instinct the Challenge scores."}
+                    ? "You just ran a forward pass through a real neuron — weights, ReLU activation, the works. Now watch what it's part of."
+                    : "Scary words, simple math — a forward pass, weights, ReLU — and underneath, just multiply and add. Now watch what it's part of."}
                 </p>
-                <a
-                  href="https://wa.me/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-5 inline-flex items-center gap-2 rounded-full px-6 py-3 no-underline transition-transform hover:-translate-y-px"
-                  style={{
-                    background: "#ffffff",
-                    color: "#1335b8",
-                    fontFamily: "var(--font-body)",
-                    fontSize: "0.85rem",
-                    fontWeight: 600,
-                  }}
-                >
-                  The real one has 30 more. Register free before 15 Aug →
-                </a>
               </div>
             )}
           </div>
         </div>
+
+        {answered && <NeuralZoom />}
       </div>
 
       <p className="ui-caption mt-14">
