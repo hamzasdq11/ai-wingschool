@@ -1,4 +1,5 @@
 import alexWang from "../assets/alexwang.webp";
+import { Reveal } from "./Reveal";
 
 export function WangQuote({ coda }: { coda?: React.ReactNode }) {
   return (
@@ -24,7 +25,7 @@ export function WangQuote({ coda }: { coda?: React.ReactNode }) {
       </div>
 
       <div className="relative px-6 py-28 sm:px-10 sm:py-32 lg:px-16 lg:py-36">
-        <div className="max-w-3xl">
+        <Reveal className="max-w-3xl">
           <a
             href="https://economictimes.indiatimes.com/magazines/panache/young-ai-billionaire-alexandr-wang-urges-teenagers-to-dedicate-all-their-time-to-one-skill-to-seize-todays-tech-opportunities-calling-it-gen-zs-bill-gates-moment/articleshow/124154622.cms"
             target="_blank"
@@ -136,7 +137,7 @@ export function WangQuote({ coda }: { coda?: React.ReactNode }) {
               {coda}
             </p>
           )}
-        </div>
+        </Reveal>
       </div>
     </section>
   );

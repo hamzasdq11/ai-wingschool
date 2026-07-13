@@ -23,16 +23,29 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative z-10 overflow-hidden border-b border-black/8">
-      <div className="absolute inset-0 -z-30 bg-[radial-gradient(circle_at_72%_18%,rgba(19,53,184,0.10),transparent_30%),radial-gradient(circle_at_18%_82%,rgba(19,53,184,0.05),transparent_28%),linear-gradient(180deg,#fbfaf6_0%,#f4f3ee_100%)]" />
+    <section className="relative z-10 overflow-hidden">
+      <div className="absolute inset-0 -z-30 bg-[radial-gradient(circle_at_72%_18%,rgba(19,53,184,0.10),transparent_30%),radial-gradient(circle_at_18%_82%,rgba(19,53,184,0.05),transparent_28%)]" />
       <img
         src={heroImage}
         alt=""
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-20 h-full w-full object-cover"
-        style={{ opacity: 0.3, objectPosition: "center 40%" }}
+        style={{
+          opacity: 0.3,
+          objectPosition: "center 40%",
+          maskImage:
+            "linear-gradient(180deg, black 0%, black 58%, transparent 100%)",
+          WebkitMaskImage:
+            "linear-gradient(180deg, black 0%, black 58%, transparent 100%)",
+        }}
       />
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-white/40 via-transparent to-white/60" />
+      <div
+        className="pointer-events-none absolute inset-0 -z-10"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 45%, rgba(248,247,242,0.85) 100%)",
+        }}
+      />
 
       <div className="mx-auto grid max-w-7xl gap-12 px-6 pt-12 pb-20 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-16 lg:px-8 lg:pt-16 lg:pb-24">
         <div className="flex max-w-2xl flex-col">

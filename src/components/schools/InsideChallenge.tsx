@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import { NeuralZoom } from "./NeuralZoom";
+import { Reveal } from "../Reveal";
 
 const measures = [
   {
@@ -30,7 +31,7 @@ export function InsideChallenge() {
 
   return (
     <section id="challenge" className="section-shell relative z-10">
-      <div className="section-copy">
+      <Reveal className="section-copy">
         <p className="section-kicker mb-4">Inside the Challenge · Phase 1</p>
         <h2 className="section-heading mb-6">
           One hour. Here&apos;s exactly <em>what&apos;s in it.</em>
@@ -40,22 +41,25 @@ export function InsideChallenge() {
           take from home, testing the three signals that predict a builder —
           calibrated for your grade, Class 6–10.
         </p>
-      </div>
+      </Reveal>
 
-      <p className="ui-label mb-5" style={{ color: "#1335b8" }}>
-        What it measures
-      </p>
-      <div className="grid gap-5 md:grid-cols-3">
-        {measures.map((m) => (
-          <div key={m.name} className="ui-card rounded-[1.75rem] p-6">
-            <p className="ui-label mb-4">{m.tag}</p>
-            <h3 className="ui-h3">{m.name}</h3>
-            <p className="ui-body-sm mt-3">{m.desc}</p>
-          </div>
-        ))}
-      </div>
+      <Reveal delay={80}>
+        <p className="ui-label mb-5" style={{ color: "#1335b8" }}>
+          What it measures
+        </p>
+        <div className="grid gap-5 md:grid-cols-3">
+          {measures.map((m) => (
+            <div key={m.name} className="ui-card rounded-[1.75rem] p-6">
+              <p className="ui-label mb-4">{m.tag}</p>
+              <h3 className="ui-h3">{m.name}</h3>
+              <p className="ui-body-sm mt-3">{m.desc}</p>
+            </div>
+          ))}
+        </div>
+      </Reveal>
 
-      <div
+      <Reveal
+        delay={120}
         className="mt-8 overflow-hidden rounded-[1.75rem] px-7 py-8 sm:px-10 sm:py-10"
         style={{ background: "#05081C" }}
       >
@@ -210,7 +214,7 @@ export function InsideChallenge() {
         </div>
 
         {answered && <NeuralZoom />}
-      </div>
+      </Reveal>
 
       <p className="ui-caption mt-14">
         No prep. No coding. Online, from home — and completely free for every

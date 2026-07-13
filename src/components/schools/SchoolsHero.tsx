@@ -1,3 +1,5 @@
+import { Reveal } from "../Reveal";
+
 const journey = [
   {
     number: "01",
@@ -28,7 +30,7 @@ export function SchoolsHero() {
         }}
       >
         <div className="grid items-center gap-12 px-8 py-14 sm:px-12 lg:grid-cols-[1.15fr_1fr] lg:gap-16 lg:px-16 lg:py-20">
-          <div className="animate-fade-rise">
+          <Reveal>
             <span
               className="inline-flex items-center gap-2 rounded-full px-4 py-1.5"
               style={{
@@ -113,10 +115,11 @@ export function SchoolsHero() {
                 Free entry · Every participant gets a certificate.
               </p>
             </div>
-          </div>
+          </Reveal>
 
-          <div
-            className="animate-fade-rise-delay rounded-[1.75rem] p-7 sm:p-8"
+          <Reveal
+            delay={120}
+            className="rounded-[1.75rem] p-7 sm:p-8"
             style={{
               border: "1px solid rgba(255,255,255,0.2)",
               background: "rgba(5, 8, 28, 0.28)",
@@ -189,7 +192,7 @@ export function SchoolsHero() {
                 </div>
               ))}
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

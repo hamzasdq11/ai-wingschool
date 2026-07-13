@@ -1,3 +1,5 @@
+import { Reveal } from "../Reveal";
+
 type Phase = {
   number: string;
   title: React.ReactNode;
@@ -64,7 +66,7 @@ const rewards = [
 export function FourPhases() {
   return (
     <section id="how-it-works" className="section-shell relative z-10">
-      <div className="section-copy">
+      <Reveal className="section-copy">
         <p className="section-kicker mb-4">WingsQuest 2026 · How it works</p>
         <h2 className="section-heading mb-6">
           One challenge. Four phases. <em>Zero</em> cost to enter.
@@ -73,9 +75,9 @@ export function FourPhases() {
           From a one-hour online challenge to your project on a public stage,
           this is the whole arc.
         </p>
-      </div>
+      </Reveal>
 
-      <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+      <Reveal delay={80} className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
         {phases.map((p) => (
           <div
             key={p.number}
@@ -131,9 +133,10 @@ export function FourPhases() {
             </p>
           </div>
         ))}
-      </div>
+      </Reveal>
 
-      <div
+      <Reveal
+        delay={120}
         className="mt-8 rounded-[1.75rem] px-8 py-8"
         style={{ background: "#05081C" }}
       >
@@ -179,7 +182,7 @@ export function FourPhases() {
             </div>
           ))}
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

@@ -1,4 +1,4 @@
-import whyNowImage from "../assets/img1.png";
+import { Reveal } from "./Reveal";
 
 type Statement = {
   number: string;
@@ -63,27 +63,8 @@ function OutlinedNumeral({ children }: { children: React.ReactNode }) {
 export function Problem() {
   return (
     <section id="about" className="section-shell relative z-10">
-      <div className="relative">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -top-28 bottom-[-3.5rem] left-1/2 -z-10 w-screen -translate-x-1/2 overflow-hidden"
-        >
-          <img
-            src={whyNowImage}
-            alt=""
-            className="absolute inset-0 h-full w-full object-cover"
-            style={{
-              opacity: 0.2,
-              objectPosition: "center 50%",
-              maskImage:
-                "linear-gradient(180deg, black 0%, black 45%, transparent 97%)",
-              WebkitMaskImage:
-                "linear-gradient(180deg, black 0%, black 45%, transparent 97%)",
-            }}
-          />
-        </div>
-
-        <div className="section-copy">
+      <div>
+        <Reveal className="section-copy">
           <p className="section-kicker mb-4">Why now</p>
           <h2 className="section-heading mb-6">
             The world your child is preparing for{" "}
@@ -95,12 +76,12 @@ export function Problem() {
             everyone. Wingschool is the program that gives your child that
             head start.
           </p>
-        </div>
+        </Reveal>
       </div>
 
       <div className="mt-12 flex flex-col">
         {statements.map((s) => (
-          <div
+          <Reveal
             key={s.number}
             className="grid items-center gap-x-10 gap-y-4 border-t border-black/8 py-12 md:grid-cols-[170px_1fr] md:py-14 lg:grid-cols-[170px_1.05fr_1fr] lg:gap-x-14"
           >
@@ -127,7 +108,7 @@ export function Problem() {
             <p className="ui-body lg:border-l lg:border-black/8 lg:pl-12">
               {s.desc}
             </p>
-          </div>
+          </Reveal>
         ))}
 
       </div>

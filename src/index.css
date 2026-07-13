@@ -165,7 +165,14 @@
 }
 
 .section-line > div {
-  border-bottom: 1px solid rgba(15, 15, 15, 0.08);
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(15, 15, 15, 0.09) 24%,
+    rgba(15, 15, 15, 0.09) 76%,
+    transparent 100%
+  );
 }
 
 .ui-card {

@@ -34,7 +34,6 @@ export function Home() {
     <div className="min-h-screen pb-24 md:pb-0">
       <Navbar />
       <Hero />
-      <Divider />
       <Problem />
       <WangQuote />
       <Divider />

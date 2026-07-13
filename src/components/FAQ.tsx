@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import { Reveal } from "./Reveal";
+
 const faqs = [
   {
     q: "Do I need to know coding?",
@@ -33,14 +35,14 @@ export function FAQ() {
   return (
     <section id="faq" className="section-shell relative z-10">
       <div className="mx-auto max-w-4xl">
-        <div className="mb-14 text-center">
+        <Reveal className="mb-14 text-center">
           <p className="section-kicker mb-4">Questions students and parents ask</p>
           <h2 className="section-heading">
-            Frequently Asked Questions. 
+            Frequently Asked Questions.
           </h2>
-        </div>
+        </Reveal>
 
-        <div className="flex flex-col gap-4">
+        <Reveal delay={80} className="flex flex-col gap-4">
           {faqs.map((faq, i) => (
             <div
               key={faq.q}
@@ -88,9 +90,12 @@ export function FAQ() {
               </div>
             </div>
           ))}
-        </div>
+        </Reveal>
 
-        <div className="mt-10 flex flex-col items-center gap-3 text-center">
+        <Reveal
+          delay={120}
+          className="mt-10 flex flex-col items-center gap-3 text-center"
+        >
           <p className="ui-body-sm">Still have a question?</p>
           <div className="flex flex-wrap justify-center gap-3">
             <a href="https://wa.me/" className="ui-button-secondary">
@@ -100,7 +105,7 @@ export function FAQ() {
               Book a Free Demo →
             </a>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

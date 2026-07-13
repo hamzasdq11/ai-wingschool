@@ -229,10 +229,6 @@ export function NeuralZoom() {
       "rgba(190,235,215,0.75)",
     );
 
-    type Pulse = { g: number; bi: number; i: number; t: number; s: number };
-    let pulses: Pulse[] = [];
-    const maxPulses = isSmall ? 120 : 320;
-
     let t = reduced ? ACT2_END + 0.01 : 0;
     let last = performance.now();
     let visible = true;
@@ -281,7 +277,7 @@ export function NeuralZoom() {
     canvas.addEventListener("pointerdown", setFocus);
     canvas.addEventListener("pointerleave", clearFocus);
 
-    const render = (dt: number) => {
+    const render = (_dt: number) => {
       const scale1 = Math.min(1.6, cw / 470);
       const fit = Math.min(
         cw / (worldW + 420),
@@ -397,61 +393,6 @@ export function NeuralZoom() {
         trace(focusL, "a");
         ctx.stroke();
       }
-
-      // pulses along curves
-      if (!reduced) {
-        if (act === 2 && pulses.length < maxPulses) {
-          let n = Math.ceil(dt * 70 * ((t - ACT1_END) / 3.6));
-          while (n-- > 0) {
-            const g = clamp(
-              Math.round(MID - 0.5 + (Math.random() * 2 - 1) * revealLayers),
-              0,
-              LAYERS - 2,
-            );
-            const bi = (Math.random() * BUCKETS.length) | 0;
-            const count = gaps[g][bi].a.length;
-            if (count)
-              pulses.push({
-                g,
-                bi,
-                i: (Math.random() * count) | 0,
-                t: 0,
-                s: 0.9 + Math.random() * 0.8,
-              });
-          }
-        } else if (act === 3 && pulses.length < maxPulses) {
-          let n = Math.ceil(dt * 26);
-          while (n-- > 0) {
-            const g = (Math.random() * (LAYERS - 1)) | 0;
-            const gx = layerX(g) + SPACING / 2;
-            if (Math.abs(gx - wf) > 320 && Math.random() > 0.2) continue;
-            const bi = (Math.random() * BUCKETS.length) | 0;
-            const count = gaps[g][bi].a.length;
-            if (count)
-              pulses.push({
-                g,
-                bi,
-                i: (Math.random() * count) | 0,
-                t: 0,
-                s: 0.9 + Math.random() * 0.8,
-              });
-          }
-        }
-      }
-      const keep: Pulse[] = [];
-      const ps = clamp(16 / scaleNow, 8, 90);
-      for (const p of pulses) {
-        p.t += p.s * dt;
-        if (p.t >= 1) continue;
-        keep.push(p);
-        const co = gaps[p.g][p.bi].coords;
-        const o = p.i * 6;
-        const x = qBez(co[o], co[o + 2], co[o + 4], p.t);
-        const y = qBez(co[o + 1], co[o + 3], co[o + 5], p.t);
-        ctx.globalAlpha = 0.75 * Math.sin(Math.PI * p.t) * dimmed;
-        ctx.drawImage(pulseSprite, x - ps / 2, y - ps / 2, ps, ps);
-      }
-      pulses = keep;
 
       // neuron columns
       for (let L = 0; L < LAYERS; L++) {
@@ -715,88 +656,100 @@ export function NeuralZoom() {
       </div>
 
       {phase === "done" && (
-        <div
-          ref={countersRef}
-          className="flex justify-center px-7 pb-8 pt-2 sm:px-10 sm:pb-10"
-        >
+        <div ref={countersRef} className="px-7 pb-8 sm:px-10 sm:pb-10">
           <div
-            className="animate-fade-rise max-w-md rounded-[1.5rem] px-7 py-7 text-center sm:px-9"
-            style={{
-              background: "rgba(255,255,255,0.04)",
-              border: "1px solid rgba(255,255,255,0.14)",
-            }}
+            className="animate-fade-rise pt-7 sm:pt-8"
+            style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}
           >
-            <p
-              style={{
-                fontFamily: "var(--font-body)",
-                fontSize: "0.7rem",
-                fontWeight: 600,
-                letterSpacing: "0.18em",
-                textTransform: "uppercase",
-                color: "#ffd166",
-              }}
-            >
-              You ran 1 neuron · 2 multiplications
-            </p>
-            <p
-              className="mt-3"
-              style={{
-                fontFamily: "var(--font-display)",
-                fontSize: "clamp(1.5rem, 4vw, 2.1rem)",
-                fontWeight: 400,
-                letterSpacing: "-0.02em",
-                lineHeight: 1.1,
-                color: "#ffffff",
-              }}
-            >
-              ~<BigCount target={OPS_PER_WORD} animate={!reduced} />
-            </p>
-            <p
-              className="mt-2"
-              style={{
-                fontFamily: "var(--font-body)",
-                fontSize: "0.9rem",
-                lineHeight: 1.6,
-                color: "rgba(255,255,255,0.75)",
-              }}
-            >
-              multiply-and-adds is what ChatGPT runs for{" "}
-              <b style={{ color: "#ffffff" }}>every single word</b> it writes —
-              all of them exactly the math you just did.
-            </p>
-            <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-              <a
-                href="https://wa.me/"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full px-6 py-3 no-underline transition-transform hover:-translate-y-px"
-                style={{
-                  background: "#ffffff",
-                  color: "#1335b8",
-                  fontFamily: "var(--font-body)",
-                  fontSize: "0.85rem",
-                  fontWeight: 600,
-                }}
-              >
-                The real one has 30 more. Register free before 15 Aug →
-              </a>
-              {!reduced && (
-                <button
-                  type="button"
-                  onClick={replay}
-                  className="cursor-pointer rounded-full px-5 py-3 transition-colors"
+            <div className="grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:items-center">
+              <div>
+                <p
                   style={{
-                    background: "transparent",
-                    border: "1px solid rgba(255,255,255,0.28)",
-                    color: "rgba(255,255,255,0.85)",
                     fontFamily: "var(--font-body)",
-                    fontSize: "0.85rem",
+                    fontSize: "0.66rem",
                     fontWeight: 600,
+                    letterSpacing: "0.2em",
+                    textTransform: "uppercase",
+                    color: "#ffd166",
                   }}
                 >
-                  Run it again ↻
-                </button>
-              )}
+                  You ran 1 neuron · 2 multiplications
+                </p>
+                <p
+                  className="mt-3"
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    fontSize: "clamp(1.9rem, 4.5vw, 2.7rem)",
+                    fontWeight: 400,
+                    letterSpacing: "-0.03em",
+                    lineHeight: 1.05,
+                    color: "#ffffff",
+                  }}
+                >
+                  ~<BigCount target={OPS_PER_WORD} animate={!reduced} />
+                </p>
+                <p
+                  className="mt-3 max-w-xl"
+                  style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: "0.9rem",
+                    lineHeight: 1.65,
+                    color: "rgba(255,255,255,0.65)",
+                  }}
+                >
+                  multiply-and-adds is what ChatGPT runs for{" "}
+                  <b style={{ color: "#ffffff" }}>every single word</b> it
+                  writes — all of them exactly the math you just did.
+                </p>
+              </div>
+
+              <div className="flex flex-col gap-4 lg:items-end">
+                <a
+                  href="https://wa.me/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center gap-2 self-start rounded-full px-7 py-4 no-underline transition-transform hover:-translate-y-px lg:self-end"
+                  style={{
+                    background: "#ffffff",
+                    color: "#1335b8",
+                    fontFamily: "var(--font-body)",
+                    fontSize: "0.875rem",
+                    fontWeight: 600,
+                    boxShadow: "0 10px 24px rgba(5, 8, 28, 0.25)",
+                  }}
+                >
+                  Register free before 15 Aug →
+                </a>
+                <p
+                  className="lg:text-right"
+                  style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: "0.78rem",
+                    lineHeight: 1.5,
+                    color: "rgba(255,255,255,0.5)",
+                  }}
+                >
+                  The real Challenge has 30 more where that came from.
+                  {!reduced && (
+                    <>
+                      {" "}
+                      <button
+                        type="button"
+                        onClick={replay}
+                        className="cursor-pointer p-0 underline transition-colors hover:text-white"
+                        style={{
+                          background: "transparent",
+                          border: "none",
+                          font: "inherit",
+                          color: "rgba(255,255,255,0.7)",
+                        }}
+                      >
+                        Run it again ↻
+                      </button>
+                    </>
+                  )}
+                </p>
+              </div>
             </div>
           </div>
         </div>
