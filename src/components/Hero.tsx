@@ -23,27 +23,44 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative z-10 overflow-hidden">
-      <div className="absolute inset-0 -z-30 bg-[radial-gradient(circle_at_72%_18%,rgba(19,53,184,0.10),transparent_30%),radial-gradient(circle_at_18%_82%,rgba(19,53,184,0.05),transparent_28%)]" />
+    <section className="relative z-10 overflow-x-clip">
+      {/*
+        Background layers intentionally extend ~24rem past the section's
+        bottom edge (overflow-y stays visible) so the hero dissolves into
+        the "Why Now" section with no visible seam — every layer ends at
+        full transparency, never at the section boundary.
+      */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 -z-30"
+        style={{
+          bottom: "-24rem",
+          background:
+            "radial-gradient(circle at 72% 14%, rgba(19,53,184,0.10), transparent 30%), radial-gradient(circle at 18% 62%, rgba(19,53,184,0.05), transparent 26%), radial-gradient(60% 34% at 26% 88%, rgba(19,53,184,0.045), transparent 78%)",
+        }}
+      />
       <img
         src={heroImage}
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-20 h-full w-full object-cover"
+        className="pointer-events-none absolute inset-x-0 top-0 -z-20 w-full object-cover"
         style={{
+          bottom: "-24rem",
           opacity: 0.3,
           objectPosition: "center 40%",
           maskImage:
-            "linear-gradient(180deg, black 0%, black 58%, transparent 100%)",
+            "linear-gradient(180deg, black 0%, black 42%, rgba(0,0,0,0.5) 62%, rgba(0,0,0,0.22) 78%, rgba(0,0,0,0.08) 90%, transparent 100%)",
           WebkitMaskImage:
-            "linear-gradient(180deg, black 0%, black 58%, transparent 100%)",
+            "linear-gradient(180deg, black 0%, black 42%, rgba(0,0,0,0.5) 62%, rgba(0,0,0,0.22) 78%, rgba(0,0,0,0.08) 90%, transparent 100%)",
         }}
       />
       <div
-        className="pointer-events-none absolute inset-0 -z-10"
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 -z-10"
         style={{
+          bottom: "-24rem",
           background:
-            "linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 45%, rgba(248,247,242,0.85) 100%)",
+            "linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 34%, rgba(248,247,242,0.55) 62%, rgba(246,245,240,0.4) 76%, rgba(244,243,238,0.2) 88%, rgba(244,243,238,0) 100%)",
         }}
       />
 
