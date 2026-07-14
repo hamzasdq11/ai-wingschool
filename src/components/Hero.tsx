@@ -122,13 +122,17 @@ export function Hero() {
             }
           />
 
-          <div className="animate-fade-rise-delay-3 mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
+          <div className="animate-fade-rise-delay-3 mt-6 flex flex-wrap items-center gap-x-6 gap-y-3 max-sm:flex-nowrap max-sm:justify-between max-sm:gap-x-1.5">
             {proofChips.map((c) => (
-              <div key={c.label} className="flex items-baseline gap-2">
+              <div
+                key={c.label}
+                className="flex items-baseline gap-2 max-sm:gap-1 max-sm:whitespace-nowrap"
+              >
                 <span
                   style={{
                     fontFamily: "var(--font-display)",
-                    fontSize: "1.35rem",
+                    // clamps reach their caps below 640px, so sm: and up render at today's sizes
+                    fontSize: "clamp(0.7rem, 3.3vw, 1.35rem)",
                     fontWeight: 500,
                     color: "#0a0a0a",
                     letterSpacing: "-0.02em",
@@ -136,7 +140,12 @@ export function Hero() {
                 >
                   {c.value}
                 </span>
-                <span className="ui-caption">{c.label}</span>
+                <span
+                  className="ui-caption"
+                  style={{ fontSize: "clamp(0.5rem, 2.15vw, 0.75rem)" }}
+                >
+                  {c.label}
+                </span>
               </div>
             ))}
           </div>
