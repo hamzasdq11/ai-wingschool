@@ -95,10 +95,10 @@ export function Hero() {
                   className="ui-label"
                   style={{ color: "#0a0a0a", letterSpacing: "0.16em" }}
                 >
-                  Book a Free Demo
+                  Contact Us
                 </p>
                 <span className="ui-caption">
-                  20 min · 1-on-1 · No commitment
+                  20 min · 1-on-1 · IIT/IIM mentor
                 </span>
               </div>
             }
