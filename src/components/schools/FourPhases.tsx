@@ -15,8 +15,8 @@ const phases: Phase[] = [
         The <em className="display-script">Challenge.</em>
       </>
     ),
-    desc: "A free online AI aptitude challenge, open to all students of Class 6–10. One hour, no prep, no coding needed. Everyone walks away with a WingsQuest certificate and scorecard.",
-    highlight: "Free · Online · Register Now",
+    desc: "A one-hour online aptitude assessment for Class 6–10. It can't be crammed and needs no coding — it measures how you think.",
+    highlight: "Online · Assessment Day 28 Aug",
   },
   {
     number: "02",
@@ -53,7 +53,7 @@ const phases: Phase[] = [
 const rewards = [
   {
     value: "Everyone",
-    label: "A WingsQuest 2026 certificate + your private scorecard.",
+    label: "An official scorecard with your All-India percentile.",
   },
   { value: "Top 20%", label: "25% scholarship on the Builder Program." },
   { value: "Top 10%", label: "50% scholarship on the Builder Program." },
@@ -69,7 +69,7 @@ export function FourPhases() {
       <Reveal className="section-copy">
         <p className="section-kicker mb-4">WingsQuest 2026 · How it works</p>
         <h2 className="section-heading mb-6">
-          One challenge. Four phases. <em>Zero</em> cost to enter.
+          One assessment. Four phases. <em>One stage.</em>
         </h2>
         <p className="section-body mb-14">
           From a one-hour online challenge to your project on a public stage,
@@ -151,7 +151,7 @@ export function FourPhases() {
             color: "rgba(255,255,255,0.55)",
           }}
         >
-          What you walk away with · Nobody leaves empty-handed
+          What your score earns · Ranked on merit
         </p>
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {rewards.map((item) => (
