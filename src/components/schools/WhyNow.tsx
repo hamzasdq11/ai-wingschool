@@ -9,7 +9,7 @@ const points: Point[] = [
     number: "01",
     title: (
       <>
-        AI is the new <em className="display-script">electricity.</em>
+        AI is the new <em className="display-script">necessity.</em>
       </>
     ),
     desc: "It will touch every career your students choose — medicine, design, law, engineering, the arts. The schools that moved early on computers in the 2000s are the ones parents still talk about. This is that moment, again.",

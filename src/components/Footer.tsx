@@ -63,7 +63,7 @@ export function Footer() {
             <div className="flex flex-col gap-3">
               <FooterLabel>Reach us</FooterLabel>
               <a
-                href="mailto:hello@aiwingschool.com"
+                href="mailto:connect@aiwingschool.com"
                 className="transition-opacity hover:opacity-100"
                 style={{
                   fontFamily: "var(--font-body)",
@@ -73,7 +73,7 @@ export function Footer() {
                   opacity: 0.85,
                 }}
               >
-                hello@aiwingschool.com
+                connect@aiwingschool.com
               </a>
               <p
                 style={{
