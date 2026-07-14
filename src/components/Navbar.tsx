@@ -11,7 +11,7 @@ const defaultLinks: NavItem[] = [
   { label: "FAQ", href: "/#faq" },
 ];
 
-const defaultCta: NavItem = { label: "Book a Demo", href: "/#book" };
+const defaultCta: NavItem = { label: "Register", href: "/register" };
 
 function NavAnchor({
   href,
@@ -127,7 +127,7 @@ export function Navbar({
           </a>
           <NavAnchor
             href={cta.href}
-            className="ui-button hidden md:inline-flex"
+            className="ui-button max-md:hidden!"
             style={{ padding: "0.7rem 1.2rem" }}
           >
             {cta.label}
