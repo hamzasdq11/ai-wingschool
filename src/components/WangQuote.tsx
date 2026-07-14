@@ -22,6 +22,14 @@ export function WangQuote({ coda }: { coda?: React.ReactNode }) {
               "linear-gradient(90deg, #05081C 0%, rgba(5,8,28,0.92) 14%, rgba(5,8,28,0.62) 32%, rgba(5,8,28,0.18) 58%, rgba(5,8,28,0) 78%)",
           }}
         />
+        <div
+          aria-hidden
+          className="absolute inset-0 md:hidden"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(5,8,28,0.68) 0%, rgba(5,8,28,0.42) 48%, rgba(5,8,28,0.78) 100%)",
+          }}
+        />
       </div>
 
       <div className="relative px-6 py-28 sm:px-10 sm:py-32 lg:px-16 lg:py-36">
