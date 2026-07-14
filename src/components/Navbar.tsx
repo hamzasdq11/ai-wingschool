@@ -75,7 +75,7 @@ export function Navbar({
   }, [open]);
 
   return (
-    <nav className="sticky top-0 z-30 border-b border-black/5 bg-white/85 backdrop-blur-xl">
+    <nav className="sticky top-0 z-30 border-b border-black/5 bg-white/85 backdrop-blur-xl max-md:border-b-0">
       <div className="mx-auto flex max-w-7xl flex-row items-center justify-between gap-6 px-6 py-4 lg:px-8">
         <Link to="/" className="no-underline">
           <Logo />

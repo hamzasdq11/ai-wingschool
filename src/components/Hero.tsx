@@ -33,13 +33,7 @@ export function Hero() {
           src={heroImageMobile}
           alt=""
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-0 -z-20 h-[30rem] w-full object-cover object-[center_40%] opacity-30 sm:h-[32rem] sm:object-[center_40%] sm:opacity-[0.22] lg:inset-0 lg:h-full lg:opacity-30"
-          style={{
-            maskImage:
-              "linear-gradient(180deg, black 0%, black 58%, transparent 100%)",
-            WebkitMaskImage:
-              "linear-gradient(180deg, black 0%, black 58%, transparent 100%)",
-          }}
+          className="pointer-events-none absolute inset-x-0 top-0 -z-20 h-[30rem] w-full object-cover object-[center_37%] opacity-30 [mask-image:linear-gradient(180deg,transparent_0%,black_7%,black_58%,transparent_100%)] [-webkit-mask-image:linear-gradient(180deg,transparent_0%,black_7%,black_58%,transparent_100%)] sm:h-[32rem] sm:object-[center_40%] sm:opacity-[0.22] sm:[mask-image:linear-gradient(180deg,black_0%,black_58%,transparent_100%)] sm:[-webkit-mask-image:linear-gradient(180deg,black_0%,black_58%,transparent_100%)] lg:inset-0 lg:h-full lg:opacity-30"
         />
       </picture>
       <div
