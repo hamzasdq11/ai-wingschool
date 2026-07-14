@@ -42,7 +42,7 @@ export function StickyMobileCTA() {
           className="ui-button flex-1"
           style={{ padding: "0.85rem 1.2rem" }}
         >
-          Book Free Demo →
+          Book a Demo →
         </a>
       </div>
       <div
@@ -55,7 +55,7 @@ export function StickyMobileCTA() {
           color: "rgba(15,15,15,0.55)",
         }}
       >
-        Now in Kanpur · Apply by 22 May · 9 seats left
+        Applications close 15 August · Limited seats per cohort
       </div>
     </div>
   );

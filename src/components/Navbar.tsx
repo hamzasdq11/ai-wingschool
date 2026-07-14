@@ -12,7 +12,7 @@ const defaultLinks: NavItem[] = [
   { label: "FAQ", href: "#faq" },
 ];
 
-const defaultCta: NavItem = { label: "Book Free Demo", href: "#book" };
+const defaultCta: NavItem = { label: "Book a Demo", href: "#book" };
 
 function NavAnchor({
   href,
