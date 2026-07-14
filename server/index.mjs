@@ -72,7 +72,7 @@ const BOARDS = ["CBSE", "ICSE", "State Board", "IB", "Cambridge (IGCSE)", "Other
 app.post("/api/register", async (req, res) => {
   const { student, grade, school, board, city, email, phone: phoneNo, interest } =
     req.body ?? {};
-  // Email is the primary contact; WhatsApp is also required.
+  // Email is the primary contact; phone is also required.
   const mobile = indianMobile(phoneNo);
   const interestOk =
     interest === undefined || (typeof interest === "string" && interest.trim().length <= 220);
@@ -94,7 +94,7 @@ app.post("/api/register", async (req, res) => {
   try {
     await appendRow(
       "registrations.csv",
-      "timestamp,student,class,school,board,city,parent_email,parent_whatsapp,interest",
+      "timestamp,student,class,school,board,city,email,phone,interest",
       [
         new Date().toISOString(),
         student,

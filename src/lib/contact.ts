@@ -29,8 +29,8 @@ function applicationLines(app: WingsQuestApplication) {
     `School: ${app.school}`,
     `Board: ${app.board}`,
     `City: ${app.city}`,
-    `Parent's email: ${app.email}`,
-    `Parent's WhatsApp: ${app.phone}`,
+    `Email: ${app.email}`,
+    `Phone: ${app.phone}`,
   ];
 }
 

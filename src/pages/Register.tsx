@@ -2,11 +2,7 @@ import { useId, useRef, useState } from "react";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { Reveal } from "../components/Reveal";
-import {
-  applicationMailto,
-  CONTACT_EMAIL,
-  WHATSAPP_URL,
-} from "../lib/contact";
+import { applicationMailto, CONTACT_EMAIL } from "../lib/contact";
 
 const facts = [
   { value: "Class 6–10", label: "calibrated by grade" },
@@ -23,7 +19,7 @@ const nextSteps = [
   {
     number: "02",
     title: "We confirm your entry",
-    desc: "Your entry confirmation arrives at the parent's email, with everything you need to be ready.",
+    desc: "Your entry confirmation arrives by email, with everything you need to be ready.",
   },
   {
     number: "03",
@@ -43,26 +39,17 @@ type FieldName =
 
 const FIELD_ORDER: FieldName[] = [
   "student",
+  "email",
+  "phone",
   "grade",
   "city",
   "school",
   "board",
-  "email",
-  "phone",
 ];
 
 const BOARDS = ["CBSE", "ICSE", "State Board", "IB", "Cambridge (IGCSE)", "Other"];
 
 const SPARK_MAX = 180;
-
-const sectionLabelStyle: React.CSSProperties = {
-  fontFamily: "var(--font-body)",
-  fontSize: "0.64rem",
-  fontWeight: 600,
-  letterSpacing: "0.18em",
-  textTransform: "uppercase",
-  color: "rgba(15,15,15,0.45)",
-};
 
 const fieldLabelStyle: React.CSSProperties = {
   display: "block",
@@ -140,7 +127,7 @@ export function Register() {
       case "phone":
         return /^[6-9][0-9]{9}$/.test(value)
           ? ""
-          : "Enter a valid 10-digit WhatsApp number.";
+          : "Enter a valid 10-digit phone number.";
     }
   };
 
@@ -364,17 +351,7 @@ export function Register() {
                     — keep an eye on it.
                   </p>
                   <p className="ui-caption mt-6">
-                    Questions in the meantime?{" "}
-                    <a
-                      href={WHATSAPP_URL}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="underline"
-                      style={{ color: "#1335b8" }}
-                    >
-                      WhatsApp us
-                    </a>{" "}
-                    or write to{" "}
+                    Questions in the meantime? Write to{" "}
                     <a
                       href={`mailto:${CONTACT_EMAIL}`}
                       className="underline"
@@ -408,9 +385,7 @@ export function Register() {
                     </p>
                   </div>
 
-                  <p style={sectionLabelStyle}>The participant</p>
-
-                  <div className="mt-4 flex flex-col gap-4">
+                  <div className="flex flex-col gap-4">
                     <div>
                       <label htmlFor={`${ids}-student`} style={fieldLabelStyle}>
                         Student's full name
@@ -431,6 +406,71 @@ export function Register() {
                         {...errorProps("student")}
                       />
                       {fieldError("student")}
+                    </div>
+
+                    <div>
+                      <label htmlFor={`${ids}-email`} style={fieldLabelStyle}>
+                        Email
+                      </label>
+                      <input
+                        id={`${ids}-email`}
+                        ref={fieldRefs.email as React.RefObject<HTMLInputElement>}
+                        type="email"
+                        autoComplete="email"
+                        value={email}
+                        onChange={(e) => {
+                          setEmail(e.target.value);
+                          handleChange("email", e.target.value);
+                        }}
+                        onBlur={() => handleBlur("email")}
+                        placeholder="Enter email address"
+                        className={`ui-input w-full${errors.email ? " ui-input-error" : ""}`}
+                        {...errorProps("email")}
+                      />
+                      {fieldError("email")}
+                      <p className="ui-caption mt-2">
+                        Official WingsQuest communications and details will be
+                        sent here.
+                      </p>
+                    </div>
+
+                    <div>
+                      <label htmlFor={`${ids}-phone`} style={fieldLabelStyle}>
+                        Phone number
+                      </label>
+                      <div
+                        className={`ui-input-group${errors.phone ? " ui-input-error" : ""}`}
+                      >
+                        <span
+                          aria-hidden
+                          style={{
+                            color: "rgba(15,15,15,0.55)",
+                            paddingRight: "0.6rem",
+                            borderRight: "1px solid #e2dfd5",
+                          }}
+                        >
+                          +91
+                        </span>
+                        <input
+                          id={`${ids}-phone`}
+                          ref={fieldRefs.phone as React.RefObject<HTMLInputElement>}
+                          type="tel"
+                          inputMode="numeric"
+                          autoComplete="tel-national"
+                          value={formatPhone(phone)}
+                          onChange={(e) => {
+                            const digits = e.target.value
+                              .replace(/\D/g, "")
+                              .slice(0, 10);
+                            setPhone(digits);
+                            handleChange("phone", digits);
+                          }}
+                          onBlur={() => handleBlur("phone")}
+                          placeholder="Enter phone number"
+                          {...errorProps("phone")}
+                        />
+                      </div>
+                      {fieldError("phone")}
                     </div>
 
                     <div className="grid gap-4 sm:grid-cols-2">
@@ -545,82 +585,12 @@ export function Register() {
                         className="ui-input w-full resize-none"
                       />
                       <div className="mt-1.5 flex items-baseline justify-between gap-3">
-                        <p className="ui-caption">One sentence is enough.</p>
+                        <p className="ui-caption">A brief response is sufficient.</p>
                         {(sparkFocused || spark.length > 0) && (
                           <p className="ui-caption shrink-0">
                             {spark.length}/{SPARK_MAX}
                           </p>
                         )}
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="mt-7 border-t border-black/8 pt-6">
-                    <p style={sectionLabelStyle}>Official contact</p>
-                    <div className="mt-4 flex flex-col gap-4">
-                      <div>
-                        <label htmlFor={`${ids}-email`} style={fieldLabelStyle}>
-                          Parent / guardian email
-                        </label>
-                        <input
-                          id={`${ids}-email`}
-                          ref={fieldRefs.email as React.RefObject<HTMLInputElement>}
-                          type="email"
-                          autoComplete="email"
-                          value={email}
-                          onChange={(e) => {
-                            setEmail(e.target.value);
-                            handleChange("email", e.target.value);
-                          }}
-                          onBlur={() => handleBlur("email")}
-                          placeholder="Enter email address"
-                          className={`ui-input w-full${errors.email ? " ui-input-error" : ""}`}
-                          {...errorProps("email")}
-                        />
-                        {fieldError("email")}
-                        <p className="ui-caption mt-2">
-                          Official WingsQuest communications and details will
-                          be sent here.
-                        </p>
-                      </div>
-
-                      <div>
-                        <label htmlFor={`${ids}-phone`} style={fieldLabelStyle}>
-                          Parent / guardian WhatsApp
-                        </label>
-                        <div
-                          className={`ui-input-group${errors.phone ? " ui-input-error" : ""}`}
-                        >
-                          <span
-                            aria-hidden
-                            style={{
-                              color: "rgba(15,15,15,0.55)",
-                              paddingRight: "0.6rem",
-                              borderRight: "1px solid #e2dfd5",
-                            }}
-                          >
-                            +91
-                          </span>
-                          <input
-                            id={`${ids}-phone`}
-                            ref={fieldRefs.phone as React.RefObject<HTMLInputElement>}
-                            type="tel"
-                            inputMode="numeric"
-                            autoComplete="tel-national"
-                            value={formatPhone(phone)}
-                            onChange={(e) => {
-                              const digits = e.target.value
-                                .replace(/\D/g, "")
-                                .slice(0, 10);
-                              setPhone(digits);
-                              handleChange("phone", digits);
-                            }}
-                            onBlur={() => handleBlur("phone")}
-                            placeholder="Enter WhatsApp number"
-                            {...errorProps("phone")}
-                          />
-                        </div>
-                        {fieldError("phone")}
                       </div>
                     </div>
                   </div>
