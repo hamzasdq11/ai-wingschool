@@ -46,7 +46,7 @@ export function StickyMobileCTA() {
           className="ui-button flex-1"
           style={{ padding: "0.6rem 1rem", fontSize: "0.8rem" }}
         >
-          Book a Demo →
+          Register Now →
         </a>
       </div>
       <div
