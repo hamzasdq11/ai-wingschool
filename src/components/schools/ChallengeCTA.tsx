@@ -89,19 +89,6 @@ export function ChallengeCTA() {
             </span>
           </h2>
 
-          <p
-            className="mx-auto mt-6"
-            style={{
-              fontFamily: "var(--font-body)",
-              fontSize: "0.95rem",
-              lineHeight: 1.6,
-              letterSpacing: "0.01em",
-              color: "rgba(255,255,255,0.75)",
-            }}
-          >
-            Admission by examination. Scholarships by merit.
-          </p>
-
           <div className="mt-10">
             <a
               href={registerMailto}
