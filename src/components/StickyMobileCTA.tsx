@@ -22,18 +22,18 @@ export function StickyMobileCTA() {
         boxShadow: "0 -8px 24px rgba(15,15,15,0.06)",
       }}
     >
-      <div className="flex items-center gap-3 px-4 py-3">
+      <div className="flex items-center gap-2.5 px-4 py-2.5">
         <a
           href={WHATSAPP_URL}
           target="_blank"
           rel="noreferrer"
           aria-label="WhatsApp"
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-black/14"
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-black/14"
           style={{ color: "#0a0a0a" }}
         >
           <svg
-            width="18"
-            height="18"
+            width="16"
+            height="16"
             viewBox="0 0 24 24"
             fill="currentColor"
             aria-hidden="true"
@@ -44,16 +44,16 @@ export function StickyMobileCTA() {
         <a
           href="/#book"
           className="ui-button flex-1"
-          style={{ padding: "0.85rem 1.2rem" }}
+          style={{ padding: "0.6rem 1rem", fontSize: "0.8rem" }}
         >
           Book a Demo →
         </a>
       </div>
       <div
-        className="px-4 pb-2 text-center"
+        className="px-4 pb-1.5 text-center"
         style={{
           fontFamily: "var(--font-body)",
-          fontSize: "10px",
+          fontSize: "9px",
           letterSpacing: "0.16em",
           textTransform: "uppercase",
           color: "rgba(15,15,15,0.55)",

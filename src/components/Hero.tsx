@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import heroImage from "../assets/Hero2.jpg";
+import heroImageMobile from "../assets/herom.png";
 import heroLoop from "../assets/hero-loop.mp4";
 import heroLoopPoster from "../assets/hero-loop-poster.jpg";
 import { DemoForm } from "./DemoForm";
@@ -26,19 +27,21 @@ export function Hero() {
   return (
     <section className="relative z-10 overflow-hidden">
       <div className="absolute inset-0 -z-30 bg-[radial-gradient(circle_at_72%_18%,rgba(19,53,184,0.10),transparent_30%),radial-gradient(circle_at_18%_82%,rgba(19,53,184,0.05),transparent_28%)]" />
-      <img
-        src={heroImage}
-        alt=""
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 -z-20 h-[26rem] w-full object-cover opacity-[0.22] sm:h-[32rem] lg:inset-0 lg:h-full lg:opacity-30"
-        style={{
-          objectPosition: "center 40%",
-          maskImage:
-            "linear-gradient(180deg, black 0%, black 58%, transparent 100%)",
-          WebkitMaskImage:
-            "linear-gradient(180deg, black 0%, black 58%, transparent 100%)",
-        }}
-      />
+      <picture className="contents">
+        <source media="(min-width: 640px)" srcSet={heroImage} />
+        <img
+          src={heroImageMobile}
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 top-0 -z-20 h-[30rem] w-full object-cover object-[center_40%] opacity-30 sm:h-[32rem] sm:object-[center_40%] sm:opacity-[0.22] lg:inset-0 lg:h-full lg:opacity-30"
+          style={{
+            maskImage:
+              "linear-gradient(180deg, black 0%, black 58%, transparent 100%)",
+            WebkitMaskImage:
+              "linear-gradient(180deg, black 0%, black 58%, transparent 100%)",
+          }}
+        />
+      </picture>
       <div
         className="pointer-events-none absolute inset-0 -z-10"
         style={{
