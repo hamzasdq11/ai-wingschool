@@ -72,9 +72,8 @@ const BOARDS = ["CBSE", "ICSE", "State Board", "IB", "Cambridge (IGCSE)", "Other
 app.post("/api/register", async (req, res) => {
   const { student, grade, school, board, city, email, phone: phoneNo, interest } =
     req.body ?? {};
-  // Email is the primary contact; WhatsApp is optional.
-  const mobile =
-    phoneNo === undefined || phoneNo === "" ? "" : indianMobile(phoneNo);
+  // Email is the primary contact; WhatsApp is also required.
+  const mobile = indianMobile(phoneNo);
   const interestOk =
     interest === undefined || (typeof interest === "string" && interest.trim().length <= 220);
   if (
@@ -84,12 +83,12 @@ app.post("/api/register", async (req, res) => {
     !BOARDS.includes(board) ||
     !text(city, 80) ||
     !emailOk(email) ||
-    mobile === null ||
+    !mobile ||
     !interestOk
   ) {
     return res.status(400).json({
       error:
-        "Invalid or missing fields: student, grade (6-10), school, board, city, email; phone, if given, must be a 10-digit Indian mobile.",
+        "Invalid or missing fields: student, grade (6-10), school, board, city, email, phone (10-digit Indian mobile).",
     });
   }
   try {

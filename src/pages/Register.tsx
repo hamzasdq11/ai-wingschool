@@ -90,7 +90,7 @@ export function Register() {
   const [school, setSchool] = useState("");
   const [board, setBoard] = useState("");
   const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState(""); // 10 digits, unformatted; optional
+  const [phone, setPhone] = useState(""); // 10 digits, unformatted
   const [spark, setSpark] = useState("");
   const [sparkFocused, setSparkFocused] = useState(false);
 
@@ -138,8 +138,7 @@ export function Register() {
           ? ""
           : "Enter a valid email address.";
       case "phone":
-        // Optional — only validate when something was entered.
-        return value === "" || /^[6-9][0-9]{9}$/.test(value)
+        return /^[6-9][0-9]{9}$/.test(value)
           ? ""
           : "Enter a valid 10-digit WhatsApp number.";
     }
@@ -587,10 +586,7 @@ export function Register() {
 
                       <div>
                         <label htmlFor={`${ids}-phone`} style={fieldLabelStyle}>
-                          Parent / guardian WhatsApp{" "}
-                          <span style={{ color: "rgba(15,15,15,0.4)" }}>
-                            (optional)
-                          </span>
+                          Parent / guardian WhatsApp
                         </label>
                         <div
                           className={`ui-input-group${errors.phone ? " ui-input-error" : ""}`}
@@ -645,7 +641,7 @@ export function Register() {
                       <a
                         href={applicationMailto({
                           ...application,
-                          phone: phone ? `+91 ${formatPhone(phone)}` : undefined,
+                          phone: `+91 ${formatPhone(phone)}`,
                         })}
                         className="underline"
                       >

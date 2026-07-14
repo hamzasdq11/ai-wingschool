@@ -19,7 +19,7 @@ export type WingsQuestApplication = {
   board: string;
   city: string;
   email: string;
-  phone?: string;
+  phone: string;
 };
 
 function applicationLines(app: WingsQuestApplication) {
@@ -30,7 +30,7 @@ function applicationLines(app: WingsQuestApplication) {
     `Board: ${app.board}`,
     `City: ${app.city}`,
     `Parent's email: ${app.email}`,
-    ...(app.phone ? [`Parent's WhatsApp: ${app.phone}`] : []),
+    `Parent's WhatsApp: ${app.phone}`,
   ];
 }
 
