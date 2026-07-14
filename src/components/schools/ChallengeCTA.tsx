@@ -75,7 +75,7 @@ export function ChallengeCTA() {
             color: "#ffffff",
           }}
         >
-          Sixty minutes.{" "}
+          One hour. Four weeks.{" "}
           <em
             className="display-script"
             style={{ color: "rgba(255,255,255,0.95)" }}
@@ -93,11 +93,12 @@ export function ChallengeCTA() {
             color: "rgba(255,255,255,0.8)",
           }}
         >
-          One hour of the Challenge measures how you think. Score in the top
-          band and you earn a seat in the AI Builder Program, a merit
-          scholarship of up to 50%, and your project on the Expo Day stage in
-          front of an industry and IIT/IIM panel.{" "}
-          <b style={{ color: "#ffffff" }}>The seat is earned, not bought.</b>
+          WingsQuest 2026 is the whole arc: a one-hour Challenge that measures
+          how you think, a merit scholarship of up to 50% for top scorers,
+          four weeks of building with IIT/IIM mentors, and your own AI project
+          presented on the Flagship Expo Day stage in front of an industry
+          panel.{" "}
+          <b style={{ color: "#ffffff" }}>Every seat is earned, not bought.</b>
         </p>
 
         {left.expired ? (
@@ -199,8 +200,8 @@ export function ChallengeCTA() {
             color: "rgba(255,255,255,0.65)",
           }}
         >
-          Application takes two minutes · Challenge Day 28 August · Results
-          with a private scorecard
+          Application takes two minutes · Challenge Day 28 August · Finale on
+          the Flagship Expo Day stage
         </p>
       </Reveal>
     </section>
