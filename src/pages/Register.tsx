@@ -5,27 +5,28 @@ import { Reveal } from "../components/Reveal";
 import { applicationMailto, CONTACT_EMAIL } from "../lib/contact";
 
 const facts = [
-  { value: "Classes 6–10", label: "Who can enter" },
-  { value: "60 minutes", label: "Stage One" },
-  { value: "28 August", label: "Challenge Day" },
+  { value: "3 stages", label: "One journey" },
+  { value: "Classes 6–10", label: "Across India" },
+  { value: "28 August", label: "Stage One begins" },
 ];
 
 const journey = [
   {
     number: "01",
-    title: "Enter WingsQuest",
-    desc: "Put your name forward for WingsQuest 2026. Your official entry confirmation will follow by email.",
+    title: "The Challenge",
+    desc: "Sixty minutes of reasoning, curiosity and builder instinct. This is where every WingsQuest journey begins.",
   },
   {
     number: "02",
-    title: "Prepare to think",
-    desc: "No syllabus to revise. We'll share everything you need before Challenge Day.",
+    title: "The AI Builder Program",
+    desc: "Selected participants turn ideas into something real, guided through an intensive building experience.",
   },
   {
     number: "03",
-    title: "Take on Stage One",
-    desc: "Sixty minutes of reasoning, curiosity and builder instinct. The strongest participants advance.",
+    title: "Flagship Expo Day",
+    desc: "The strongest builders present their work live before parents, IIT/IIM mentors and industry experts panel.",
   },
+  
 ];
 
 type FieldName =
@@ -217,9 +218,7 @@ export function Register() {
               <em className="display-script">thinking</em> can take you.
             </h1>
             <p className="section-body max-w-lg">
-              WingsQuest is a 60-minute challenge designed to see how you
-              reason, question and build. No syllabus. No memorised answers.
-              Just the way you think.
+              WingsQuest 2026 is a journey for young thinkers, builders and the relentlessly curious. It begins with a 60-minute challenge. How far you go from there is up to you.
             </p>
 
             <div className="mt-9 grid gap-y-5 sm:grid-cols-3 sm:gap-x-6">
