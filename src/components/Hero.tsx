@@ -88,18 +88,24 @@ export function Hero() {
 
           <DemoForm
             variant="compact"
+            buttonLabel="Book a Demo →"
             className="ui-card animate-fade-rise-delay-3 mt-9 flex flex-col gap-3 rounded-[1.5rem] p-5 sm:p-6"
             header={
-              <div className="flex items-center justify-between">
+              <div>
                 <p
-                  className="ui-label"
-                  style={{ color: "#0a0a0a", letterSpacing: "0.16em" }}
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    fontSize: "1.25rem",
+                    fontWeight: 400,
+                    color: "#0a0a0a",
+                    letterSpacing: "-0.02em",
+                  }}
                 >
-                  Talk to an IIT/IIM Mentor
+                  Talk to an IIT/IIM mentor
                 </p>
-                <span className="ui-caption">
-                  20 min · 1-on-1 · Free
-                </span>
+                <p className="ui-caption mt-1">
+                  A free 20-minute conversation, 1-on-1
+                </p>
               </div>
             }
             successFootnote={
