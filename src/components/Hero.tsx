@@ -5,9 +5,9 @@ import heroLoopPoster from "../assets/hero-loop-poster.jpg";
 import { DemoForm } from "./DemoForm";
 
 const proofChips = [
-  { value: "200+", label: "Indian families" },
-  { value: "4.9", label: "Parent rating" },
   { value: "IIT/IIM", label: "Mentors" },
+  { value: "4.9", label: "Parent rating" },
+  { value: "Small cohorts", label: "By design" },
 ];
 
 export function Hero() {
@@ -203,8 +203,8 @@ export function Hero() {
               <div className="relative mt-5 grid grid-cols-3 gap-2 border-t border-black/8 pt-4">
                 {[
                   { value: "12 projects", label: "Live demos" },
-                  { value: "80+", label: "Audience" },
-                  { value: "Flagship Expo Day", label: "Public stakes" },
+                  { value: "Parents & panel", label: "Audience" },
+                  { value: "Every student", label: "On stage" },
                 ].map((s) => (
                   <div key={s.label}>
                     <p
@@ -251,7 +251,7 @@ export function Hero() {
                   color: "#0a0a0a",
                 }}
               >
-                4.9 from 200+ Indian families
+                Rated 4.9 by Wingschool parents
               </span>
             </div>
           </div>
