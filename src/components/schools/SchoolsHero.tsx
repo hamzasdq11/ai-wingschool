@@ -4,7 +4,7 @@ const journey = [
   {
     number: "01",
     title: "The Challenge",
-    desc: "A free, one-hour online AI aptitude test. No prep, no coding needed.",
+    desc: "A one-hour online assessment of reasoning, curiosity, and builder instinct — calibrated by grade.",
   },
   {
     number: "02",
@@ -49,7 +49,7 @@ export function SchoolsHero() {
                 className="h-1.5 w-1.5 rounded-full"
                 style={{ background: "#ffffff" }}
               />
-              The AI Aptitude Challenge · Open to all · Class 6–10
+              The National AI Aptitude Assessment · Class 6–10
             </span>
 
             <h2
@@ -81,10 +81,11 @@ export function SchoolsHero() {
                 color: "rgba(255,255,255,0.8)",
               }}
             >
-              You&apos;ve been using AI for years. Let&apos;s find out if
-              you&apos;re ready to <b style={{ color: "#ffffff" }}>build</b>{" "}
-              with it. It starts with one free hour online and ends on a
-              public stage with a real AI project of your own.
+              You&apos;ve been using AI for years. Now find out if you&apos;re
+              built to <b style={{ color: "#ffffff" }}>build</b> with it. One
+              hour of assessment decides who earns a seat in the Builder
+              Program — and a place on a public stage with a real AI project
+              of your own.
             </p>
 
             <div className="mt-9 flex flex-wrap items-center gap-4">
@@ -110,9 +111,9 @@ export function SchoolsHero() {
                   color: "rgba(255,255,255,0.65)",
                 }}
               >
-                Registration closes 15 August · Challenge Day 28 August.
+                Applications close 15 August · Assessment Day 28 August.
                 <br />
-                Free entry · Every participant gets a certificate.
+                Builder Program seats are awarded on merit alone.
               </p>
             </div>
           </Reveal>
