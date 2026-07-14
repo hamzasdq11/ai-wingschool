@@ -62,9 +62,16 @@ const indianMobile = (v) => {
   return /^[6-9][0-9]{9}$/.test(digits) ? digits : null;
 };
 
+const emailOk = (v) =>
+  typeof v === "string" &&
+  v.trim().length <= 254 &&
+  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
+
 app.post("/api/register", async (req, res) => {
-  const { student, grade, school, city, phone: phoneNo, interest } = req.body ?? {};
-  const mobile = indianMobile(phoneNo);
+  const { student, grade, school, city, email, phone: phoneNo, interest } = req.body ?? {};
+  // Email is the primary contact; WhatsApp is optional.
+  const mobile =
+    phoneNo === undefined || phoneNo === "" ? "" : indianMobile(phoneNo);
   const interestOk =
     interest === undefined || (typeof interest === "string" && interest.trim().length <= 220);
   if (
@@ -72,19 +79,20 @@ app.post("/api/register", async (req, res) => {
     !gradeIn(grade, ["6", "7", "8", "9", "10"]) ||
     !text(school) ||
     !text(city, 80) ||
-    !mobile ||
+    !emailOk(email) ||
+    mobile === null ||
     !interestOk
   ) {
     return res.status(400).json({
       error:
-        "Invalid or missing fields: student, grade (6-10), school, city, phone (10-digit Indian mobile).",
+        "Invalid or missing fields: student, grade (6-10), school, city, email; phone, if given, must be a 10-digit Indian mobile.",
     });
   }
   try {
     await appendRow(
       "registrations.csv",
-      "timestamp,student,class,school,city,parent_whatsapp,interest",
-      [new Date().toISOString(), student, grade, school, city, mobile, interest ?? ""],
+      "timestamp,student,class,school,city,parent_email,parent_whatsapp,interest",
+      [new Date().toISOString(), student, grade, school, city, email, mobile, interest ?? ""],
     );
     res.json({ ok: true });
   } catch (err) {

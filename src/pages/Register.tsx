@@ -3,7 +3,7 @@ import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { Reveal } from "../components/Reveal";
 import {
-  applicationWhatsappUrl,
+  applicationMailto,
   CONTACT_EMAIL,
   WHATSAPP_URL,
 } from "../lib/contact";
@@ -23,7 +23,7 @@ const nextSteps = [
   {
     number: "02",
     title: "We confirm your entry",
-    desc: "Our team messages the parent's WhatsApp with your Challenge Day slot and everything you need to be ready.",
+    desc: "Your entry confirmation and Challenge Day details arrive at the parent's email, with everything you need to be ready.",
   },
   {
     number: "03",
@@ -32,9 +32,9 @@ const nextSteps = [
   },
 ];
 
-type FieldName = "student" | "grade" | "city" | "school" | "phone";
+type FieldName = "student" | "grade" | "city" | "school" | "email" | "phone";
 
-const FIELD_ORDER: FieldName[] = ["student", "grade", "city", "school", "phone"];
+const FIELD_ORDER: FieldName[] = ["student", "grade", "city", "school", "email", "phone"];
 
 const SPARK_MAX = 180;
 
@@ -71,7 +71,8 @@ export function Register() {
   const [grade, setGrade] = useState("");
   const [city, setCity] = useState("");
   const [school, setSchool] = useState("");
-  const [phone, setPhone] = useState(""); // 10 digits, unformatted
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState(""); // 10 digits, unformatted; optional
   const [spark, setSpark] = useState("");
   const [sparkFocused, setSparkFocused] = useState(false);
 
@@ -86,11 +87,12 @@ export function Register() {
     grade: useRef<HTMLSelectElement>(null),
     city: useRef<HTMLInputElement>(null),
     school: useRef<HTMLInputElement>(null),
+    email: useRef<HTMLInputElement>(null),
     phone: useRef<HTMLInputElement>(null),
   };
   const ids = useId();
 
-  const values: Record<FieldName, string> = { student, grade, city, school, phone };
+  const values: Record<FieldName, string> = { student, grade, city, school, email, phone };
 
   const validate = (field: FieldName, value: string): string => {
     switch (field) {
@@ -102,8 +104,13 @@ export function Register() {
         return value.trim() ? "" : "Enter a city.";
       case "school":
         return value.trim() ? "" : "Enter the school name.";
+      case "email":
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim())
+          ? ""
+          : "Enter a valid email address.";
       case "phone":
-        return /^[6-9][0-9]{9}$/.test(value)
+        // Optional — only validate when something was entered.
+        return value === "" || /^[6-9][0-9]{9}$/.test(value)
           ? ""
           : "Enter a valid 10-digit WhatsApp number.";
     }
@@ -126,6 +133,7 @@ export function Register() {
     grade,
     school: school.trim(),
     city: city.trim(),
+    email: email.trim(),
     phone,
   };
 
@@ -194,8 +202,8 @@ export function Register() {
             </h1>
             <p className="section-body max-w-xl">
               One hour of reasoning, curiosity, and builder instinct — nothing
-              to prepare, no coding required. Put your name forward, and we'll
-              confirm your Challenge Day slot on WhatsApp.
+              to prepare, no coding required. Put your name forward, and your
+              entry confirmation will arrive by email.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3">
@@ -319,9 +327,12 @@ export function Register() {
                     {firstName ? `You're in, ${firstName}.` : "You're in."}
                   </h2>
                   <p className="ui-body mt-4">
-                    Your application is with us. We'll confirm your Challenge
-                    Day slot on the parent's WhatsApp number you shared —
-                    keep an eye on it.
+                    Your application is with us. Your entry confirmation and
+                    Challenge Day details will arrive at{" "}
+                    <b style={{ color: "#0a0a0a", fontWeight: 500 }}>
+                      {application.email}
+                    </b>{" "}
+                    — keep an eye on it.
                   </p>
                   <p className="ui-caption mt-6">
                     Questions in the meantime?{" "}
@@ -490,47 +501,74 @@ export function Register() {
 
                   <div className="mt-7 border-t border-black/8 pt-6">
                     <p style={sectionLabelStyle}>Challenge Day contact</p>
-                    <div className="mt-4">
-                      <label htmlFor={`${ids}-phone`} style={fieldLabelStyle}>
-                        Parent / guardian WhatsApp
-                      </label>
-                      <div
-                        className={`ui-input-group${errors.phone ? " ui-input-error" : ""}`}
-                      >
-                        <span
-                          aria-hidden
-                          style={{
-                            color: "rgba(15,15,15,0.55)",
-                            paddingRight: "0.6rem",
-                            borderRight: "1px solid #e2dfd5",
-                          }}
-                        >
-                          +91
-                        </span>
+                    <div className="mt-4 flex flex-col gap-4">
+                      <div>
+                        <label htmlFor={`${ids}-email`} style={fieldLabelStyle}>
+                          Parent / guardian email
+                        </label>
                         <input
-                          id={`${ids}-phone`}
-                          ref={fieldRefs.phone as React.RefObject<HTMLInputElement>}
-                          type="tel"
-                          inputMode="numeric"
-                          autoComplete="tel-national"
-                          value={formatPhone(phone)}
+                          id={`${ids}-email`}
+                          ref={fieldRefs.email as React.RefObject<HTMLInputElement>}
+                          type="email"
+                          autoComplete="email"
+                          value={email}
                           onChange={(e) => {
-                            const digits = e.target.value
-                              .replace(/\D/g, "")
-                              .slice(0, 10);
-                            setPhone(digits);
-                            handleChange("phone", digits);
+                            setEmail(e.target.value);
+                            handleChange("email", e.target.value);
                           }}
-                          onBlur={() => handleBlur("phone")}
-                          placeholder="Enter WhatsApp number"
-                          {...errorProps("phone")}
+                          onBlur={() => handleBlur("email")}
+                          placeholder="Enter email address"
+                          className={`ui-input w-full${errors.email ? " ui-input-error" : ""}`}
+                          {...errorProps("email")}
                         />
+                        {fieldError("email")}
+                        <p className="ui-caption mt-2">
+                          Challenge Day details and entry confirmation will be
+                          sent here.
+                        </p>
                       </div>
-                      {fieldError("phone")}
-                      <p className="ui-caption mt-2">
-                        Challenge Day details and entry confirmation will be
-                        sent here.
-                      </p>
+
+                      <div>
+                        <label htmlFor={`${ids}-phone`} style={fieldLabelStyle}>
+                          Parent / guardian WhatsApp{" "}
+                          <span style={{ color: "rgba(15,15,15,0.4)" }}>
+                            (optional)
+                          </span>
+                        </label>
+                        <div
+                          className={`ui-input-group${errors.phone ? " ui-input-error" : ""}`}
+                        >
+                          <span
+                            aria-hidden
+                            style={{
+                              color: "rgba(15,15,15,0.55)",
+                              paddingRight: "0.6rem",
+                              borderRight: "1px solid #e2dfd5",
+                            }}
+                          >
+                            +91
+                          </span>
+                          <input
+                            id={`${ids}-phone`}
+                            ref={fieldRefs.phone as React.RefObject<HTMLInputElement>}
+                            type="tel"
+                            inputMode="numeric"
+                            autoComplete="tel-national"
+                            value={formatPhone(phone)}
+                            onChange={(e) => {
+                              const digits = e.target.value
+                                .replace(/\D/g, "")
+                                .slice(0, 10);
+                              setPhone(digits);
+                              handleChange("phone", digits);
+                            }}
+                            onBlur={() => handleBlur("phone")}
+                            placeholder="Enter WhatsApp number"
+                            {...errorProps("phone")}
+                          />
+                        </div>
+                        {fieldError("phone")}
+                      </div>
                     </div>
                   </div>
 
@@ -548,15 +586,13 @@ export function Register() {
                     >
                       Couldn&apos;t submit just now — try again, or{" "}
                       <a
-                        href={applicationWhatsappUrl({
+                        href={applicationMailto({
                           ...application,
-                          phone: `+91 ${formatPhone(phone)}`,
+                          phone: phone ? `+91 ${formatPhone(phone)}` : undefined,
                         })}
-                        target="_blank"
-                        rel="noreferrer"
                         className="underline"
                       >
-                        send your application on WhatsApp
+                        email us your application
                       </a>
                       .
                     </p>

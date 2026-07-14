@@ -17,7 +17,8 @@ export type WingsQuestApplication = {
   grade: string;
   school: string;
   city: string;
-  phone: string;
+  email: string;
+  phone?: string;
 };
 
 function applicationLines(app: WingsQuestApplication) {
@@ -26,14 +27,13 @@ function applicationLines(app: WingsQuestApplication) {
     `Class: ${app.grade}`,
     `School: ${app.school}`,
     `City: ${app.city}`,
-    `Parent's WhatsApp: ${app.phone}`,
+    `Parent's email: ${app.email}`,
+    ...(app.phone ? [`Parent's WhatsApp: ${app.phone}`] : []),
   ];
 }
 
-export function applicationWhatsappUrl(app: WingsQuestApplication) {
-  return whatsappUrl(
-    ["Hi Wingschool! I'd like to apply for WingsQuest 2026.", ...applicationLines(app)].join(
-      "\n",
-    ),
-  );
+export function applicationMailto(app: WingsQuestApplication) {
+  return `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
+    "WingsQuest 2026 Application",
+  )}&body=${encodeURIComponent(applicationLines(app).join("\n"))}`;
 }
