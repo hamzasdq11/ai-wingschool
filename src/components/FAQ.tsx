@@ -9,7 +9,7 @@ const faqs = [
   },
   {
     q: "How much does it cost?",
-    a: "The Challenge is completely free: the test, the certificate, all of it. The AI Builder Program is paid, with 25–50% scholarships for the top 10–20% of scorers; the fee is shared directly with parents before anything is due.",
+    a: "There is no fee to sit the Challenge — admission to the AI Builder Program is decided purely on your score. The Builder Program itself is a paid program, with 25–50% merit scholarships for the top 10–20% of scorers; the fee is shared directly with parents before anything is due.",
   },
   {
     q: "Will this clash with school and tuitions?",
@@ -102,7 +102,7 @@ export function FAQ() {
               WhatsApp us · 2-min reply
             </a>
             <a href="#book" className="ui-button">
-              Book a Free Demo →
+              Talk to a Mentor →
             </a>
           </div>
         </Reveal>
