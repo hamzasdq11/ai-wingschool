@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
+import { registerWhatsappUrl } from "../../lib/contact";
+
 const ACT1_END = 1.6;
 const ACT2_END = 5.2;
 const OPS_PER_WORD = 350_000_000_000;
@@ -705,7 +707,7 @@ export function NeuralZoom() {
 
               <div className="flex flex-col gap-4 lg:items-end">
                 <a
-                  href="https://wa.me/"
+                  href={registerWhatsappUrl}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center justify-center gap-2 self-start rounded-full px-7 py-4 no-underline transition-transform hover:-translate-y-px lg:self-end"

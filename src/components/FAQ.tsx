@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import { Reveal } from "./Reveal";
+import { WHATSAPP_URL } from "../lib/contact";
 
 const faqs = [
   {
@@ -98,10 +99,15 @@ export function FAQ() {
         >
           <p className="ui-body-sm">Still have a question?</p>
           <div className="flex flex-wrap justify-center gap-3">
-            <a href="https://wa.me/" className="ui-button-secondary">
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="ui-button-secondary"
+            >
               WhatsApp us · 2-min reply
             </a>
-            <a href="#book" className="ui-button">
+            <a href="/#book" className="ui-button">
               Talk to a Mentor →
             </a>
           </div>

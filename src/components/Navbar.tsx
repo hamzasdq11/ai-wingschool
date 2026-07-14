@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Logo } from "./Logo";
+import { WHATSAPP_URL } from "../lib/contact";
 
 type NavItem = { label: string; href: string };
 
 const defaultLinks: NavItem[] = [
-  { label: "Projects", href: "#projects" },
-  { label: "WingsQuest 2026", href: "#wingsquest" },
-  { label: "FAQ", href: "#faq" },
+  { label: "How it works", href: "/#how-it-works" },
+  { label: "WingsQuest 2026", href: "/#wingsquest" },
+  { label: "FAQ", href: "/#faq" },
 ];
 
-const defaultCta: NavItem = { label: "Book a Demo", href: "#book" };
+const defaultCta: NavItem = { label: "Book a Demo", href: "/#book" };
 
 function NavAnchor({
   href,
@@ -29,7 +30,7 @@ function NavAnchor({
   onMouseLeave?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
   children: React.ReactNode;
 }) {
-  if (href.startsWith("/")) {
+  if (href.startsWith("/") && !href.includes("#")) {
     return (
       <Link
         to={href}
@@ -104,7 +105,7 @@ export function Navbar({
 
         <div className="flex items-center gap-3">
           <a
-            href="https://wa.me/"
+            href={WHATSAPP_URL}
             target="_blank"
             rel="noreferrer"
             className="hidden items-center gap-2 rounded-full border border-black/14 px-4 py-2.5 text-[12px] uppercase tracking-[0.14em] no-underline transition-colors hover:border-black/30 hover:bg-black/3 sm:inline-flex"
@@ -192,7 +193,7 @@ export function Navbar({
               {cta.label}
             </NavAnchor>
             <a
-              href="https://wa.me/"
+              href={WHATSAPP_URL}
               target="_blank"
               rel="noreferrer"
               className="ui-button-secondary"

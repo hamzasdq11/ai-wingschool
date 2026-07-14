@@ -1,22 +1,28 @@
+import { Link } from "react-router-dom";
 import { Logo } from "./Logo";
 import bannerBottom from "../assets/BannerBottom.jpg";
+import {
+  CONTACT_EMAIL,
+  CONTACT_PHONE_DISPLAY,
+  CONTACT_PHONE_TEL,
+  WHATSAPP_URL,
+} from "../lib/contact";
 
 const programLinks = [
-  { label: "Projects", href: "#projects" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "WingsQuest 2026", href: "#wingsquest" },
-  { label: "FAQ", href: "#faq" },
+  { label: "How it works", href: "/#how-it-works" },
+  { label: "Pricing", href: "/#faq" },
+  { label: "WingsQuest 2026", href: "/#wingsquest" },
+  { label: "FAQ", href: "/#faq" },
 ];
 
 const connectLinks = [
-  { label: "Instagram", href: "#" },
-  { label: "LinkedIn", href: "#" },
-  { label: "WhatsApp", href: "https://wa.me/" },
+  { label: "WhatsApp", href: WHATSAPP_URL },
+  { label: "Email", href: `mailto:${CONTACT_EMAIL}` },
 ];
 
 const legalLinks = [
-  { label: "Privacy", href: "#" },
-  { label: "Terms", href: "#" },
+  { label: "Privacy", href: "/privacy" },
+  { label: "Terms", href: "/terms" },
 ];
 
 export function Footer() {
@@ -63,7 +69,7 @@ export function Footer() {
             <div className="flex flex-col gap-3">
               <FooterLabel>Reach us</FooterLabel>
               <a
-                href="mailto:connect@aiwingschool.com"
+                href={`mailto:${CONTACT_EMAIL}`}
                 className="transition-opacity hover:opacity-100"
                 style={{
                   fontFamily: "var(--font-body)",
@@ -73,20 +79,20 @@ export function Footer() {
                   opacity: 0.85,
                 }}
               >
-                connect@aiwingschool.com
+                {CONTACT_EMAIL}
               </a>
-              <p
+              <a
+                href={`tel:${CONTACT_PHONE_TEL}`}
                 style={{
                   fontFamily: "var(--font-body)",
                   fontSize: "0.85rem",
                   color: "rgba(255,255,255,0.6)",
                   lineHeight: 1.5,
+                  textDecoration: "none",
                 }}
               >
-                +91 7355080850
-                <br />
-                
-              </p>
+                {CONTACT_PHONE_DISPLAY}
+              </a>
             </div>
           </div>
         </div>
@@ -106,9 +112,9 @@ export function Footer() {
           </span>
           <div className="flex gap-6">
             {legalLinks.map((link) => (
-              <a
+              <Link
                 key={link.label}
-                href={link.href}
+                to={link.href}
                 style={{
                   fontFamily: "var(--font-body)",
                   fontSize: "0.78rem",
@@ -117,7 +123,7 @@ export function Footer() {
                 }}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
         </div>

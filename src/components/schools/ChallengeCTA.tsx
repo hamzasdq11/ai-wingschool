@@ -1,5 +1,5 @@
 import { Reveal } from "../Reveal";
-import { registerMailto } from "./contact";
+import { registerMailto } from "../../lib/contact";
 
 export function ChallengeCTA() {
   return (

@@ -3,6 +3,7 @@ import heroImage from "../assets/Hero2.jpg";
 import heroLoop from "../assets/hero-loop.mp4";
 import heroLoopPoster from "../assets/hero-loop-poster.jpg";
 import { DemoForm } from "./DemoForm";
+import { WHATSAPP_URL } from "../lib/contact";
 
 const proofChips = [
   { value: "IIT/IIM", label: "Mentors" },
@@ -87,8 +88,9 @@ export function Hero() {
           </p>
 
           <DemoForm
+            id="book"
             variant="compact"
-            className="ui-card animate-fade-rise-delay-3 mt-9 flex flex-col gap-3 rounded-[1.5rem] p-5 sm:p-6"
+            className="ui-card animate-fade-rise-delay-3 mt-9 flex scroll-mt-28 flex-col gap-3 rounded-[1.5rem] p-5 sm:p-6"
             header={
               <div>
                 <p
@@ -111,7 +113,9 @@ export function Hero() {
               <p className="ui-caption mt-2">
                 Need it sooner?{" "}
                 <a
-                  href="https://wa.me/"
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noreferrer"
                   className="underline"
                   style={{ color: "#1335b8" }}
                 >

@@ -1,8 +1,11 @@
 import { useId, useState, type ReactNode } from "react";
 
+import { whatsappUrl } from "../lib/contact";
+
 type DemoFormVariant = "compact" | "stacked";
 
 type DemoFormProps = {
+  id?: string;
   variant?: DemoFormVariant;
   className?: string;
   header?: ReactNode;
@@ -22,6 +25,7 @@ function defaultSuccessMessage(firstName: string) {
 }
 
 export function DemoForm({
+  id,
   variant = "stacked",
   className,
   header,
@@ -42,13 +46,20 @@ export function DemoForm({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const message = [
+      "Hi Wingschool! I'd like to book a demo call.",
+      `Name: ${name.trim()}`,
+      `WhatsApp: ${phone.trim()}`,
+      `Class: ${grade}`,
+    ].join("\n");
+    window.open(whatsappUrl(message), "_blank", "noopener,noreferrer");
     setSubmitted(true);
   };
 
   const firstName = name.split(" ")[0] ?? "";
 
   return (
-    <form onSubmit={handleSubmit} className={className}>
+    <form id={id} onSubmit={handleSubmit} className={className}>
       {header}
 
       {submitted ? (
@@ -88,6 +99,9 @@ export function DemoForm({
               id={phoneId}
               required
               type="tel"
+              inputMode="tel"
+              pattern="\+?[0-9\s\-]{10,15}"
+              title="Enter a valid WhatsApp number (10 digits)"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               placeholder="WhatsApp number"
@@ -139,6 +153,9 @@ export function DemoForm({
             id={phoneId}
             required
             type="tel"
+            inputMode="tel"
+            pattern="\+?[0-9\s\-]{10,15}"
+            title="Enter a valid WhatsApp number (10 digits)"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             placeholder="WhatsApp number"

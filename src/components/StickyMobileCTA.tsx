@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+import { WHATSAPP_URL } from "../lib/contact";
+
 export function StickyMobileCTA() {
   const [visible, setVisible] = useState(false);
 
@@ -22,7 +24,9 @@ export function StickyMobileCTA() {
     >
       <div className="flex items-center gap-3 px-4 py-3">
         <a
-          href="https://wa.me/"
+          href={WHATSAPP_URL}
+          target="_blank"
+          rel="noreferrer"
           aria-label="WhatsApp"
           className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-black/14"
           style={{ color: "#0a0a0a" }}
@@ -38,7 +42,7 @@ export function StickyMobileCTA() {
           </svg>
         </a>
         <a
-          href="#book"
+          href="/#book"
           className="ui-button flex-1"
           style={{ padding: "0.85rem 1.2rem" }}
         >
