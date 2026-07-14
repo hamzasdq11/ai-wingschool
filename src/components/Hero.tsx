@@ -33,14 +33,14 @@ export function Hero() {
           src={heroImageMobile}
           alt=""
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-0 -z-20 h-[30rem] w-full object-cover object-[center_37%] opacity-30 [mask-image:linear-gradient(180deg,transparent_0%,black_7%,black_40%,transparent_100%)] [-webkit-mask-image:linear-gradient(180deg,transparent_0%,black_7%,black_40%,transparent_100%)] sm:h-[32rem] sm:object-[center_40%] sm:opacity-[0.22] sm:[mask-image:linear-gradient(180deg,black_0%,black_58%,transparent_100%)] sm:[-webkit-mask-image:linear-gradient(180deg,black_0%,black_58%,transparent_100%)] lg:inset-0 lg:h-full lg:opacity-30"
+          className="pointer-events-none absolute inset-x-0 top-0 -z-20 h-[27rem] w-full object-cover object-[center_37%] opacity-30 [mask-image:linear-gradient(180deg,transparent_0%,black_7%,black_58%,transparent_100%)] [-webkit-mask-image:linear-gradient(180deg,transparent_0%,black_7%,black_58%,transparent_100%)] sm:h-[32rem] sm:object-[center_40%] sm:opacity-[0.22] sm:[mask-image:linear-gradient(180deg,black_0%,black_58%,transparent_100%)] sm:[-webkit-mask-image:linear-gradient(180deg,black_0%,black_58%,transparent_100%)] lg:inset-0 lg:h-full lg:opacity-30"
         />
       </picture>
       <div
         className="pointer-events-none absolute inset-0 -z-10"
         style={{
           background:
-            "linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 45%, rgba(244,243,238,0.85) 100%)",
+            "linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 40%, rgba(244,243,238,0.85) 100%)",
         }}
       />
 
