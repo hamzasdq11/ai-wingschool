@@ -16,7 +16,7 @@ export function WangQuote({ coda }: { coda?: React.ReactNode }) {
         />
         <div
           aria-hidden
-          className="absolute inset-0"
+          className="absolute inset-0 max-md:hidden"
           style={{
             background:
               "linear-gradient(90deg, #05081C 0%, rgba(5,8,28,0.92) 14%, rgba(5,8,28,0.62) 32%, rgba(5,8,28,0.18) 58%, rgba(5,8,28,0) 78%)",
