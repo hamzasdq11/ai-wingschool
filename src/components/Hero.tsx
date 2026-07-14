@@ -6,8 +6,8 @@ import { DemoForm } from "./DemoForm";
 
 const proofChips = [
   { value: "IIT/IIM", label: "Mentors" },
-  { value: "Live", label: "Not recorded" },
-  { value: "Small cohorts", label: "By design" },
+  { value: "Hands-on", label: "Live sessions" },
+  { value: "Limited cohorts", label: "By design" },
 ];
 
 export function Hero() {
@@ -207,8 +207,8 @@ export function Hero() {
 
               <div className="relative mt-5 grid grid-cols-3 gap-2 border-t border-black/8 pt-4">
                 {[
-                  { value: "12 projects", label: "Live demos" },
-                  { value: "Parents & panel", label: "Audience" },
+                  { value: "Industry", label: "On the panel" },
+                  { value: "Academia", label: "IIT & IIM" },
                   { value: "Every student", label: "On stage" },
                 ].map((s) => (
                   <div key={s.label}>
@@ -256,7 +256,7 @@ export function Hero() {
                   color: "#0a0a0a",
                 }}
               >
-                Rated 4.9 by Wingschool parents
+                Rated 4.9 by wingschool parents
               </span>
             </div>
           </div>
