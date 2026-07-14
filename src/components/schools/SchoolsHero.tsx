@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Reveal } from "../Reveal";
 
 const journey = [
@@ -89,8 +90,8 @@ export function SchoolsHero() {
             </p>
 
             <div className="mt-9 flex flex-wrap items-center gap-4">
-              <a
-                href="#how-it-works"
+              <Link
+                to="/register"
                 className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 no-underline transition-transform hover:-translate-y-px"
                 style={{
                   background: "#ffffff",
@@ -101,7 +102,21 @@ export function SchoolsHero() {
                   boxShadow: "0 10px 24px rgba(5, 8, 28, 0.25)",
                 }}
               >
-                See how it works →
+                Apply now →
+              </Link>
+              <a
+                href="#how-it-works"
+                className="inline-flex items-center justify-center gap-2 rounded-full px-7 py-4 no-underline transition-transform hover:-translate-y-px"
+                style={{
+                  border: "1px solid rgba(255,255,255,0.35)",
+                  background: "rgba(255,255,255,0.08)",
+                  color: "#ffffff",
+                  fontFamily: "var(--font-body)",
+                  fontSize: "0.875rem",
+                  fontWeight: 600,
+                }}
+              >
+                See how it works
               </a>
               <p
                 style={{

@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Privacy } from "./pages/Privacy";
+import { Register } from "./pages/Register";
 import { Terms } from "./pages/Terms";
 
 function ScrollToTop() {
@@ -27,6 +28,7 @@ function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="*" element={<Navigate to="/" replace />} />

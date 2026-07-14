@@ -1,5 +1,5 @@
+import { Link } from "react-router-dom";
 import { Reveal } from "../Reveal";
-import { registerMailto } from "../../lib/contact";
 
 export function ChallengeCTA() {
   return (
@@ -90,8 +90,8 @@ export function ChallengeCTA() {
           </h2>
 
           <div className="mt-8">
-            <a
-              href={registerMailto}
+            <Link
+              to="/register"
               className="group inline-flex items-center justify-center gap-2.5 rounded-full px-10 py-5 no-underline transition-transform duration-200 hover:-translate-y-0.5"
               style={{
                 background: "#ffffff",
@@ -110,7 +110,7 @@ export function ChallengeCTA() {
               >
                 →
               </span>
-            </a>
+            </Link>
           </div>
 
           <p

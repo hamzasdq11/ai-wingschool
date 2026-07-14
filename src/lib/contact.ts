@@ -12,13 +12,34 @@ export function whatsappUrl(text?: string) {
 
 export const WHATSAPP_URL = whatsappUrl();
 
-export const registerWhatsappUrl = whatsappUrl(
-  "Hi Wingschool! I'd like to register for WingsQuest 2026.",
-);
+export type WingsQuestApplication = {
+  student: string;
+  grade: string;
+  school: string;
+  city: string;
+  phone: string;
+};
 
-// Swap for the registration form URL once it exists.
-export const registerMailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
-  "WingsQuest 2026 Application",
-)}&body=${encodeURIComponent(
-  "Student name:\nClass (6–10):\nSchool:\nCity:\nParent's phone:\n",
-)}`;
+function applicationLines(app: WingsQuestApplication) {
+  return [
+    `Student: ${app.student}`,
+    `Class: ${app.grade}`,
+    `School: ${app.school}`,
+    `City: ${app.city}`,
+    `Parent's WhatsApp: ${app.phone}`,
+  ];
+}
+
+export function applicationWhatsappUrl(app: WingsQuestApplication) {
+  return whatsappUrl(
+    ["Hi Wingschool! I'd like to apply for WingsQuest 2026.", ...applicationLines(app)].join(
+      "\n",
+    ),
+  );
+}
+
+export function applicationMailto(app: WingsQuestApplication) {
+  return `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
+    "WingsQuest 2026 Application",
+  )}&body=${encodeURIComponent(applicationLines(app).join("\n"))}`;
+}

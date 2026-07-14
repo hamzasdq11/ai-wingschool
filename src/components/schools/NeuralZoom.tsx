@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-
-import { registerWhatsappUrl } from "../../lib/contact";
+import { Link } from "react-router-dom";
 
 const ACT1_END = 1.6;
 const ACT2_END = 5.2;
@@ -706,10 +705,8 @@ export function NeuralZoom() {
               </div>
 
               <div className="flex flex-col gap-4 lg:items-end">
-                <a
-                  href={registerWhatsappUrl}
-                  target="_blank"
-                  rel="noreferrer"
+                <Link
+                  to="/register"
                   className="inline-flex items-center justify-center gap-2 self-start rounded-full px-7 py-4 no-underline transition-transform hover:-translate-y-px lg:self-end"
                   style={{
                     background: "#ffffff",
@@ -721,7 +718,7 @@ export function NeuralZoom() {
                   }}
                 >
                   Register free before 15 Aug →
-                </a>
+                </Link>
                 <p
                   className="lg:text-right"
                   style={{
