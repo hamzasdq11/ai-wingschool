@@ -16,6 +16,7 @@ export type WingsQuestApplication = {
   student: string;
   grade: string;
   school: string;
+  board: string;
   city: string;
   email: string;
   phone?: string;
@@ -26,6 +27,7 @@ function applicationLines(app: WingsQuestApplication) {
     `Student: ${app.student}`,
     `Class: ${app.grade}`,
     `School: ${app.school}`,
+    `Board: ${app.board}`,
     `City: ${app.city}`,
     `Parent's email: ${app.email}`,
     ...(app.phone ? [`Parent's WhatsApp: ${app.phone}`] : []),

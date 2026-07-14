@@ -23,7 +23,7 @@ const nextSteps = [
   {
     number: "02",
     title: "We confirm your entry",
-    desc: "Your entry confirmation and Challenge Day details arrive at the parent's email, with everything you need to be ready.",
+    desc: "Your entry confirmation arrives at the parent's email, with everything you need to be ready.",
   },
   {
     number: "03",
@@ -32,9 +32,26 @@ const nextSteps = [
   },
 ];
 
-type FieldName = "student" | "grade" | "city" | "school" | "email" | "phone";
+type FieldName =
+  | "student"
+  | "grade"
+  | "city"
+  | "school"
+  | "board"
+  | "email"
+  | "phone";
 
-const FIELD_ORDER: FieldName[] = ["student", "grade", "city", "school", "email", "phone"];
+const FIELD_ORDER: FieldName[] = [
+  "student",
+  "grade",
+  "city",
+  "school",
+  "board",
+  "email",
+  "phone",
+];
+
+const BOARDS = ["CBSE", "ICSE", "State Board", "IB", "Cambridge (IGCSE)", "Other"];
 
 const SPARK_MAX = 180;
 
@@ -71,6 +88,7 @@ export function Register() {
   const [grade, setGrade] = useState("");
   const [city, setCity] = useState("");
   const [school, setSchool] = useState("");
+  const [board, setBoard] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState(""); // 10 digits, unformatted; optional
   const [spark, setSpark] = useState("");
@@ -87,12 +105,21 @@ export function Register() {
     grade: useRef<HTMLSelectElement>(null),
     city: useRef<HTMLInputElement>(null),
     school: useRef<HTMLInputElement>(null),
+    board: useRef<HTMLSelectElement>(null),
     email: useRef<HTMLInputElement>(null),
     phone: useRef<HTMLInputElement>(null),
   };
   const ids = useId();
 
-  const values: Record<FieldName, string> = { student, grade, city, school, email, phone };
+  const values: Record<FieldName, string> = {
+    student,
+    grade,
+    city,
+    school,
+    board,
+    email,
+    phone,
+  };
 
   const validate = (field: FieldName, value: string): string => {
     switch (field) {
@@ -104,6 +131,8 @@ export function Register() {
         return value.trim() ? "" : "Enter a city.";
       case "school":
         return value.trim() ? "" : "Enter the school name.";
+      case "board":
+        return value ? "" : "Select a board.";
       case "email":
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim())
           ? ""
@@ -132,6 +161,7 @@ export function Register() {
     student: student.trim(),
     grade,
     school: school.trim(),
+    board,
     city: city.trim(),
     email: email.trim(),
     phone,
@@ -328,7 +358,7 @@ export function Register() {
                   </h2>
                   <p className="ui-body mt-4">
                     Your application is with us. Your entry confirmation and
-                    Challenge Day details will arrive at{" "}
+                    all official WingsQuest communications will arrive at{" "}
                     <b style={{ color: "#0a0a0a", fontWeight: 500 }}>
                       {application.email}
                     </b>{" "}
@@ -375,7 +405,7 @@ export function Register() {
                       Apply to WingsQuest 2026
                     </p>
                     <p className="ui-caption mt-1">
-                      Applications close 15 August · Challenge Day 28 August
+                      Applications close 15 August
                     </p>
                   </div>
 
@@ -452,25 +482,52 @@ export function Register() {
                       </div>
                     </div>
 
-                    <div>
-                      <label htmlFor={`${ids}-school`} style={fieldLabelStyle}>
-                        School
-                      </label>
-                      <input
-                        id={`${ids}-school`}
-                        ref={fieldRefs.school as React.RefObject<HTMLInputElement>}
-                        type="text"
-                        value={school}
-                        onChange={(e) => {
-                          setSchool(e.target.value);
-                          handleChange("school", e.target.value);
-                        }}
-                        onBlur={() => handleBlur("school")}
-                        placeholder="Enter school name"
-                        className={`ui-input w-full${errors.school ? " ui-input-error" : ""}`}
-                        {...errorProps("school")}
-                      />
-                      {fieldError("school")}
+                    <div className="grid gap-4 sm:grid-cols-2">
+                      <div>
+                        <label htmlFor={`${ids}-school`} style={fieldLabelStyle}>
+                          School
+                        </label>
+                        <input
+                          id={`${ids}-school`}
+                          ref={fieldRefs.school as React.RefObject<HTMLInputElement>}
+                          type="text"
+                          value={school}
+                          onChange={(e) => {
+                            setSchool(e.target.value);
+                            handleChange("school", e.target.value);
+                          }}
+                          onBlur={() => handleBlur("school")}
+                          placeholder="Enter school name"
+                          className={`ui-input w-full${errors.school ? " ui-input-error" : ""}`}
+                          {...errorProps("school")}
+                        />
+                        {fieldError("school")}
+                      </div>
+                      <div>
+                        <label htmlFor={`${ids}-board`} style={fieldLabelStyle}>
+                          Board
+                        </label>
+                        <select
+                          id={`${ids}-board`}
+                          ref={fieldRefs.board as React.RefObject<HTMLSelectElement>}
+                          value={board}
+                          onChange={(e) => {
+                            setBoard(e.target.value);
+                            handleChange("board", e.target.value);
+                          }}
+                          onBlur={() => handleBlur("board")}
+                          className={`ui-input w-full${errors.board ? " ui-input-error" : ""}`}
+                          {...errorProps("board")}
+                        >
+                          <option value="">Select board</option>
+                          {BOARDS.map((b) => (
+                            <option key={b} value={b}>
+                              {b}
+                            </option>
+                          ))}
+                        </select>
+                        {fieldError("board")}
+                      </div>
                     </div>
 
                     <div>
@@ -500,7 +557,7 @@ export function Register() {
                   </div>
 
                   <div className="mt-7 border-t border-black/8 pt-6">
-                    <p style={sectionLabelStyle}>Challenge Day contact</p>
+                    <p style={sectionLabelStyle}>Official contact</p>
                     <div className="mt-4 flex flex-col gap-4">
                       <div>
                         <label htmlFor={`${ids}-email`} style={fieldLabelStyle}>
@@ -523,8 +580,8 @@ export function Register() {
                         />
                         {fieldError("email")}
                         <p className="ui-caption mt-2">
-                          Challenge Day details and entry confirmation will be
-                          sent here.
+                          Official WingsQuest communications and details will
+                          be sent here.
                         </p>
                       </div>
 
