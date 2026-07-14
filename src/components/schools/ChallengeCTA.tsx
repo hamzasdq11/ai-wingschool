@@ -5,7 +5,7 @@ export function ChallengeCTA() {
   return (
     <section id="register" className="section-shell relative z-10">
       <Reveal
-        className="relative overflow-hidden rounded-[2.5rem] px-8 py-20 text-center sm:px-14 lg:py-28"
+        className="relative overflow-hidden rounded-[2.5rem] px-8 py-12 text-center sm:px-14 lg:py-16"
         style={{
           background:
             "radial-gradient(circle at 82% 8%, rgba(151, 178, 255, 0.35), transparent 42%), radial-gradient(circle at 4% 92%, rgba(5, 8, 28, 0.55), transparent 55%), linear-gradient(135deg, #1a3fd6 0%, #1335b8 46%, #0c2489 100%)",
@@ -24,10 +24,10 @@ export function ChallengeCTA() {
 
         <span
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 -bottom-8 select-none text-center leading-none"
+          className="pointer-events-none absolute inset-x-0 -bottom-6 select-none text-center leading-none"
           style={{
             fontFamily: "var(--font-display)",
-            fontSize: "clamp(9rem, 26vw, 24rem)",
+            fontSize: "clamp(5rem, 14vw, 12rem)",
             fontWeight: 300,
             letterSpacing: "-0.04em",
             color: "transparent",
@@ -66,7 +66,7 @@ export function ChallengeCTA() {
           </span>
 
           <h2
-            className="mx-auto mt-8"
+            className="mx-auto mt-6"
             style={{
               fontFamily: "var(--font-display)",
               fontSize: "clamp(2rem, 4.2vw, 4rem)",
@@ -89,7 +89,7 @@ export function ChallengeCTA() {
             </span>
           </h2>
 
-          <div className="mt-10">
+          <div className="mt-8">
             <a
               href={registerMailto}
               className="group inline-flex items-center justify-center gap-2.5 rounded-full px-10 py-5 no-underline transition-transform duration-200 hover:-translate-y-0.5"
@@ -114,7 +114,7 @@ export function ChallengeCTA() {
           </div>
 
           <p
-            className="mx-auto mt-7 flex flex-wrap items-center justify-center gap-x-3 gap-y-1"
+            className="mx-auto mt-5 flex flex-wrap items-center justify-center gap-x-3 gap-y-1"
             style={{
               fontFamily: "var(--font-body)",
               fontSize: "0.78rem",
