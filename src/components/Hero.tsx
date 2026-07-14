@@ -88,7 +88,7 @@ export function Hero() {
 
           <DemoForm
             variant="compact"
-            buttonLabel="Book a Demo →"
+            buttonLabel="Book now →"
             className="ui-card animate-fade-rise-delay-3 mt-9 flex flex-col gap-3 rounded-[1.5rem] p-5 sm:p-6"
             header={
               <div>
@@ -104,7 +104,7 @@ export function Hero() {
                   Talk to an IIT/IIM mentor
                 </p>
                 <p className="ui-caption mt-1">
-                  A free 20-minute conversation, 1-on-1
+                  A 20-minute conversation, 1-on-1
                 </p>
               </div>
             }

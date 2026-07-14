@@ -70,7 +70,7 @@ export function DemoForm({
         <>
           <div className="grid gap-3 sm:grid-cols-2">
             <label htmlFor={nameId} className="sr-only">
-              Parent name
+              Name
             </label>
             <input
               id={nameId}
@@ -78,7 +78,7 @@ export function DemoForm({
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="Parent name"
+              placeholder="Name"
               className="ui-input"
             />
             <label htmlFor={phoneId} className="sr-only">
@@ -121,7 +121,7 @@ export function DemoForm({
       ) : (
         <>
           <label htmlFor={nameId} className="sr-only">
-            Parent name
+            Name
           </label>
           <input
             id={nameId}
@@ -129,7 +129,7 @@ export function DemoForm({
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="Parent name"
+            placeholder="Name"
             className="ui-input"
           />
           <label htmlFor={phoneId} className="sr-only">
