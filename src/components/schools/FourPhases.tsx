@@ -15,8 +15,8 @@ const phases: Phase[] = [
         The <em className="display-script">Challenge.</em>
       </>
     ),
-    desc: "A one-hour online aptitude assessment for Class 6–10. It can't be crammed and needs no coding — it measures how you think.",
-    highlight: "Online · Assessment Day 28 Aug",
+    desc: "A one-hour online aptitude challenge for Class 6–10. It can't be crammed and needs no coding — it measures how you think.",
+    highlight: "Online · Challenge Day 28 Aug",
   },
   {
     number: "02",
@@ -69,7 +69,7 @@ export function FourPhases() {
       <Reveal className="section-copy">
         <p className="section-kicker mb-4">WingsQuest 2026 · How it works</p>
         <h2 className="section-heading mb-6">
-          One assessment. Four phases. <em>One stage.</em>
+          One challenge. Four phases. <em>One stage.</em>
         </h2>
         <p className="section-body mb-14">
           From a one-hour online challenge to your project on a public stage,

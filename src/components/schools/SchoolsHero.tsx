@@ -4,7 +4,7 @@ const journey = [
   {
     number: "01",
     title: "The Challenge",
-    desc: "A one-hour online assessment of reasoning, curiosity, and builder instinct — calibrated by grade.",
+    desc: "A one-hour online challenge of reasoning, curiosity, and builder instinct — calibrated by grade.",
   },
   {
     number: "02",
@@ -49,7 +49,7 @@ export function SchoolsHero() {
                 className="h-1.5 w-1.5 rounded-full"
                 style={{ background: "#ffffff" }}
               />
-              The National AI Aptitude Assessment · Class 6–10
+              All India AI Aptitude Challenge · Class 6–10
             </span>
 
             <h2
@@ -83,7 +83,7 @@ export function SchoolsHero() {
             >
               You&apos;ve been using AI for years. Now find out if you&apos;re
               built to <b style={{ color: "#ffffff" }}>build</b> with it. One
-              hour of assessment decides who earns a seat in the Builder
+              hour of the Challenge decides who earns a seat in the Builder
               Program — and a place on a public stage with a real AI project
               of your own.
             </p>
@@ -111,7 +111,7 @@ export function SchoolsHero() {
                   color: "rgba(255,255,255,0.65)",
                 }}
               >
-                Applications close 15 August · Assessment Day 28 August.
+                Applications close 15 August · Challenge Day 28 August.
                 <br />
                 Builder Program seats are awarded on merit alone.
               </p>
