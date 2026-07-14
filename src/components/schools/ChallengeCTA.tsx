@@ -62,7 +62,7 @@ export function ChallengeCTA() {
                 style={{ background: "#ffffff" }}
               />
             </span>
-            WingsQuest 2026 · Selective admission · Class 6–10
+            WingsQuest 2026 · Class 6–10
           </span>
 
           <h2
@@ -123,10 +123,6 @@ export function ChallengeCTA() {
             }}
           >
             <span>Applications close 15 August</span>
-            <span aria-hidden style={{ color: "rgba(255,255,255,0.4)" }}>
-              ·
-            </span>
-            <span>Selection by Challenge score alone</span>
           </p>
         </div>
       </Reveal>
