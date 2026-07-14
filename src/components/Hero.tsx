@@ -13,7 +13,6 @@ const proofChips = [
 
 export function Hero() {
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
     const mql = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -24,33 +23,22 @@ export function Hero() {
     return () => mql.removeEventListener("change", handler);
   }, []);
 
-  useEffect(() => {
-    const mql = window.matchMedia("(min-width: 1024px)");
-    setIsDesktop(mql.matches);
-    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
-    mql.addEventListener("change", handler);
-    return () => mql.removeEventListener("change", handler);
-  }, []);
-
   return (
     <section className="relative z-10 overflow-hidden">
       <div className="absolute inset-0 -z-30 bg-[radial-gradient(circle_at_72%_18%,rgba(19,53,184,0.10),transparent_30%),radial-gradient(circle_at_18%_82%,rgba(19,53,184,0.05),transparent_28%)]" />
-      {isDesktop && (
-        <img
-          src={heroImage}
-          alt=""
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 -z-20 h-full w-full object-cover"
-          style={{
-            opacity: 0.3,
-            objectPosition: "center 40%",
-            maskImage:
-              "linear-gradient(180deg, black 0%, black 58%, transparent 100%)",
-            WebkitMaskImage:
-              "linear-gradient(180deg, black 0%, black 58%, transparent 100%)",
-          }}
-        />
-      )}
+      <img
+        src={heroImage}
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 -z-20 h-[26rem] w-full object-cover opacity-[0.22] sm:h-[32rem] lg:inset-0 lg:h-full lg:opacity-30"
+        style={{
+          objectPosition: "center 40%",
+          maskImage:
+            "linear-gradient(180deg, black 0%, black 58%, transparent 100%)",
+          WebkitMaskImage:
+            "linear-gradient(180deg, black 0%, black 58%, transparent 100%)",
+        }}
+      />
       <div
         className="pointer-events-none absolute inset-0 -z-10"
         style={{
