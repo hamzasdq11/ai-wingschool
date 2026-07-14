@@ -61,7 +61,7 @@ export function ChallengeCTA() {
             className="h-1.5 w-1.5 rounded-full"
             style={{ background: "#ffffff" }}
           />
-          WingsQuest 2026 · Free · Class 6–10
+          WingsQuest 2026 · Selective admission · Class 6–10
         </span>
 
         <h2
@@ -80,7 +80,7 @@ export function ChallengeCTA() {
             className="display-script"
             style={{ color: "rgba(255,255,255,0.95)" }}
           >
-            Zero excuses.
+            One stage.
           </em>
         </h2>
 
@@ -93,12 +93,11 @@ export function ChallengeCTA() {
             color: "rgba(255,255,255,0.8)",
           }}
         >
-          It&apos;s free, it&apos;s online, and there&apos;s nothing to prepare.
-          The worst that can happen is a certificate and a scorecard. The best?
-          A scholarship, a real AI project, and a public stage.{" "}
-          <b style={{ color: "#ffffff" }}>
-            The only way to lose is to not take the hour.
-          </b>
+          One hour of the Challenge measures how you think. Score in the top
+          band and you earn a seat in the AI Builder Program, a merit
+          scholarship of up to 50%, and your project on the Expo Day stage in
+          front of an industry and IIT/IIM panel.{" "}
+          <b style={{ color: "#ffffff" }}>The seat is earned, not bought.</b>
         </p>
 
         {left.expired ? (
@@ -113,7 +112,7 @@ export function ChallengeCTA() {
               color: "rgba(255,255,255,0.85)",
             }}
           >
-            Registration for 2026 has closed · Challenge Day is 28 August
+            Applications for 2026 have closed · Challenge Day is 28 August
           </p>
         ) : (
           <>
@@ -128,7 +127,7 @@ export function ChallengeCTA() {
                 color: "rgba(255,255,255,0.55)",
               }}
             >
-              Registration closes 15 August — that&apos;s
+              Applications close 15 August — that&apos;s
             </p>
             <div className="mt-4 flex items-start justify-center gap-3 sm:gap-4">
               {units.map((u) => (
@@ -187,7 +186,7 @@ export function ChallengeCTA() {
               boxShadow: "0 10px 24px rgba(5, 8, 28, 0.25)",
             }}
           >
-            Register free for the Challenge →
+            Apply for the Challenge →
           </a>
         </div>
 
@@ -200,8 +199,8 @@ export function ChallengeCTA() {
             color: "rgba(255,255,255,0.65)",
           }}
         >
-          Takes two minutes · Challenge Day 28 August · Every participant gets
-          a certificate + scorecard
+          Application takes two minutes · Challenge Day 28 August · Results
+          with a private scorecard
         </p>
       </Reveal>
     </section>
