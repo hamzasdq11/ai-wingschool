@@ -6,7 +6,7 @@ import { DemoForm } from "./DemoForm";
 
 const proofChips = [
   { value: "IIT/IIM", label: "Mentors" },
-  { value: "4.9", label: "Parent rating" },
+  { value: "Live", label: "Not recorded" },
   { value: "Small cohorts", label: "By design" },
 ];
 
