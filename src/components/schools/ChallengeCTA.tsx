@@ -186,7 +186,7 @@ export function ChallengeCTA() {
               boxShadow: "0 10px 24px rgba(5, 8, 28, 0.25)",
             }}
           >
-            Apply for the Challenge →
+            Apply to WingsQuest 2026 →
           </a>
         </div>
 
