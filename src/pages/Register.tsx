@@ -3,8 +3,9 @@ import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { Reveal } from "../components/Reveal";
 import {
-  applicationMailto,
   applicationWhatsappUrl,
+  CONTACT_EMAIL,
+  WHATSAPP_URL,
   type WingsQuestApplication,
 } from "../lib/contact";
 
@@ -17,13 +18,13 @@ const facts = [
 const nextSteps = [
   {
     number: "01",
-    title: "Send the WhatsApp message",
-    desc: "Submitting opens WhatsApp with your application filled in. Press send — that's your application in.",
+    title: "Submit the form",
+    desc: "Your application reaches our team the moment you hit submit — nothing else to do.",
   },
   {
     number: "02",
     title: "We confirm your slot",
-    desc: "Our team replies on WhatsApp with your Challenge Day slot and everything you need to be ready.",
+    desc: "Our team messages the parent's WhatsApp with your Challenge Day slot and everything you need to be ready.",
   },
   {
     number: "03",
@@ -39,6 +40,8 @@ export function Register() {
   const [city, setCity] = useState("");
   const [phone, setPhone] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [failed, setFailed] = useState(false);
 
   const cardRef = useRef<HTMLDivElement>(null);
   const ids = useId();
@@ -51,13 +54,26 @@ export function Register() {
     phone: phone.trim(),
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    window.open(applicationWhatsappUrl(application), "_blank", "noopener,noreferrer");
-    setSubmitted(true);
-    requestAnimationFrame(() => {
-      cardRef.current?.scrollIntoView({ block: "nearest" });
-    });
+    setSending(true);
+    setFailed(false);
+    try {
+      const res = await fetch("/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(application),
+      });
+      if (!res.ok) throw new Error(`status ${res.status}`);
+      setSubmitted(true);
+      requestAnimationFrame(() => {
+        cardRef.current?.scrollIntoView({ block: "nearest" });
+      });
+    } catch {
+      setFailed(true);
+    } finally {
+      setSending(false);
+    }
   };
 
   const firstName = student.trim().split(" ")[0] ?? "";
@@ -190,7 +206,7 @@ export function Register() {
                       textTransform: "uppercase",
                     }}
                   >
-                    One step left
+                    Application received
                   </span>
                   <h2
                     className="mt-5"
@@ -203,33 +219,33 @@ export function Register() {
                       color: "#0a0a0a",
                     }}
                   >
-                    {firstName ? `Almost in, ${firstName}.` : "Almost in."}
+                    {firstName ? `You're in, ${firstName}.` : "You're in."}
                   </h2>
                   <p className="ui-body mt-4">
-                    WhatsApp just opened with your application filled in —
-                    press <b style={{ color: "#0a0a0a" }}>send</b> there and
-                    you're registered. We'll reply with your Challenge Day
-                    slot.
+                    Your application is with us. We'll confirm your Challenge
+                    Day slot on the parent's WhatsApp number you shared —
+                    keep an eye on it.
                   </p>
-                  <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                  <p className="ui-caption mt-6">
+                    Questions in the meantime?{" "}
                     <a
-                      href={applicationWhatsappUrl(application)}
+                      href={WHATSAPP_URL}
                       target="_blank"
                       rel="noreferrer"
-                      className="ui-button"
+                      className="underline"
+                      style={{ color: "#1335b8" }}
                     >
-                      Reopen WhatsApp →
-                    </a>
+                      WhatsApp us
+                    </a>{" "}
+                    or write to{" "}
                     <a
-                      href={applicationMailto(application)}
-                      className="ui-button-secondary"
+                      href={`mailto:${CONTACT_EMAIL}`}
+                      className="underline"
+                      style={{ color: "#1335b8" }}
                     >
-                      Send by email instead
+                      {CONTACT_EMAIL}
                     </a>
-                  </div>
-                  <p className="ui-caption mt-5">
-                    Sent it? You're done — keep an eye on WhatsApp for your
-                    slot confirmation.
+                    .
                   </p>
                 </div>
               ) : (
@@ -328,12 +344,26 @@ export function Register() {
                     className="ui-input"
                   />
 
-                  <button type="submit" className="ui-button mt-2">
-                    Submit application →
+                  <button type="submit" disabled={sending} className="ui-button mt-2">
+                    {sending ? "Submitting…" : "Submit application →"}
                   </button>
+                  {failed && (
+                    <p className="ui-caption" style={{ color: "#b3261e" }}>
+                      Couldn&apos;t submit just now — try again, or{" "}
+                      <a
+                        href={applicationWhatsappUrl(application)}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="underline"
+                      >
+                        send your application on WhatsApp
+                      </a>
+                      .
+                    </p>
+                  )}
                   <p className="ui-caption">
-                    No fee to sit the Challenge. Your application is sent to
-                    us on WhatsApp, and we confirm your slot there.
+                    No fee to sit the Challenge. We confirm your slot on the
+                    parent's WhatsApp number.
                   </p>
                 </form>
               )}

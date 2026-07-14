@@ -37,9 +37,3 @@ export function applicationWhatsappUrl(app: WingsQuestApplication) {
     ),
   );
 }
-
-export function applicationMailto(app: WingsQuestApplication) {
-  return `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
-    "WingsQuest 2026 Application",
-  )}&body=${encodeURIComponent(applicationLines(app).join("\n"))}`;
-}

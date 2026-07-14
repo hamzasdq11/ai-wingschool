@@ -71,3 +71,24 @@ export default defineConfig([
   },
 ])
 ```
+
+## Backend (form submissions → CSV)
+
+The demo and WingsQuest registration forms POST to a small Express server
+(`server/index.mjs`) that appends each submission to a CSV file:
+
+- `POST /api/demo` → `server/data/demo-requests.csv`
+- `POST /api/register` → `server/data/registrations.csv`
+
+Fields are quoted/escaped and spreadsheet-formula injection is neutralized,
+so the files open safely in Excel/Sheets. `server/data/` is gitignored.
+Set `DATA_DIR` to store the CSVs elsewhere, `PORT` to change the port
+(default 8787).
+
+**Development:** run `npm run server` alongside `npm run dev` — Vite
+proxies `/api` to the server.
+
+**Production:** `npm run start` builds the site and serves it (with SPA
+fallback) and the API from one Node process. Note: this needs a Node host
+(Render, Railway, a VPS, …) — static hosting alone (e.g. Netlify) won't
+run the API or store CSVs.

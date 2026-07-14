@@ -38,23 +38,60 @@ export function DemoForm({
   const [phone, setPhone] = useState("");
   const [grade, setGrade] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [failed, setFailed] = useState(false);
 
   const ids = useId();
   const nameId = `${ids}-name`;
   const phoneId = `${ids}-phone`;
   const gradeId = `${ids}-grade`;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const message = [
+    setSending(true);
+    setFailed(false);
+    try {
+      const res = await fetch("/api/demo", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: name.trim(),
+          phone: phone.trim(),
+          grade,
+        }),
+      });
+      if (!res.ok) throw new Error(`status ${res.status}`);
+      setSubmitted(true);
+    } catch {
+      setFailed(true);
+    } finally {
+      setSending(false);
+    }
+  };
+
+  const fallbackWhatsapp = whatsappUrl(
+    [
       "Hi Wingschool! I'd like to book a demo call.",
       `Name: ${name.trim()}`,
       `WhatsApp: ${phone.trim()}`,
       `Class: ${grade}`,
-    ].join("\n");
-    window.open(whatsappUrl(message), "_blank", "noopener,noreferrer");
-    setSubmitted(true);
-  };
+    ].join("\n"),
+  );
+
+  const errorNote = failed ? (
+    <p className="ui-caption" style={{ color: "#b3261e" }}>
+      Couldn&apos;t send just now — try again, or{" "}
+      <a
+        href={fallbackWhatsapp}
+        target="_blank"
+        rel="noreferrer"
+        className="underline"
+      >
+        message us on WhatsApp
+      </a>
+      .
+    </p>
+  ) : null;
 
   const firstName = name.split(" ")[0] ?? "";
 
@@ -126,10 +163,11 @@ export function DemoForm({
                 </option>
               ))}
             </select>
-            <button type="submit" className="ui-button shrink-0">
-              {buttonLabel}
+            <button type="submit" disabled={sending} className="ui-button shrink-0">
+              {sending ? "Sending…" : buttonLabel}
             </button>
           </div>
+          {errorNote}
           {formFootnote}
         </>
       ) : (
@@ -178,9 +216,10 @@ export function DemoForm({
               </option>
             ))}
           </select>
-          <button type="submit" className="ui-button mt-2">
-            {buttonLabel}
+          <button type="submit" disabled={sending} className="ui-button mt-2">
+            {sending ? "Sending…" : buttonLabel}
           </button>
+          {errorNote}
           {formFootnote}
         </>
       )}
