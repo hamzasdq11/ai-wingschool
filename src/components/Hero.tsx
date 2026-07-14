@@ -88,7 +88,6 @@ export function Hero() {
 
           <DemoForm
             variant="compact"
-            buttonLabel="Book now →"
             className="ui-card animate-fade-rise-delay-3 mt-9 flex flex-col gap-3 rounded-[1.5rem] p-5 sm:p-6"
             header={
               <div>

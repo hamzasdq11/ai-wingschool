@@ -25,7 +25,7 @@ export function DemoForm({
   variant = "stacked",
   className,
   header,
-  buttonLabel = "Book Free Demo →",
+  buttonLabel = "Book now →",
   formFootnote,
   successMessage,
   successFootnote,
