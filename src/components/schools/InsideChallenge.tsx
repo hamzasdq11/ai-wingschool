@@ -150,7 +150,7 @@ export function InsideChallenge() {
                     type="button"
                     disabled={answered}
                     onClick={() => setPicked(opt)}
-                    className="rounded-full px-6 py-2.5 transition-colors"
+                    className="rounded-full px-6 py-2.5 transition-colors max-sm:flex-1 max-sm:px-2"
                     style={{
                       border: showCorrect
                         ? "1px solid #34d399"
