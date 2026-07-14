@@ -5,26 +5,26 @@ import { Reveal } from "../components/Reveal";
 import { applicationMailto, CONTACT_EMAIL } from "../lib/contact";
 
 const facts = [
-  { value: "Class 6–10", label: "calibrated by grade" },
-  { value: "1 hour", label: "online, from home" },
-  { value: "28 Aug", label: "Challenge Day" },
+  { value: "Classes 6–10", label: "Who can enter" },
+  { value: "60 minutes", label: "Stage One" },
+  { value: "28 August", label: "Challenge Day" },
 ];
 
-const nextSteps = [
+const journey = [
   {
     number: "01",
-    title: "Put your name forward",
-    desc: "Your application reaches our team the moment you enter — nothing else to do.",
+    title: "Enter WingsQuest",
+    desc: "Put your name forward for WingsQuest 2026. Your official entry confirmation will follow by email.",
   },
   {
     number: "02",
-    title: "We confirm your entry",
-    desc: "Your entry confirmation arrives by email, with everything you need to be ready.",
+    title: "Prepare to think",
+    desc: "No syllabus to revise. We'll share everything you need before Challenge Day.",
   },
   {
     number: "03",
-    title: "Challenge Day · 28 August",
-    desc: "One hour, from home. Score high and earn your seat in the AI Builder Program — top 10–20% add a merit scholarship.",
+    title: "Take on Stage One",
+    desc: "Sixty minutes of reasoning, curiosity and builder instinct. The strongest participants advance.",
   },
 ];
 
@@ -213,30 +213,32 @@ export function Register() {
               WingsQuest 2026 · All India AI Aptitude Challenge · Class 6–10
             </p>
             <h1 className="section-heading mb-6">
-              Your seat starts with{" "}
-              <em className="display-script">one application.</em>
+              See how far your{" "}
+              <em className="display-script">thinking</em> can take you.
             </h1>
-            <p className="section-body max-w-xl">
-              One hour of reasoning, curiosity, and builder instinct — nothing
-              to prepare, no coding required. Put your name forward, and your
-              entry confirmation will arrive by email.
+            <p className="section-body max-w-lg">
+              WingsQuest is a 60-minute challenge designed to see how you
+              reason, question and build. No syllabus. No memorised answers.
+              Just the way you think.
             </p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3">
+            <div className="mt-9 grid gap-y-5 sm:grid-cols-3 sm:gap-x-6">
               {facts.map((f) => (
-                <div key={f.label} className="flex items-baseline gap-2">
-                  <span
+                <div key={f.label}>
+                  <p
                     style={{
                       fontFamily: "var(--font-display)",
-                      fontSize: "1.35rem",
+                      fontSize: "1.3rem",
                       fontWeight: 500,
                       color: "#0a0a0a",
                       letterSpacing: "-0.02em",
+                      lineHeight: 1.1,
+                      whiteSpace: "nowrap",
                     }}
                   >
                     {f.value}
-                  </span>
-                  <span className="ui-caption">{f.label}</span>
+                  </p>
+                  <p className="ui-caption mt-1.5">{f.label}</p>
                 </div>
               ))}
             </div>
@@ -246,50 +248,58 @@ export function Register() {
             delay={60}
             className="order-3 lg:order-none lg:col-start-1 lg:row-start-2"
           >
-            <div className="flex flex-col gap-7 border-t border-black/8 pt-10">
-              <p className="ui-label" style={{ color: "#1335b8" }}>
-                What happens next
+            <div className="border-t border-black/8 pt-6">
+              <p className="ui-label mb-6" style={{ color: "#1335b8" }}>
+                Your WingsQuest journey
               </p>
-              {nextSteps.map((step, idx) => (
-                <div
-                  key={step.number}
-                  className="relative grid grid-cols-[44px_1fr] items-start gap-4"
-                >
-                  {idx < nextSteps.length - 1 && (
-                    <span
-                      aria-hidden
-                      className="absolute -bottom-7 left-[21px] top-11 w-px"
-                      style={{ background: "rgba(15,15,15,0.12)" }}
-                    />
-                  )}
-                  <span
-                    className="flex h-11 w-11 items-center justify-center rounded-full"
-                    style={{
-                      border: "1px solid rgba(15,15,15,0.14)",
-                      background: "#ffffff",
-                      fontFamily: "var(--font-display)",
-                      fontSize: "0.85rem",
-                      color: "#1335b8",
-                    }}
+              <div className="flex flex-col gap-6">
+                {journey.map((step, idx) => (
+                  <div
+                    key={step.number}
+                    className="relative grid grid-cols-[44px_1fr] items-start gap-4"
                   >
-                    {step.number}
-                  </span>
-                  <div>
-                    <p
+                    {idx < journey.length - 1 && (
+                      <span
+                        aria-hidden
+                        className="absolute -bottom-6 left-[21.5px] top-11 w-px"
+                        style={{ background: "rgba(15,15,15,0.12)" }}
+                      />
+                    )}
+                    <span
+                      className="flex h-11 w-11 items-center justify-center rounded-full"
                       style={{
+                        border: "1px solid rgba(15,15,15,0.14)",
+                        background: "#ffffff",
                         fontFamily: "var(--font-display)",
-                        fontSize: "1.1rem",
-                        fontWeight: 500,
-                        letterSpacing: "-0.02em",
-                        color: "#0a0a0a",
+                        fontSize: "0.85rem",
+                        color: "#1335b8",
                       }}
                     >
-                      {step.title}
-                    </p>
-                    <p className="ui-body-sm mt-1.5">{step.desc}</p>
+                      {step.number}
+                    </span>
+                    <div className="pt-1">
+                      <p
+                        style={{
+                          fontFamily: "var(--font-display)",
+                          fontSize: "1.2rem",
+                          fontWeight: 500,
+                          letterSpacing: "-0.02em",
+                          lineHeight: 1.15,
+                          color: "#0a0a0a",
+                        }}
+                      >
+                        {step.title}
+                      </p>
+                      <p
+                        className="ui-body-sm mt-1.5 max-w-sm"
+                        style={{ color: "rgba(15,15,15,0.55)" }}
+                      >
+                        {step.desc}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </Reveal>
 
