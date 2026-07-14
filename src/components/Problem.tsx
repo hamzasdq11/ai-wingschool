@@ -41,10 +41,14 @@ const statements: Statement[] = [
 ];
 
 function OutlinedNumeral({ children }: { children: React.ReactNode }) {
+  // Hanken Grotesk's "1" and "2" have self-overlapping contours, so a bare
+  // text-stroke draws leak lines inside the glyph. The overlay re-fills the
+  // glyph in the page background color to mask them, leaving only the outer
+  // half of the (doubled) stroke visible.
   return (
     <span
       aria-hidden
-      className="select-none"
+      className="relative select-none"
       style={{
         fontFamily: "var(--font-display)",
         fontSize: "clamp(5rem, 10vw, 8.5rem)",
@@ -52,10 +56,16 @@ function OutlinedNumeral({ children }: { children: React.ReactNode }) {
         lineHeight: 0.9,
         letterSpacing: "-0.05em",
         color: "transparent",
-        WebkitTextStroke: "1.5px rgba(19, 53, 184, 0.4)",
+        WebkitTextStroke: "3px rgba(19, 53, 184, 0.4)",
       }}
     >
       {children}
+      <span
+        className="absolute inset-0"
+        style={{ color: "#f4f3ee", WebkitTextStroke: "0" }}
+      >
+        {children}
+      </span>
     </span>
   );
 }
