@@ -66,27 +66,43 @@ export function ChallengeCTA() {
           </span>
 
           <h2
-            className="mx-auto mt-8 whitespace-nowrap"
+            className="mx-auto mt-8"
             style={{
               fontFamily: "var(--font-display)",
-              fontSize: "clamp(1rem, 4.3vw, 4.5rem)",
+              fontSize: "clamp(2rem, 4.2vw, 4rem)",
               fontWeight: 400,
-              lineHeight: 1.02,
+              lineHeight: 1.08,
               letterSpacing: "-0.045em",
               color: "#ffffff",
               textShadow: "0 2px 24px rgba(5, 8, 28, 0.35)",
             }}
           >
-            One hour. Four weeks.{" "}
-            <em
-              className="display-script"
-              style={{ color: "rgba(255,255,255,0.95)" }}
-            >
-              One stage.
-            </em>
+            <span className="block">One challenge. Four stages.</span>
+            <span className="block">
+              Built to find exceptional{" "}
+              <em
+                className="display-script whitespace-nowrap"
+                style={{ color: "rgba(255,255,255,0.95)" }}
+              >
+                young thinkers.
+              </em>
+            </span>
           </h2>
 
-          <div className="mt-11">
+          <p
+            className="mx-auto mt-6"
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: "0.95rem",
+              lineHeight: 1.6,
+              letterSpacing: "0.01em",
+              color: "rgba(255,255,255,0.75)",
+            }}
+          >
+            Admission by examination. Scholarships by merit.
+          </p>
+
+          <div className="mt-10">
             <a
               href={registerMailto}
               className="group inline-flex items-center justify-center gap-2.5 rounded-full px-10 py-5 no-underline transition-transform duration-200 hover:-translate-y-0.5"
@@ -119,11 +135,7 @@ export function ChallengeCTA() {
               color: "rgba(255,255,255,0.7)",
             }}
           >
-            <span>Application takes two minutes</span>
-            <span aria-hidden style={{ color: "rgba(255,255,255,0.4)" }}>
-              ·
-            </span>
-            <span>Closes 15 August</span>
+            <span>Applications close 15 August</span>
             <span aria-hidden style={{ color: "rgba(255,255,255,0.4)" }}>
               ·
             </span>
