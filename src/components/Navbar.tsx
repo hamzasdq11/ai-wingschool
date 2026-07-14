@@ -5,9 +5,7 @@ import { Logo } from "./Logo";
 type NavItem = { label: string; href: string };
 
 const defaultLinks: NavItem[] = [
-  // { label: "Curriculum", href: "#curriculum" }, // temporarily hidden — uncomment to restore
   { label: "Projects", href: "#projects" },
-  // { label: "Pricing", href: "#pricing" }, // temporarily hidden — uncomment to restore
   { label: "WingsQuest 2026", href: "#wingsquest" },
   { label: "FAQ", href: "#faq" },
 ];
