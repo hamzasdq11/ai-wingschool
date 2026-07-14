@@ -717,7 +717,7 @@ export function NeuralZoom() {
                     boxShadow: "0 10px 24px rgba(5, 8, 28, 0.25)",
                   }}
                 >
-                  Register free before 15 Aug →
+                  Register before 15 Aug →
                 </Link>
                 <p
                   className="lg:text-right"

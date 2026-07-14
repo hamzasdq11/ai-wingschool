@@ -55,24 +55,36 @@ app.post("/api/demo", async (req, res) => {
   }
 });
 
+// 10-digit Indian mobile, spaces/dashes tolerated, optional +91 prefix.
+const indianMobile = (v) => {
+  if (typeof v !== "string") return null;
+  const digits = v.replace(/[\s\-]/g, "").replace(/^\+91/, "");
+  return /^[6-9][0-9]{9}$/.test(digits) ? digits : null;
+};
+
 app.post("/api/register", async (req, res) => {
-  const { student, grade, school, city, phone: phoneNo } = req.body ?? {};
+  const { student, grade, school, city, phone: phoneNo, interest } = req.body ?? {};
+  const mobile = indianMobile(phoneNo);
+  const interestOk =
+    interest === undefined || (typeof interest === "string" && interest.trim().length <= 220);
   if (
     !text(student) ||
     !gradeIn(grade, ["6", "7", "8", "9", "10"]) ||
     !text(school) ||
     !text(city, 80) ||
-    !phone(phoneNo)
+    !mobile ||
+    !interestOk
   ) {
-    return res
-      .status(400)
-      .json({ error: "Invalid or missing fields: student, grade (6-10), school, city, phone." });
+    return res.status(400).json({
+      error:
+        "Invalid or missing fields: student, grade (6-10), school, city, phone (10-digit Indian mobile).",
+    });
   }
   try {
     await appendRow(
       "registrations.csv",
-      "timestamp,student,class,school,city,parent_whatsapp",
-      [new Date().toISOString(), student, grade, school, city, phoneNo],
+      "timestamp,student,class,school,city,parent_whatsapp,interest",
+      [new Date().toISOString(), student, grade, school, city, mobile, interest ?? ""],
     );
     res.json({ ok: true });
   } catch (err) {
