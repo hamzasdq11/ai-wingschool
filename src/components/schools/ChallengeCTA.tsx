@@ -34,39 +34,24 @@ export function ChallengeCTA() {
         </span>
 
         <h2
-          className="mx-auto mt-7 max-w-3xl"
+          className="mx-auto mt-7 whitespace-nowrap"
           style={{
             fontFamily: "var(--font-display)",
-            fontSize: "clamp(2.4rem, 5.5vw, 4.25rem)",
+            fontSize: "clamp(0.95rem, 4.1vw, 4rem)",
             fontWeight: 400,
             lineHeight: 1.02,
             letterSpacing: "-0.045em",
             color: "#ffffff",
           }}
         >
-          <span className="whitespace-nowrap">One hour.</span>{" "}
-          <span className="whitespace-nowrap">Four weeks.</span>{" "}
+          One hour. Four weeks.{" "}
           <em
-            className="display-script whitespace-nowrap"
+            className="display-script"
             style={{ color: "rgba(255,255,255,0.95)" }}
           >
             One stage.
           </em>
         </h2>
-
-        <p
-          className="mx-auto mt-6 max-w-xl"
-          style={{
-            fontFamily: "var(--font-body)",
-            fontSize: "1.02rem",
-            lineHeight: 1.7,
-            color: "rgba(255,255,255,0.8)",
-          }}
-        >
-          The whole arc of WingsQuest 2026, from a one-hour Challenge to your
-          own AI project on a public stage.{" "}
-          <b style={{ color: "#ffffff" }}>Every seat is earned, not bought.</b>
-        </p>
 
         <div className="mt-10">
           <a
