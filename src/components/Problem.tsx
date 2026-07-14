@@ -13,7 +13,7 @@ const statements: Statement[] = [
     label: "The shift",
     title: (
       <>
-        AI is the new <em className="display-script">electricity.</em>
+        AI is the new <em className="display-script">necessity.</em>
       </>
     ),
     desc: "It will touch every job your child applies for: medicine, design, law, engineering, the arts. Fluency is no longer optional.",
