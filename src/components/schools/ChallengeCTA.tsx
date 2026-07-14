@@ -1,7 +1,25 @@
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 
 import { Reveal } from "../Reveal";
 import { registerMailto } from "./contact";
+
+const arc = [
+  {
+    phase: "Phase 1 · One hour",
+    title: "The Challenge",
+    meta: "Online aptitude round · 28 August",
+  },
+  {
+    phase: "Phase 2 · Four weeks",
+    title: "AI Builder Program",
+    meta: "Live with IIT/IIM mentors · scholarships up to 50%",
+  },
+  {
+    phase: "The finale",
+    title: "Flagship Expo Day",
+    meta: "Your AI project, before an industry panel",
+  },
+];
 
 const deadline = new Date("2026-08-15T23:59:59+05:30").getTime();
 
@@ -75,9 +93,10 @@ export function ChallengeCTA() {
             color: "#ffffff",
           }}
         >
-          One hour. Four weeks.{" "}
+          <span className="whitespace-nowrap">One hour.</span>{" "}
+          <span className="whitespace-nowrap">Four weeks.</span>{" "}
           <em
-            className="display-script"
+            className="display-script whitespace-nowrap"
             style={{ color: "rgba(255,255,255,0.95)" }}
           >
             One stage.
@@ -93,13 +112,74 @@ export function ChallengeCTA() {
             color: "rgba(255,255,255,0.8)",
           }}
         >
-          WingsQuest 2026 is the whole arc: a one-hour Challenge that measures
-          how you think, a merit scholarship of up to 50% for top scorers,
-          four weeks of building with IIT/IIM mentors, and your own AI project
-          presented on the Flagship Expo Day stage in front of an industry
-          panel.{" "}
+          The whole arc of WingsQuest 2026, from a one-hour Challenge to your
+          own AI project on a public stage.{" "}
           <b style={{ color: "#ffffff" }}>Every seat is earned, not bought.</b>
         </p>
+
+        <div className="mx-auto mt-9 flex max-w-4xl flex-col items-stretch gap-3 sm:flex-row sm:items-center">
+          {arc.map((step, i) => (
+            <Fragment key={step.title}>
+              <div
+                className="flex-1 rounded-2xl px-5 py-4 text-left"
+                style={{
+                  border: "1px solid rgba(255,255,255,0.2)",
+                  background: "rgba(5, 8, 28, 0.28)",
+                  backdropFilter: "blur(8px)",
+                }}
+              >
+                <p
+                  style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: "0.62rem",
+                    fontWeight: 500,
+                    letterSpacing: "0.18em",
+                    textTransform: "uppercase",
+                    color: "rgba(255,255,255,0.55)",
+                  }}
+                >
+                  {step.phase}
+                </p>
+                <p
+                  className="mt-1.5"
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    fontSize: "1.15rem",
+                    fontWeight: 500,
+                    letterSpacing: "-0.02em",
+                    color: "#ffffff",
+                  }}
+                >
+                  {step.title}
+                </p>
+                <p
+                  className="mt-1"
+                  style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: "0.8rem",
+                    lineHeight: 1.5,
+                    color: "rgba(255,255,255,0.65)",
+                  }}
+                >
+                  {step.meta}
+                </p>
+              </div>
+              {i < arc.length - 1 && (
+                <span
+                  aria-hidden
+                  className="hidden shrink-0 sm:block"
+                  style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: "1.1rem",
+                    color: "rgba(255,255,255,0.45)",
+                  }}
+                >
+                  →
+                </span>
+              )}
+            </Fragment>
+          ))}
+        </div>
 
         {left.expired ? (
           <p
@@ -200,8 +280,8 @@ export function ChallengeCTA() {
             color: "rgba(255,255,255,0.65)",
           }}
         >
-          Application takes two minutes · Challenge Day 28 August · Finale on
-          the Flagship Expo Day stage
+          Application takes two minutes · Selection is by Challenge score
+          alone
         </p>
       </Reveal>
     </section>
