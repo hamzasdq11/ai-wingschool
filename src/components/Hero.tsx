@@ -5,9 +5,9 @@ import heroLoopPoster from "../assets/hero-loop-poster.jpg";
 import { DemoForm } from "./DemoForm";
 
 const proofChips = [
-  { value: "IIT/IIM", label: "Mentors, live" },
-  { value: "Real projects", label: "Built, not watched" },
-  { value: "Public stage", label: "Flagship Expo Day" },
+  { value: "IIT/IIM", label: "Mentors" },
+  { value: "Live", label: "Not recorded" },
+  { value: "Small cohorts", label: "By design" },
 ];
 
 export function Hero() {
