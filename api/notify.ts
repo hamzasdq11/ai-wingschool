@@ -32,8 +32,9 @@ type Email = {
 
 const CONTACT_EMAIL = "connect@aiwingschool.com";
 const SITE_URL = "https://www.aiwingschool.com";
-const LOGO_URL_LIGHT = `${SITE_URL}/email/logo-onlight.png`; // #0a0a0a wordmark
-const LOGO_URL_DARK = `${SITE_URL}/email/logo-ondark.png`; //  #ffffff wordmark
+const LOGO_URL_LIGHT = `${SITE_URL}/email/logo-onlight.png`; // #0a0a0a wordmark (light-mode clients)
+const LOGO_URL_DARK = `${SITE_URL}/email/logo-ondark.png`; //  #ffffff wordmark (dark-mode clients)
+const LOGO_URL_FALLBACK = `${SITE_URL}/email/logo-gray.png`; // #8a8a8a — Gmail (no theme swap), visible on both
 const BRAND_BLUE = "#1335b8";
 const FONT_STACK =
   "-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif";
@@ -119,15 +120,18 @@ function confirmationHtml(firstName: string): string {
     // max-width) gets a fixed 600 via the MSO conditional instead.
     `<!--[if mso]><table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0"><tr><td><![endif]-->` +
     `<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:600px;background-color:#ffffff;border-radius:16px;">` +
-    // Header — wordmark only, no band. <picture> swaps to the white
-    // wordmark in dark mode (Apple Mail, Outlook, Samsung Mail, etc.);
-    // clients without dark-swap support (notably Gmail) fall back to the
-    // black wordmark. Both PNGs have a transparent background and share
-    // the same #858585 tagline.
+    // Header — wordmark only, no band. Clients that support <picture> +
+    // prefers-color-scheme (Apple Mail, Outlook, Samsung Mail) get the
+    // black wordmark in light mode and the white one in dark. Gmail
+    // ignores the <source>s and never recolors images, so it always
+    // shows the <img> fallback: a mid-gray wordmark legible on both a
+    // light and a dark card (a black one vanishes on Gmail's dark card).
+    // All PNGs are transparent; band-free.
     `<tr><td style="padding:30px 44px 24px;border-bottom:1px solid #eceadf;">` +
     `<picture>` +
     `<source srcset="${LOGO_URL_DARK}" media="(prefers-color-scheme: dark)">` +
-    `<img src="${LOGO_URL_LIGHT}" width="141" height="40" alt="ai wingschool &middot; ad meliora" style="display:block;border:0;outline:none;">` +
+    `<source srcset="${LOGO_URL_LIGHT}" media="(prefers-color-scheme: light)">` +
+    `<img src="${LOGO_URL_FALLBACK}" width="141" height="40" alt="ai wingschool &middot; ad meliora" style="display:block;border:0;outline:none;">` +
     `</picture>` +
     `</td></tr>` +
     // Chip
