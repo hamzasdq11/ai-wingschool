@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Logo } from "./Logo";
-import bannerBottom from "../assets/BannerBottom.jpg";
+import bannerBottom from "../assets/BannerBottom.webp";
 import {
   CONTACT_EMAIL,
   CONTACT_PHONE_DISPLAY,

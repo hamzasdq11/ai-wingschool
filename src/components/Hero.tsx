@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import heroImage from "../assets/Hero2.jpg";
-import heroImageMobile from "../assets/herom.png";
+import heroImage from "../assets/Hero2.webp";
+import heroImageMobile from "../assets/herom.webp";
 import heroLoop from "../assets/hero-loop.mp4";
 import heroLoopPoster from "../assets/hero-loop-poster.jpg";
 import { DemoForm } from "./DemoForm";
