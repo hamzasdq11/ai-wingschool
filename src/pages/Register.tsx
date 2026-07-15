@@ -3,6 +3,7 @@ import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { Reveal } from "../components/Reveal";
 import { applicationMailto, CONTACT_EMAIL } from "../lib/contact";
+import { supabase } from "../lib/supabase";
 
 const facts = [
   { value: "3 stages", label: "One journey" },
@@ -170,12 +171,26 @@ export function Register() {
     setSending(true);
     setFailed(false);
     try {
-      const res = await fetch("/api/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...application, interest: spark.trim() }),
-      });
-      if (!res.ok) throw new Error(`status ${res.status}`);
+      if (supabase) {
+        const { error } = await supabase.from("registrations").insert({
+          student: application.student,
+          grade: Number(application.grade),
+          school: application.school,
+          board: application.board,
+          city: application.city,
+          email: application.email,
+          phone: application.phone,
+          interest: spark.trim(),
+        });
+        if (error) throw error;
+      } else {
+        const res = await fetch("/api/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ...application, interest: spark.trim() }),
+        });
+        if (!res.ok) throw new Error(`status ${res.status}`);
+      }
       setSubmitted(true);
       requestAnimationFrame(() => {
         cardRef.current?.scrollIntoView({ block: "nearest" });
