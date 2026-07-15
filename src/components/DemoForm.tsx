@@ -1,6 +1,7 @@
 import { useId, useState, type ReactNode } from "react";
 
 import { whatsappUrl } from "../lib/contact";
+import { supabase } from "../lib/supabase";
 
 type DemoFormVariant = "compact" | "stacked";
 
@@ -51,16 +52,13 @@ export function DemoForm({
     setSending(true);
     setFailed(false);
     try {
-      const res = await fetch("/api/demo", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: name.trim(),
-          phone: phone.trim(),
-          grade,
-        }),
+      if (!supabase) throw new Error("Supabase is not configured");
+      const { error } = await supabase.from("demo_requests").insert({
+        name: name.trim(),
+        phone: phone.trim(),
+        grade: Number(grade),
       });
-      if (!res.ok) throw new Error(`status ${res.status}`);
+      if (error) throw error;
       setSubmitted(true);
     } catch {
       setFailed(true);

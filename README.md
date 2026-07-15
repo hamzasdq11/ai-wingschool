@@ -72,23 +72,24 @@ export default defineConfig([
 ])
 ```
 
-## Backend (form submissions → CSV)
+## Form submissions (Supabase)
 
-The demo and WingsQuest registration forms POST to a small Express server
-(`server/index.mjs`) that appends each submission to a CSV file:
+The demo and WingsQuest registration forms insert directly into Supabase
+(project tables `demo_requests` and `registrations`) via `supabase-js`
+using the publishable key. Tables are protected by insert-only row-level
+security — the site can write but never read; view entries in the
+Supabase dashboard (Table Editor), from any device.
 
-- `POST /api/demo` → `server/data/demo-requests.csv`
-- `POST /api/register` → `server/data/registrations.csv`
+- Schema + policies: `supabase/schema.sql` (idempotent — safe to re-run
+  in the SQL Editor)
+- Credentials: copy `.env.example` to `.env.local` and fill in from
+  Project Settings → API Keys. Production builds fail without them
+  (guard in `vite.config.ts`), so a broken form can't ship.
+- Database CHECK constraints enforce the same validation as the UI
+  (grade ranges, Indian mobile format, board whitelist, length caps),
+  so direct API calls can't insert junk.
 
-Fields are quoted/escaped and spreadsheet-formula injection is neutralized,
-so the files open safely in Excel/Sheets. `server/data/` is gitignored.
-Set `DATA_DIR` to store the CSVs elsewhere, `PORT` to change the port
-(default 8787).
-
-**Development:** run `npm run server` alongside `npm run dev` — Vite
-proxies `/api` to the server.
-
-**Production:** `npm run start` builds the site and serves it (with SPA
-fallback) and the API from one Node process. Note: this needs a Node host
-(Render, Railway, a VPS, …) — static hosting alone (e.g. Netlify) won't
-run the API or store CSVs.
+There is no backend server: deploy `dist/` to any static host
+(Vercel, Netlify, Cloudflare Pages, …) and set the two `VITE_SUPABASE_*`
+env vars in the host's build settings. On submit failure the forms show
+a WhatsApp (demo) or email (registration) fallback.

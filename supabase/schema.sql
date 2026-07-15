@@ -1,7 +1,8 @@
--- WingsQuest registrations table.
--- Run once in the Supabase SQL Editor (Dashboard → SQL Editor → New query).
+-- WingsQuest data tables. Idempotent: safe to run the whole file again
+-- in the Supabase SQL Editor (Dashboard → SQL Editor → New query).
 
-create table public.registrations (
+-- Registrations (WingsQuest application form on /register)
+create table if not exists public.registrations (
   id uuid primary key default gen_random_uuid(),
   created_at timestamptz not null default now(),
   student text not null check (char_length(trim(student)) between 1 and 120),
@@ -16,10 +17,29 @@ create table public.registrations (
 
 alter table public.registrations enable row level security;
 
--- The site (anon key) may only insert. Reading requires the dashboard
--- or the service-role key, so submitted data is never exposed publicly.
+-- The site (publishable key) may only insert. Reading requires the
+-- dashboard, so submitted data is never exposed publicly.
+drop policy if exists "public can register" on public.registrations;
 create policy "public can register"
   on public.registrations
+  for insert
+  to anon
+  with check (true);
+
+-- Demo-call requests (Book a Demo form on the landing page)
+create table if not exists public.demo_requests (
+  id uuid primary key default gen_random_uuid(),
+  created_at timestamptz not null default now(),
+  name text not null check (char_length(trim(name)) between 1 and 120),
+  phone text not null check (phone ~ '^\+?[0-9\s\-]{10,15}$'),
+  grade smallint not null check (grade between 5 and 10)
+);
+
+alter table public.demo_requests enable row level security;
+
+drop policy if exists "public can book demo" on public.demo_requests;
+create policy "public can book demo"
+  on public.demo_requests
   for insert
   to anon
   with check (true);

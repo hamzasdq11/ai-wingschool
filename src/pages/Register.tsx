@@ -171,26 +171,18 @@ export function Register() {
     setSending(true);
     setFailed(false);
     try {
-      if (supabase) {
-        const { error } = await supabase.from("registrations").insert({
-          student: application.student,
-          grade: Number(application.grade),
-          school: application.school,
-          board: application.board,
-          city: application.city,
-          email: application.email,
-          phone: application.phone,
-          interest: spark.trim(),
-        });
-        if (error) throw error;
-      } else {
-        const res = await fetch("/api/register", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ ...application, interest: spark.trim() }),
-        });
-        if (!res.ok) throw new Error(`status ${res.status}`);
-      }
+      if (!supabase) throw new Error("Supabase is not configured");
+      const { error } = await supabase.from("registrations").insert({
+        student: application.student,
+        grade: Number(application.grade),
+        school: application.school,
+        board: application.board,
+        city: application.city,
+        email: application.email,
+        phone: application.phone,
+        interest: spark.trim(),
+      });
+      if (error) throw error;
       setSubmitted(true);
       requestAnimationFrame(() => {
         cardRef.current?.scrollIntoView({ block: "nearest" });
