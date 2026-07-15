@@ -182,7 +182,7 @@ function confirmationText(firstName: string): string {
   return [
     firstName ? `You're in, ${firstName}.` : "You're in.",
     "",
-    "Your application to WingsQuest 2026 — the All India AI Aptitude Challenge for Classes 6–10 — has been received. Your entry confirmation and every official WingsQuest communication will arrive at this address.",
+    "Your application to WingsQuest 2026 has been received. Your entry confirmation and every official WingsQuest communication will arrive at this address.",
     "",
     "YOUR WINGSQUEST JOURNEY",
     ...JOURNEY.map((s) => `${s.number}. ${s.title} — ${s.desc}`),
@@ -191,7 +191,7 @@ function confirmationText(firstName: string): string {
     "",
     `Questions? Message us on WhatsApp: https://wa.me/917355080850 or write to ${CONTACT_EMAIL}.`,
     "",
-    "ai wingschool · ad meliora",
+    "ai wingschool",
     `${CONTACT_EMAIL} · +91 73550 80850 · ${SITE_URL}`,
   ].join("\n");
 }
