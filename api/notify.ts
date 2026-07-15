@@ -144,7 +144,7 @@ function confirmationHtml(firstName: string): string {
     `</td></tr>` +
     // Body copy
     `<tr><td style="padding:18px 44px 0;font-family:${FONT_STACK};font-size:15px;line-height:1.65;color:#3c3c3c;">` +
-    `<p style="margin:0 0 14px;">Your application to <b>WingsQuest 2026</b> &mdash; the All India AI Aptitude Challenge for Classes 6&ndash;10 &mdash; has been received.</p>` +
+    `<p style="margin:0 0 14px;">Your application to <b>WingsQuest 2026</b> has been received.</p>` +
     `<p style="margin:0;">Your entry confirmation and every official WingsQuest communication will arrive at this address, so keep an eye on it.</p>` +
     `</td></tr>` +
     // Journey
@@ -168,8 +168,9 @@ function confirmationHtml(firstName: string): string {
     `</td></tr>` +
     // Footer
     `<tr><td style="padding:24px 44px 30px;border-top:1px solid #eceadf;font-family:${FONT_STACK};font-size:12px;line-height:1.7;color:#8a8a8a;">` +
-    `<p style="margin:0;">ai wingschool&nbsp;&nbsp;&middot;&nbsp;&nbsp;<i>ad meliora</i></p>` +
-    `<p style="margin:6px 0 0;"><a href="mailto:${CONTACT_EMAIL}" style="color:${BRAND_BLUE};text-decoration:none;">${CONTACT_EMAIL}</a> &middot; +91 73550 80850 &middot; <a href="${SITE_URL}" style="color:${BRAND_BLUE};text-decoration:none;">aiwingschool.com</a></p>` +
+    `<p style="margin:0;">ai wingschool</p>` +
+    `<p style="margin:6px 0 0;"><a href="mailto:${CONTACT_EMAIL}" style="color:${BRAND_BLUE};text-decoration:none;">${CONTACT_EMAIL}</a></p>` +
+    `<p style="margin:2px 0 0;">+91 73550 80850</p>` +
     `<p style="margin:14px 0 0;color:#b0b0b0;">You&rsquo;re receiving this because this address was used to apply to WingsQuest 2026.</p>` +
     `</td></tr>` +
     `</table>` +
@@ -192,7 +193,8 @@ function confirmationText(firstName: string): string {
     `Questions? Message us on WhatsApp: https://wa.me/917355080850 or write to ${CONTACT_EMAIL}.`,
     "",
     "ai wingschool",
-    `${CONTACT_EMAIL} · +91 73550 80850 · ${SITE_URL}`,
+    CONTACT_EMAIL,
+    "+91 73550 80850",
   ].join("\n");
 }
 
