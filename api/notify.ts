@@ -168,8 +168,7 @@ function confirmationHtml(firstName: string): string {
     `</td></tr>` +
     // Footer
     `<tr><td style="padding:24px 44px 30px;border-top:1px solid #eceadf;font-family:${FONT_STACK};font-size:12px;line-height:1.7;color:#8a8a8a;">` +
-    `<p style="margin:0;">ai wingschool</p>` +
-    `<p style="margin:6px 0 0;"><a href="mailto:${CONTACT_EMAIL}" style="color:${BRAND_BLUE};text-decoration:none;">${CONTACT_EMAIL}</a></p>` +
+    `<p style="margin:0;"><a href="mailto:${CONTACT_EMAIL}" style="color:${BRAND_BLUE};text-decoration:none;">${CONTACT_EMAIL}</a></p>` +
     `<p style="margin:2px 0 0;">+91 73550 80850</p>` +
     `<p style="margin:14px 0 0;color:#b0b0b0;">You&rsquo;re receiving this because this address was used to apply to WingsQuest 2026.</p>` +
     `</td></tr>` +
@@ -192,9 +191,10 @@ function confirmationText(firstName: string): string {
     "",
     `Questions? Message us on WhatsApp: https://wa.me/917355080850 or write to ${CONTACT_EMAIL}.`,
     "",
-    "ai wingschool",
     CONTACT_EMAIL,
     "+91 73550 80850",
+    "",
+    "You're receiving this because this address was used to apply to WingsQuest 2026.",
   ].join("\n");
 }
 
