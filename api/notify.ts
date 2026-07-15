@@ -166,11 +166,13 @@ function confirmationHtml(firstName: string): string {
     `<a href="${WHATSAPP_LINK}" style="display:inline-block;padding:13px 26px;font-family:${FONT_STACK};font-size:14px;font-weight:600;color:#ffffff;text-decoration:none;">Questions? Message us on WhatsApp</a>` +
     `</td></tr></table>` +
     `</td></tr>` +
-    // Footer
-    `<tr><td style="padding:24px 44px 30px;border-top:1px solid #eceadf;font-family:${FONT_STACK};font-size:12px;line-height:1.7;color:#8a8a8a;">` +
+    // Footer — text kept at #5a5a5a / #6b6b6b (not lighter greys): Gmail
+    // dark mode turns light-grey text into dark-on-dark and it vanishes,
+    // whereas these mid-greys invert to a visible light grey.
+    `<tr><td style="padding:24px 44px 30px;border-top:1px solid #eceadf;font-family:${FONT_STACK};font-size:12px;line-height:1.7;color:#5a5a5a;">` +
     `<p style="margin:0;"><a href="mailto:${CONTACT_EMAIL}" style="color:${BRAND_BLUE};text-decoration:none;">${CONTACT_EMAIL}</a></p>` +
-    `<p style="margin:2px 0 0;">+91 73550 80850</p>` +
-    `<p style="margin:14px 0 0;color:#b0b0b0;">You&rsquo;re receiving this because this address was used to apply to WingsQuest 2026.</p>` +
+    `<p style="margin:2px 0 0;color:#5a5a5a;">+91 73550 80850</p>` +
+    `<p style="margin:14px 0 0;color:#6b6b6b;">You&rsquo;re receiving this because this address was used to apply to WingsQuest 2026.</p>` +
     `</td></tr>` +
     `</table>` +
     `<!--[if mso]></td></tr></table><![endif]-->` +
