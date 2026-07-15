@@ -267,7 +267,16 @@ export async function POST(request: Request) {
     return Response.json({ error: "Notifications not configured" }, { status: 500 });
   }
 
-  if (!secretsMatch(request.headers.get("x-webhook-secret") ?? "", secret)) {
+  // Accept the shared secret from either the x-webhook-secret header or a
+  // ?secret= query param. The query param is easier to configure reliably
+  // in the Supabase webhook (the URL field isn't masked on edit, unlike
+  // custom headers) at the cost of appearing in request logs — acceptable
+  // here since the secret only gates sending notification emails.
+  const provided =
+    request.headers.get("x-webhook-secret") ??
+    new URL(request.url).searchParams.get("secret") ??
+    "";
+  if (!secretsMatch(provided, secret)) {
     return Response.json({ error: "Unauthorized" }, { status: 401 });
   }
 

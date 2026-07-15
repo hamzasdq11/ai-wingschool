@@ -118,10 +118,17 @@ using [Resend](https://resend.com). One-time setup:
      verified domain)
 3. **Supabase webhooks** — Dashboard → Integrations → Database
    Webhooks → Create, one per table (`registrations`,
-   `demo_requests`): event **INSERT**, type HTTP request, method POST,
-   URL `https://<your-domain>/api/notify`, and an HTTP header
-   `x-webhook-secret` set to the same value as
-   `SUPABASE_WEBHOOK_SECRET`.
+   `demo_requests`): event **INSERT**, type HTTP request, method POST.
+   Pass the shared secret one of two ways (the function accepts either):
+   - **URL query param (recommended, most reliable):** set the URL to
+     `https://<your-domain>/api/notify?secret=<SUPABASE_WEBHOOK_SECRET>`.
+     The URL field isn't masked on edit, so a save can't silently blank
+     it.
+   - **HTTP header:** URL `https://<your-domain>/api/notify` plus a
+     header `x-webhook-secret` = `SUPABASE_WEBHOOK_SECRET`. Note Supabase
+     masks the header value when you re-open the webhook — re-enter it in
+     full on every edit or the save clears it (a wrong/empty value makes
+     the function return 401 and no email is sent).
 4. Redeploy, submit a test on each form, and check the emails arrive
    (delivery errors appear in Vercel → Logs for `/api/notify`).
 
