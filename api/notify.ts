@@ -32,7 +32,7 @@ type Email = {
 
 const CONTACT_EMAIL = "connect@aiwingschool.com";
 const SITE_URL = "https://www.aiwingschool.com";
-const LOGO_URL = `${SITE_URL}/email/logo-white.png`;
+const LOGO_URL = `${SITE_URL}/email/logo-blue.png`;
 const BRAND_BLUE = "#1335b8";
 const FONT_STACK =
   "-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif";
@@ -118,11 +118,11 @@ function confirmationHtml(firstName: string): string {
     // max-width) gets a fixed 600 via the MSO conditional instead.
     `<!--[if mso]><table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0"><tr><td><![endif]-->` +
     `<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:600px;background-color:#ffffff;border-radius:16px;">` +
-    // Header — solid brand-blue band with a white wordmark. Blue is a
-    // saturated color so email dark-mode inverters (Gmail) leave it be,
-    // and white-on-blue reads correctly whether or not the surrounding
-    // card gets inverted; no baked-white logo box to look out of place.
-    `<tr><td bgcolor="${BRAND_BLUE}" style="padding:28px 44px;background-color:${BRAND_BLUE};border-radius:16px 16px 0 0;">` +
+    // Header — just the wordmark, no band. The logo is a transparent-bg
+    // blue PNG; blue is a mid-tone that stays legible on the white card
+    // and, when dark-mode inverters (Gmail) flip the card dark, on that
+    // too — and images are never inverted, so no white box appears.
+    `<tr><td style="padding:30px 44px 24px;border-bottom:1px solid #eceadf;">` +
     `<img src="${LOGO_URL}" width="141" height="40" alt="ai wingschool &middot; ad meliora" style="display:block;border:0;outline:none;">` +
     `</td></tr>` +
     // Chip
