@@ -15,6 +15,13 @@ create table if not exists public.registrations (
   interest text not null default '' check (char_length(interest) <= 220)
 );
 
+-- One application per email (case-insensitive). The form turns the
+-- resulting Postgres 23505 error into a friendly inline message.
+-- Note: creation fails if existing rows already contain duplicates —
+-- clean those up in the Table Editor first.
+create unique index if not exists registrations_email_unique
+  on public.registrations (lower(email));
+
 alter table public.registrations enable row level security;
 
 -- The site (publishable key) may only insert. Reading requires the
@@ -43,3 +50,12 @@ create policy "public can book demo"
   for insert
   to anon
   with check (true);
+
+-- Email notifications are driven by Database Webhooks, configured in the
+-- dashboard (not here, so the shared secret stays out of git):
+--   Dashboard → Integrations → Database Webhooks → Create — one webhook
+--   per table (registrations, demo_requests), event INSERT, type
+--   HTTP request, method POST, URL https://<your-domain>/api/notify,
+--   HTTP header  x-webhook-secret: <same value as the Vercel env var
+--   SUPABASE_WEBHOOK_SECRET>.
+-- The receiving function is api/notify.ts; setup steps in README.md.

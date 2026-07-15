@@ -82,6 +82,8 @@ export function Register() {
   const [phone, setPhone] = useState(""); // 10 digits, unformatted
   const [spark, setSpark] = useState("");
   const [sparkFocused, setSparkFocused] = useState(false);
+  // Honeypot — hidden from humans; bots that fill it get a fake success.
+  const [website, setWebsite] = useState("");
 
   const [errors, setErrors] = useState<Partial<Record<FieldName, string>>>({});
   const [submitted, setSubmitted] = useState(false);
@@ -168,6 +170,11 @@ export function Register() {
       return;
     }
 
+    if (website) {
+      setSubmitted(true);
+      return;
+    }
+
     setSending(true);
     setFailed(false);
     try {
@@ -182,7 +189,17 @@ export function Register() {
         phone: application.phone,
         interest: spark.trim(),
       });
-      if (error) throw error;
+      if (error) {
+        if (error.code === "23505") {
+          setErrors((prev) => ({
+            ...prev,
+            email: "An application with this email already exists.",
+          }));
+          fieldRefs.email.current?.focus();
+          return;
+        }
+        throw error;
+      }
       setSubmitted(true);
       requestAnimationFrame(() => {
         cardRef.current?.scrollIntoView({ block: "nearest" });
@@ -384,6 +401,29 @@ export function Register() {
                   onSubmit={handleSubmit}
                   className="relative flex flex-col"
                 >
+                  <div
+                    aria-hidden="true"
+                    style={{
+                      position: "absolute",
+                      left: "-9999px",
+                      width: "1px",
+                      height: "1px",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <label htmlFor={`${ids}-website`}>
+                      Leave this field empty
+                    </label>
+                    <input
+                      id={`${ids}-website`}
+                      type="text"
+                      name="website"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={website}
+                      onChange={(e) => setWebsite(e.target.value)}
+                    />
+                  </div>
                   <div className="mb-7">
                     <p
                       style={{

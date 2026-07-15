@@ -88,8 +88,42 @@ Supabase dashboard (Table Editor), from any device.
 - Database CHECK constraints enforce the same validation as the UI
   (grade ranges, Indian mobile format, board whitelist, length caps),
   so direct API calls can't insert junk.
+- Spam/duplicate protection: both forms carry a hidden honeypot field
+  (bots that fill it get a fake success and nothing is inserted), and
+  `registrations.email` has a case-insensitive unique index — a repeat
+  application shows an inline "already exists" message.
 
-There is no backend server: deploy `dist/` to any static host
-(Vercel, Netlify, Cloudflare Pages, …) and set the two `VITE_SUPABASE_*`
-env vars in the host's build settings. On submit failure the forms show
-a WhatsApp (demo) or email (registration) fallback.
+There is no backend server for the site itself: deploy to Vercel with
+the two `VITE_SUPABASE_*` env vars set in the project's build settings.
+On submit failure the forms show a WhatsApp (demo) or email
+(registration) fallback.
+
+## Email notifications
+
+`api/notify.ts` is a Vercel Function that Supabase calls (via Database
+Webhooks) after every insert. It emails an internal alert for each
+submission and a confirmation to the applicant (registrations only),
+using [Resend](https://resend.com). One-time setup:
+
+1. **Resend** — create an account, verify the `aiwingschool.com` domain
+   (DNS records shown in their dashboard), create an API key.
+2. **Vercel env vars** (Project Settings → Environment Variables,
+   Production):
+   - `RESEND_API_KEY` — from step 1
+   - `SUPABASE_WEBHOOK_SECRET` — any random string, e.g.
+     `openssl rand -hex 24`
+   - optional: `NOTIFY_EMAIL` (internal recipient, default
+     `connect@aiwingschool.com`) and `NOTIFY_FROM` (sender, default
+     `WingsQuest <notifications@aiwingschool.com>` — must be on the
+     verified domain)
+3. **Supabase webhooks** — Dashboard → Integrations → Database
+   Webhooks → Create, one per table (`registrations`,
+   `demo_requests`): event **INSERT**, type HTTP request, method POST,
+   URL `https://<your-domain>/api/notify`, and an HTTP header
+   `x-webhook-secret` set to the same value as
+   `SUPABASE_WEBHOOK_SECRET`.
+4. Redeploy, submit a test on each form, and check the emails arrive
+   (delivery errors appear in Vercel → Logs for `/api/notify`).
+
+Email sending is fire-and-forget from the database's perspective: if
+Resend is down the submission is still stored in Supabase.

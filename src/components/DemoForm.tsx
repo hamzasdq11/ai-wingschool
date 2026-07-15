@@ -41,6 +41,8 @@ export function DemoForm({
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
   const [failed, setFailed] = useState(false);
+  // Honeypot — hidden from humans; bots that fill it get a fake success.
+  const [website, setWebsite] = useState("");
 
   const ids = useId();
   const nameId = `${ids}-name`;
@@ -49,6 +51,10 @@ export function DemoForm({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (website) {
+      setSubmitted(true);
+      return;
+    }
     setSending(true);
     setFailed(false);
     try {
@@ -95,6 +101,27 @@ export function DemoForm({
 
   return (
     <form id={id} onSubmit={handleSubmit} className={className}>
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          left: "-9999px",
+          width: "1px",
+          height: "1px",
+          overflow: "hidden",
+        }}
+      >
+        <label htmlFor={`${ids}-website`}>Leave this field empty</label>
+        <input
+          id={`${ids}-website`}
+          type="text"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          value={website}
+          onChange={(e) => setWebsite(e.target.value)}
+        />
+      </div>
       {header}
 
       {submitted ? (
