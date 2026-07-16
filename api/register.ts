@@ -82,6 +82,32 @@ function validateApplication(raw: unknown): Application | null {
   return { student, grade, school, board, city, email, phone, interest };
 }
 
+type AttributionColumns = {
+  utm_source: string | null;
+  utm_medium: string | null;
+  utm_campaign: string | null;
+  ref: string | null;
+  referrer: string | null;
+};
+
+// Attribution is best-effort metadata straight from the client — trim,
+// truncate, and never let it fail a registration.
+function sanitizeAttribution(raw: unknown): AttributionColumns {
+  const a =
+    typeof raw === "object" && raw !== null
+      ? (raw as Record<string, unknown>)
+      : {};
+  const s = (v: unknown, max = 160) =>
+    typeof v === "string" && v.trim() ? v.trim().slice(0, max) : null;
+  return {
+    utm_source: s(a.utm_source),
+    utm_medium: s(a.utm_medium),
+    utm_campaign: s(a.utm_campaign),
+    ref: s(a.ref),
+    referrer: s(a.referrer, 300),
+  };
+}
+
 // Escape %, _ and \ so an email used in .ilike() matches literally.
 function escapeLike(value: string): string {
   return value.replace(/[\\%_]/g, (m) => `\\${m}`);
@@ -170,20 +196,24 @@ async function findRegistration(db: SupabaseClient, email: string): Promise<Exis
 
 // Create or refresh the applicant's row, unverified. Existing verified
 // rows are never touched (callers reject those first).
-async function upsertPending(db: SupabaseClient, app: Application): Promise<void> {
+async function upsertPending(
+  db: SupabaseClient,
+  app: Application,
+  attribution: AttributionColumns,
+): Promise<void> {
   const existing = await findRegistration(db, app.email);
   if (existing) {
     if (existing.verified_at) return; // raced a concurrent verify; leave it
     const { error } = await db
       .from("registrations")
-      .update({ ...app })
+      .update({ ...app, ...attribution })
       .eq("id", existing.id);
     if (error) throw error;
     return;
   }
   const { error } = await db
     .from("registrations")
-    .insert({ ...app, verified_at: null });
+    .insert({ ...app, ...attribution, verified_at: null });
   // 23505 = two tabs raced the first insert; the other tab's row holds
   // essentially the same application, so it's fine to leave it.
   if (error && error.code !== "23505") throw error;
@@ -219,6 +249,7 @@ async function handleStart(db: SupabaseClient, resendKey: string, body: Record<s
   if (!app) {
     return Response.json({ error: "invalid" }, { status: 400 });
   }
+  const attribution = sanitizeAttribution(body.attribution);
 
   // Catch verified duplicates before any code is sent — nobody should
   // verify an email only to learn the application already exists. An
@@ -237,7 +268,7 @@ async function handleStart(db: SupabaseClient, resendKey: string, body: Record<s
       // Same email re-submitted within the cooldown (e.g. the applicant
       // went back to fix a field): refresh the pending row so edits
       // aren't lost, keep the already-emailed code valid, send nothing.
-      await upsertPending(db, app);
+      await upsertPending(db, app, attribution);
       return Response.json({
         ok: true,
         reused: true,
@@ -255,7 +286,7 @@ async function handleStart(db: SupabaseClient, resendKey: string, body: Record<s
 
   // The application lands in the table right away, unverified — the
   // lead is captured even if the code is never entered.
-  await upsertPending(db, app);
+  await upsertPending(db, app, attribution);
 
   // Newest code wins: retire any earlier active challenge for this email.
   const { error: supersedeError } = await db

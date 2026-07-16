@@ -42,6 +42,14 @@ export const PAGE_META = {
     description: "That page doesn't exist. Everything worth finding is on the home page.",
     noindex: true,
   },
+  // Internal, key-gated; never prerendered (scripts/prerender.mjs lists
+  // its routes explicitly) and never indexed.
+  stats: {
+    path: "/stats",
+    title: "Registrations — internal | WingsQuest",
+    description: "Internal registration counter.",
+    noindex: true,
+  },
 } satisfies Record<string, PageMeta>;
 
 function upsertMeta(selector: string, create: () => HTMLElement, value: string) {

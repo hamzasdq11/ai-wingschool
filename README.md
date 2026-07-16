@@ -142,6 +142,35 @@ Local testing: `npm run dev` serves the SPA only — `/api/*` needs
 `vercel dev` with the server-side vars in `.env.local` (see
 `.env.example`).
 
+## Analytics, attribution & the internal stats page
+
+Three layers, all shipped in `src/lib/analytics.ts` + `api/stats.ts`:
+
+- **Vercel Web Analytics** (`inject()` in `main.tsx`) for pageviews and
+  referrers — enable Analytics on the project in the Vercel dashboard
+  or nothing is recorded.
+- **Funnel events, owned in Supabase** (`events` table, insert-only
+  anon policy): `register_view` → `form_start` → `submit_success` (code
+  emailed) → `verified` (code entered), fired fire-and-forget from
+  `/register`. No plan caps, and the stats page can read them.
+  Directional data (adblockers undercount) — registrations are ground
+  truth.
+- **Attribution**: on first load the client captures `utm_source`,
+  `utm_medium`, `utm_campaign`, `?ref=` and the external referrer into
+  localStorage (a later visit with campaign params overwrites — last
+  campaign touch). Every event carries it, and `api/register.ts` writes
+  it onto the registration row — so **every link you distribute should
+  carry `?utm_source=…` or `?ref=…`** or it reports as "direct /
+  unknown".
+
+**`/stats`** is the internal counter (noindex, never prerendered):
+today's verified count, target progress toward 2,000, 14-day trend,
+funnel conversion, and by-source/class/city splits — all from the
+`stats_payload()` Postgres function (service-role only). Gated by the
+`STATS_KEY` env var (`openssl rand -hex 16`): open
+`/stats?key=<STATS_KEY>` once, the page remembers the key in
+localStorage and strips it from the URL.
+
 ## Email notifications
 
 `api/notify.ts` is a Vercel Function that Supabase calls (via Database

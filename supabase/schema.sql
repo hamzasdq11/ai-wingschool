@@ -24,6 +24,20 @@ create table if not exists public.registrations (
 alter table public.registrations
   add column if not exists verified_at timestamptz;
 
+-- Attribution: which link brought this applicant. Captured client-side
+-- from URL params (utm_*, ?ref=) + document.referrer, sent with the
+-- application, written by api/register.ts. Null = direct/unknown.
+alter table public.registrations
+  add column if not exists utm_source text check (char_length(utm_source) <= 160);
+alter table public.registrations
+  add column if not exists utm_medium text check (char_length(utm_medium) <= 160);
+alter table public.registrations
+  add column if not exists utm_campaign text check (char_length(utm_campaign) <= 160);
+alter table public.registrations
+  add column if not exists ref text check (char_length(ref) <= 160);
+alter table public.registrations
+  add column if not exists referrer text check (char_length(referrer) <= 300);
+
 -- One application per email (case-insensitive). api/register.ts checks
 -- for a verified duplicate before sending any code (friendly inline
 -- message); the index is the backstop against races.
@@ -87,6 +101,97 @@ create policy "public can book demo"
   for insert
   to anon
   with check (true);
+
+-- Registration funnel events, logged fire-and-forget from the client
+-- (src/lib/analytics.ts): register_view → form_start → submit_success
+-- (code emailed) → verified (code entered). Insert-only for the site;
+-- read via stats_payload() below. Analytics-grade data: anon inserts
+-- mean it is directional, not ground truth — registrations are the
+-- ground truth. Same optional hygiene as otp_challenges.
+create table if not exists public.events (
+  id uuid primary key default gen_random_uuid(),
+  created_at timestamptz not null default now(),
+  name text not null check (name in ('register_view','form_start','submit_success','verified')),
+  session text check (char_length(session) <= 64),
+  path text check (char_length(path) <= 200),
+  utm_source text check (char_length(utm_source) <= 160),
+  utm_medium text check (char_length(utm_medium) <= 160),
+  utm_campaign text check (char_length(utm_campaign) <= 160),
+  ref text check (char_length(ref) <= 160),
+  referrer text check (char_length(referrer) <= 300)
+);
+
+create index if not exists events_name_created_idx
+  on public.events (name, created_at desc);
+
+alter table public.events enable row level security;
+
+drop policy if exists "public can log events" on public.events;
+create policy "public can log events"
+  on public.events
+  for insert
+  to anon
+  with check (true);
+
+-- Aggregates for the internal /stats page (api/stats.ts, service role
+-- only — no anon/authenticated execute). Day boundaries in IST.
+create or replace function public.stats_payload()
+returns jsonb
+language sql
+stable
+security definer
+set search_path = public
+as $$
+with reg as (
+  select ((created_at at time zone 'Asia/Kolkata')::date) as day,
+         verified_at, grade,
+         initcap(trim(city)) as city,
+         coalesce(nullif(trim(utm_source), ''), nullif(trim(ref), ''), 'direct / unknown') as source
+  from registrations
+),
+ev as (
+  select name, ((created_at at time zone 'Asia/Kolkata')::date) as day
+  from events
+),
+today as (select (now() at time zone 'Asia/Kolkata')::date as d)
+select jsonb_build_object(
+  'generated_at', to_char(now() at time zone 'Asia/Kolkata', 'DD Mon YYYY, HH24:MI') || ' IST',
+  'totals', (select jsonb_build_object(
+      'all', count(*),
+      'verified', count(*) filter (where verified_at is not null)) from reg),
+  'today', (select jsonb_build_object(
+      'all', count(*),
+      'verified', count(*) filter (where verified_at is not null))
+      from reg, today where day = today.d),
+  'yesterday', (select jsonb_build_object(
+      'all', count(*),
+      'verified', count(*) filter (where verified_at is not null))
+      from reg, today where day = today.d - 1),
+  'daily', (select coalesce(jsonb_agg(jsonb_build_object('day', day, 'all', c, 'verified', v) order by day desc), '[]'::jsonb)
+      from (select day, count(*) as c, count(*) filter (where verified_at is not null) as v
+            from reg, today where day > today.d - 14 group by day) t),
+  'by_source', (select coalesce(jsonb_agg(jsonb_build_object('source', source, 'all', c, 'verified', v) order by v desc, c desc), '[]'::jsonb)
+      from (select source, count(*) as c, count(*) filter (where verified_at is not null) as v
+            from reg group by source) t),
+  'by_grade', (select coalesce(jsonb_agg(jsonb_build_object('grade', grade, 'all', c, 'verified', v) order by grade), '[]'::jsonb)
+      from (select grade, count(*) as c, count(*) filter (where verified_at is not null) as v
+            from reg group by grade) t),
+  'by_city', (select coalesce(jsonb_agg(jsonb_build_object('city', city, 'all', c, 'verified', v) order by v desc, c desc), '[]'::jsonb)
+      from (select city, count(*) as c, count(*) filter (where verified_at is not null) as v
+            from reg group by city
+            order by count(*) filter (where verified_at is not null) desc, count(*) desc
+            limit 12) t),
+  'funnel_today', (select coalesce(jsonb_object_agg(name, c), '{}'::jsonb)
+      from (select name, count(*) as c from ev, today where day = today.d group by name) t),
+  'funnel_7d', (select coalesce(jsonb_object_agg(name, c), '{}'::jsonb)
+      from (select name, count(*) as c from ev, today where day > today.d - 7 group by name) t)
+)
+$$;
+
+revoke all on function public.stats_payload() from public;
+revoke all on function public.stats_payload() from anon;
+revoke all on function public.stats_payload() from authenticated;
+grant execute on function public.stats_payload() to service_role;
 
 -- Email notifications are driven by Database Webhooks, configured in the
 -- dashboard (not here, so the shared secret stays out of git):

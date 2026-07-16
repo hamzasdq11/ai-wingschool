@@ -4,6 +4,7 @@ import { Footer } from "../components/Footer";
 import { Reveal } from "../components/Reveal";
 import { applicationMailto, CONTACT_EMAIL } from "../lib/contact";
 import { PAGE_META, usePageMeta } from "../lib/seo";
+import { getAttribution, track } from "../lib/analytics";
 
 const facts = [
   { value: "3 stages", label: "One journey" },
@@ -204,6 +205,18 @@ export function Register() {
   // the verify step — the form hasn't remounted yet — so it's deferred
   // to the effect below.
   const focusEmailOnForm = useRef(false);
+
+  // Funnel events — each fires at most once per visit to the page.
+  const trackedFormStart = useRef(false);
+  const trackedSubmitSuccess = useRef(false);
+  useEffect(() => {
+    track("register_view");
+  }, []);
+  const markFormStart = () => {
+    if (trackedFormStart.current) return;
+    trackedFormStart.current = true;
+    track("form_start");
+  };
   const fieldRefs: Record<FieldName, React.RefObject<HTMLElement | null>> = {
     student: useRef<HTMLInputElement>(null),
     grade: useRef<HTMLSelectElement>(null),
@@ -281,6 +294,7 @@ export function Register() {
         grade: Number(application.grade),
         interest: spark.trim(),
       },
+      attribution: getAttribution(),
     });
 
   useEffect(() => {
@@ -323,6 +337,10 @@ export function Register() {
     try {
       const res = await requestCode();
       if (res.ok) {
+        if (!trackedSubmitSuccess.current) {
+          trackedSubmitSuccess.current = true;
+          track("submit_success");
+        }
         setStep("verify");
         setCode("");
         setVerifyError(null);
@@ -364,6 +382,7 @@ export function Register() {
         code: codeToTry,
       });
       if (res.ok) {
+        track("verified");
         setSubmitted(true);
         requestAnimationFrame(() => {
           cardRef.current?.scrollIntoView({ block: "nearest" });
@@ -771,6 +790,7 @@ export function Register() {
                 <form
                   noValidate
                   onSubmit={handleSubmit}
+                  onInput={markFormStart}
                   className="relative flex flex-col"
                 >
                   <div
