@@ -1,13 +1,16 @@
 // Vercel Function: verified registration for WingsQuest (/register).
 //
 // The form never writes to Supabase directly. Instead:
-//   { action: "start",  application }  → validates, stores the pending
-//     application with a hashed 6-digit code, emails the code (Resend)
-//   { action: "verify", email, code }  → checks the code and only then
-//     inserts into `registrations` (service role) with verified_at set
+//   { action: "start",  application }  → validates, upserts the row
+//     into `registrations` with verified_at null, stores a hashed
+//     6-digit code in `otp_challenges`, emails the code (Resend)
+//   { action: "verify", email, code }  → checks the code and flips
+//     verified_at on the row (service role)
 //
-// So a registration row only ever exists once the email is proven, and
-// the anon insert policy on `registrations` is gone entirely.
+// Every attempt is visible in the table — verified_at null marks
+// applicants who never entered their code — and the anon insert policy
+// on `registrations` is gone entirely. api/notify.ts only emails once
+// verified_at is set, so unverified rows trigger nothing.
 //
 // Required Vercel env vars (Project Settings → Environment Variables):
 //   SUPABASE_URL (or VITE_SUPABASE_URL)  project URL
@@ -51,7 +54,6 @@ type Challenge = {
   code_hash: string;
   expires_at: string;
   attempts: number;
-  payload: Application;
 };
 
 function validateApplication(raw: unknown): Application | null {
@@ -153,19 +155,44 @@ async function sendOtpEmail(apiKey: string, to: string, code: string) {
   }
 }
 
-async function isRegistered(db: SupabaseClient, email: string): Promise<boolean> {
-  const { count, error } = await db
+type ExistingRow = { id: string; verified_at: string | null };
+
+async function findRegistration(db: SupabaseClient, email: string): Promise<ExistingRow | null> {
+  const { data, error } = await db
     .from("registrations")
-    .select("id", { count: "exact", head: true })
-    .ilike("email", escapeLike(email));
+    .select("id, verified_at")
+    .ilike("email", escapeLike(email))
+    .limit(1)
+    .maybeSingle();
   if (error) throw error;
-  return (count ?? 0) > 0;
+  return data as ExistingRow | null;
+}
+
+// Create or refresh the applicant's row, unverified. Existing verified
+// rows are never touched (callers reject those first).
+async function upsertPending(db: SupabaseClient, app: Application): Promise<void> {
+  const existing = await findRegistration(db, app.email);
+  if (existing) {
+    if (existing.verified_at) return; // raced a concurrent verify; leave it
+    const { error } = await db
+      .from("registrations")
+      .update({ ...app })
+      .eq("id", existing.id);
+    if (error) throw error;
+    return;
+  }
+  const { error } = await db
+    .from("registrations")
+    .insert({ ...app, verified_at: null });
+  // 23505 = two tabs raced the first insert; the other tab's row holds
+  // essentially the same application, so it's fine to leave it.
+  if (error && error.code !== "23505") throw error;
 }
 
 async function activeChallenge(db: SupabaseClient, email: string): Promise<Challenge | null> {
   const { data, error } = await db
     .from("otp_challenges")
-    .select("id, created_at, email, code_hash, expires_at, attempts, payload")
+    .select("id, created_at, email, code_hash, expires_at, attempts")
     .eq("email", email)
     .is("consumed_at", null)
     .is("superseded_at", null)
@@ -193,9 +220,12 @@ async function handleStart(db: SupabaseClient, resendKey: string, body: Record<s
     return Response.json({ error: "invalid" }, { status: 400 });
   }
 
-  // Catch duplicates before any code is sent — nobody should verify an
-  // email only to learn the application already exists.
-  if (await isRegistered(db, app.email)) {
+  // Catch verified duplicates before any code is sent — nobody should
+  // verify an email only to learn the application already exists. An
+  // unverified row is a previous attempt that never finished: refreshed
+  // below and given a fresh shot at the code.
+  const registered = await findRegistration(db, app.email);
+  if (registered?.verified_at) {
     return Response.json({ error: "duplicate_email" }, { status: 409 });
   }
 
@@ -205,13 +235,9 @@ async function handleStart(db: SupabaseClient, resendKey: string, body: Record<s
     const age = (now - new Date(existing.created_at).getTime()) / 1000;
     if (age < RESEND_COOLDOWN_SECONDS) {
       // Same email re-submitted within the cooldown (e.g. the applicant
-      // went back to fix a field): refresh the pending payload so edits
+      // went back to fix a field): refresh the pending row so edits
       // aren't lost, keep the already-emailed code valid, send nothing.
-      const { error } = await db
-        .from("otp_challenges")
-        .update({ payload: app })
-        .eq("id", existing.id);
-      if (error) throw error;
+      await upsertPending(db, app);
       return Response.json({
         ok: true,
         reused: true,
@@ -226,6 +252,10 @@ async function handleStart(db: SupabaseClient, resendKey: string, body: Record<s
   if (ip !== "unknown" && (await sentInLastHour(db, "ip", ip)) >= IP_HOURLY_CAP) {
     return Response.json({ error: "too_many_codes" }, { status: 429 });
   }
+
+  // The application lands in the table right away, unverified — the
+  // lead is captured even if the code is never entered.
+  await upsertPending(db, app);
 
   // Newest code wins: retire any earlier active challenge for this email.
   const { error: supersedeError } = await db
@@ -244,7 +274,6 @@ async function handleStart(db: SupabaseClient, resendKey: string, body: Record<s
     code_hash: hashCode(id, code),
     expires_at: new Date(now + OTP_TTL_MINUTES * 60 * 1000).toISOString(),
     ip,
-    payload: app,
   });
   if (insertError) throw insertError;
 
@@ -252,6 +281,7 @@ async function handleStart(db: SupabaseClient, resendKey: string, body: Record<s
     await sendOtpEmail(resendKey, app.email, code);
   } catch (err) {
     // Remove the challenge so an immediate retry isn't cooldown-blocked.
+    // The unverified row stays — the lead survives the send failure.
     await db.from("otp_challenges").delete().eq("id", id);
     console.error("register: OTP email failed:", err);
     return Response.json({ error: "send_failed" }, { status: 502 });
@@ -289,25 +319,26 @@ async function handleVerify(db: SupabaseClient, body: Record<string, unknown>) {
       : Response.json({ error: "too_many_attempts" }, { status: 429 });
   }
 
-  // Insert first, consume after: if the consume update failed, a replay
-  // would still be blocked by the unique email index.
-  const app = challenge.payload;
-  const { error: insertError } = await db.from("registrations").insert({
-    student: app.student,
-    grade: app.grade,
-    school: app.school,
-    board: app.board,
-    city: app.city,
-    email: app.email,
-    phone: app.phone,
-    interest: app.interest,
-    verified_at: new Date().toISOString(),
-  });
-  if (insertError) {
-    if (insertError.code === "23505") {
-      return Response.json({ error: "duplicate_email" }, { status: 409 });
+  // Flip the pending row to verified. Update first, consume after: if
+  // the consume update failed, replaying the code would just re-flip an
+  // already-verified row.
+  const { data: flipped, error: flipError } = await db
+    .from("registrations")
+    .update({ verified_at: new Date().toISOString() })
+    .ilike("email", escapeLike(email))
+    .is("verified_at", null)
+    .select("id");
+  if (flipError) throw flipError;
+
+  if (!flipped || flipped.length === 0) {
+    // No pending row. Either a parallel tab already verified it (fine —
+    // the code matched, they own the email) or the row was deleted from
+    // the dashboard mid-flow; "expired" nudges a resend, which recreates
+    // the row.
+    const existing = await findRegistration(db, email);
+    if (!existing?.verified_at) {
+      return Response.json({ error: "expired" }, { status: 410 });
     }
-    throw insertError;
   }
 
   const { error: consumeError } = await db

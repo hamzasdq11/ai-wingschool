@@ -81,11 +81,13 @@ Two forms, two different write paths:
 - **WingsQuest registration** — goes through `api/register.ts` and an
   email-verification step (next section). There is **no** anon insert
   policy on `registrations`; rows are written only by the function's
-  service-role client, always with `verified_at` set.
+  service-role client. The row is created immediately on submit with
+  `verified_at` null and flipped once the code checks out.
 
 Tables can never be read from the site — view entries in the Supabase
-dashboard (Table Editor), from any device. Rows from before the OTP flow
-shipped have `verified_at` null.
+dashboard (Table Editor), from any device. `verified_at` null means the
+applicant never entered their code (or the row predates the OTP flow) —
+count `verified_at is not null` toward registration targets.
 
 - Schema + policies: `supabase/schema.sql` (idempotent — safe to re-run
   in the SQL Editor)
@@ -109,24 +111,26 @@ On submit failure the forms show a WhatsApp (demo) or email
 `api/register.ts` makes every registration a verified one, in a single
 flow on `/register`:
 
-1. `action: "start"` — validates the application, rejects duplicate
-   emails up front, stores the pending application in `otp_challenges`
-   with a hashed 6-digit code, and emails the code via Resend (the code
+1. `action: "start"` — validates the application, rejects already-
+   verified duplicate emails up front, upserts the row into
+   `registrations` with `verified_at` null, stores a hashed 6-digit
+   code in `otp_challenges`, and emails the code via Resend (the code
    is in the subject line, so it's readable from the inbox list).
 2. The form card morphs into a code prompt — auto-submits on the 6th
    digit, resend with a 45 s cooldown, "wrong email? edit it" preserves
    the form, and common email-domain typos (gmial.com etc.) get a
    one-tap fix before anything is sent.
 3. `action: "verify"` — checks the code (10 min expiry, 5 attempts) and
-   only then inserts into `registrations` with `verified_at` set. That
-   insert fires the existing confirmation-email webhook.
+   flips `verified_at` on the row. That transition (not the unverified
+   insert) fires the confirmation-email webhook.
 
 Guardrails: one active code per email (a resend supersedes earlier
-codes; a rapid re-submit inside the cooldown refreshes the stored
-application without sending a new email), per-email cap 6 codes/hour,
-per-IP cap 30/hour (generous on purpose — school labs share one IP).
-Abandoned challenges keep their payload in `otp_challenges`, so
-almost-registrants stay recoverable for follow-up.
+codes; a rapid re-submit inside the cooldown refreshes the pending row
+without sending a new email), per-email cap 6 codes/hour, per-IP cap
+30/hour (generous on purpose — school labs share one IP). Applicants
+who stall at the code step sit in `registrations` with `verified_at`
+null — complete with phone numbers — ready for follow-up; a returning
+unverified email simply resumes (row refreshed, new code).
 
 Extra env vars needed (Vercel Project Settings → Environment
 Variables): `SUPABASE_SERVICE_ROLE_KEY` (Project Settings → API Keys →
@@ -157,8 +161,11 @@ using [Resend](https://resend.com). One-time setup:
      `WingsQuest <notifications@aiwingschool.com>` — must be on the
      verified domain)
 3. **Supabase webhooks** — Dashboard → Integrations → Database
-   Webhooks → Create, one per table (`registrations`,
-   `demo_requests`): event **INSERT**, type HTTP request, method POST.
+   Webhooks → Create, one per table: `demo_requests` with event
+   **INSERT**, `registrations` with events **INSERT and UPDATE** (the
+   function emails only when a row is or becomes verified — unverified
+   inserts and ordinary edits are ignored). Type HTTP request, method
+   POST.
    Pass the shared secret one of two ways (the function accepts either):
    - **URL query param (recommended, most reliable):** set the URL to
      `https://<your-domain>/api/notify?secret=<SUPABASE_WEBHOOK_SECRET>`.

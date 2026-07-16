@@ -20,6 +20,7 @@ type WebhookPayload = {
   table?: string;
   schema?: string;
   record?: Record<string, unknown> | null;
+  old_record?: Record<string, unknown> | null;
 };
 
 type Email = {
@@ -303,7 +304,26 @@ export async function POST(request: Request) {
     return Response.json({ error: "Invalid JSON" }, { status: 400 });
   }
 
-  if (payload.type !== "INSERT" || !payload.record || !payload.table) {
+  if (!payload.record || !payload.table) {
+    return Response.json({ ignored: true });
+  }
+
+  // Registrations are inserted unverified by api/register.ts and only
+  // become real applications when verified_at flips — so their webhook
+  // fires on INSERT *and* UPDATE, and emails go out exactly once: on an
+  // insert already verified (manual/dashboard) or on the null→set
+  // transition. Field edits on unverified rows and any later updates to
+  // verified rows stay silent. demo_requests remain INSERT-only.
+  if (payload.table === "registrations") {
+    const verifiedNow = Boolean(payload.record.verified_at);
+    const verifiedBefore = Boolean(payload.old_record?.verified_at);
+    const shouldSend =
+      (payload.type === "INSERT" && verifiedNow) ||
+      (payload.type === "UPDATE" && verifiedNow && !verifiedBefore);
+    if (!shouldSend) {
+      return Response.json({ ignored: true });
+    }
+  } else if (payload.type !== "INSERT") {
     return Response.json({ ignored: true });
   }
 

@@ -16,13 +16,17 @@ create table if not exists public.registrations (
 );
 
 -- Set once the applicant proves ownership of the email via the OTP
--- step (api/register.ts). Rows created since the OTP flow shipped are
--- always verified; null marks legacy pre-OTP registrations.
+-- step. api/register.ts inserts the row immediately on submit with
+-- verified_at null and flips it when the code checks out — so the
+-- table shows every attempt, and null means the code was never entered
+-- (or the row predates the OTP flow). Count verified_at is not null
+-- toward registration targets.
 alter table public.registrations
   add column if not exists verified_at timestamptz;
 
--- One application per email (case-insensitive). The form turns the
--- resulting Postgres 23505 error into a friendly inline message.
+-- One application per email (case-insensitive). api/register.ts checks
+-- for a verified duplicate before sending any code (friendly inline
+-- message); the index is the backstop against races.
 -- Note: creation fails if existing rows already contain duplicates —
 -- clean those up in the Table Editor first.
 create unique index if not exists registrations_email_unique
@@ -38,11 +42,10 @@ drop policy if exists "public can register" on public.registrations;
 
 -- Email-verification challenges for the registration form. One active
 -- (unconsumed, unsuperseded) challenge per email; requesting a new code
--- supersedes earlier ones. `payload` holds the pending application so a
--- row only ever lands in `registrations` after the code checks out —
--- and so drop-offs at the code step remain recoverable for follow-up.
--- Only the service role touches this table (RLS on, no policies).
--- Optional hygiene, run occasionally or via pg_cron:
+-- supersedes earlier ones. The pending application itself lives in
+-- `registrations` (verified_at null) — this table only tracks codes
+-- and send-rate history. Only the service role touches it (RLS on, no
+-- policies). Optional hygiene, run occasionally or via pg_cron:
 --   delete from public.otp_challenges where created_at < now() - interval '30 days';
 create table if not exists public.otp_challenges (
   id uuid primary key default gen_random_uuid(),
@@ -53,9 +56,12 @@ create table if not exists public.otp_challenges (
   attempts smallint not null default 0,
   consumed_at timestamptz,
   superseded_at timestamptz,
-  ip text,
-  payload jsonb not null
+  ip text
 );
+
+-- Early versions kept the pending application here as jsonb; it now
+-- lives in `registrations` directly.
+alter table public.otp_challenges drop column if exists payload;
 
 create index if not exists otp_challenges_email_idx
   on public.otp_challenges (email, created_at desc);
