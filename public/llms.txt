@@ -1,6 +1,6 @@
 # AI Wingschool
 
-> AI Wingschool teaches teenagers in India — Classes 6 to 10 — to think and build with AI. Its flagship, WingsQuest 2026, is an All India AI Aptitude Challenge: a free one-hour online test that selects students for a four-week live AI Builder Program mentored by IIT and IIM graduates, ending with each student presenting a real AI project on stage at Flagship Expo Day.
+> AI Wingschool teaches teenagers in India — Classes 6 to 10 — to think and build with AI. Its flagship, WingsQuest 2026, is a free one-hour online test that selects students for a four-week live AI Builder Program mentored by IIT and IIM graduates, ending with each student presenting a real AI project on stage at Flagship Expo Day.
 
 Site: https://www.aiwingschool.com
 Contact: connect@aiwingschool.com · +91 7355080850 (phone and WhatsApp)

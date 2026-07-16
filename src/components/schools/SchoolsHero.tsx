@@ -50,7 +50,7 @@ export function SchoolsHero() {
                 className="h-1.5 w-1.5 rounded-full"
                 style={{ background: "#ffffff" }}
               />
-              All India AI Aptitude Challenge · Class 6–10
+              WingsQuest 2026 · Class 6–10
             </span>
 
             <h2

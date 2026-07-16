@@ -22,7 +22,7 @@ export const PAGE_META = {
     path: "/register",
     title: "Apply: WingsQuest 2026 AI Challenge, Classes 6–10 | AI Wingschool",
     description:
-      "Register for WingsQuest 2026, the free All India AI Aptitude Challenge for Classes 6–10. Applications close 15 August; Challenge Day is 28 August. No coding needed.",
+      "Register for WingsQuest 2026, the free AI aptitude challenge for Classes 6–10. Applications close 15 August; Challenge Day is 28 August. No coding needed.",
   },
   privacy: {
     path: "/privacy",

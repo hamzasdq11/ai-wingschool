@@ -238,7 +238,7 @@ export function Register() {
         <div className="mx-auto grid max-w-7xl gap-12 px-6 pt-14 pb-24 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:items-start lg:gap-x-16 lg:px-8 lg:pt-20">
           <Reveal className="order-1 lg:order-none lg:col-start-1 lg:row-start-1">
             <p className="section-kicker mb-4">
-              WingsQuest 2026 · All India AI Aptitude Challenge · Class 6–10
+              WingsQuest 2026 · Class 6–10
             </p>
             <h1 className="section-heading mb-6">
               See how far your{" "}
