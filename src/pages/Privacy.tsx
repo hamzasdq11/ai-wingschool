@@ -1,6 +1,7 @@
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { CONTACT_EMAIL, CONTACT_PHONE_DISPLAY } from "../lib/contact";
+import { PAGE_META, usePageMeta } from "../lib/seo";
 
 const sections = [
   {
@@ -22,6 +23,8 @@ const sections = [
 ];
 
 export function Privacy() {
+  usePageMeta(PAGE_META.privacy);
+
   return (
     <div className="min-h-screen">
       <Navbar />

@@ -1,0 +1,36 @@
+# AI Wingschool
+
+> AI Wingschool teaches teenagers in India — Classes 6 to 10 — to think and build with AI. Its flagship, WingsQuest 2026, is an All India AI Aptitude Challenge: a free one-hour online test that selects students for a four-week live AI Builder Program mentored by IIT and IIM graduates, ending with each student presenting a real AI project on stage at Flagship Expo Day.
+
+Site: https://www.aiwingschool.com
+Contact: connect@aiwingschool.com · +91 7355080850 (phone and WhatsApp)
+
+## What AI Wingschool is
+
+- A live, project-based AI education program built in India, for Indian school students in Classes 6–10.
+- Designed and taught by graduates of IIT Madras, IIT Ropar, IIM Bangalore, and IIM Ranchi, most with industry experience at AI-first startups.
+- Students don't just use AI tools — they learn how modern AI actually works (down to running a single neuron) and build real projects with it.
+- Hardware is included: an Arduino, sensors, and robotics kit is shipped to each enrolled student's door.
+
+## WingsQuest 2026 — how it works
+
+1. **The Challenge** — a free one-hour online aptitude challenge, taken from home, calibrated by grade (Classes 6–10). No coding and no prep required; it measures reasoning, curiosity, and builder instinct. Applications close 15 August 2026; Challenge Day is 28 August 2026.
+2. **The Selection** — admission to the AI Builder Program is decided purely on Challenge score. The top 20% of scorers earn a 25% merit scholarship; the top 10% earn a 50% scholarship.
+3. **The AI Builder Program** — four weeks of live, hands-on online classes where qualifiers learn how modern AI works and build a real AI project of their own. This is a paid program; the fee is shared directly with parents before anything is due.
+4. **Flagship Expo Day** — every finishing student presents their project on a public stage to a panel of industry experts and IIT/IIM alumni, and collects a project-completion certificate.
+
+Every participant — qualifier or not — receives a WingsQuest 2026 certificate and an official scorecard with their All-India percentile.
+
+## Frequently asked questions
+
+- **Do students need to know coding?** No. The Challenge has no code in it, and the Builder Program starts from zero.
+- **How much does it cost?** The Challenge is free. The Builder Program is paid, with 25–50% merit scholarships for the top 10–20% of scorers.
+- **Does it clash with school?** The Challenge is one hour, online, from home. The Builder Program is four weeks of live online sessions designed to fit around school life.
+- **What if a student doesn't clear the cutoff?** They keep their participation certificate and private score band, and the Challenge will run again.
+
+## Pages
+
+- [Home](https://www.aiwingschool.com/): the full program — why AI fluency matters for teenagers, how WingsQuest 2026 works, what the Challenge measures, and FAQs.
+- [Register](https://www.aiwingschool.com/register): the WingsQuest 2026 application form for students of Classes 6–10 across India.
+- [Privacy Policy](https://www.aiwingschool.com/privacy)
+- [Terms of Use](https://www.aiwingschool.com/terms)

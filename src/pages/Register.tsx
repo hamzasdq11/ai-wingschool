@@ -3,6 +3,7 @@ import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { Reveal } from "../components/Reveal";
 import { applicationMailto, CONTACT_EMAIL } from "../lib/contact";
+import { PAGE_META, usePageMeta } from "../lib/seo";
 import { supabase } from "../lib/supabase";
 
 const facts = [
@@ -73,6 +74,8 @@ const formatPhone = (digits: string) =>
   digits.length > 5 ? `${digits.slice(0, 5)} ${digits.slice(5)}` : digits;
 
 export function Register() {
+  usePageMeta(PAGE_META.register);
+
   const [student, setStudent] = useState("");
   const [grade, setGrade] = useState("");
   const [city, setCity] = useState("");
