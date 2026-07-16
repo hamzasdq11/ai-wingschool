@@ -1,10 +1,9 @@
-import { useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { Reveal } from "../components/Reveal";
 import { applicationMailto, CONTACT_EMAIL } from "../lib/contact";
 import { PAGE_META, usePageMeta } from "../lib/seo";
-import { supabase } from "../lib/supabase";
 
 const facts = [
   { value: "3 stages", label: "One journey" },
@@ -73,6 +72,94 @@ const errorTextStyle: React.CSSProperties = {
 const formatPhone = (digits: string) =>
   digits.length > 5 ? `${digits.slice(0, 5)} ${digits.slice(5)}` : digits;
 
+// Matches the server's RESEND_COOLDOWN_SECONDS; the response's
+// `cooldown` field wins when present.
+const RESEND_COOLDOWN_FALLBACK = 45;
+
+// Common misspellings of the domains our applicants actually use. A
+// mistyped email is the #1 way to lose someone at the code step — the
+// code goes to an address that doesn't exist. Suggestions are
+// non-blocking: one tap applies the fix, ignoring it costs nothing.
+const DOMAIN_TYPOS: Record<string, string> = {
+  "gmial.com": "gmail.com",
+  "gamil.com": "gmail.com",
+  "gmal.com": "gmail.com",
+  "gmali.com": "gmail.com",
+  "gnail.com": "gmail.com",
+  "gemail.com": "gmail.com",
+  "gmil.com": "gmail.com",
+  "gmaill.com": "gmail.com",
+  "gmai.com": "gmail.com",
+  "gmail.co": "gmail.com",
+  "gmail.cm": "gmail.com",
+  "gmail.om": "gmail.com",
+  "yaho.com": "yahoo.com",
+  "yahooo.com": "yahoo.com",
+  "yhoo.com": "yahoo.com",
+  "yahoo.cm": "yahoo.com",
+  "hotmial.com": "hotmail.com",
+  "hotmall.com": "hotmail.com",
+  "hotmai.com": "hotmail.com",
+  "hotnail.com": "hotmail.com",
+  "hotmil.com": "hotmail.com",
+  "outlok.com": "outlook.com",
+  "outloook.com": "outlook.com",
+  "outlook.co": "outlook.com",
+  "iclod.com": "icloud.com",
+  "icoud.com": "icloud.com",
+  "redifmail.com": "rediffmail.com",
+  "rediffmal.com": "rediffmail.com",
+};
+
+function suggestEmail(email: string): string | null {
+  const at = email.lastIndexOf("@");
+  if (at < 1) return null;
+  const local = email.slice(0, at);
+  const domain = email.slice(at + 1).toLowerCase();
+  // ".con" is not a TLD; it is always a fat-fingered ".com".
+  const fixed =
+    DOMAIN_TYPOS[domain] ??
+    (domain.endsWith(".con") ? domain.replace(/\.con$/, ".com") : undefined);
+  return fixed && fixed !== domain ? `${local}@${fixed}` : null;
+}
+
+type RegisterApiResponse = {
+  ok?: boolean;
+  reused?: boolean;
+  cooldown?: number;
+  error?: string;
+  attemptsLeft?: number;
+};
+
+async function callRegisterApi(body: object): Promise<RegisterApiResponse> {
+  const res = await fetch("/api/register", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+  try {
+    return (await res.json()) as RegisterApiResponse;
+  } catch {
+    return { error: "server" };
+  }
+}
+
+const linkButtonStyle: React.CSSProperties = {
+  fontFamily: "var(--font-body)",
+  fontSize: "0.78rem",
+  fontWeight: 500,
+  color: "#1335b8",
+  textDecoration: "underline",
+  textUnderlineOffset: "3px",
+};
+
+const linkButtonDisabledStyle: React.CSSProperties = {
+  ...linkButtonStyle,
+  color: "rgba(15,15,15,0.45)",
+  textDecoration: "none",
+  cursor: "default",
+};
+
 export function Register() {
   usePageMeta(PAGE_META.register);
 
@@ -89,11 +176,34 @@ export function Register() {
   const [website, setWebsite] = useState("");
 
   const [errors, setErrors] = useState<Partial<Record<FieldName, string>>>({});
+  const [emailSuggestion, setEmailSuggestion] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
-  const [failed, setFailed] = useState(false);
+  const [failedMsg, setFailedMsg] = useState<string | null>(null);
+
+  // Email-verification step, shown in the same card after submit.
+  const [step, setStep] = useState<"form" | "verify">("form");
+  const [code, setCode] = useState("");
+  const [verifying, setVerifying] = useState(false);
+  const [verifyError, setVerifyError] = useState<string | null>(null);
+  const [verifyInfo, setVerifyInfo] = useState<string | null>(null);
+  const [resending, setResending] = useState(false);
+  const [resendAt, setResendAt] = useState(0);
+  const [nowTs, setNowTs] = useState(() => Date.now());
+
+  useEffect(() => {
+    if (step !== "verify") return;
+    const t = window.setInterval(() => setNowTs(Date.now()), 1000);
+    return () => window.clearInterval(t);
+  }, [step]);
+  const resendIn = Math.max(0, Math.ceil((resendAt - nowTs) / 1000));
 
   const cardRef = useRef<HTMLDivElement>(null);
+  const codeRef = useRef<HTMLInputElement>(null);
+  // Focusing the email input can't happen in the same tick that leaves
+  // the verify step — the form hasn't remounted yet — so it's deferred
+  // to the effect below.
+  const focusEmailOnForm = useRef(false);
   const fieldRefs: Record<FieldName, React.RefObject<HTMLElement | null>> = {
     student: useRef<HTMLInputElement>(null),
     grade: useRef<HTMLSelectElement>(null),
@@ -160,6 +270,36 @@ export function Register() {
     phone,
   };
 
+  // "start" both begins the flow and re-sends: the server keeps one
+  // active code per email, refreshes the stored application on rapid
+  // re-submits, and rotates the code outside the cooldown window.
+  const requestCode = () =>
+    callRegisterApi({
+      action: "start",
+      application: {
+        ...application,
+        grade: Number(application.grade),
+        interest: spark.trim(),
+      },
+    });
+
+  useEffect(() => {
+    if (step === "form" && focusEmailOnForm.current) {
+      focusEmailOnForm.current = false;
+      fieldRefs.email.current?.focus();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [step]);
+
+  const showEmailExists = () => {
+    focusEmailOnForm.current = true;
+    setStep("form");
+    setErrors((prev) => ({
+      ...prev,
+      email: "An application with this email already exists.",
+    }));
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const nextErrors: Partial<Record<FieldName, string>> = {};
@@ -179,39 +319,139 @@ export function Register() {
     }
 
     setSending(true);
-    setFailed(false);
+    setFailedMsg(null);
     try {
-      if (!supabase) throw new Error("Supabase is not configured");
-      const { error } = await supabase.from("registrations").insert({
-        student: application.student,
-        grade: Number(application.grade),
-        school: application.school,
-        board: application.board,
-        city: application.city,
-        email: application.email,
-        phone: application.phone,
-        interest: spark.trim(),
-      });
-      if (error) {
-        if (error.code === "23505") {
-          setErrors((prev) => ({
-            ...prev,
-            email: "An application with this email already exists.",
-          }));
-          fieldRefs.email.current?.focus();
-          return;
-        }
-        throw error;
+      const res = await requestCode();
+      if (res.ok) {
+        setStep("verify");
+        setCode("");
+        setVerifyError(null);
+        setVerifyInfo(
+          res.reused
+            ? "We'd already emailed you a code — it's still valid."
+            : null,
+        );
+        setResendAt(
+          Date.now() + (res.cooldown ?? RESEND_COOLDOWN_FALLBACK) * 1000,
+        );
+        requestAnimationFrame(() => {
+          cardRef.current?.scrollIntoView({ block: "nearest" });
+        });
+      } else if (res.error === "duplicate_email") {
+        showEmailExists();
+      } else if (res.error === "too_many_codes") {
+        setFailedMsg("Too many attempts right now — try again in an hour, or");
+      } else if (res.error === "send_failed") {
+        setFailedMsg("We couldn't email your code — try again in a moment, or");
+      } else {
+        setFailedMsg("Couldn't submit just now — try again, or");
       }
-      setSubmitted(true);
-      requestAnimationFrame(() => {
-        cardRef.current?.scrollIntoView({ block: "nearest" });
-      });
     } catch {
-      setFailed(true);
+      setFailedMsg("Couldn't submit just now — try again, or");
     } finally {
       setSending(false);
     }
+  };
+
+  const verifyCode = async (codeToTry: string) => {
+    if (verifying) return;
+    setVerifying(true);
+    setVerifyError(null);
+    try {
+      const res = await callRegisterApi({
+        action: "verify",
+        email: application.email,
+        code: codeToTry,
+      });
+      if (res.ok) {
+        setSubmitted(true);
+        requestAnimationFrame(() => {
+          cardRef.current?.scrollIntoView({ block: "nearest" });
+        });
+        return;
+      }
+      switch (res.error) {
+        case "invalid_code":
+          setCode("");
+          setVerifyError(
+            res.attemptsLeft === 1
+              ? "That code didn't match — one try left before you'll need a fresh one."
+              : "That code didn't match — check the latest email and try again.",
+          );
+          requestAnimationFrame(() => codeRef.current?.focus());
+          break;
+        case "expired":
+          setCode("");
+          setResendAt(0);
+          setVerifyError("That code has expired — tap Resend for a fresh one.");
+          break;
+        case "too_many_attempts":
+          setCode("");
+          setResendAt(0);
+          setVerifyError(
+            "Too many tries with that code — tap Resend for a fresh one.",
+          );
+          break;
+        case "duplicate_email":
+          showEmailExists();
+          break;
+        default:
+          setVerifyError("Couldn't check that code — give it another try.");
+      }
+    } catch {
+      setVerifyError("Couldn't check that code — network hiccup, try again.");
+    } finally {
+      setVerifying(false);
+    }
+  };
+
+  const handleCodeChange = (value: string) => {
+    const digits = value.replace(/\D/g, "").slice(0, 6);
+    setCode(digits);
+    if (verifyError) setVerifyError(null);
+    // The sixth digit submits by itself — typed or pasted.
+    if (digits.length === 6) void verifyCode(digits);
+  };
+
+  const resendCode = async () => {
+    if (resending || resendIn > 0) return;
+    setResending(true);
+    setVerifyError(null);
+    try {
+      const res = await requestCode();
+      if (res.ok) {
+        setCode("");
+        setVerifyInfo(
+          res.reused
+            ? "Your earlier code is still valid — check the email we already sent."
+            : "New code sent — it replaces earlier ones.",
+        );
+        setResendAt(
+          Date.now() + (res.cooldown ?? RESEND_COOLDOWN_FALLBACK) * 1000,
+        );
+        requestAnimationFrame(() => codeRef.current?.focus());
+      } else if (res.error === "too_many_codes") {
+        setVerifyError(
+          "Too many codes requested for now — wait a while, or email us your application below.",
+        );
+      } else if (res.error === "duplicate_email") {
+        showEmailExists();
+      } else {
+        setVerifyError("Couldn't send a new code — try again in a moment.");
+      }
+    } catch {
+      setVerifyError("Couldn't send a new code — network hiccup, try again.");
+    } finally {
+      setResending(false);
+    }
+  };
+
+  const editEmail = () => {
+    focusEmailOnForm.current = true;
+    setStep("form");
+    setCode("");
+    setVerifyError(null);
+    setVerifyInfo(null);
   };
 
   const firstName = student.trim().split(" ")[0] ?? "";
@@ -398,6 +638,135 @@ export function Register() {
                     .
                   </p>
                 </div>
+              ) : step === "verify" ? (
+                <div className="relative">
+                  <span
+                    className="blue-chip inline-flex px-3 py-1"
+                    style={{
+                      fontFamily: "var(--font-body)",
+                      fontSize: "0.64rem",
+                      fontWeight: 500,
+                      letterSpacing: "0.16em",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    One last step
+                  </span>
+                  <h2
+                    className="mt-5"
+                    style={{
+                      fontFamily: "var(--font-display)",
+                      fontSize: "1.75rem",
+                      fontWeight: 400,
+                      letterSpacing: "-0.03em",
+                      lineHeight: 1.1,
+                      color: "#0a0a0a",
+                    }}
+                  >
+                    Enter your 6-digit code
+                  </h2>
+                  <p className="ui-body mt-4">
+                    We&apos;ve emailed it to{" "}
+                    <b style={{ color: "#0a0a0a", fontWeight: 500 }}>
+                      {application.email}
+                    </b>
+                    . It can take a minute — check spam or promotions if it
+                    hasn&apos;t landed.
+                  </p>
+                  {verifyInfo && (
+                    <p
+                      className="ui-caption mt-3"
+                      style={{ color: "#1335b8" }}
+                    >
+                      {verifyInfo}
+                    </p>
+                  )}
+
+                  <div className="mt-6">
+                    <label htmlFor={`${ids}-code`} style={fieldLabelStyle}>
+                      Confirmation code
+                    </label>
+                    <input
+                      id={`${ids}-code`}
+                      ref={codeRef}
+                      type="text"
+                      inputMode="numeric"
+                      autoComplete="one-time-code"
+                      autoFocus
+                      value={code}
+                      onChange={(e) => handleCodeChange(e.target.value)}
+                      placeholder="••••••"
+                      disabled={verifying}
+                      className={`ui-input w-full${verifyError ? " ui-input-error" : ""}`}
+                      style={{
+                        fontSize: "1.4rem",
+                        fontWeight: 500,
+                        letterSpacing: "0.4em",
+                        textIndent: "0.4em",
+                        textAlign: "center",
+                      }}
+                      aria-invalid={Boolean(verifyError)}
+                      aria-describedby={
+                        verifyError ? `${ids}-code-error` : undefined
+                      }
+                    />
+                    {verifyError && (
+                      <p id={`${ids}-code-error`} style={errorTextStyle}>
+                        {verifyError}
+                      </p>
+                    )}
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => verifyCode(code)}
+                    disabled={verifying || code.length !== 6}
+                    className="ui-button mt-6"
+                  >
+                    {verifying ? "Checking…" : "Confirm & enter →"}
+                  </button>
+
+                  <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
+                    <button
+                      type="button"
+                      onClick={resendCode}
+                      disabled={resending || resendIn > 0}
+                      style={
+                        resending || resendIn > 0
+                          ? linkButtonDisabledStyle
+                          : linkButtonStyle
+                      }
+                    >
+                      {resending
+                        ? "Sending…"
+                        : resendIn > 0
+                          ? `Resend code in ${resendIn}s`
+                          : "Resend code"}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={editEmail}
+                      style={linkButtonStyle}
+                    >
+                      Wrong email? Edit it
+                    </button>
+                  </div>
+
+                  <p className="ui-caption mt-6">
+                    Still nothing after a few minutes?{" "}
+                    <a
+                      href={applicationMailto({
+                        ...application,
+                        phone: `+91 ${formatPhone(phone)}`,
+                      })}
+                      className="underline"
+                      style={{ color: "#1335b8" }}
+                    >
+                      Email us your application
+                    </a>{" "}
+                    and we&apos;ll take it from there.
+                  </p>
+                </div>
               ) : (
                 <form
                   noValidate
@@ -476,20 +845,55 @@ export function Register() {
                         ref={fieldRefs.email as React.RefObject<HTMLInputElement>}
                         type="email"
                         autoComplete="email"
+                        autoCapitalize="none"
+                        autoCorrect="off"
+                        spellCheck={false}
                         value={email}
                         onChange={(e) => {
                           setEmail(e.target.value);
+                          setEmailSuggestion(null);
                           handleChange("email", e.target.value);
                         }}
-                        onBlur={() => handleBlur("email")}
+                        onBlur={() => {
+                          handleBlur("email");
+                          setEmailSuggestion(suggestEmail(email.trim()));
+                        }}
                         placeholder="Enter email address"
                         className={`ui-input w-full${errors.email ? " ui-input-error" : ""}`}
                         {...errorProps("email")}
                       />
                       {fieldError("email")}
+                      {emailSuggestion && (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setEmail(emailSuggestion);
+                            setEmailSuggestion(null);
+                            handleChange("email", emailSuggestion);
+                          }}
+                          className="mt-2 block text-left"
+                          style={{
+                            fontFamily: "var(--font-body)",
+                            fontSize: "0.75rem",
+                            color: "#1335b8",
+                          }}
+                        >
+                          Did you mean{" "}
+                          <b
+                            style={{
+                              fontWeight: 600,
+                              textDecoration: "underline",
+                              textUnderlineOffset: "3px",
+                            }}
+                          >
+                            {emailSuggestion}
+                          </b>
+                          ? Tap to fix.
+                        </button>
+                      )}
                       <p className="ui-caption mt-2">
-                        Official WingsQuest communications and details will be
-                        sent here.
+                        Your 6-digit confirmation code and all WingsQuest
+                        communications will be sent here.
                       </p>
                     </div>
 
@@ -659,14 +1063,14 @@ export function Register() {
                     disabled={sending}
                     className="ui-button mt-7"
                   >
-                    {sending ? "Submitting…" : "Enter WingsQuest →"}
+                    {sending ? "Sending your code…" : "Enter WingsQuest →"}
                   </button>
-                  {failed && (
+                  {failedMsg ? (
                     <p
                       className="ui-caption mt-3"
                       style={{ color: "#b3261e" }}
                     >
-                      Couldn&apos;t submit just now — try again, or{" "}
+                      {failedMsg}{" "}
                       <a
                         href={applicationMailto({
                           ...application,
@@ -677,6 +1081,11 @@ export function Register() {
                         email us your application
                       </a>
                       .
+                    </p>
+                  ) : (
+                    <p className="ui-caption mt-3">
+                      Last step after this: a 6-digit code lands in your email
+                      — enter it to confirm your application.
                     </p>
                   )}
                 </form>

@@ -74,11 +74,18 @@ export default defineConfig([
 
 ## Form submissions (Supabase)
 
-The demo and WingsQuest registration forms insert directly into Supabase
-(project tables `demo_requests` and `registrations`) via `supabase-js`
-using the publishable key. Tables are protected by insert-only row-level
-security — the site can write but never read; view entries in the
-Supabase dashboard (Table Editor), from any device.
+Two forms, two different write paths:
+
+- **Demo form** — inserts directly into `demo_requests` via `supabase-js`
+  with the publishable key (insert-only RLS policy).
+- **WingsQuest registration** — goes through `api/register.ts` and an
+  email-verification step (next section). There is **no** anon insert
+  policy on `registrations`; rows are written only by the function's
+  service-role client, always with `verified_at` set.
+
+Tables can never be read from the site — view entries in the Supabase
+dashboard (Table Editor), from any device. Rows from before the OTP flow
+shipped have `verified_at` null.
 
 - Schema + policies: `supabase/schema.sql` (idempotent — safe to re-run
   in the SQL Editor)
@@ -91,12 +98,45 @@ Supabase dashboard (Table Editor), from any device.
 - Spam/duplicate protection: both forms carry a hidden honeypot field
   (bots that fill it get a fake success and nothing is inserted), and
   `registrations.email` has a case-insensitive unique index — a repeat
-  application shows an inline "already exists" message.
+  application shows an inline "already exists" message before any code
+  is sent.
 
-There is no backend server for the site itself: deploy to Vercel with
-the two `VITE_SUPABASE_*` env vars set in the project's build settings.
 On submit failure the forms show a WhatsApp (demo) or email
 (registration) fallback.
+
+## Email verification (registration OTP)
+
+`api/register.ts` makes every registration a verified one, in a single
+flow on `/register`:
+
+1. `action: "start"` — validates the application, rejects duplicate
+   emails up front, stores the pending application in `otp_challenges`
+   with a hashed 6-digit code, and emails the code via Resend (the code
+   is in the subject line, so it's readable from the inbox list).
+2. The form card morphs into a code prompt — auto-submits on the 6th
+   digit, resend with a 45 s cooldown, "wrong email? edit it" preserves
+   the form, and common email-domain typos (gmial.com etc.) get a
+   one-tap fix before anything is sent.
+3. `action: "verify"` — checks the code (10 min expiry, 5 attempts) and
+   only then inserts into `registrations` with `verified_at` set. That
+   insert fires the existing confirmation-email webhook.
+
+Guardrails: one active code per email (a resend supersedes earlier
+codes; a rapid re-submit inside the cooldown refreshes the stored
+application without sending a new email), per-email cap 6 codes/hour,
+per-IP cap 30/hour (generous on purpose — school labs share one IP).
+Abandoned challenges keep their payload in `otp_challenges`, so
+almost-registrants stay recoverable for follow-up.
+
+Extra env vars needed (Vercel Project Settings → Environment
+Variables): `SUPABASE_SERVICE_ROLE_KEY` (Project Settings → API Keys →
+secret key) alongside the existing `RESEND_API_KEY`. The function also
+needs the Supabase URL, which it reads from `SUPABASE_URL` or the
+existing `VITE_SUPABASE_URL`.
+
+Local testing: `npm run dev` serves the SPA only — `/api/*` needs
+`vercel dev` with the server-side vars in `.env.local` (see
+`.env.example`).
 
 ## Email notifications
 

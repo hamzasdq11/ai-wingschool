@@ -15,6 +15,12 @@ create table if not exists public.registrations (
   interest text not null default '' check (char_length(interest) <= 220)
 );
 
+-- Set once the applicant proves ownership of the email via the OTP
+-- step (api/register.ts). Rows created since the OTP flow shipped are
+-- always verified; null marks legacy pre-OTP registrations.
+alter table public.registrations
+  add column if not exists verified_at timestamptz;
+
 -- One application per email (case-insensitive). The form turns the
 -- resulting Postgres 23505 error into a friendly inline message.
 -- Note: creation fails if existing rows already contain duplicates —
@@ -24,14 +30,39 @@ create unique index if not exists registrations_email_unique
 
 alter table public.registrations enable row level security;
 
--- The site (publishable key) may only insert. Reading requires the
--- dashboard, so submitted data is never exposed publicly.
+-- No insert policy: registrations are written exclusively by
+-- api/register.ts (service role, bypasses RLS) after the applicant
+-- verifies a 6-digit email code. The publishable key can neither read
+-- nor write this table.
 drop policy if exists "public can register" on public.registrations;
-create policy "public can register"
-  on public.registrations
-  for insert
-  to anon
-  with check (true);
+
+-- Email-verification challenges for the registration form. One active
+-- (unconsumed, unsuperseded) challenge per email; requesting a new code
+-- supersedes earlier ones. `payload` holds the pending application so a
+-- row only ever lands in `registrations` after the code checks out —
+-- and so drop-offs at the code step remain recoverable for follow-up.
+-- Only the service role touches this table (RLS on, no policies).
+-- Optional hygiene, run occasionally or via pg_cron:
+--   delete from public.otp_challenges where created_at < now() - interval '30 days';
+create table if not exists public.otp_challenges (
+  id uuid primary key default gen_random_uuid(),
+  created_at timestamptz not null default now(),
+  email text not null check (char_length(email) <= 254),
+  code_hash text not null,
+  expires_at timestamptz not null,
+  attempts smallint not null default 0,
+  consumed_at timestamptz,
+  superseded_at timestamptz,
+  ip text,
+  payload jsonb not null
+);
+
+create index if not exists otp_challenges_email_idx
+  on public.otp_challenges (email, created_at desc);
+create index if not exists otp_challenges_ip_idx
+  on public.otp_challenges (ip, created_at desc);
+
+alter table public.otp_challenges enable row level security;
 
 -- Demo-call requests (Book a Demo form on the landing page)
 create table if not exists public.demo_requests (
