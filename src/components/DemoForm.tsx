@@ -16,6 +16,9 @@ type DemoFormProps = {
   successFootnote?: ReactNode;
 };
 
+const formatPhone = (digits: string) =>
+  digits.length > 5 ? `${digits.slice(0, 5)} ${digits.slice(5)}` : digits;
+
 function defaultSuccessMessage(firstName: string) {
   return (
     <>
@@ -61,7 +64,7 @@ export function DemoForm({
       if (!supabase) throw new Error("Supabase is not configured");
       const { error } = await supabase.from("demo_requests").insert({
         name: name.trim(),
-        phone: phone.trim(),
+        phone: `+91 ${formatPhone(phone)}`,
         grade: Number(grade),
       });
       if (error) throw error;
@@ -77,7 +80,7 @@ export function DemoForm({
     [
       "Hi Wingschool! I'd like to book a demo call.",
       `Name: ${name.trim()}`,
-      `WhatsApp: ${phone.trim()}`,
+      `WhatsApp: +91 ${formatPhone(phone)}`,
       `Class: ${grade}`,
     ].join("\n"),
   );
@@ -157,18 +160,32 @@ export function DemoForm({
             <label htmlFor={phoneId} className="sr-only">
               WhatsApp number
             </label>
-            <input
-              id={phoneId}
-              required
-              type="tel"
-              inputMode="tel"
-              pattern="\+?[0-9\s\-]{10,15}"
-              title="Enter a valid WhatsApp number (10 digits)"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              placeholder="WhatsApp number"
-              className="ui-input"
-            />
+            <div className="ui-input-group">
+              <span
+                aria-hidden
+                style={{
+                  color: "rgba(15,15,15,0.55)",
+                  paddingRight: "0.6rem",
+                  borderRight: "1px solid #e2dfd5",
+                }}
+              >
+                +91
+              </span>
+              <input
+                id={phoneId}
+                required
+                type="tel"
+                inputMode="numeric"
+                autoComplete="tel-national"
+                pattern="[0-9]{5} [0-9]{5}"
+                title="Enter a 10-digit WhatsApp number"
+                value={formatPhone(phone)}
+                onChange={(e) =>
+                  setPhone(e.target.value.replace(/\D/g, "").slice(0, 10))
+                }
+                placeholder="WhatsApp number"
+              />
+            </div>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row">
             <label htmlFor={gradeId} className="sr-only">
@@ -212,18 +229,32 @@ export function DemoForm({
           <label htmlFor={phoneId} className="sr-only">
             WhatsApp number
           </label>
-          <input
-            id={phoneId}
-            required
-            type="tel"
-            inputMode="tel"
-            pattern="\+?[0-9\s\-]{10,15}"
-            title="Enter a valid WhatsApp number (10 digits)"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            placeholder="WhatsApp number"
-            className="ui-input"
-          />
+          <div className="ui-input-group">
+            <span
+              aria-hidden
+              style={{
+                color: "rgba(15,15,15,0.55)",
+                paddingRight: "0.6rem",
+                borderRight: "1px solid #e2dfd5",
+              }}
+            >
+              +91
+            </span>
+            <input
+              id={phoneId}
+              required
+              type="tel"
+              inputMode="numeric"
+              autoComplete="tel-national"
+              pattern="[0-9]{5} [0-9]{5}"
+              title="Enter a 10-digit WhatsApp number"
+              value={formatPhone(phone)}
+              onChange={(e) =>
+                setPhone(e.target.value.replace(/\D/g, "").slice(0, 10))
+              }
+              placeholder="WhatsApp number"
+            />
+          </div>
           <label htmlFor={gradeId} className="sr-only">
             Child&apos;s class
           </label>
