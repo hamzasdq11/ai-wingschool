@@ -26,7 +26,7 @@ const journey = [
   {
     number: "03",
     title: "Flagship Expo Day",
-    desc: "The strongest builders present their work live before parents, IIT/IIM mentors and industry experts panel.",
+    desc: "The strongest builders present their work live before IIT/IIM mentors and industry experts panel.",
   },
   
 ];
