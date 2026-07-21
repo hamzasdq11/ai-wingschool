@@ -57,7 +57,7 @@ function dayLabel(iso: string): string {
 }
 
 function pct(part: number, whole: number): string {
-  return whole > 0 ? `${Math.round((part / whole) * 100)}%` : "—";
+  return whole > 0 ? `${Math.round((part / whole) * 100)}%` : "n/a";
 }
 
 function Tile({
@@ -225,7 +225,7 @@ export function Stats() {
         /* ignore */
       }
     } catch {
-      setError("Couldn't load stats — try again.");
+      setError("Couldn't load stats. Try again.");
     } finally {
       setLoading(false);
     }
@@ -344,7 +344,7 @@ export function Stats() {
               )} verified yesterday`}
             />
             <Tile
-              label="Verified — all time"
+              label="Verified (all time)"
               value={nf.format(data.totals.verified)}
               sub={`${pct(data.totals.verified, TARGET)} of the ${nf.format(TARGET)} target`}
             />
@@ -405,7 +405,7 @@ export function Stats() {
 
             <Section
               title="Funnel"
-              caption="From the register page's own events (adblockers may undercount — registrations are ground truth)"
+              caption="From the register page's own events (adblockers may undercount; registrations are ground truth)"
             >
               <div
                 className="grid items-baseline gap-x-3 gap-y-2"
@@ -425,7 +425,7 @@ export function Stats() {
                       label={stage.label}
                       today={funnelToday[stage.key] ?? 0}
                       week={val7}
-                      ofPrevious={i === 0 ? "—" : pct(val7, prev ?? 0)}
+                      ofPrevious={i === 0 ? "n/a" : pct(val7, prev ?? 0)}
                     />
                   );
                 })}
@@ -434,7 +434,7 @@ export function Stats() {
 
             <Section
               title="By source"
-              caption="utm_source, else ?ref= — links you share should carry one"
+              caption="utm_source, else ?ref=. Links you share should carry one"
             >
               {data.by_source.map((s) => (
                 <BarRow

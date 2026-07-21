@@ -6,7 +6,7 @@ import { PAGE_META, usePageMeta } from "../lib/seo";
 const sections = [
   {
     title: "What we collect",
-    body: "When you book a demo or register for WingsQuest, we ask for a parent's name, a WhatsApp number, and the child's class. That's it — we don't collect payment details on this site, and we don't use tracking cookies.",
+    body: "When you book a demo or register for WingsQuest, we ask for a parent's name, a WhatsApp number, and the child's class. That's it. We don't collect payment details on this site, and we don't use tracking cookies.",
   },
   {
     title: "How we use it",
@@ -18,7 +18,7 @@ const sections = [
   },
   {
     title: "Your choices",
-    body: `You can ask us to delete your details or stop contacting you at any time — message us on WhatsApp or email ${CONTACT_EMAIL}, and we'll action it promptly.`,
+    body: `You can ask us to delete your details or stop contacting you at any time. Message us on WhatsApp or email ${CONTACT_EMAIL}, and we'll action it promptly.`,
   },
 ];
 

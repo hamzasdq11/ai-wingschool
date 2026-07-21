@@ -44,7 +44,7 @@ export function DemoForm({
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
   const [failed, setFailed] = useState(false);
-  // Honeypot — hidden from humans; bots that fill it get a fake success.
+  // Honeypot: hidden from humans; bots that fill it get a fake success.
   const [website, setWebsite] = useState("");
 
   const ids = useId();
@@ -87,7 +87,7 @@ export function DemoForm({
 
   const errorNote = failed ? (
     <p className="ui-caption" style={{ color: "#b3261e" }}>
-      Couldn&apos;t send just now — try again, or{" "}
+      Couldn&apos;t send just now. Try again, or{" "}
       <a
         href={fallbackWhatsapp}
         target="_blank"

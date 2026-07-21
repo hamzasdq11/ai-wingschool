@@ -1,5 +1,5 @@
 // Vercel Function: receives Supabase Database Webhooks (INSERT on
-// registrations / demo_requests) and sends email via Resend — an
+// registrations / demo_requests) and sends email via Resend: an
 // internal alert for every submission, plus a confirmation to the
 // applicant for registrations.
 //
@@ -35,7 +35,7 @@ const CONTACT_EMAIL = "connect@aiwingschool.com";
 const SITE_URL = "https://www.aiwingschool.com";
 const LOGO_URL_LIGHT = `${SITE_URL}/email/logo-onlight.png`; // #0a0a0a wordmark (light-mode clients)
 const LOGO_URL_DARK = `${SITE_URL}/email/logo-ondark.png`; //  #ffffff wordmark (dark-mode clients)
-const LOGO_URL_FALLBACK = `${SITE_URL}/email/logo-gray.png`; // #8a8a8a — Gmail (no theme swap), visible on both
+const LOGO_URL_FALLBACK = `${SITE_URL}/email/logo-gray.png`; // #8a8a8a; Gmail (no theme swap), visible on both
 const BRAND_BLUE = "#1335b8";
 const FONT_STACK =
   "-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif";
@@ -94,7 +94,7 @@ function wrap(body: string) {
   );
 }
 
-// Branded applicant confirmation. Table layout + inline styles only —
+// Branded applicant confirmation. Table layout + inline styles only, because
 // email clients strip <style>, flexbox and web fonts; the brand carries
 // through color, the hosted logo PNG and structure instead.
 function confirmationHtml(firstName: string): string {
@@ -113,7 +113,7 @@ function confirmationHtml(firstName: string): string {
   ).join("");
 
   return (
-    `<div style="display:none;max-height:0;overflow:hidden;">Your WingsQuest 2026 application has been received &mdash; Stage One begins 28 August.</div>` +
+    `<div style="display:none;max-height:0;overflow:hidden;">Your WingsQuest 2026 application has been received. Stage One begins 28 August.</div>` +
     `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f4f3ee;margin:0;">` +
     `<tr><td align="center" style="padding:36px 16px;">` +
     // No width attribute on the card: it acts as a min-width in the
@@ -121,7 +121,7 @@ function confirmationHtml(firstName: string): string {
     // max-width) gets a fixed 600 via the MSO conditional instead.
     `<!--[if mso]><table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0"><tr><td><![endif]-->` +
     `<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:600px;background-color:#ffffff;border-radius:16px;">` +
-    // Header — wordmark only, no band. Clients that support <picture> +
+    // Header: wordmark only, no band. Clients that support <picture> +
     // prefers-color-scheme (Apple Mail, Outlook, Samsung Mail) get the
     // black wordmark in light mode and the white one in dark. Gmail
     // ignores the <source>s and never recolors images, so it always
@@ -167,7 +167,7 @@ function confirmationHtml(firstName: string): string {
     `<a href="${WHATSAPP_LINK}" style="display:inline-block;padding:13px 26px;font-family:${FONT_STACK};font-size:14px;font-weight:600;color:#ffffff;text-decoration:none;">Questions? Message us on WhatsApp</a>` +
     `</td></tr></table>` +
     `</td></tr>` +
-    // Footer — text kept at #5a5a5a / #6b6b6b (not lighter greys): Gmail
+    // Footer text kept at #5a5a5a / #6b6b6b (not lighter greys): Gmail
     // dark mode turns light-grey text into dark-on-dark and it vanishes,
     // whereas these mid-greys invert to a visible light grey.
     `<tr><td style="padding:24px 44px 30px;border-top:1px solid #eceadf;font-family:${FONT_STACK};font-size:12px;line-height:1.7;color:#5a5a5a;">` +
@@ -188,7 +188,7 @@ function confirmationText(firstName: string): string {
     "Your application to WingsQuest 2026 has been received. Your entry confirmation and every official WingsQuest communication will arrive at this address.",
     "",
     "YOUR WINGSQUEST JOURNEY",
-    ...JOURNEY.map((s) => `${s.number}. ${s.title} — ${s.desc}`),
+    ...JOURNEY.map((s) => `${s.number}. ${s.title}: ${s.desc}`),
     "",
     "Stage One begins 28 August. Your entry details and preparation pointers will arrive by email before the challenge.",
     "",
@@ -206,7 +206,7 @@ function buildEmails(table: string, record: Record<string, unknown>, notifyEmail
     const student = String(record.student ?? "");
     const internal: Email = {
       to: notifyEmail,
-      subject: `New WingsQuest application — ${student} (Class ${record.grade}, ${record.city})`,
+      subject: `New WingsQuest application: ${student} (Class ${record.grade}, ${record.city})`,
       replyTo: String(record.email ?? "") || undefined,
       html: wrap(
         `<p><b>New WingsQuest 2026 application</b></p><table>` +
@@ -239,7 +239,7 @@ function buildEmails(table: string, record: Record<string, unknown>, notifyEmail
     return [
       {
         to: notifyEmail,
-        subject: `New demo call request — ${record.name} (Class ${record.grade})`,
+        subject: `New demo call request: ${record.name} (Class ${record.grade})`,
         html: wrap(
           `<p><b>New demo call request</b></p><table>` +
             detailRows(record, [
@@ -287,7 +287,7 @@ export async function POST(request: Request) {
   // Accept the shared secret from either the x-webhook-secret header or a
   // ?secret= query param. The query param is easier to configure reliably
   // in the Supabase webhook (the URL field isn't masked on edit, unlike
-  // custom headers) at the cost of appearing in request logs — acceptable
+  // custom headers) at the cost of appearing in request logs, acceptable
   // here since the secret only gates sending notification emails.
   const provided =
     request.headers.get("x-webhook-secret") ??
@@ -309,7 +309,7 @@ export async function POST(request: Request) {
   }
 
   // Registrations are inserted unverified by api/register.ts and only
-  // become real applications when verified_at flips — so their webhook
+  // become real applications when verified_at flips, so their webhook
   // fires on INSERT *and* UPDATE, and emails go out exactly once: on an
   // insert already verified (manual/dashboard) or on the null→set
   // transition. Field edits on unverified rows and any later updates to

@@ -18,7 +18,7 @@ const sections = [
   },
   {
     title: "Demo bookings",
-    body: "Booking a demo through this site sends us your details over WhatsApp and creates no obligation on you — it's a conversation, not a contract. Slots are confirmed by our team on WhatsApp.",
+    body: "Booking a demo through this site sends us your details over WhatsApp and creates no obligation on you. It's a conversation, not a contract. Slots are confirmed by our team on WhatsApp.",
   },
   {
     title: "Content on this site",

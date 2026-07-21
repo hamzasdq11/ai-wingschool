@@ -7,12 +7,12 @@ const measures = [
   {
     tag: "Logic & patterns",
     name: "Reasoning",
-    desc: "Structured thinking under time — sequences, deduction, and pattern-spotting. The stuff that predicts how fast you learn new tools.",
+    desc: "Structured thinking under time: sequences, deduction, and pattern-spotting. The stuff that predicts how fast you learn new tools.",
   },
   {
     tag: "Problem framing",
     name: "Curiosity",
-    desc: "How you attack a problem you've never seen before — the single best early signal of builder potential.",
+    desc: "How you attack a problem you've never seen before, the single best early signal of builder potential.",
   },
   {
     tag: "The unknown",
@@ -38,7 +38,7 @@ export function InsideChallenge() {
         </h2>
         <p className="section-body mb-14">
           No prep, no coding, no textbooks. A one-hour online challenge you
-          take from home, testing the three signals that predict a builder —
+          take from home, testing the three signals that predict a builder,
           calibrated for your grade, Class 6–10.
         </p>
       </Reveal>
@@ -100,7 +100,7 @@ export function InsideChallenge() {
                 color: "rgba(255,255,255,0.65)",
               }}
             >
-              This is an actual building block of ChatGPT — a single neuron.
+              This is an actual building block of ChatGPT: a single neuron.
               Researchers stack billions of them. You&apos;re about to run
               one.
             </p>
@@ -134,8 +134,8 @@ export function InsideChallenge() {
               }}
             >
               A neuron multiplies each input by its weight and adds the
-              results. If the total is negative, it outputs 0 — the ReLU
-              rule. What does this neuron output?
+              results. If the total is negative, it outputs 0. That&apos;s the
+              ReLU rule. What does this neuron output?
             </p>
 
             <div className="mt-5 flex flex-wrap gap-3">
@@ -192,8 +192,8 @@ export function InsideChallenge() {
                   }}
                 >
                   {gotIt
-                    ? "Correct — (2 × 3) + (−1 × 4) = 2. Positive, so ReLU passes it through: the neuron fires 2."
-                    : "Not quite — (2 × 3) + (−1 × 4) = 6 − 4 = 2. Positive, so ReLU lets it through: the output is 2."}
+                    ? "Correct. (2 × 3) + (−1 × 4) = 2. Positive, so ReLU passes it through: the neuron fires 2."
+                    : "Not quite. (2 × 3) + (−1 × 4) = 6 − 4 = 2. Positive, so ReLU lets it through: the output is 2."}
                 </p>
                 <p
                   className="mt-2"
@@ -205,8 +205,8 @@ export function InsideChallenge() {
                   }}
                 >
                   {gotIt
-                    ? "You just ran a forward pass through a real neuron — weights, ReLU activation, the works. Now watch what it's part of."
-                    : "Scary words, simple math — a forward pass, weights, ReLU — and underneath, just multiply and add. Now watch what it's part of."}
+                    ? "You just ran a forward pass through a real neuron: weights, ReLU activation, the works. Now watch what it's part of."
+                    : "Scary words, simple math. A forward pass, weights, ReLU, and underneath it all, just multiply and add. Now watch what it's part of."}
                 </p>
               </div>
             )}

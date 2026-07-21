@@ -5,7 +5,7 @@ const journey = [
   {
     number: "01",
     title: "The Challenge",
-    desc: "A one-hour online challenge of reasoning, curiosity, and builder instinct — calibrated by grade.",
+    desc: "A one-hour online challenge of reasoning, curiosity, and builder instinct, calibrated by grade.",
   },
   {
     number: "02",
@@ -85,7 +85,7 @@ export function SchoolsHero() {
               You&apos;ve been using AI for years. Now find out if you&apos;re
               built to <b style={{ color: "#ffffff" }}>build</b> with it. One
               hour of the Challenge decides who earns a seat in the Builder
-              Program — and a place on a public stage with a real AI project
+              Program, and a place on a public stage with a real AI project
               of your own.
             </p>
 

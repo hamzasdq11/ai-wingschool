@@ -17,7 +17,7 @@ create table if not exists public.registrations (
 
 -- Set once the applicant proves ownership of the email via the OTP
 -- step. api/register.ts inserts the row immediately on submit with
--- verified_at null and flips it when the code checks out — so the
+-- verified_at null and flips it when the code checks out, so the
 -- table shows every attempt, and null means the code was never entered
 -- (or the row predates the OTP flow). Count verified_at is not null
 -- toward registration targets.
@@ -41,7 +41,7 @@ alter table public.registrations
 -- One application per email (case-insensitive). api/register.ts checks
 -- for a verified duplicate before sending any code (friendly inline
 -- message); the index is the backstop against races.
--- Note: creation fails if existing rows already contain duplicates —
+-- Note: creation fails if existing rows already contain duplicates;
 -- clean those up in the Table Editor first.
 create unique index if not exists registrations_email_unique
   on public.registrations (lower(email));
@@ -57,7 +57,7 @@ drop policy if exists "public can register" on public.registrations;
 -- Email-verification challenges for the registration form. One active
 -- (unconsumed, unsuperseded) challenge per email; requesting a new code
 -- supersedes earlier ones. The pending application itself lives in
--- `registrations` (verified_at null) — this table only tracks codes
+-- `registrations` (verified_at null); this table only tracks codes
 -- and send-rate history. Only the service role touches it (RLS on, no
 -- policies). Optional hygiene, run occasionally or via pg_cron:
 --   delete from public.otp_challenges where created_at < now() - interval '30 days';
@@ -106,7 +106,7 @@ create policy "public can book demo"
 -- (src/lib/analytics.ts): register_view → form_start → submit_success
 -- (code emailed) → verified (code entered). Insert-only for the site;
 -- read via stats_payload() below. Analytics-grade data: anon inserts
--- mean it is directional, not ground truth — registrations are the
+-- mean it is directional, not ground truth; registrations are the
 -- ground truth. Same optional hygiene as otp_challenges.
 create table if not exists public.events (
   id uuid primary key default gen_random_uuid(),
@@ -134,7 +134,7 @@ create policy "public can log events"
   with check (true);
 
 -- Aggregates for the internal /stats page (api/stats.ts, service role
--- only — no anon/authenticated execute). Day boundaries in IST.
+-- only, no anon/authenticated execute). Day boundaries in IST.
 create or replace function public.stats_payload()
 returns jsonb
 language sql
@@ -195,7 +195,7 @@ grant execute on function public.stats_payload() to service_role;
 
 -- Email notifications are driven by Database Webhooks, configured in the
 -- dashboard (not here, so the shared secret stays out of git):
---   Dashboard → Integrations → Database Webhooks → Create — one webhook
+--   Dashboard → Integrations → Database Webhooks → Create: one webhook
 --   per table (registrations, demo_requests), event INSERT, type
 --   HTTP request, method POST, URL https://<your-domain>/api/notify,
 --   HTTP header  x-webhook-secret: <same value as the Vercel env var

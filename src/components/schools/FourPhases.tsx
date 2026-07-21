@@ -15,7 +15,7 @@ const phases: Phase[] = [
         The <em className="display-script">Challenge.</em>
       </>
     ),
-    desc: "A one-hour online aptitude challenge for Class 6–10. It can't be crammed and needs no coding — it measures how you think.",
+    desc: "A one-hour online aptitude challenge for Class 6–10. It can't be crammed and needs no coding. It measures how you think.",
     highlight: "Online · Challenge Day 28 Aug",
   },
   {
@@ -35,7 +35,7 @@ const phases: Phase[] = [
         The AI Builder <em className="display-script">Program.</em>
       </>
     ),
-    desc: "Four weeks of live, hands-on classes. You learn how modern AI actually works — then prove it by building a real AI project of your own.",
+    desc: "Four weeks of live, hands-on classes. You learn how modern AI actually works, then prove it by building a real AI project of your own.",
     highlight: "Taught by IIT/IIM grads",
   },
   {

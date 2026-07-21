@@ -6,7 +6,7 @@ import './index.css'
 import App from './App.tsx'
 import { captureAttribution } from './lib/analytics'
 
-// Vercel Web Analytics (pageviews/referrers in the Vercel dashboard —
+// Vercel Web Analytics (pageviews/referrers in the Vercel dashboard;
 // enable Analytics on the project there) + our own attribution capture
 // for the Supabase funnel events and per-registration source columns.
 inject()
@@ -21,7 +21,7 @@ const app = (
   </StrictMode>
 )
 
-// Prerendered routes ship with their HTML already in #root — hydrate those.
+// Prerendered routes ship with their HTML already in #root; hydrate those.
 // Any other URL is served the home template as a fallback, which won't match
 // the 404 route's tree, so render from scratch instead.
 const PRERENDERED = ['/', '/register', '/privacy', '/terms']

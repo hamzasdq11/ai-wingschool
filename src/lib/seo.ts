@@ -14,9 +14,9 @@ export type PageMeta = {
 export const PAGE_META = {
   home: {
     path: "/",
-    title: "AI Wingschool — Teenagers Learning to Think and Build with AI",
+    title: "AI Wingschool: Teenagers Learning to Think and Build with AI",
     description:
-      "WingsQuest 2026 — India's AI aptitude challenge for Classes 6–10. A free one-hour online test, then a live AI Builder Program mentored by IIT & IIM graduates.",
+      "WingsQuest 2026: India's AI aptitude challenge for Classes 6–10. A free one-hour online test, then a live AI Builder Program mentored by IIT & IIM graduates.",
   },
   register: {
     path: "/register",
@@ -46,7 +46,7 @@ export const PAGE_META = {
   // its routes explicitly) and never indexed.
   stats: {
     path: "/stats",
-    title: "Registrations — internal | WingsQuest",
+    title: "Registrations (internal) | WingsQuest",
     description: "Internal registration counter.",
     noindex: true,
   },

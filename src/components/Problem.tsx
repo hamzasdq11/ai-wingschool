@@ -36,7 +36,7 @@ const statements: Statement[] = [
         Early starts <em className="display-script">win.</em>
       </>
     ),
-    desc: "In 1995, the kids who began with the internet led the next two decades. The kids who begin with AI now will lead the next — the window is open, and it starts with one hour.",
+    desc: "In 1995, the kids who began with the internet led the next two decades. The kids who begin with AI now will lead the next. The window is open, and it starts with one hour.",
   },
 ];
 

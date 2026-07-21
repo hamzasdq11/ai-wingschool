@@ -7,7 +7,7 @@ export default defineConfig(({ command, mode }) => {
   const env = loadEnv(mode, __dirname, '')
   if (command === 'build' && !(env.VITE_SUPABASE_URL && env.VITE_SUPABASE_ANON_KEY)) {
     throw new Error(
-      'VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY are required to build — ' +
+      'VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY are required to build; ' +
         'without them the forms cannot submit. Set them in .env.local ' +
         "(see .env.example) or in your hosting provider's env settings.",
     )

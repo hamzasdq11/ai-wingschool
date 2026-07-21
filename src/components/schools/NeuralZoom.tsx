@@ -155,9 +155,9 @@ function BigCount({ target, animate }: { target: number; animate: boolean }) {
 }
 
 const captions = [
-  "This is the neuron you just ran — live.",
+  "This is the neuron you just ran, live.",
   "It's never alone.",
-  "Every thread is a weight — green pulls toward yes, red pushes toward no.",
+  "Every thread is a weight: green pulls toward yes, red pushes toward no.",
 ];
 
 export function NeuralZoom() {
@@ -700,7 +700,7 @@ export function NeuralZoom() {
                 >
                   multiply-and-adds is what ChatGPT runs for{" "}
                   <b style={{ color: "#ffffff" }}>every single word</b> it
-                  writes — all of them exactly the math you just did.
+                  writes, all of them exactly the math you just did.
                 </p>
               </div>
 

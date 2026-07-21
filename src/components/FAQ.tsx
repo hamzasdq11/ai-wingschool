@@ -10,11 +10,11 @@ const faqs = [
   },
   {
     q: "How much does it cost?",
-    a: "There is no fee to sit the Challenge — admission to the AI Builder Program is decided purely on your score. The Builder Program itself is a paid program, with 25–50% merit scholarships for the top 10–20% of scorers; the fee is shared directly with parents before anything is due.",
+    a: "There is no fee to sit the Challenge. Admission to the AI Builder Program is decided purely on your score. The Builder Program itself is a paid program, with 25–50% merit scholarships for the top 10–20% of scorers; the fee is shared directly with parents before anything is due.",
   },
   {
     q: "Will this clash with school and tuitions?",
-    a: "The Challenge is one hour, online, from home — Challenge Day is 28 August. The Builder Program is four weeks of live online sessions designed to fit around school life.",
+    a: "The Challenge is one hour, online, from home. Challenge Day is 28 August. The Builder Program is four weeks of live online sessions designed to fit around school life.",
   },
   {
     q: "What if I don't clear the cutoff?",

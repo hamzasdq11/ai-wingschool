@@ -10,7 +10,7 @@ const { render, PAGE_META, SITE_URL } = await import(
   resolve(root, "dist-ssr/prerender.js")
 );
 
-// Each non-home route is written twice — register.html for hosts that
+// Each non-home route is written twice: register.html for hosts that
 // resolve /register via clean URLs (Vercel cleanUrls, sirv), and
 // register/index.html for hosts that resolve directory indexes (/register/).
 const ROUTES = [

@@ -7,14 +7,14 @@
 //   { action: "verify", email, code }  → checks the code and flips
 //     verified_at on the row (service role)
 //
-// Every attempt is visible in the table — verified_at null marks
-// applicants who never entered their code — and the anon insert policy
+// Every attempt is visible in the table: verified_at null marks
+// applicants who never entered their code, and the anon insert policy
 // on `registrations` is gone entirely. api/notify.ts only emails once
 // verified_at is set, so unverified rows trigger nothing.
 //
 // Required Vercel env vars (Project Settings → Environment Variables):
 //   SUPABASE_URL (or VITE_SUPABASE_URL)  project URL
-//   SUPABASE_SERVICE_ROLE_KEY            secret key — server-side only
+//   SUPABASE_SERVICE_ROLE_KEY            secret key, server-side only
 //   RESEND_API_KEY                       shared with api/notify.ts
 // Optional:
 //   NOTIFY_FROM  sender (default WingsQuest <notifications@aiwingschool.com>)
@@ -90,7 +90,7 @@ type AttributionColumns = {
   referrer: string | null;
 };
 
-// Attribution is best-effort metadata straight from the client — trim,
+// Attribution is best-effort metadata straight from the client: trim,
 // truncate, and never let it fail a registration.
 function sanitizeAttribution(raw: unknown): AttributionColumns {
   const a =
@@ -251,7 +251,7 @@ async function handleStart(db: SupabaseClient, resendKey: string, body: Record<s
   }
   const attribution = sanitizeAttribution(body.attribution);
 
-  // Catch verified duplicates before any code is sent — nobody should
+  // Catch verified duplicates before any code is sent; nobody should
   // verify an email only to learn the application already exists. An
   // unverified row is a previous attempt that never finished: refreshed
   // below and given a fresh shot at the code.
@@ -284,7 +284,7 @@ async function handleStart(db: SupabaseClient, resendKey: string, body: Record<s
     return Response.json({ error: "too_many_codes" }, { status: 429 });
   }
 
-  // The application lands in the table right away, unverified — the
+  // The application lands in the table right away, unverified; the
   // lead is captured even if the code is never entered.
   await upsertPending(db, app, attribution);
 
@@ -312,7 +312,7 @@ async function handleStart(db: SupabaseClient, resendKey: string, body: Record<s
     await sendOtpEmail(resendKey, app.email, code);
   } catch (err) {
     // Remove the challenge so an immediate retry isn't cooldown-blocked.
-    // The unverified row stays — the lead survives the send failure.
+    // The unverified row stays; the lead survives the send failure.
     await db.from("otp_challenges").delete().eq("id", id);
     console.error("register: OTP email failed:", err);
     return Response.json({ error: "send_failed" }, { status: 502 });
@@ -362,7 +362,7 @@ async function handleVerify(db: SupabaseClient, body: Record<string, unknown>) {
   if (flipError) throw flipError;
 
   if (!flipped || flipped.length === 0) {
-    // No pending row. Either a parallel tab already verified it (fine —
+    // No pending row. Either a parallel tab already verified it (fine:
     // the code matched, they own the email) or the row was deleted from
     // the dashboard mid-flow; "expired" nudges a resend, which recreates
     // the row.

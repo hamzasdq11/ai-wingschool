@@ -42,7 +42,7 @@ function externalReferrer(): string | null {
 
 /**
  * Call once at boot. If the landing URL carries campaign params
- * (utm_*, ?ref=) they win — last campaign touch — otherwise the first
+ * (utm_*, ?ref=) they win (last campaign touch), otherwise the first
  * stored attribution (or first external referrer) sticks.
  */
 export function captureAttribution(): void {
@@ -61,7 +61,7 @@ export function captureAttribution(): void {
       localStorage.setItem(ATTR_KEY, JSON.stringify(fromUrl));
     }
   } catch {
-    // storage unavailable (private mode etc.) — attribution stays empty
+    // storage unavailable (private mode etc.), attribution stays empty
   }
 }
 

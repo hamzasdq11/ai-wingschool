@@ -78,7 +78,7 @@ const formatPhone = (digits: string) =>
 const RESEND_COOLDOWN_FALLBACK = 45;
 
 // Common misspellings of the domains our applicants actually use. A
-// mistyped email is the #1 way to lose someone at the code step — the
+// mistyped email is the #1 way to lose someone at the code step: the
 // code goes to an address that doesn't exist. Suggestions are
 // non-blocking: one tap applies the fix, ignoring it costs nothing.
 const DOMAIN_TYPOS: Record<string, string> = {
@@ -173,7 +173,7 @@ export function Register() {
   const [phone, setPhone] = useState(""); // 10 digits, unformatted
   const [spark, setSpark] = useState("");
   const [sparkFocused, setSparkFocused] = useState(false);
-  // Honeypot — hidden from humans; bots that fill it get a fake success.
+  // Honeypot: hidden from humans; bots that fill it get a fake success.
   const [website, setWebsite] = useState("");
 
   const [errors, setErrors] = useState<Partial<Record<FieldName, string>>>({});
@@ -202,11 +202,11 @@ export function Register() {
   const cardRef = useRef<HTMLDivElement>(null);
   const codeRef = useRef<HTMLInputElement>(null);
   // Focusing the email input can't happen in the same tick that leaves
-  // the verify step — the form hasn't remounted yet — so it's deferred
+  // the verify step (the form hasn't remounted yet), so it's deferred
   // to the effect below.
   const focusEmailOnForm = useRef(false);
 
-  // Funnel events — each fires at most once per visit to the page.
+  // Funnel events: each fires at most once per visit to the page.
   const trackedFormStart = useRef(false);
   const trackedSubmitSuccess = useRef(false);
   useEffect(() => {
@@ -346,7 +346,7 @@ export function Register() {
         setVerifyError(null);
         setVerifyInfo(
           res.reused
-            ? "We'd already emailed you a code — it's still valid."
+            ? "We'd already emailed you a code. It's still valid."
             : null,
         );
         setResendAt(
@@ -358,14 +358,14 @@ export function Register() {
       } else if (res.error === "duplicate_email") {
         showEmailExists();
       } else if (res.error === "too_many_codes") {
-        setFailedMsg("Too many attempts right now — try again in an hour, or");
+        setFailedMsg("Too many attempts right now. Try again in an hour, or");
       } else if (res.error === "send_failed") {
-        setFailedMsg("We couldn't email your code — try again in a moment, or");
+        setFailedMsg("We couldn't email your code. Try again in a moment, or");
       } else {
-        setFailedMsg("Couldn't submit just now — try again, or");
+        setFailedMsg("Couldn't submit just now. Try again, or");
       }
     } catch {
-      setFailedMsg("Couldn't submit just now — try again, or");
+      setFailedMsg("Couldn't submit just now. Try again, or");
     } finally {
       setSending(false);
     }
@@ -394,31 +394,31 @@ export function Register() {
           setCode("");
           setVerifyError(
             res.attemptsLeft === 1
-              ? "That code didn't match — one try left before you'll need a fresh one."
-              : "That code didn't match — check the latest email and try again.",
+              ? "That code didn't match. One try left before you'll need a fresh one."
+              : "That code didn't match. Check the latest email and try again.",
           );
           requestAnimationFrame(() => codeRef.current?.focus());
           break;
         case "expired":
           setCode("");
           setResendAt(0);
-          setVerifyError("That code has expired — tap Resend for a fresh one.");
+          setVerifyError("That code has expired. Tap Resend for a fresh one.");
           break;
         case "too_many_attempts":
           setCode("");
           setResendAt(0);
           setVerifyError(
-            "Too many tries with that code — tap Resend for a fresh one.",
+            "Too many tries with that code. Tap Resend for a fresh one.",
           );
           break;
         case "duplicate_email":
           showEmailExists();
           break;
         default:
-          setVerifyError("Couldn't check that code — give it another try.");
+          setVerifyError("Couldn't check that code. Give it another try.");
       }
     } catch {
-      setVerifyError("Couldn't check that code — network hiccup, try again.");
+      setVerifyError("Couldn't check that code. Network hiccup, try again.");
     } finally {
       setVerifying(false);
     }
@@ -428,7 +428,7 @@ export function Register() {
     const digits = value.replace(/\D/g, "").slice(0, 6);
     setCode(digits);
     if (verifyError) setVerifyError(null);
-    // The sixth digit submits by itself — typed or pasted.
+    // The sixth digit submits by itself, typed or pasted.
     if (digits.length === 6) void verifyCode(digits);
   };
 
@@ -442,8 +442,8 @@ export function Register() {
         setCode("");
         setVerifyInfo(
           res.reused
-            ? "Your earlier code is still valid — check the email we already sent."
-            : "New code sent — it replaces earlier ones.",
+            ? "Your earlier code is still valid. Check the email we already sent."
+            : "New code sent. It replaces earlier ones.",
         );
         setResendAt(
           Date.now() + (res.cooldown ?? RESEND_COOLDOWN_FALLBACK) * 1000,
@@ -451,15 +451,15 @@ export function Register() {
         requestAnimationFrame(() => codeRef.current?.focus());
       } else if (res.error === "too_many_codes") {
         setVerifyError(
-          "Too many codes requested for now — wait a while, or email us your application below.",
+          "Too many codes requested for now. Wait a while, or email us your application below.",
         );
       } else if (res.error === "duplicate_email") {
         showEmailExists();
       } else {
-        setVerifyError("Couldn't send a new code — try again in a moment.");
+        setVerifyError("Couldn't send a new code. Try again in a moment.");
       }
     } catch {
-      setVerifyError("Couldn't send a new code — network hiccup, try again.");
+      setVerifyError("Couldn't send a new code. Network hiccup, try again.");
     } finally {
       setResending(false);
     }
@@ -642,8 +642,8 @@ export function Register() {
                     all official WingsQuest communications will arrive at{" "}
                     <b style={{ color: "#0a0a0a", fontWeight: 500 }}>
                       {application.email}
-                    </b>{" "}
-                    — keep an eye on it.
+                    </b>
+                    , so keep an eye on it.
                   </p>
                   <p className="ui-caption mt-6">
                     Questions in the meantime? Write to{" "}
@@ -689,7 +689,7 @@ export function Register() {
                     <b style={{ color: "#0a0a0a", fontWeight: 500 }}>
                       {application.email}
                     </b>
-                    . It can take a minute — check spam or promotions if it
+                    . It can take a minute. Check spam or promotions if it
                     hasn&apos;t landed.
                   </p>
                   {verifyInfo && (
@@ -1104,8 +1104,8 @@ export function Register() {
                     </p>
                   ) : (
                     <p className="ui-caption mt-3">
-                      Last step after this: a 6-digit code lands in your email
-                      — enter it to confirm your application.
+                      Last step after this: a 6-digit code lands in your email.
+                      Enter it to confirm your application.
                     </p>
                   )}
                 </form>
