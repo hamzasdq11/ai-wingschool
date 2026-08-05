@@ -76,7 +76,7 @@ export function ChallengeCTA() {
               textShadow: "0 2px 24px rgba(5, 8, 28, 0.35)",
             }}
           >
-            <span className="sm:block">One challenge. Three stages.</span>{" "}
+            <span className="sm:block">One challenge. Three phases.</span>{" "}
             <span className="sm:block">
               Built to find exceptional{" "}
               <em

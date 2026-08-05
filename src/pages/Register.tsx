@@ -7,9 +7,9 @@ import { PAGE_META, usePageMeta } from "../lib/seo";
 import { getAttribution, track } from "../lib/analytics";
 
 const facts = [
-  { value: "3 stages", label: "One journey" },
+  { value: "3 phases", label: "One journey" },
   { value: "Classes 6–10", label: "Across India" },
-  { value: "28 August", label: "Stage One begins" },
+  { value: "28 August", label: "Phase One begins" },
 ];
 
 const journey = [

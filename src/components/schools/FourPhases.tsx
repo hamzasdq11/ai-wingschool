@@ -59,7 +59,7 @@ export function FourPhases() {
       <Reveal className="section-copy">
         <p className="section-kicker mb-4">WingsQuest 2026 · How it works</p>
         <h2 className="section-heading mb-6">
-          One challenge. Three stages. <em>One spotlight.</em>
+          One challenge. Three phases. <em>One stage.</em>
         </h2>
         <p className="section-body mb-14">
           From a one-hour online challenge to your project on a public stage,
@@ -98,7 +98,7 @@ export function FourPhases() {
                 textTransform: "uppercase",
               }}
             >
-              Stage {p.number}
+              Phase {p.number}
             </span>
 
             <h3 className="ui-h3 relative mt-5">{p.title}</h3>

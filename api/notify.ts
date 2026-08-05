@@ -113,7 +113,7 @@ function confirmationHtml(firstName: string): string {
   ).join("");
 
   return (
-    `<div style="display:none;max-height:0;overflow:hidden;">Your WingsQuest 2026 application has been received. Stage One begins 28 August.</div>` +
+    `<div style="display:none;max-height:0;overflow:hidden;">Your WingsQuest 2026 application has been received. Phase One begins 28 August.</div>` +
     `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f4f3ee;margin:0;">` +
     `<tr><td align="center" style="padding:36px 16px;">` +
     // No width attribute on the card: it acts as a min-width in the
@@ -157,7 +157,7 @@ function confirmationHtml(firstName: string): string {
     `<tr><td style="padding:6px 44px 0;">` +
     `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>` +
     `<td style="background-color:#eef1fb;border-radius:12px;padding:18px 22px;font-family:${FONT_STACK};font-size:14px;line-height:1.6;color:#0a0a0a;">` +
-    `<b style="color:${BRAND_BLUE};">Stage One begins 28 August.</b> Your entry details and preparation pointers will arrive by email before the challenge.` +
+    `<b style="color:${BRAND_BLUE};">Phase One begins 28 August.</b> Your entry details and preparation pointers will arrive by email before the challenge.` +
     `</td></tr></table>` +
     `</td></tr>` +
     // WhatsApp button
@@ -190,7 +190,7 @@ function confirmationText(firstName: string): string {
     "YOUR WINGSQUEST JOURNEY",
     ...JOURNEY.map((s) => `${s.number}. ${s.title}: ${s.desc}`),
     "",
-    "Stage One begins 28 August. Your entry details and preparation pointers will arrive by email before the challenge.",
+    "Phase One begins 28 August. Your entry details and preparation pointers will arrive by email before the challenge.",
     "",
     `Questions? Message us on WhatsApp: https://wa.me/917355080850 or write to ${CONTACT_EMAIL}.`,
     "",
