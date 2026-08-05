@@ -32,7 +32,7 @@ export function InsideChallenge() {
   return (
     <section id="challenge" className="section-shell relative z-10">
       <Reveal className="section-copy">
-        <p className="section-kicker mb-4">Inside the Challenge · Phase 1</p>
+        <p className="section-kicker mb-4">Inside the Challenge · Stage 1</p>
         <h2 className="section-heading mb-6">
           One hour. Here&apos;s exactly <em>what&apos;s in it.</em>
         </h2>

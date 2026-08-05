@@ -22,24 +22,14 @@ const phases: Phase[] = [
     number: "02",
     title: (
       <>
-        The <em className="display-script">Selection.</em>
-      </>
-    ),
-    desc: "Admission to the AI Builder Program is based purely on your Challenge score. Top performers qualify, and the top 10–20% also earn a merit scholarship.",
-    highlight: "Scholarships up to 50%",
-  },
-  {
-    number: "03",
-    title: (
-      <>
         The AI Builder <em className="display-script">Program.</em>
       </>
     ),
-    desc: "Four weeks of live, hands-on classes. You learn how modern AI actually works, then prove it by building a real AI project of your own.",
+    desc: "Admission is earned on your Challenge score alone. Clear the cutoff and it's four weeks of live, hands-on classes. You learn how modern AI actually works, then build a real AI project of your own.",
     highlight: "Taught by IIT/IIM grads",
   },
   {
-    number: "04",
+    number: "03",
     title: (
       <>
         Flagship <em className="display-script">Expo Day.</em>
@@ -69,7 +59,7 @@ export function FourPhases() {
       <Reveal className="section-copy">
         <p className="section-kicker mb-4">WingsQuest 2026 · How it works</p>
         <h2 className="section-heading mb-6">
-          One challenge. Four phases. <em>One stage.</em>
+          One challenge. Three stages. <em>One spotlight.</em>
         </h2>
         <p className="section-body mb-14">
           From a one-hour online challenge to your project on a public stage,
@@ -77,7 +67,7 @@ export function FourPhases() {
         </p>
       </Reveal>
 
-      <Reveal delay={80} className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+      <Reveal delay={80} className="grid gap-5 md:grid-cols-3">
         {phases.map((p) => (
           <div
             key={p.number}
@@ -108,7 +98,7 @@ export function FourPhases() {
                 textTransform: "uppercase",
               }}
             >
-              Phase {p.number}
+              Stage {p.number}
             </span>
 
             <h3 className="ui-h3 relative mt-5">{p.title}</h3>
