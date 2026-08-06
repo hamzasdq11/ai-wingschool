@@ -155,7 +155,7 @@ function BigCount({ target, animate }: { target: number; animate: boolean }) {
 }
 
 const captions = [
-  "This is the neuron you just ran, live.",
+  "This is that single neuron, live.",
   "It's never alone.",
   "Every thread is a weight: green pulls toward yes, red pushes toward no.",
 ];
@@ -176,22 +176,15 @@ export function NeuralZoom() {
   const [capIdx, setCapIdx] = useState(reduced ? -1 : 0);
 
   useEffect(() => {
-    if (runId === 0) {
+    // Only nudge on replay; on first mount the animation is scroll-triggered,
+    // so auto-scrolling here would yank the page on load.
+    if (runId !== 0) {
       wrapRef.current?.scrollIntoView({
         behavior: reduced ? "auto" : "smooth",
         block: "nearest",
       });
     }
   }, [runId, reduced]);
-
-  useEffect(() => {
-    if (phase === "done" && !reduced) {
-      countersRef.current?.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest",
-      });
-    }
-  }, [phase, reduced]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -674,7 +667,7 @@ export function NeuralZoom() {
                     color: "#ffd166",
                   }}
                 >
-                  You ran 1 neuron · 2 multiplications
+                  1 neuron · 2 multiplications
                 </p>
                 <p
                   className="mt-3"

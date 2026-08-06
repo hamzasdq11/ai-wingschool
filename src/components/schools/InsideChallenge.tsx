@@ -213,7 +213,7 @@ export function InsideChallenge() {
           </div>
         </div>
 
-        {answered && <NeuralZoom />}
+        <NeuralZoom />
       </Reveal>
     </section>
   );
