@@ -162,7 +162,6 @@ const captions = [
 
 export function NeuralZoom() {
   const wrapRef = useRef<HTMLDivElement>(null);
-  const countersRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [runId, setRunId] = useState(0);
   const [reduced] = useState(
@@ -649,11 +648,23 @@ export function NeuralZoom() {
         )}
       </div>
 
-      {phase === "done" && (
-        <div ref={countersRef} className="px-7 pb-8 sm:px-10 sm:pb-10">
+      <div
+        style={{
+          display: "grid",
+          gridTemplateRows: phase === "done" ? "1fr" : "0fr",
+          transition: reduced
+            ? undefined
+            : "grid-template-rows 0.7s cubic-bezier(0.22, 1, 0.36, 1)",
+        }}
+      >
+        <div style={{ minHeight: 0, overflow: "hidden" }}>
           <div
-            className="animate-fade-rise pt-7 sm:pt-8"
-            style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}
+            className="px-7 pb-8 pt-7 sm:px-10 sm:pb-10 sm:pt-8"
+            style={{
+              borderTop: "1px solid rgba(255,255,255,0.1)",
+              opacity: phase === "done" ? 1 : 0,
+              transition: reduced ? undefined : "opacity 0.55s ease 0.15s",
+            }}
           >
             <div className="grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:items-center">
               <div>
@@ -680,7 +691,11 @@ export function NeuralZoom() {
                     color: "#ffffff",
                   }}
                 >
-                  ~<BigCount target={OPS_PER_WORD} animate={!reduced} />
+                  ~
+                  <BigCount
+                    target={OPS_PER_WORD}
+                    animate={phase === "done" && !reduced}
+                  />
                 </p>
                 <p
                   className="mt-3 max-w-xl"
@@ -745,7 +760,7 @@ export function NeuralZoom() {
             </div>
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 }
